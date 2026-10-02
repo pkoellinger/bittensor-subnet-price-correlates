@@ -58,7 +58,7 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [x] `14_kol.py candidates`: 15 candidate accounts screened without reading any post
 - [x] Written and tested without reading a post: `14_kol.py posts`, `config/polarity_criteria.md`, `build/kol_polarity.py`
 - [x] Account list approved by Philipp on 2 Oct 2026: nine accounts (`config/kol_accounts.csv`)
-- [ ] `14_kol.py posts`: two of nine accounts read (652 posts, 109 post-subnet pairs, labelled by both coders: 95% agreement, kappa 0.92). **Stopped: the prepaid credits of the X account are used up (HTTP 402).** About $14 are needed for the other seven accounts. Then: run the step again, two coders label the new pairs, `build/kol_polarity.py`, add the ten `kol_*` columns to the codebook
+- [ ] `14_kol.py posts`: two of nine accounts read (648 posts, 109 post-subnet pairs, labelled by both coders: 95% agreement, kappa 0.92). **Stopped: the prepaid credits of the X account are used up (HTTP 402).** About $14 are needed for the other seven accounts. Then: run the step again, two coders label the new pairs, `build/kol_polarity.py`, add the ten `kol_*` columns to the codebook
 
 ### Phase 4: Build, validate, freeze, document — IN PROGRESS
 
