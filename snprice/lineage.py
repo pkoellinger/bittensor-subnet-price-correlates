@@ -178,10 +178,19 @@ def lineage_summary(shares, sample, funding, level2, profiles, ips, owner_addres
     owner_side       wallets that received TAO from, or sent TAO to, the owner
 
     Owner-linked wallets are reported as a share and left out of the operator
-    counts and of the concentration index. Wallets that were not traced count
-    as one operator each.
+    counts and of the concentration index.
+
+    Operators are counted among the traced wallets. A wallet too small to be traced
+    is not counted as an operator: subnets with hundreds of dust wallets would
+    otherwise seem to have hundreds of operators. Its pay is reported in
+    `untraced_share`, and in the concentration index it stands alone.
+
+    clusters_ub    operators when wallets are merged only through a shared funder that is
+                   not an exchange: an upper bound on the number of operators
+    clusters_best  the same after merging wallets on one miner IP and wallets paid out
+                   of an exchange in one batch: never more than clusters_ub
     """
-    empty = {"clusters_lb": 0, "clusters_best": 0, "hhi_best": None, "owner_linked_share": None,
+    empty = {"clusters_ub": 0, "clusters_best": 0, "hhi_best": None, "owner_linked_share": None,
              "untraced_share": None, "unattrib_share": None, "roots_best": {}, "owner_linked": []}
     total = sum(shares.values())
     if total <= 0:
@@ -205,7 +214,10 @@ def lineage_summary(shares, sample, funding, level2, profiles, ips, owner_addres
             agg[part.root(c) if c in in_sample else c] += s
         return agg
 
-    agg_lb, agg_best = aggregate(lower), aggregate(best)
+    def operators(part):
+        return len({part.root(c) for c in sample if c in shares and c not in linked})
+
+    agg_best = aggregate(best)
     sizes = lower.sizes()
     blind = sum(
         shares[c] for c in sample
@@ -213,8 +225,8 @@ def lineage_summary(shares, sample, funding, level2, profiles, ips, owner_addres
         and any(is_exchange(profiles, r["frm"]) for r in funding.get(c, []))
     )
     return {
-        "clusters_lb": len(agg_lb),
-        "clusters_best": len(agg_best),
+        "clusters_ub": operators(lower),
+        "clusters_best": operators(best),
         "hhi_best": hhi_from_amounts(agg_best.values()),
         "owner_linked_share": sum(shares[c] for c in linked if c in shares) / total,
         "untraced_share": sum(s for c, s in shares.items() if c not in in_sample) / total,

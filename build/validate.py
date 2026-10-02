@@ -88,8 +88,8 @@ def main():
             check(sum(items) == g("doc_score"), f"doc_score[{n}]")
         for low, high in (("holders_top10_share", "holders_top10_share_upper"), ("holders_hhi", "holders_hhi_upper"),
                           ("miners_paid_coldkeys_30d", "miners_paid_hotkeys_30d"),
-                          ("miners_lineage_clusters_lb_30d", "miners_lineage_clusters_best_30d"),
-                          ("miners_lineage_clusters_best_30d", "miners_paid_coldkeys_30d"),
+                          ("miners_lineage_clusters_best_30d", "miners_lineage_clusters_ub_30d"),
+                          ("miners_lineage_clusters_ub_30d", "miners_paid_coldkeys_30d"),
                           ("x_posts_original_30d", "x_posts_30d"), ("podcast_shows_12m", "podcast_episodes_12m"),
                           ("exploit26_presented", "exploit26_sessions_n")):
             if g(low) is not None and g(high) is not None:

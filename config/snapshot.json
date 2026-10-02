@@ -12,7 +12,7 @@
   "taostats_call_ceiling": 10000,
   "x_usd_ceiling": 50.0,
   "lineage_share_floor": 0.001,
-  "lineage_max_wallets_per_subnet": 90,
+  "lineage_max_wallets_per_subnet": 250,
   "lineage_level2_share_floor": 0.005,
   "lineage_call_cap": 6000
 }

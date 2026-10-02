@@ -1,6 +1,6 @@
 # PLAN: Bittensor subnet price-correlates dataset
 
-**Status:** IN PROGRESS (wave 1 collected except commentator posts, which wait for approval of the account list)
+**Status:** IN PROGRESS (wave 1 collected and validated, 128 × 161, except commentator posts, which wait for approval of the account list)
 **Created:** 2026-10-02
 **Last updated:** 2026-10-02
 **Owner:** Philipp Koellinger (decisions), Claude (build)
@@ -36,14 +36,14 @@ Because only 128 subnets exist, the design adds time: features for September, la
 
 ### Phase 0: Core library, test-first — DONE
 
-- [x] Repository scaffold; shared library `snprice/` with 458 unit tests (`python -m unittest discover -s tests`)
+- [x] Repository scaffold; shared library `snprice/` with 460 unit tests (`python -m unittest discover -s tests`)
 - [x] Measurement: miner incentive and the wallet behind every paid UID can be read from the chain at 900-block resolution in about one hour
 
-### Phase 1: Chain and Taostats data — DONE except lineage (running)
+### Phase 1: Chain and Taostats data — DONE
 
 - [x] `00_snapshot`, `01_chain_grid`, `02_chain_state`, `05_aggregate_grid` (chain only)
 - [x] `03_history_events`, `04_registrations`, `07_holders`, `08_owner_trades`, `09_baskets`, `18_tao_usd`
-- [ ] `06_lineage` (about 4,200 Taostats calls; running)
+- [x] `06_lineage`: 2,470 wallets of 105 subnets traced (every wallet with at least 0.1% of miner pay)
 
 ### Phase 2: Links, GitHub, websites, coded facts — DONE
 
@@ -63,7 +63,8 @@ Because only 128 subnets exist, the design adds time: features for September, la
 
 - [x] `codebook.csv`, `build/build_dataset.py`, `build/validate.py`, `build/build_rds.R`, README
 - [x] Cross-checks: `build/check_sources.py` (chain prices against Taostats), `build/check_doc_checklist.py`
-- [ ] Final build with lineage and commentator columns; tag and hash wave 1
+- [x] Build with lineage columns
+- [ ] Final build with commentator columns; tag and hash wave 1
 
 ### Phase 5: Wave 2 — NOT STARTED
 
@@ -77,8 +78,8 @@ Because only 128 subnets exist, the design adds time: features for September, la
 | Risk | Impact | Likelihood | Mitigation |
 |------|--------|------------|------------|
 | Rate-limited Taostats response read as zero | High | Med | Client raises on missing data; tests |
-| Taostats monthly quota exhausted | Med | Med | Ledger ceiling, 15 calls a minute; wave 1 uses about 5,800 calls |
-| Lineage merges strangers through exchange wallets | High | Med | Lower-bound and best lenses only; unattributable share reported |
+| Taostats monthly quota exhausted | Med | Med | Ledger ceiling, 15 calls a minute; wave 1 used 5,623 calls |
+| Lineage merges strangers through exchange wallets | High | Med | Only the two cautious lenses (funding links; plus shared IP and batch payouts); exchange funders never merge; unattributable share reported |
 | Runtime upgrades inside the window | Med | High | Decoding per block; absent item = NA |
 | Coding of web facts invents a fact | High | Low | Two coders, every quote checked by script against the saved page |
 | A site is down or blocked on the day of collection | Med | Med | Status recorded; second visit; coded facts missing where the site could not be read |
@@ -109,6 +110,9 @@ Because only 128 subnets exist, the design adds time: features for September, la
 | 2026-10-02 | **Owner trades count for the owner of the day** (`snprice.events.owner_tenures`): where the owner key changed inside the 90 days, the earlier key's trades count up to the change and the later key's from then on. Every change is checked on chain | 30 of 128 subnets changed their owner key in the 90 days before T. The first version read only the key that owned the subnet at T: it missed the trades of 40 earlier keys and counted purchases a key made before it became owner. 12 values of the 90-day net purchases changed, the largest from −32 to −1,027 TAO (subnet 112) |
 | 2026-10-02 | For owner-linked miners, the owner is every key that owned the subnet since the current project started (`snprice.events.project_owner_keys`) | A team that moved to a new wallet is the same team. 35 of the 105 subnets with paid miners have such earlier keys (44 keys) |
 | 2026-10-02 | Decode defaults for absent chain entries (commit-reveal on, Yuma 3 off, liquid alpha off, one mechanism) were checked against Taostats: at block T for twelve subnets, and against its latest values for all 128 | 51 of 128 subnets have no commit-reveal entry on chain, 95 none for Yuma 3; a wrong default would have mis-coded a third of the sample. All values agree |
+| 2026-10-02 | **Operators are counted among traced wallets only** (at least 0.1% of miner pay), and every such wallet is traced: the cap of 90 wallets per subnet is lifted to 250 (the largest count was 207) | The first run counted each untraced wallet as one operator. Subnets with many small wallets then showed hundreds of operators: Claims 141, of which 128 were untraced wallets. After the change Claims has 44 (upper bound) and 37 (best estimate), subnet 61 has 30 instead of 183, and the largest untraced share fell from 30% to 3.8% of miner pay. Cost: 405 further Taostats calls |
+| 2026-10-02 | The column on funding links alone is named `miners_lineage_clusters_ub_30d`: an upper bound on the number of operators | It was called `_lb` after the note it follows, where the lens gives a lower bound on concentration. Fewer merges mean more operators, so for a count it is the upper bound; the validation rule had the direction wrong as well |
+| 2026-10-02 | Y15 keeps "TAO injected above zero" as the meaning of "emissions on"; the codebook states that above zero is not material | At T, 91 subnets received TAO, the 32 largest recipients took 94% of it and 38 received less than 0.0001 TAO per block. The amounts are a steep function of the price and stay out under the exclusion rule |
 | 2026-10-02 | E-mail mailbox names from on-chain identities are not republished (domain only) | Privacy |
 | 2026-10-02 | **Y15 is measured by TAO actually injected** (`tao_emission_on_share_30d`: share of samples with `SubnetTaoInEmission` above zero). The emission flag is kept as a second column | The flag was switched on for nearly all subnets on 9 Sep 2026 (79 on before, 126 after) while only about 90 subnets receive TAO. The flag no longer says who is funded. Both columns are marked mechanical (gate) |
 | 2026-10-02 | **Stake positions are valued as the runtime does**: old share map first, then the new one, with pool epochs (`snprice.chain.position_alpha`) | The first version read only the new map and valued about 10% of staked alpha (up to 48% in one subnet) at zero. Checked against Taostats stake history at block T to twelve digits |
@@ -135,7 +139,7 @@ Because only 128 subnets exist, the design adds time: features for September, la
 ## Open Questions
 
 - [ ] **Account list for Y19 and Y20** (`config/kol_accounts.csv`): which of the screened accounts to read. No post is read before this is approved.
-- [ ] Monthly call allowance of the Taostats plan (wave 1 uses about 5,800 calls; the plan page lists 20,000 credits a month).
+- [ ] Monthly call allowance of the Taostats plan (wave 1 used 5,623 calls; the plan page lists 20,000 credits a month).
 - [ ] Wave 2: scheduled run or manual trigger on or after 31 Oct 2026.
 - [ ] Terms of Taostats and X on publishing derived data, before the repository goes public.
 - [ ] Before the repository goes public: Christian Roessler's consent to naming his subnet catalog and to publishing the category table taken from it (`data/manual/catalog_categories_2026-08-20.csv`).

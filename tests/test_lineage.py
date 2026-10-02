@@ -103,10 +103,11 @@ class SummaryTest(unittest.TestCase):
             level2={}, profiles={"P": {"total": 9}, "X": {"total": 9000}}, ips={},
             owner_addresses={"OWNER"}, owner_side=set(),
         )
-        # D is owner-linked (10%). Remaining 90%: {A+B} 60, C 20, E 10 (E untraced, counted as its own wallet)
+        # D is owner-linked (10%). Remaining 90%: {A+B} 60, C 20, E 10 (E was not traced)
         self.assertAlmostEqual(out["owner_linked_share"], 0.10)
-        self.assertEqual(out["clusters_lb"], 3)
-        self.assertEqual(out["clusters_best"], 3)
+        self.assertEqual(out["clusters_ub"], 2)
+        self.assertEqual(out["clusters_best"], 2)
+        # in the concentration index an untraced wallet stands alone
         self.assertAlmostEqual(out["hhi_best"], (0.6 / 0.9) ** 2 + (0.2 / 0.9) ** 2 + (0.1 / 0.9) ** 2)
         self.assertAlmostEqual(out["untraced_share"], 0.10)
         # C is a traced singleton whose only funder is an exchange: it cannot be attributed
@@ -116,21 +117,37 @@ class SummaryTest(unittest.TestCase):
         out = lineage_summary({"A": 0.5, "B": 0.5}, sample=["A", "B"], funding={}, level2={}, profiles={},
                               ips={}, owner_addresses={"OWNER"}, owner_side={"B"})
         self.assertAlmostEqual(out["owner_linked_share"], 0.5)
-        self.assertEqual(out["clusters_lb"], 1)
+        self.assertEqual(out["clusters_ub"], 1)
+
+    def test_wallets_too_small_to_be_traced_are_not_counted_as_operators(self):
+        # one operator with 96% and forty dust wallets of 0.1% each that were not traced
+        shares = {"BIG": 0.96, **{f"dust{i}": 0.001 for i in range(40)}}
+        out = lineage_summary(shares, sample=["BIG"], funding={}, level2={}, profiles={}, ips={},
+                              owner_addresses=set(), owner_side=set())
+        self.assertEqual(out["clusters_ub"], 1)
+        self.assertEqual(out["clusters_best"], 1)
+        self.assertAlmostEqual(out["untraced_share"], 0.04)
+
+    def test_best_estimate_never_counts_more_operators_than_the_upper_bound(self):
+        # A and B share an IP address: one operator in the best estimate, two under funding links alone
+        out = lineage_summary({"A": 0.5, "B": 0.5}, sample=["A", "B"], funding={}, level2={}, profiles={},
+                              ips={"A": {"1.2.3.4"}, "B": {"1.2.3.4"}}, owner_addresses=set(), owner_side=set())
+        self.assertEqual(out["clusters_ub"], 2)
+        self.assertEqual(out["clusters_best"], 1)
 
     def test_wallet_in_the_same_lineage_as_an_owner_funded_wallet_is_owner_linked(self):
         out = lineage_summary({"A": 0.5, "B": 0.3, "C": 0.2}, sample=["A", "B", "C"],
                               funding={"A": [f("OWNER"), f("P")], "B": [f("P")]}, level2={},
                               profiles={"P": {"total": 5}}, ips={}, owner_addresses={"OWNER"}, owner_side=set())
         self.assertAlmostEqual(out["owner_linked_share"], 0.8)
-        self.assertEqual(out["clusters_lb"], 1)
+        self.assertEqual(out["clusters_ub"], 1)
 
     def test_everything_owner_linked_gives_missing_concentration(self):
         out = lineage_summary({"A": 1.0}, sample=["A"], funding={"A": [f("OWNER")]}, level2={}, profiles={},
                               ips={}, owner_addresses={"OWNER"}, owner_side=set())
         self.assertAlmostEqual(out["owner_linked_share"], 1.0)
         self.assertIsNone(out["hhi_best"])
-        self.assertEqual(out["clusters_lb"], 0)
+        self.assertEqual(out["clusters_ub"], 0)
 
     def test_no_paid_wallets(self):
         out = lineage_summary({}, sample=[], funding={}, level2={}, profiles={}, ips={},

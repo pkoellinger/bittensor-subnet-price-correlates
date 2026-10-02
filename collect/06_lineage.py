@@ -1,6 +1,8 @@
 """Miner operators by funding lineage (Y4), and owner-linked miners (D3), for the 30-day window.
 
-Method: snprice/lineage.py (lower-bound and best-estimate lenses of the 18 Sep 2026 note).
+Method: snprice/lineage.py (the two cautious lenses of the 18 Sep 2026 note: funding links
+only, which gives an upper bound on the number of operators, and the best estimate, which also
+merges wallets on one miner IP and wallets paid out of an exchange in one batch).
 
 Taostats calls
   A  largest inbound transfers of each traced wallet before it registered
@@ -12,8 +14,11 @@ Taostats calls
      key and every key that owned the subnet since the current project started
      (snprice.events.project_owner_keys), the newest 600 transfers of each in either direction
 
-Traced wallets: share of paid incentive at or above the floor (0.1%), at most 90 per subnet,
-largest first. If the planned calls exceed the cap, the floor is raised for all subnets alike.
+Traced wallets: share of paid incentive at or above the floor (0.1%), largest first, at most
+`lineage_max_wallets_per_subnet` per subnet (250; no subnet reached it in wave 1, where the
+largest count was 207). If the planned calls exceed the cap, the floor is raised for all
+subnets alike. Operators are counted among the traced wallets; smaller wallets are reported
+as the untraced share.
 The funding threshold is 20% of the miner registration cost at the time the wallet registered
 (the chain sample nearest to its registration; the window median if it registered earlier
 than the samples reach), with a minimum of 0.01 TAO.
@@ -187,7 +192,7 @@ def main():
             "netuid": n,
             "lineage_share_floor": floor,
             "lineage_wallets_traced": len(traced),
-            "miners_lineage_clusters_lb_30d": summary["clusters_lb"],
+            "miners_lineage_clusters_ub_30d": summary["clusters_ub"],
             "miners_lineage_clusters_best_30d": summary["clusters_best"],
             "miner_hhi_lineage_best_30d": summary["hhi_best"],
             "miners_unattrib_share_30d": summary["unattrib_share"],

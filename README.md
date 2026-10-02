@@ -5,9 +5,9 @@ The data are built for regressions with the subnet's token price as dependent va
 for tests of out-of-sample prediction. This repository holds the dataset, a codebook, and the
 code that collected every variable.
 
-**Status (2 Oct 2026):** wave 1 is collected and validated except two blocks of columns. The
-funding-lineage columns are still being traced, and the columns on posts by independent
-commentators wait for the project owner's approval of the account list. `PLAN.md` has the details.
+**Status (2 Oct 2026):** wave 1 is collected and validated except one block of columns. The
+columns on posts by independent commentators wait for the project owner's approval of the
+account list; no post has been read. `PLAN.md` has the details.
 
 ## Files
 
@@ -19,7 +19,7 @@ commentators wait for the project owner's approval of the account list. `PLAN.md
 | `collect/` | One script per block of variables; `collect/run_all.py --list` shows the order |
 | `build/` | Joins the collected tables, validates the result, writes the `.rds`, runs the cross-checks |
 | `snprice/` | Shared library (chain decoding, API clients with budgets, text matching, clustering) |
-| `tests/` | 458 unit tests of the library |
+| `tests/` | 460 unit tests of the library |
 | `config/` | Snapshot definition, alias table, podcast list, coding protocol, screening rule |
 | `data/chain/` | Tables read from the chain: reproducible without any API key |
 | `data/evidence/` | What each coded or matched value rests on: page addresses, episode lists, session lists, coder answers |
@@ -81,7 +81,7 @@ Four subnets were registered inside September. Their windows start at registrati
 Requirements: Python 3 (run with 3.12; standard library only), `curl`, Chrome, and R (run with 4.6.1) for the `.rds`.
 
 ```bash
-python -m unittest discover -s tests          # 458 tests, under a second
+python -m unittest discover -s tests          # 460 tests, under a second
 python collect/run_all.py --list              # the steps in order
 python collect/run_all.py                     # runs them; stops where a person has to act
 python build/build_dataset.py && python build/validate.py --final
@@ -97,8 +97,8 @@ python build/check_doc_checklist.py           # documentation checklist against 
 | GitHub token | repository data | `GITHUB_TOKEN`, or a logged-in `gh` |
 | `X_BEARER_TOKEN` | X profiles, post counts, posts of approved accounts | environment or `.env` |
 
-Wave 1 needs about 5,800 Taostats calls (at most 15 a minute, so the Taostats steps take about
-seven hours; tracing miner funding is two thirds of it), about 2,000 GitHub calls, about 2,000
+Wave 1 needs about 5,600 Taostats calls (at most 15 a minute, so the Taostats steps take about
+six hours; tracing miner funding is three quarters of it), about 2,000 GitHub calls, about 2,000
 batched requests to the archive node, and $7 on X before any post is read. Every answer is saved,
 so a repeated run makes no call twice. Call counts and spending are kept in a ledger with hard
 ceilings (`config/snapshot.json`).
@@ -115,7 +115,9 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   depth, volume, volatility, past returns, staking flows, emission share.
 - **"Emissions on" is measured by TAO actually injected**, not by the emission flag. The flag was
   switched on for nearly all subnets on 9 Sep 2026 (79 before, 126 after), while about 90
-  subnets receive TAO. Both columns are in the data and both depend on the price.
+  subnets receive TAO. Both columns are in the data and both depend on the price. "On" is not
+  "material": the amount rises steeply with the price, and at T the 32 largest recipients
+  took 94% of all TAO injected. The amounts themselves are left out as price-driven.
 - **Burn is missing, not zero, where nothing is paid.** For a subnet that has not started
   emissions the chain stores a burn of 0 by default. Four subnets were in this state at T
   (`startup_mode`); their burn, owner-cut and dividend columns are missing, and no miner counts as paid.
@@ -126,7 +128,10 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   miner columns, every key that owned the subnet since the current project started counts as
   the owner.
 - **Miner concentration** pools incentive over the window by wallet. The lineage columns go one
-  step further and merge wallets funded from the same address.
+  step further and merge wallets funded from the same address. Operators are counted among
+  wallets that earned at least 0.1% of miner pay, so that dust wallets do not pass for
+  operators. `_ub` merges on funding links alone and is an upper bound on the number of
+  operators; `_best` also merges wallets on one miner IP or paid out of an exchange in one batch.
 - **Holder concentration** is a lower and an upper bound. The largest positions are traced and
   valued on chain at T; the untraced remainder (median 0.8%) sets the gap between the bounds.
 - **Podcast appearances** count episodes whose title names the subnet. A mention by number alone
@@ -174,7 +179,10 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
 - Holder concentration is by wallet. A holder who splits a stake across wallets looks
   dispersed, so `holders_top10_share` and `holders_hhi` understate concentration by holder.
 - Summit mentions come from speech-recognition transcripts and are a lower bound.
-- Lineage clustering cannot attribute wallets funded only from exchanges; the share is reported.
+- Lineage clustering cannot attribute wallets funded only from exchanges. At the median subnet
+  30% of miner pay goes to such wallets (`miners_unattrib_share_30d`), so operator counts are
+  not comparable across subnets without that column. Wallets below 0.1% of miner pay are not
+  traced (at most 3.8% of pay in any subnet).
 - Three sites could not be read: the security software on the collecting computer blocked two
   (subnets 89 and 103), and one answered with a server error on three visits (subnet 120).
   Their website facts are missing, not 0.
