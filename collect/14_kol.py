@@ -5,11 +5,24 @@ Step 1  python collect/14_kol.py candidates
         using profile and count requests only. No post is read. Writes the screening table
         and prints what reading the posts would cost for 30, 61 and 90 days.
 
-Step 2  The project owner approves accounts in config/kol_accounts.csv.
+Step 2  The project owner approves accounts in config/kol_accounts.csv
+        (approved = yes and the date in approved_on).
 
-Step 3  python collect/14_kol.py posts          (written after the approval; see PLAN.md)
+Step 3  python collect/14_kol.py posts
+        Reads the original posts (no reposts, no replies) of the approved accounts in the
+        90 days before T and finds the subnets they name (snprice/textmatch.py, the rules
+        used for podcast titles). The X client refuses any account that is not approved, and
+        the step refuses to start if the posts counted at screening would cost more than
+        the budget has left. The number of posts read is checked against that count.
+
+Step 4  Two coders label every post-subnet pair (config/polarity_criteria.md), then
+        python build/kol_polarity.py
 
 Writes (step 1)  data/evidence/kol_candidates_wave<N>.csv
+       (step 3)  data/evidence/kol_mentions_wave<N>.csv   post id, account, time, subnet, how matched
+                 data/evidence/kol_accounts_wave<N>.csv   posts read and posts naming a subnet, per account
+                 data/raw/wave<N>/kol/coding_input.json   the same with the text, for the coders (not committed:
+                                                          post text is not republished)
 """
 import sys
 from pathlib import Path
@@ -17,12 +30,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import paths  # noqa: E402
-from snprice.io import archive, ledger, read_table, write_table  # noqa: E402
-from snprice.kol import screen  # noqa: E402
+from snprice.io import archive, ledger, read_table, write_json, write_table  # noqa: E402
+from snprice.kol import post_mentions, post_text, screen  # noqa: E402
+from snprice.textmatch import Matcher, subnet_entries  # noqa: E402
 from snprice.timeutil import epoch, iso  # noqa: E402
-from snprice.xapi import COST_POST, XClient  # noqa: E402
+from snprice.xapi import COST_POST, XClient, load_approved  # noqa: E402
 
 DAY = 86400
+COUNT_TOLERANCE = 0.03          # posts read may differ from posts counted by 3% (deleted posts, day edges)
 TERMS = "(bittensor OR tao OR dtao OR subnet OR subnets OR opentensor)"
 WINDOWS = (30, 61, 90)
 
@@ -78,9 +93,78 @@ def candidates():
     print(f"X spend so far ${book.used('x_usd'):.2f} of ${cfg['x_usd_ceiling']:.2f}")
 
 
+def posts():
+    cfg = paths.snapshot()
+    wave = cfg["wave"]
+    approved = load_approved(str(paths.CONFIG / "kol_accounts.csv"))
+    if not approved:
+        raise SystemExit("no account in config/kol_accounts.csv is approved (approved = yes with a date in "
+                         "approved_on); no post is read")
+    screened = {r["username"].lower(): r for r in read_table(paths.EVIDENCE / f"kol_candidates_wave{wave}.csv")}
+    unknown = sorted(a for a in approved if a not in screened or not screened[a]["x_user_id"])
+    if unknown:
+        raise SystemExit(f"approved but not screened by `14_kol.py candidates`: {unknown}")
+
+    days = cfg["long_window_days"]
+    t_end = int(archive().timestamp(cfg["t_block"]))
+    start = t_end - days * DAY
+    counted = {a: int(screened[a][f"posts_original_{days}d"]) for a in approved}
+    book = ledger()
+    room = cfg["x_usd_ceiling"] - book.used("x_usd")
+    cost = sum(counted.values()) * COST_POST
+    print(f"{len(approved)} approved accounts with {sum(counted.values())} original posts counted in the {days} days "
+          f"before T: about ${cost:.2f} to read; ${room:.2f} of the wave's X budget is left", flush=True)
+    if cost > room:
+        raise SystemExit("that is more than the budget has left; nothing was read")
+
+    roster = read_table(paths.CHAIN / f"roster_wave{wave}.csv")
+    entries = subnet_entries(roster, read_table(paths.EVIDENCE / f"links_wave{wave}.csv"),
+                             read_table(paths.CONFIG / "name_aliases.csv"))
+    matcher = Matcher(entries)
+    label = {e["netuid"]: " / ".join([e["name"] or "(no name)"] + e["aliases"]) for e in entries}
+    project_start = {int(h["netuid"]): h["project_start_utc"]
+                     for h in read_table(paths.INTERMEDIATE / f"history_wave{wave}.csv")}
+
+    x = XClient(paths.secret("X_BEARER_TOKEN"), ledger=book, cache_dir=str(paths.raw_dir("x")), approved=approved)
+    mentions, coding, accounts = [], [], []
+    for a in sorted(approved):
+        name = screened[a]["username"]
+        got = x.original_posts(name, iso(start), iso(t_end + 1))
+        if abs(len(got) - counted[a]) > max(3, COUNT_TOLERANCE * counted[a]):
+            raise SystemExit(f"@{name}: {len(got)} posts read, {counted[a]} counted at screening; the window is not "
+                             f"complete, nothing was written")
+        naming = 0
+        for post in got:
+            rows = post_mentions(post, name, matcher, project_start)
+            if not rows:
+                continue
+            naming += 1
+            mentions.extend(rows)
+            coding.append({"post_id": post["id"], "username": name, "created": rows[0]["created"],
+                           "text": post_text(post),
+                           "subnets": [{"netuid": r["netuid"], "name": label[r["netuid"]], "match": r["strength"]}
+                                       for r in rows]})
+        accounts.append({"username": name, "posts_counted": counted[a], "posts_read": len(got),
+                         "posts_naming_a_subnet": naming})
+        print(f"  @{name}: {len(got)} posts read, {naming} name a subnet; X spend ${book.used('x_usd'):.2f}", flush=True)
+
+    write_table(paths.EVIDENCE / f"kol_mentions_wave{wave}.csv", mentions,
+                columns=["post_id", "username", "created", "netuid", "strength", "rules"])
+    write_table(paths.EVIDENCE / f"kol_accounts_wave{wave}.csv", accounts)
+    write_json(paths.raw_dir("kol") / "coding_input.json", coding)
+    weak = sum(1 for m in mentions if m["strength"] == "weak")
+    print(f"{len(mentions)} post-subnet pairs in {len(coding)} posts ({weak} weak matches for the coders to confirm); "
+          f"{len({m['netuid'] for m in mentions})} subnets named; X spend ${book.used('x_usd'):.2f} "
+          f"of ${cfg['x_usd_ceiling']:.2f}")
+    print("next: two coders label data/raw/.../kol/coding_input.json (config/polarity_criteria.md), "
+          "then python build/kol_polarity.py")
+
+
 if __name__ == "__main__":
     step = sys.argv[1] if len(sys.argv) > 1 else ""
     if step == "candidates":
         candidates()
+    elif step == "posts":
+        posts()
     else:
         raise SystemExit(__doc__)

@@ -36,7 +36,7 @@ Because only 128 subnets exist, the design adds time: features for September, la
 
 ### Phase 0: Core library, test-first — DONE
 
-- [x] Repository scaffold; shared library `snprice/` with 431 unit tests (`python -m unittest discover -s tests`)
+- [x] Repository scaffold; shared library `snprice/` with 448 unit tests (`python -m unittest discover -s tests`)
 - [x] Measurement: miner incentive and the wallet behind every paid UID can be read from the chain at 900-block resolution in about one hour
 
 ### Phase 1: Chain and Taostats data — DONE except lineage (running)
@@ -56,7 +56,8 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [x] `13_x_accounts` (92 subnets with an X account), `12c_site_handles`, `12d_x_handle_guess`
 - [x] `15_podcasts` (219 episodes of six shows), `16_exploit` (51 sessions)
 - [x] `14_kol.py candidates`: 15 candidate accounts screened without reading any post
-- [ ] **Waiting for Philipp:** approval of the account list in `config/kol_accounts.csv`; then `14_kol.py posts` and the polarity coding
+- [x] Written and tested without reading a post: `14_kol.py posts`, `config/polarity_criteria.md`, `build/kol_polarity.py`
+- [ ] **Waiting for Philipp:** approval of the account list in `config/kol_accounts.csv` (all 15 candidates are listed with a recommendation; `approved` is empty). Then: run `14_kol.py posts`, two coders label the pairs, run `build/kol_polarity.py`, add the ten `kol_*` columns to the codebook
 
 ### Phase 4: Build, validate, freeze, document — IN PROGRESS
 

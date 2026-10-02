@@ -82,6 +82,28 @@ class XClientTest(unittest.TestCase):
             c.user_posts("42", "kol_one", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
         self.assertEqual(self.transport.urls, [])
 
+    def test_archive_search_reads_only_approved_accounts(self):
+        c = self.client([posts([1, 2])], approved=["someone_else"])
+        with self.assertRaises(PermissionError):
+            c.original_posts("kol_one", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(self.transport.urls, [])
+        self.assertEqual(self.ledger.used("x_usd"), 0)
+
+    def test_archive_search_asks_for_the_original_posts_of_the_account(self):
+        c = self.client([posts(range(100), next_token="n1"), posts(range(100, 130))], approved=["kol_one"])
+        out = c.original_posts("KOL_One", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(len(out), 130)
+        self.assertIn("/tweets/search/all?", self.transport.urls[0])
+        self.assertIn("query=from%3AKOL_One+-is%3Aretweet+-is%3Areply", self.transport.urls[0])
+        self.assertIn("next_token=n1", self.transport.urls[1])
+        self.assertAlmostEqual(self.ledger.used("x_usd"), 130 * 0.005)
+
+    def test_archive_search_refuses_a_handle_that_could_change_the_query(self):
+        c = self.client([posts([1])], approved=["kol_one OR from:other"])
+        with self.assertRaises(ValueError):
+            c.original_posts("kol_one OR from:other", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(self.transport.urls, [])
+
     def test_counts_cost_one_cent_per_request_and_pages_are_summed(self):
         page1 = (200, json.dumps({"data": [{"start": "2026-09-01", "tweet_count": 3}],
                                   "meta": {"total_tweet_count": 3, "next_token": "x"}}))

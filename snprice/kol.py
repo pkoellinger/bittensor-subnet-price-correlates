@@ -1,4 +1,7 @@
-"""Screening of X accounts for the list of independent Bittensor commentators (config/kol_rule.md)."""
+"""Independent Bittensor commentators on X: screening of accounts (config/kol_rule.md), subnets
+named in their posts, and the polarity of those mentions (config/polarity_criteria.md)."""
+from .textmatch import valid_for_project
+from .timeutil import epoch, iso
 
 MIN_FOCUS = 0.5
 MIN_POSTS = 30
@@ -28,7 +31,56 @@ def screen(username, profile, original, bittensor, subnet_handles):
 
 
 POLARITIES = ("positive", "negative", "neutral")
+LABELS = POLARITIES + ("not_about",)       # what a coder may answer for a post and a subnet
 DAY = 86400
+
+
+def post_text(post):
+    """Full text of a post; long posts carry it in `note_tweet`."""
+    return (post.get("note_tweet") or {}).get("text") or post.get("text") or ""
+
+
+def post_mentions(post, username, matcher, project_start):
+    """Subnets named in one post, as rows without the post's text.
+
+    matcher        snprice.textmatch.Matcher over the subnets of the wave
+    project_start  {netuid: UTC time at which the current project took over the netuid, or None}
+
+    A subnet named by number alone before its project started does not count: the number
+    then meant the previous occupant.
+    """
+    created = iso(epoch(post["created_at"]))
+    rows = []
+    for netuid, hit in sorted(matcher.find(post_text(post)).items()):
+        if not valid_for_project(hit, created, project_start.get(netuid)):
+            continue
+        rows.append({"post_id": post["id"], "username": username, "created": created, "netuid": netuid,
+                     "strength": hit["strength"], "rules": "|".join(hit["rules"])})
+    return rows
+
+
+def mention_decision(strength, label_a, label_b):
+    """(counts, polarity) of one post for one subnet after two independent codings.
+
+    strength  how the subnet was matched in the text (snprice.textmatch): "strong" (number,
+              handle or distinctive name) or "weak" (an ordinary word used as a name)
+    labels    each coder's answer: positive, negative, neutral, or not_about (the matched
+              word does not refer to the subnet)
+
+    A strong match is dropped only if both coders say the post is not about the subnet; a weak
+    match is dropped if either says so. A direction counts only if both coders chose it.
+    """
+    if strength not in ("strong", "weak"):
+        raise ValueError(f"unknown match strength {strength!r}")
+    for label in (label_a, label_b):
+        if label not in LABELS:
+            raise ValueError(f"unknown label {label!r}")
+    doubts = [label_a, label_b].count("not_about")
+    if doubts == 2 or (doubts and strength == "weak"):
+        return False, None
+    if doubts:
+        return True, "neutral"
+    return True, agreed_polarity(label_a, label_b)
 
 
 def agreed_polarity(a, b):

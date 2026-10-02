@@ -13,6 +13,7 @@ import csv
 import hashlib
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -112,6 +113,34 @@ class XClient:
             token = (body.get("meta") or {}).get("next_token")
             if not token:
                 return rows
+
+    def original_posts(self, username, start, end, max_pages=40,
+                       fields="created_at,referenced_tweets,entities,note_tweet,public_metrics"):
+        """Original posts (no reposts, no replies) of an APPROVED account in a time window.
+
+        Read through the archive search with the query of the screening counts
+        ("from:<name> -is:retweet -is:reply"), so the number read can be checked against
+        the number counted. The timeline endpoint (user_posts) only reaches back 3,200 posts.
+        """
+        name = username.lstrip("@")
+        if name.lower() not in self.approved:
+            raise PermissionError(f"@{name} is not on the approved list; no post is read")
+        if not re.fullmatch(r"[A-Za-z0-9_]{1,15}", name):
+            raise ValueError(f"not an X handle: {username!r}")
+        rows, token = [], None
+        for _ in range(max_pages):
+            params = {"query": f"from:{name} -is:retweet -is:reply", "start_time": start, "end_time": end,
+                      "max_results": PAGE, "tweet.fields": fields}
+            if token:
+                params["next_token"] = token
+            body = self._get("/tweets/search/all", params, worst_cost=COST_POST * PAGE,
+                             actual_cost=lambda b: COST_POST * len(b.get("data") or []))
+            rows.extend(body.get("data") or [])
+            token = (body.get("meta") or {}).get("next_token")
+            if not token:
+                return rows
+            self.sleep(1.1)          # the archive search allows one request a second
+        raise XError(f"@{name}: more than {max_pages} pages in the window; window not complete")
 
     def user_posts(self, user_id, username, start, end, exclude=("retweets", "replies"), max_pages=40,
                    fields="created_at,referenced_tweets,entities,note_tweet,public_metrics"):

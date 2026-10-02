@@ -1,6 +1,7 @@
 import unittest
 
-from snprice.kol import agreed_polarity, mention_counts, screen
+from snprice.kol import agreed_polarity, mention_counts, mention_decision, post_mentions, post_text, screen
+from snprice.textmatch import Matcher
 
 PROFILE = {"username": "TaoOutsider", "public_metrics": {"followers_count": 12000}}
 
@@ -52,6 +53,84 @@ class AgreedPolarityTest(unittest.TestCase):
     def test_unknown_label_is_an_error(self):
         with self.assertRaises(ValueError):
             agreed_polarity("great", "positive")
+
+
+class PostTextTest(unittest.TestCase):
+    def test_short_post(self):
+        self.assertEqual(post_text({"id": "1", "text": "SN64 ships"}), "SN64 ships")
+
+    def test_long_post_carries_its_full_text_in_the_note(self):
+        post = {"id": "1", "text": "SN64 ships a new… https://t.co/x", "note_tweet": {"text": "SN64 ships a new router today"}}
+        self.assertEqual(post_text(post), "SN64 ships a new router today")
+
+    def test_post_without_text(self):
+        self.assertEqual(post_text({"id": "1"}), "")
+
+
+class PostMentionsTest(unittest.TestCase):
+    MATCHER = Matcher([
+        {"netuid": 64, "name": "Chutes", "rule": "plain", "handles": ["chutes_ai"], "aliases": []},
+        {"netuid": 111, "name": "Claims", "rule": "strict", "handles": [], "aliases": ["DeSci Claims"]},
+        {"netuid": 82, "name": "", "rule": "placeholder", "handles": [], "aliases": []},
+    ])
+    START = {64: None, 111: "2026-06-15 10:00:00", 82: "2026-09-26 23:40:00"}
+
+    def mentions(self, text, created="2026-09-10T12:00:00.000Z", **more):
+        post = {"id": "77", "text": text, "created_at": created, **more}
+        return post_mentions(post, "TaoOutsider", self.MATCHER, self.START)
+
+    def test_post_that_names_a_subnet(self):
+        self.assertEqual(self.mentions("Chutes keeps shipping"), [
+            {"post_id": "77", "username": "TaoOutsider", "created": "2026-09-10T12:00:00Z", "netuid": 64,
+             "strength": "strong", "rules": "name"}])
+
+    def test_post_that_names_two_subnets_gives_two_rows(self):
+        out = self.mentions("@chutes_ai and SN111 both shipped")
+        self.assertEqual([(m["netuid"], m["rules"]) for m in out], [(64, "handle"), (111, "id")])
+
+    def test_post_without_a_subnet(self):
+        self.assertEqual(self.mentions("gm"), [])
+
+    def test_number_alone_before_the_project_started_means_the_previous_occupant(self):
+        self.assertEqual(self.mentions("SN82 looks dead", created="2026-09-01T08:00:00.000Z"), [])
+        self.assertEqual([m["netuid"] for m in self.mentions("SN82 is back", created="2026-09-28T08:00:00.000Z")], [82])
+
+    def test_ordinary_word_is_a_weak_candidate_and_only_in_a_post_about_bittensor(self):
+        out = self.mentions("Claims is flying, best subnet this month")
+        self.assertEqual([(m["netuid"], m["strength"]) for m in out], [(111, "weak")])
+        self.assertEqual(self.mentions("Claims of a rally were wrong"), [])
+
+    def test_long_post_is_matched_on_its_full_text(self):
+        out = self.mentions("A thread on… https://t.co/x", note_tweet={"text": "A thread on DeSci Claims and why it matters"})
+        self.assertEqual([m["netuid"] for m in out], [111])
+
+
+class MentionDecisionTest(unittest.TestCase):
+    """Does a matched post count for the subnet, and with which polarity?"""
+
+    def test_strong_match_counts_with_the_direction_both_coders_chose(self):
+        self.assertEqual(mention_decision("strong", "positive", "positive"), (True, "positive"))
+        self.assertEqual(mention_decision("strong", "negative", "negative"), (True, "negative"))
+
+    def test_direction_chosen_by_one_coder_only_is_neutral(self):
+        self.assertEqual(mention_decision("strong", "positive", "neutral"), (True, "neutral"))
+        self.assertEqual(mention_decision("strong", "positive", "negative"), (True, "neutral"))
+
+    def test_strong_match_is_dropped_only_if_both_coders_say_it_is_not_about_the_subnet(self):
+        self.assertEqual(mention_decision("strong", "not_about", "not_about"), (False, None))
+        self.assertEqual(mention_decision("strong", "not_about", "positive"), (True, "neutral"))
+
+    def test_weak_match_counts_only_if_no_coder_doubts_it(self):
+        self.assertEqual(mention_decision("weak", "neutral", "positive"), (True, "neutral"))
+        self.assertEqual(mention_decision("weak", "positive", "positive"), (True, "positive"))
+        self.assertEqual(mention_decision("weak", "not_about", "positive"), (False, None))
+        self.assertEqual(mention_decision("weak", "not_about", "not_about"), (False, None))
+
+    def test_unknown_label_or_strength_is_an_error(self):
+        with self.assertRaises(ValueError):
+            mention_decision("strong", "great", "positive")
+        with self.assertRaises(ValueError):
+            mention_decision("certain", "positive", "positive")
 
 
 DAY = 86400
