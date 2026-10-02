@@ -11,7 +11,14 @@ import struct
 import time
 import urllib.request
 
-ARCHIVE_URL = "https://archive.chain.opentensor.ai"
+from .files import atomic_write
+
+# Two independent public nodes that serve historical state. They return identical
+# values (checked at the snapshot block). OnFinality answers a batched read of
+# 1,280 keys in about a second; the Opentensor archive enforces a work budget of
+# roughly 500 keys a minute and is used for cross-checks and as a fallback.
+ARCHIVE_URL = os.environ.get("SNPRICE_ARCHIVE_URL", "https://bittensor-finney.api.onfinality.io/public")
+ARCHIVE_URL_OPENTENSOR = "https://archive.chain.opentensor.ai"
 _M = (1 << 64) - 1
 _P1, _P2, _P3, _P4, _P5 = (11400714785074694791, 14029467366897019727, 1609587929392839161,
                            9650029242287828579, 2870177450012600261)
@@ -187,6 +194,122 @@ def decode_vec_u16(raw):
     return list(struct.unpack_from(f"<{length}H", data, offset))
 
 
+def decode_account(raw):
+    """32-byte account id -> SS58 address. None when absent."""
+    if raw is None:
+        return None
+    return ss58_encode(bytes.fromhex(raw[2:]))
+
+
+def decode_vec_account(raw):
+    """SCALE Vec<AccountId32> -> list of SS58 addresses. None when absent."""
+    if raw is None:
+        return None
+    data = bytes.fromhex(raw[2:])
+    length, offset = _compact(data)
+    if len(data) - offset != 32 * length:
+        raise ValueError(f"Vec<AccountId> of declared length {length} has {len(data) - offset} payload bytes")
+    return [ss58_encode(data[offset + 32 * i: offset + 32 * (i + 1)]) for i in range(length)]
+
+
+def decode_vec_bool(raw):
+    """SCALE Vec<bool> (ValidatorPermit, Active). None when absent."""
+    if raw is None:
+        return None
+    data = bytes.fromhex(raw[2:])
+    length, offset = _compact(data)
+    if len(data) - offset != length:
+        raise ValueError(f"Vec<bool> of declared length {length} has {len(data) - offset} payload bytes")
+    return [b != 0 for b in data[offset:]]
+
+
+def decode_lock(raw):
+    """LockState {locked_mass: u64, conviction: U64F64, last_update: u64}. None when absent.
+
+    locked_mass is the value as of `last_update`; a decaying lock must be rolled
+    forward with decayed_mass() before it is compared across subnets.
+    """
+    if raw is None:
+        return None
+    data = bytes.fromhex(raw[2:])
+    if len(data) != 32:
+        raise ValueError(f"LockState must be 32 bytes, got {len(data)}")
+    return {
+        "locked_mass_rao": int.from_bytes(data[0:8], "little"),
+        "conviction": int.from_bytes(data[8:24], "little") / float(1 << 64),
+        "last_update": int.from_bytes(data[24:32], "little"),
+    }
+
+
+def decayed_mass(mass, last_update, at_block, unlock_rate):
+    """Locked mass of a DECAYING lock at a later block.
+
+    The runtime computes mass * exp(-dt / UnlockRate) (pallets/subtensor/src/
+    staking/lock.rs, calculate_decayed_mass_and_conviction). Perpetual locks do
+    not decay and must not be passed through this function.
+    """
+    import math
+    dt = max(0.0, float(at_block) - float(last_update))
+    if dt == 0:
+        return float(mass)
+    if not unlock_rate:
+        return 0.0
+    return float(mass) * math.exp(-dt / float(unlock_rate))
+
+
+def decode_decimal(raw):
+    """Share amounts (AlphaV2, TotalHotkeySharesV2): {mantissa: i128, exponent: i64} -> float."""
+    if raw is None:
+        return None
+    data = bytes.fromhex(raw[2:])
+    if len(data) != 24:
+        raise ValueError(f"decimal share value must be 24 bytes, got {len(data)}")
+    mantissa = int.from_bytes(data[0:16], "little", signed=True)
+    exponent = int.from_bytes(data[16:24], "little", signed=True)
+    return float(mantissa) * (10.0 ** exponent)
+
+
+def decode_axon(raw):
+    """AxonInfo {block u64, version u32, ip u128, port u16, ip_type u8, protocol u8, 2 placeholders}."""
+    if raw is None:
+        return None
+    data = bytes.fromhex(raw[2:])
+    if len(data) != 34:
+        raise ValueError(f"AxonInfo must be 34 bytes, got {len(data)}")
+    ip_int = int.from_bytes(data[12:28], "little")
+    ip_type = data[30]
+    if ip_type == 4:
+        ip = ".".join(str((ip_int >> s) & 255) for s in (24, 16, 8, 0))
+    else:
+        ip = format(ip_int, "032x")
+    return {"block": int.from_bytes(data[0:8], "little"), "ip": ip,
+            "port": int.from_bytes(data[28:30], "little"), "ip_type": ip_type}
+
+
+IDENTITY_FIELDS = ("subnet_name", "github_repo", "subnet_contact", "subnet_url", "discord",
+                   "description", "logo_url", "additional")
+
+
+def decode_identity(raw):
+    """SubnetIdentitiesV3: eight consecutive SCALE byte strings. None when absent."""
+    if raw is None:
+        return None
+    data = bytes.fromhex(raw[2:])
+    out, pos = {}, 0
+    for name in IDENTITY_FIELDS:
+        if pos >= len(data):
+            raise ValueError(f"identity record ends before field {name}")
+        length, used = _compact(data[pos:])
+        pos += used
+        if pos + length > len(data):
+            raise ValueError(f"identity record ends inside field {name}")
+        out[name] = data[pos:pos + length].decode("utf-8", "replace")
+        pos += length
+    if pos != len(data):
+        raise ValueError(f"identity record has {len(data) - pos} unexpected trailing bytes")
+    return out
+
+
 # ------------------------------------------------------------------ archive node
 
 def _http_rpc(url):
@@ -234,8 +357,11 @@ class Archive:
             if "error" in out:
                 last = out["error"]
                 msg = json.dumps(out["error"]).lower()
-                if "-32004" in msg or "budget" in msg or "rate" in msg or "429" in msg:
+                if "-32004" in msg or "budget" in msg:      # archive.chain.opentensor.ai work budget
                     self.sleep(40)
+                    continue
+                if "-32029" in msg or "too many requests" in msg or "rate" in msg or "429" in msg:
+                    self.sleep(5 + 5 * attempt)
                     continue
                 raise ChainError(f"{method}: {out['error']}")
             if self.pace:
@@ -260,10 +386,7 @@ class Archive:
         path = self._path(block)
         if not path:
             return
-        tmp = path + ".tmp"
-        with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
-            json.dump(self._mem[block], fh)
-        os.replace(tmp, path)
+        atomic_write(path, json.dumps(self._mem[block]))
 
     # -- public
     def block_hash(self, block):
@@ -294,11 +417,26 @@ class Archive:
             self._save(block)
         return {k: entry["values"][k] for k in keys}
 
+    def forget(self, block):
+        """Drop a block from memory (it stays on disk). For long passes over many blocks."""
+        self._mem.pop(block, None)
+
     def read_map(self, pallet, item, netuids, block, part=u16):
         """Read a netuid-keyed map for many subnets; returns {netuid: hex or None}."""
         keys = {n: key(pallet, item, part(n)) for n in netuids}
         values = self.read(list(keys.values()), block)
         return {n: values[k] for n, k in keys.items()}
+
+    def keys(self, prefix, block, page=500):
+        """All storage keys under a prefix at a block (for maps keyed by something we cannot enumerate)."""
+        block_hash = self.block_hash(block)
+        out, start = [], prefix
+        while True:
+            chunk = self._call("state_getKeysPaged", [prefix, page, start, block_hash]) or []
+            out.extend(chunk)
+            if len(chunk) < page:
+                return out
+            start = chunk[-1]
 
     def timestamp(self, block):
         """Block time as Unix seconds (Timestamp.Now is in milliseconds)."""

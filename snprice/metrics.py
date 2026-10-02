@@ -28,6 +28,32 @@ def mech_weighted(mech_values, split):
     return sum(float(v) * float(s) for v, s in zip(mech_values, split))
 
 
+def uid_weights(vectors, split):
+    """Share of one sample's miner emission per UID, over ALL UIDs (owner rows included).
+
+    vectors: one incentive vector per mechanism (None if the mechanism has none).
+    split:   emission split between mechanisms on any scale, or None for a
+             single-mechanism subnet.
+    A mechanism that paid nobody, or has a split of zero, is ignored and the
+    remaining mechanisms are renormalised. Returns {uid: weight} for weights
+    above zero; the weights sum to 1 if anything was paid, else {} is returned.
+    """
+    split = [float(s) for s in (split or [1.0])]
+    split += [0.0] * (len(vectors) - len(split))
+    sums = [float(sum(v)) if v else 0.0 for v in vectors]
+    live = [m for m in range(len(vectors)) if sums[m] > 0 and split[m] > 0]
+    if not live:
+        return {}
+    norm = sum(split[m] for m in live)
+    out = {}
+    for m in live:
+        share = split[m] / norm
+        for uid, value in enumerate(vectors[m]):
+            if value:
+                out[uid] = out.get(uid, 0.0) + share * value / sums[m]
+    return out
+
+
 def pooled_shares(rows):
     """Share of each wallet in the incentive paid to non-owner UIDs over a window.
 

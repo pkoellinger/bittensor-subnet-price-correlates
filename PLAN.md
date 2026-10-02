@@ -126,6 +126,11 @@ Because only 92 to 128 subnets are usable, the design adds time: features for Se
 | 2026-10-02 | Project age ignores pure owner-key swaps | A swap can be a wallet migration by the same team |
 | 2026-10-02 | Dropped for lack of variance: leased subnet (0 of 128), collateral flag (1 of 128), subnets per owner key (always 1) | |
 | 2026-10-02 | Miner shares are pooled over the window, not averaged per day | Weighs each day by what was actually paid out |
+| 2026-10-02 | Windows are defined in blocks counted back from T (30 days = 216,000 blocks) and sampled every 900 blocks; no dependence on Taostats' daily snapshot blocks | Keyless and exactly reproducible |
+| 2026-10-02 | Historical chain state is read from OnFinality's public Bittensor endpoint; the Opentensor archive is the fallback and cross-check | Measured: the Opentensor archive sustains about 540 keys a minute (work budget), OnFinality answers 1,280 keys in about a second; both returned identical values at T |
+| 2026-10-02 | Miner incentive, the wallet behind every paid UID, registration cost, hyperparameters, validator structure, locks and burned alpha all come from the chain, not from Taostats | The Phase 0 measurement passed the three-hour test; saves about 2,500 Taostats calls and gives eight samples a day |
+| 2026-10-02 | Burn of a subnet in startup mode reads 0 on chain although nobody is paid; the dataset keeps the chain value and flags startup mode | Chain values are not overwritten |
+| 2026-10-02 | E-mail mailbox names from on-chain identities are not republished (domain only) | Privacy |
 
 ## Open Questions
 

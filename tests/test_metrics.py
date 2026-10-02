@@ -6,6 +6,7 @@ from snprice.metrics import (
     holder_bounds,
     mech_weighted,
     pooled_shares,
+    uid_weights,
 )
 
 
@@ -36,6 +37,40 @@ class MechWeightedTest(unittest.TestCase):
     def test_lengths_must_match(self):
         with self.assertRaises(ValueError):
             mech_weighted([0.5], [0.5, 0.5])
+
+
+class UidWeightsTest(unittest.TestCase):
+    def test_single_mechanism_normalises_the_vector(self):
+        self.assertEqual(uid_weights([[0, 30, 10]], None), {1: 0.75, 2: 0.25})
+
+    def test_zero_incentive_uids_are_left_out(self):
+        self.assertNotIn(0, uid_weights([[0, 5]], [65535]))
+
+    def test_split_zero_one_pays_only_the_second_mechanism(self):
+        out = uid_weights([[65535, 0, 0], [0, 100, 300]], [0, 65535])
+        self.assertEqual(out, {1: 0.25, 2: 0.75})
+
+    def test_two_mechanisms_are_weighted_by_the_split(self):
+        out = uid_weights([[10, 0], [0, 10]], [3, 1])
+        self.assertAlmostEqual(out[0], 0.75)
+        self.assertAlmostEqual(out[1], 0.25)
+        self.assertAlmostEqual(sum(out.values()), 1.0)
+
+    def test_mechanism_that_paid_nobody_is_ignored(self):
+        out = uid_weights([[0, 0], [4, 12]], [1, 1])
+        self.assertEqual(out, {0: 0.25, 1: 0.75})
+
+    def test_missing_second_vector(self):
+        self.assertEqual(uid_weights([[1, 1], None], [1, 1]), {0: 0.5, 1: 0.5})
+
+    def test_nothing_paid(self):
+        self.assertEqual(uid_weights([[0, 0], None], None), {})
+        self.assertEqual(uid_weights([None, None], None), {})
+
+    def test_vectors_of_different_length(self):
+        out = uid_weights([[1, 1], [0, 0, 2]], [1, 1])
+        self.assertAlmostEqual(out[0], 0.25)
+        self.assertAlmostEqual(out[2], 0.5)
 
 
 def row(sample, wallet, value, owner=False):

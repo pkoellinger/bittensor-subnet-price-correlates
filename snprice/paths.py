@@ -20,12 +20,6 @@ def snapshot():
         return json.load(fh)
 
 
-def daily_blocks():
-    """{date: block} of the daily snapshot blocks, written by collect/00_snapshot.py."""
-    with open(CONFIG / f"daily_blocks_wave{snapshot()['wave']}.json", encoding="utf-8") as fh:
-        return json.load(fh)
-
-
 def raw_dir(name):
     d = RAW / f"wave{snapshot()['wave']}" / name
     d.mkdir(parents=True, exist_ok=True)

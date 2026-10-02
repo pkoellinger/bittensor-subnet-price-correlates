@@ -34,6 +34,25 @@ def site_host(url):
     return host[4:] if host.startswith("www.") else host
 
 
+_EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@((?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,})")
+GENERIC_MAIL_DOMAINS = {"gmail.com", "googlemail.com", "proton.me", "protonmail.com", "pm.me", "outlook.com",
+                        "hotmail.com", "yahoo.com", "icloud.com", "tutanota.com", "bittensor.com"}
+
+
+def contact_without_mailbox(text):
+    """A contact field with e-mail addresses reduced to '@domain' (mailbox names are not republished)."""
+    return _EMAIL.sub(lambda m: "@" + m.group(1).lower(), (text or "").strip())
+
+
+def contact_domain(text):
+    """Organisation e-mail domain of a contact field; '' for none or for generic mailbox providers."""
+    m = _EMAIL.search(text or "")
+    if not m:
+        return ""
+    domain = m.group(1).lower()
+    return "" if domain in GENERIC_MAIL_DOMAINS else domain
+
+
 # ------------------------------------------------------------------ owner trades
 
 def net_owner_trades(events):

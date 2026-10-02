@@ -114,6 +114,98 @@ class DecodeTest(unittest.TestCase):
             chain.decode_vec_u16("0x0c01000200")
 
 
+class StructDecodeTest(unittest.TestCase):
+    # raw values read from the chain at block 9,184,186 (netuid 64 unless noted)
+    def test_lock_state(self):
+        out = chain.decode_lock("0x8126a8a11ccc020000000000000000008126a8a11ccc020003238c0000000000")
+        self.assertEqual(out["locked_mass_rao"], 787373296723585)
+        self.assertEqual(out["last_update"], 9184003)
+
+    def test_absent_lock_is_none(self):
+        self.assertIsNone(chain.decode_lock(None))
+
+    def test_lock_of_wrong_size_raises(self):
+        with self.assertRaises(ValueError):
+            chain.decode_lock("0x8126a8a11ccc0200")
+
+    def test_share_value_is_mantissa_times_power_of_ten(self):
+        self.assertAlmostEqual(chain.decode_decimal("0x7d38d04e99c5ca3a2100000000000000faffffffffffffff"),
+                               612978970094153513085e-6, delta=1.0)
+        self.assertEqual(chain.decode_decimal("0x" + "00" * 24), 0.0)
+        self.assertIsNone(chain.decode_decimal(None))
+
+    def test_vec_bool(self):
+        raw = "0x0104" + "00" + "01" + "00" * 254
+        out = chain.decode_vec_bool(raw)
+        self.assertEqual(len(out), 256)
+        self.assertEqual(sum(out), 1)
+        self.assertTrue(out[1])
+        self.assertIsNone(chain.decode_vec_bool(None))
+
+    def test_vec_account(self):
+        a = bytes.fromhex(HOTKEY_HEX)
+        raw = "0x08" + (a + a).hex()
+        self.assertEqual(chain.decode_vec_account(raw), [HOTKEY, HOTKEY])
+        self.assertEqual(chain.decode_vec_account("0x00"), [])
+        self.assertIsNone(chain.decode_vec_account(None))
+
+    def test_account(self):
+        self.assertEqual(chain.decode_account("0x" + HOTKEY_HEX), HOTKEY)
+        self.assertIsNone(chain.decode_account(None))
+
+    def test_axon_ipv4(self):
+        out = chain.decode_axon("0xd44e63000000000068778900d89ab693000000000000000000000000282304040000")
+        self.assertEqual(out["ip"], "147.182.154.216")
+        self.assertEqual(out["port"], 9000)
+        self.assertEqual(out["block"], 6508244)
+        self.assertIsNone(chain.decode_axon(None))
+
+    def test_mechanism_split_real_value(self):
+        self.assertEqual(chain.decode_vec_u16("0x080000ffff"), [0, 65535])
+
+    def test_decay_of_a_decaying_lock(self):
+        # unlock rate is the e-folding time in blocks
+        self.assertAlmostEqual(chain.decayed_mass(1000.0, last_update=100, at_block=100, unlock_rate=934866), 1000.0)
+        self.assertAlmostEqual(chain.decayed_mass(1000.0, last_update=0, at_block=934866, unlock_rate=934866),
+                               1000.0 / 2.718281828459045)
+        half_life = 934866 * 0.6931471805599453
+        self.assertAlmostEqual(chain.decayed_mass(1000.0, 0, half_life, 934866), 500.0, places=6)
+
+
+class IdentityTest(unittest.TestCase):
+    # SubnetIdentitiesV3 of netuid 111 at block 9,184,186, as returned by the archive node
+    RAW = ("0x18436c61696d739468747470733a2f2f6769746875622e636f6d2f4465536369436c61696d732f436c61696d7300000d01"
+           "68747470733a2f2f646973636f72642e636f6d2f6368616e6e656c732f3739393637323031313236353031353831392f31"
+           "35313530303733363630313634303135393911015475726e696e6720736369656e7469666963206c697465726174757265"
+           "20696e746f2061207374727563747572656420636c61696d2d65766964656e6365206772617068fd0168747470733a2f2f"
+           "7777772e64726f70626f782e636f6d2f73636c2f66692f3731326b756f6637383737353938746c76783365702f4d61696e"
+           "2d4c6f676f5f4461726b5f436c61696d732e7376673f726c6b65793d7a68706d6c627969727664657a33676d346a303567"
+           "62306c6b2673743d78666d347478397426646c3d3000")
+
+    def test_real_identity_record(self):
+        out = chain.decode_identity(self.RAW)
+        self.assertEqual(out["subnet_name"], "Claims")
+        self.assertEqual(out["github_repo"], "https://github.com/DeSciClaims/Claims")
+        self.assertEqual(out["subnet_contact"], "")
+        self.assertEqual(out["subnet_url"], "")
+        self.assertTrue(out["discord"].startswith("https://discord.com/channels/"))
+        self.assertEqual(out["description"], "Turning scientific literature into a structured claim-evidence graph")
+        self.assertEqual(out["additional"], "")
+
+    def test_absent_identity_is_none(self):
+        self.assertIsNone(chain.decode_identity(None))
+
+    def test_trailing_bytes_raise(self):
+        with self.assertRaises(ValueError):
+            chain.decode_identity(self.RAW + "00")
+
+    def test_identity_key_uses_blake2_concat(self):
+        self.assertEqual(
+            chain.key("SubtensorModule", "SubnetIdentitiesV3", chain.blake2_128_concat(chain.u16(111))),
+            "0x658faa385070e074c85bf6b568cf0555c7cb9786b286b680ca204a6c0920ee5239f31be776036f28fcb145f7f8ed2d386f00",
+        )
+
+
 class FakeRpc:
     """Stands in for the archive node: scripted responses per call."""
 
@@ -168,6 +260,28 @@ class ArchiveTest(unittest.TestCase):
             self.assertEqual(arch.read(["0x01"], block=7), {"0x01": "0x05"})
             self.assertTrue(any(s >= 30 for s in slept))
 
+    def test_too_many_requests_is_retried(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            slept = []
+            rpc = FakeRpc([
+                {"result": "0xabc"},
+                {"error": {"code": -32029, "message": "Too Many Requests, Please apply an OnFinality API key"}},
+                {"result": [{"block": "0xabc", "changes": [["0x01", "0x05"]]}]},
+            ])
+            arch = chain.Archive(rpc=rpc, cache_dir=tmp, pace=0, sleep=slept.append)
+            self.assertEqual(arch.read(["0x01"], block=7), {"0x01": "0x05"})
+            self.assertTrue(slept)
+
+    def test_other_rpc_errors_are_not_retried(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            rpc = FakeRpc([{"result": "0xabc"}, {"error": {"code": 4003, "message": "UnknownBlock: State already discarded"}}])
+            arch = chain.Archive(rpc=rpc, cache_dir=tmp, pace=0, sleep=lambda s: None)
+            with self.assertRaises(chain.ChainError):
+                arch.read(["0x01"], block=7)
+            self.assertEqual(len(rpc.calls), 2)
+
     def test_persistent_error_raises_instead_of_returning_absent(self):
         import tempfile
         with tempfile.TemporaryDirectory() as tmp:
@@ -185,6 +299,15 @@ class ArchiveTest(unittest.TestCase):
             ], tmp)
             with self.assertRaises(chain.ChainError):
                 arch.read(["0x01", "0x02"], block=100)
+
+    def test_keys_under_a_prefix_are_listed_across_pages(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            rpc = FakeRpc([{"result": "0xabc"}, {"result": ["0xp1", "0xp2"]}, {"result": ["0xp3"]}])
+            arch = chain.Archive(rpc=rpc, cache_dir=tmp, pace=0, sleep=lambda s: None)
+            self.assertEqual(arch.keys("0xp", block=7, page=2), ["0xp1", "0xp2", "0xp3"])
+            # the second page starts after the last key of the first page
+            self.assertEqual(rpc.calls[2][1][2], "0xp2")
 
     def test_unknown_block_raises(self):
         import tempfile

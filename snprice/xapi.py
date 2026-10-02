@@ -18,6 +18,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+from .files import atomic_write
+
 COST_POST = 0.005
 COST_USER = 0.010
 COST_COUNT = 0.010
@@ -82,10 +84,7 @@ class XClient:
         cost = actual_cost(parsed)
         if cost < worst_cost:
             self.ledger.book("x_usd", cost - worst_cost)
-        tmp = cache + ".tmp"
-        with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
-            json.dump({"url": url, "fetched_at": int(time.time()), "cost_usd": cost, "body": parsed}, fh)
-        os.replace(tmp, cache)
+        atomic_write(cache, json.dumps({"url": url, "fetched_at": int(time.time()), "cost_usd": cost, "body": parsed}))
         return parsed
 
     def users_by(self, usernames, fields="created_at,public_metrics,verified,description,url"):

@@ -2,6 +2,8 @@ import unittest
 
 from snprice.events import (
     basket_flows,
+    contact_domain,
+    contact_without_mailbox,
     last_real_identity_change,
     net_owner_trades,
     observed_window,
@@ -137,6 +139,27 @@ class IdentityChangeTest(unittest.TestCase):
     def test_rows_may_arrive_in_any_order(self):
         rows = [ident(300, "Beta"), ident(200, "Alpha")]
         self.assertEqual(last_real_identity_change(rows, registered_block=100)["block"], 300)
+
+
+class ContactTest(unittest.TestCase):
+    def test_email_is_reduced_to_its_domain(self):
+        self.assertEqual(contact_without_mailbox("hello@macrocosmos.ai"), "@macrocosmos.ai")
+        self.assertEqual(contact_without_mailbox("write to Jane.Doe+sn@Example.co.uk please"),
+                         "write to @example.co.uk please")
+
+    def test_urls_and_handles_are_kept(self):
+        self.assertEqual(contact_without_mailbox("https://x.com/SomaSubnet"), "https://x.com/SomaSubnet")
+        self.assertEqual(contact_without_mailbox("RomAI"), "RomAI")
+
+    def test_empty(self):
+        self.assertEqual(contact_without_mailbox(None), "")
+        self.assertEqual(contact_without_mailbox("  "), "")
+
+    def test_contact_domain(self):
+        self.assertEqual(contact_domain("hello@macrocosmos.ai"), "macrocosmos.ai")
+        self.assertEqual(contact_domain("someone@gmail.com"), "")      # generic mailbox providers link nobody
+        self.assertEqual(contact_domain("https://x.com/SomaSubnet"), "")
+        self.assertEqual(contact_domain(None), "")
 
 
 class ObservedWindowTest(unittest.TestCase):

@@ -12,6 +12,8 @@ import subprocess
 import time
 import urllib.parse
 
+from .files import atomic_write
+
 
 class FetchError(RuntimeError):
     """The API did not deliver a valid answer."""
@@ -44,11 +46,7 @@ class Ledger:
         if new > ceiling + 1e-9:
             raise BudgetExceeded(f"{bucket}: {state.get(bucket, 0)} used, {amount} more would pass the ceiling {ceiling}")
         state[bucket] = round(new, 6)
-        os.makedirs(os.path.dirname(self.path) or ".", exist_ok=True)
-        tmp = self.path + ".tmp"
-        with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
-            json.dump(state, fh)
-        os.replace(tmp, self.path)
+        atomic_write(self.path, json.dumps(state))
 
 
 def curl_transport(url, headers):
@@ -134,10 +132,7 @@ class Taostats:
                 if isinstance(parsed, dict) and "data" in parsed:
                     record = {"url": url, "fetched_at": int(self.clock()),
                               "sha256": hashlib.sha256(body.encode()).hexdigest(), "body": parsed}
-                    tmp = cache + ".tmp"
-                    with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
-                        json.dump(record, fh)
-                    os.replace(tmp, cache)
+                    atomic_write(cache, json.dumps(record))
                     return parsed
                 problem = "HTTP 200 without a `data` key"
                 self.stats["retries"] += 1
