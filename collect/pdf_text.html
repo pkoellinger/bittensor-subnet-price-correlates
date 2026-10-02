@@ -1,0 +1,58 @@
+<!doctype html>
+<!--
+  Helper page for collect/12e_whitepapers.py.
+  Opened by headless Chrome as  pdf_text.html?url=<address of a PDF>.
+  The PDF is read in the browser's memory with pdf.js and its text is written into this page,
+  one <section> per PDF page, so that the script can take it from the dumped DOM.
+  Nothing is saved to disk by this page.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>pdf text</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<!-- the worker code is loaded into the page itself: pdf.js then parses on the main thread,
+     and headless Chrome waits for it before it dumps the page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+</head>
+<body>
+<div id="status">loading</div>
+<div id="pages"></div>
+<script>
+(async function () {
+  const status = document.getElementById("status");
+  try {
+    const url = new URLSearchParams(location.search).get("url");
+    const response = await fetch(url);
+    if (!response.ok) { status.textContent = "error: HTTP " + response.status; return; }
+    const kind = response.headers.get("content-type") || "";
+    const data = await response.arrayBuffer();
+    const bytes = data.byteLength;
+    const pdf = await pdfjsLib.getDocument({ data: data, isEvalSupported: false }).promise;
+    const holder = document.getElementById("pages");
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      let text = "", lastY = null;
+      for (const item of content.items) {
+        const y = item.transform ? item.transform[5] : null;
+        if (lastY !== null && y !== null && Math.abs(y - lastY) > 2) text += "\n";
+        text += item.str + (item.hasEOL ? "\n" : " ");
+        lastY = y;
+      }
+      const section = document.createElement("section");
+      section.setAttribute("data-page", String(i));
+      section.textContent = text;
+      holder.appendChild(section);
+    }
+    status.setAttribute("data-pages", String(pdf.numPages));
+    status.setAttribute("data-bytes", String(bytes));
+    status.setAttribute("data-type", kind);
+    status.textContent = "done";
+  } catch (e) {
+    status.textContent = "error: " + e;
+  }
+})();
+</script>
+</body>
+</html>

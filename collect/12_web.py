@@ -6,15 +6,20 @@ text. Pages are picked by topic from the links on the home page: white paper, do
 team, product (snprice/webtext.py). Links to documents (PDF files, paper archives) are
 listed, not fetched.
 
-website_status
+website_status (snprice.webtext.site_status)
   live          the home page has at least 200 characters of text (as rendered by the browser,
                 or, where the browser fails on a page, in the HTML the server sends)
   live_no_text  the server answers with HTTP 200 but the page shows almost no text
   parked        domain-parking page
-  blocked       the site asks visitors to prove they are human; checked by hand afterwards
-  dead          no answer, or an error page
+  blocked       the site asks visitors to prove they are human
+  replaced_by_security_software
+                the browser or the security software on the collecting computer showed a
+                certificate or phishing warning instead of the site; the warning is not overridden
+  dead          no answer, an error status (402, 404, 410, 500 and up), or an error page
   not_listed    no website found for the subnet
-website_live = 1 for live and live_no_text, 0 otherwise.
+website_live = 1 for live and live_no_text; missing for blocked and replaced_by_security_software,
+where the site could not be judged; 0 otherwise. A site that answered with a server error is
+visited once more later the same day before it counts as dead.
 
 Website addresses come from free-text fields written by subnet owners, so each address is
 validated before it is passed to the browser (snprice.webtext.safe_url), and Chrome runs
@@ -40,11 +45,10 @@ from snprice.browser import chrome, http_answer, remove_profiles, render  # noqa
 from snprice.files import atomic_write  # noqa: E402
 from snprice.io import read_json, read_table, write_json, write_table  # noqa: E402
 from snprice.timeutil import iso  # noqa: E402
-from snprice.webtext import (TOPICS, doc_links, is_blocked, is_parked, page_links, pick_pages, safe_url,  # noqa: E402
+from snprice.webtext import (MIN_TEXT, TOPICS, doc_links, page_links, pick_pages, safe_url, site_status,  # noqa: E402
                              visible_text)
 
 MAX_PAGES = 8
-MIN_TEXT = 200
 WORKERS = 4
 _lock = threading.Lock()
 
@@ -88,16 +92,7 @@ def read_site(netuid, listed_url, out_dir):
         return text, links
 
     text, links = read_page(0, base, "home", static_html=home_html)
-    if is_parked(text):
-        status = "parked"
-    elif is_blocked(text):
-        status = "blocked"
-    elif len(text) >= MIN_TEXT:
-        status = "live"
-    elif code == 200:
-        status = "live_no_text"
-    else:
-        status = "dead"
+    status = site_status(text, code)
     if status in ("live", "live_no_text"):
         anchor = {u: t for u, t in reversed(links)}
         for i, url in enumerate(pick_pages(links, base, MAX_PAGES), 1):
@@ -146,12 +141,16 @@ def main():
     for link in links:
         n = int(link["netuid"])
         r = results.get(n)
-        status = r["status"] if r else "not_listed"
+        status = "not_listed"
+        if r:      # the status is worked out again from the saved page, so a changed rule needs no new visit
+            home = raw / str(n) / "00.txt"
+            status = site_status(home.read_text(encoding="utf-8") if home.exists() else "", r["http_status"])                 if r["pages"] else r["status"]
         rows.append({
             "netuid": n,
             "website_url": link["website_url"],
             "website_status": status,
-            "website_live": int(status in ("live", "live_no_text")),
+            "website_live": (None if status in ("blocked", "replaced_by_security_software")
+                             else int(status in ("live", "live_no_text"))),
             "website_http_status": r["http_status"] if r else None,
             "website_chars": r["pages"][0]["chars"] if r and r["pages"] else None,
             "website_pages_read": len(r["pages"]) if r else 0,

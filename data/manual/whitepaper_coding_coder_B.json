@@ -1,0 +1,386 @@
+[
+  {
+    "netuid": 3,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Jacob Steeves   Krzysztof Warchoł   Hubert Korzeniewski   Antoni Bombała"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "The challenger is crowned if / LCB > δ, δ = 0 . 0015 , (5)"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 4,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Manifold Labs : Venish   Patidar, Dhruv Bindra, Ahmed   Darwich , Josh   Brown"
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 15,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Shardul Bansal"
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 18,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Wouter Lubbert Antoon Haringhuizen"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "iwScore = 0 . 5 · iwRMSE + 0 . 5 · iwMAE (3)"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 19,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "The scale factor reconciles total miner asks against emissions: / scale = min (1, / 𝑀"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 21,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "Mechanism 0, borderline: the reward split appears only as worked numeric examples in table rows and code spans (e.g. 0.60 × (0.85 / 3.40) = 0.150), plus code and a timeline heading T = deadline + δ; no formula with variables. The formula-line list hit the 20-line cap."
+  },
+  {
+    "netuid": 22,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 23,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 25,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 26,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "score = 1.0 × perturbation_score + 0.03 × margin_score + 0.01 × novelty_score"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 30,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 34,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "V t = 0 . 05 · C t + 0 . 95 · V t − 1 (5)"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 36,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": ") > 0 , / where 𝛿 = max ( 0 . 0 5 ⋅ ( 1 − acc / EMA"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 37,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Kai Viren"
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 49,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 50,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Mode Network, Sam Hyatt, James Ross, Amber Shi"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "● is the decay constant, with half-life λ = / 𝑙𝑛2"
+    },
+    "notes": "Mechanism 1 rests on fragments: the leaderboard equation itself is not extracted, but its variable definitions (scaling factor β = 1/…, decay constant λ = ln2/half-life) and the rule raising daily scores to the power α are visible."
+  },
+  {
+    "netuid": 55,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "score_i = 1 - (1/K) * Σ_k CE(y_k, p_hat[i,k]) - λ * (1/K) * Σ_k penalty(l[i,k])"
+    },
+    "notes": "Mechanism 1 although the batch score is introduced with 'such as' (illustrative) and written in ASCII notation."
+  },
+  {
+    "netuid": 61,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "Performance Points= max( Performance - previous best performance, 0) * 100"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 72,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 78,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 81,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "Accepts iff |s'_i - s_i| ≤ PROOF_SKETCH_TOLERANCE_BASE"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 87,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Will O’Brien, Founder & CEO, Provenonce"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "𝑣 𝑖 𝑞 / ( ℎ ) = exp ( ∑ / 𝑘 ∈ 𝒦 0 ( 𝑞 )"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 96,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "Mechanism 0, borderline: the only formula-like text is the list item 'compact proofs of selected X × W = Y relations', which names the matrix relation being proven but does not state how a score, reward or check is computed."
+  },
+  {
+    "netuid": 100,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 102,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Isabella Liu"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "The miner’s utility is measured relative to the current global model: / u i = max"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 105,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "Reward total = Score SLA × stake weight × availability (10)"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 106,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "a_i = min( m x C x v_i / V , a_cap )"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 107,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "S = w 1 · C core + w 2 · C complete + w 3 · C FP + w 4 · C quality"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 108,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "F_c = \\frac{N_{correct}}{N_{total}}"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 111,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Philipp Koellinger"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "For accepted item h , let k h be the number of distinct supplying families and define / V h = 1 + β 1 { k h ≥ 2 } ."
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 123,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "Path penalty, tail amplifier, Kelly weight: / S path = S base − γR M AE"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 126,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "𝑖 / = ∑ / 𝑝"
+    },
+    "notes": "Mechanism 1, borderline: the excerpt holds a single fragment of a typeset equation (x_i = Σ_p …) with no surrounding text, so that it is a mechanism formula (e.g. a per-miner score) is inferred, not shown."
+  }
+]

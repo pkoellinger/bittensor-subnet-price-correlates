@@ -15,8 +15,12 @@ FINAL = DATA / "final"
 
 
 def snapshot():
-    """The wave definition (config/snapshot.json)."""
-    with open(CONFIG / "snapshot.json", encoding="utf-8") as fh:
+    """The wave definition: config/snapshot.json, or the file in config/ that the environment
+    variable SNPRICE_SNAPSHOT names (for example snapshot_wave2.json)."""
+    name = os.environ.get("SNPRICE_SNAPSHOT") or "snapshot.json"
+    if Path(name).name != name:
+        raise ValueError("SNPRICE_SNAPSHOT must be the name of a file in config/, without folders")
+    with open(CONFIG / name, encoding="utf-8") as fh:
         return json.load(fh)
 
 

@@ -7,14 +7,14 @@ netuid,item,repo,matched
 1,doc_miner_guide,macrocosm-os/apex-miner-data,apex-miner-data
 2,doc_readme,inference-labs-inc/subnet-2,community profile
 2,doc_license,inference-labs-inc/subnet-2,community profile
-2,doc_contributing,inference-labs-inc/subnet-2,community profile
+2,doc_contributing,inference-labs-inc/subnet-2,CONTRIBUTING.md
 2,doc_miner_guide,inference-labs-inc/subnet-2,Miners and Validators Functionality
 2,doc_validator_guide,inference-labs-inc/subnet-2,Miners and Validators Functionality
 2,doc_incentive_desc,inference-labs-inc/subnet-2,Incentive Mechanism and Reward Structure
 2,doc_requirements,inference-labs-inc/subnet-2,Prerequisites
-2,doc_site,inference-labs-inc/subnet-2,https://docs.bittensor.com/getting-started/installation
 2,doc_readme,inference-labs-inc/subnet-2-tee,community profile
 2,doc_license,inference-labs-inc/subnet-2-tee,community profile
+2,doc_contributing,inference-labs-inc/subnet-2-tee,Contributing
 2,doc_miner_guide,inference-labs-inc/subnet-2-tee,Run the miner
 2,doc_validator_guide,inference-labs-inc/subnet-2-tee,Run the validator
 2,doc_incentive_desc,inference-labs-inc/subnet-2-tee,Scoring
@@ -27,6 +27,7 @@ netuid,item,repo,matched
 3,doc_miner_guide,unarbos/teutonic,Miner CLI
 4,doc_readme,manifold-inc/targon,community profile
 4,doc_license,manifold-inc/targon,community profile
+4,doc_contributing,manifold-inc/targon,Contribution Guidelines
 4,doc_miner_guide,manifold-inc/targon,docs/miner/miner.md
 4,doc_validator_guide,manifold-inc/targon,docs/validator/validator.md
 5,doc_readme,hone-subnet-org/hone-subnet,community profile
@@ -40,31 +41,33 @@ netuid,item,repo,matched
 6,doc_incentive_desc,numinouslabs/numinous,⚠️ Rules & Scoring
 7,doc_readme,entrius/allways,community profile
 7,doc_license,entrius/allways,community profile
-7,doc_contributing,entrius/allways,community profile
+7,doc_contributing,entrius/allways,CONTRIBUTING.md
 7,doc_miner_guide,entrius/allways,Miner Risk Disclaimer
 7,doc_validator_guide,entrius/allways,Validator Storage Layout
 7,doc_requirements,entrius/allways,Requirements
 7,doc_site,entrius/allways,https://docs.all-ways.io/
 8,doc_readme,taoshidev/vanta-network,community profile
 8,doc_license,taoshidev/vanta-network,community profile
+8,doc_contributing,taoshidev/vanta-network,Contributing
 8,doc_miner_guide,taoshidev/vanta-network,Miners
 8,doc_validator_guide,taoshidev/vanta-network,Validators
 8,doc_site,taoshidev/vanta-network,https://docs.taoshi.io/tips/p4/
 8,doc_readme,taoshidev/easy-miner,community profile
+8,doc_contributing,taoshidev/easy-miner,Contributing
 8,doc_requirements,taoshidev/easy-miner,Prerequisites
 8,doc_readme,taoshidev/miner-dashboard,community profile
 8,doc_miner_guide,taoshidev/miner-dashboard,Miner Dashboard
 8,doc_requirements,taoshidev/miner-dashboard,Prerequisites
 8,doc_readme,taoshidev/time-series-prediction-subnet,community profile
 8,doc_license,taoshidev/time-series-prediction-subnet,community profile
-8,doc_contributing,taoshidev/time-series-prediction-subnet,community profile
+8,doc_contributing,taoshidev/time-series-prediction-subnet,CONTRIBUTING.md
 8,doc_miner_guide,taoshidev/time-series-prediction-subnet,Miners
 8,doc_validator_guide,taoshidev/time-series-prediction-subnet,Validators
 9,doc_readme,macrocosm-os/iota,community profile
 9,doc_miner_guide,macrocosm-os/iota,Additional Miner Documentation
 9,doc_validator_guide,macrocosm-os/iota,Additional Validation Documentation
 9,doc_requirements,macrocosm-os/iota,Compute Requirements
-9,doc_site,macrocosm-os/iota,https://docs.astral.sh/uv/
+9,doc_site,macrocosm-os/iota,https://docs.macrocosmos.ai/subnets/subnet-9-pre-training/subnet-9-iota-mining-setup-guide
 9,doc_miner_guide,macrocosm-os/apex-miner-data,apex-miner-data
 10,doc_readme,Pareton-ai/pareton,community profile
 10,doc_license,Pareton-ai/pareton,community profile
@@ -86,7 +89,7 @@ netuid,item,repo,matched
 12,doc_requirements,backend-developers-ltd/ComputeHorde,Hardware Classes
 13,doc_readme,macrocosm-os/data-universe,community profile
 13,doc_license,macrocosm-os/data-universe,community profile
-13,doc_contributing,macrocosm-os/data-universe,community profile
+13,doc_contributing,macrocosm-os/data-universe,CONTRIBUTING.md
 13,doc_miner_guide,macrocosm-os/data-universe,MUST READ: Miner Data Compliance Policy
 13,doc_validator_guide,macrocosm-os/data-universe,docs/dd_validator_instructions.md
 13,doc_incentive_desc,macrocosm-os/data-universe,Incentive Mechanism
@@ -94,7 +97,7 @@ netuid,item,repo,matched
 13,doc_miner_guide,macrocosm-os/apex-miner-data,apex-miner-data
 14,doc_readme,latent-to/cacheon,community profile
 14,doc_license,latent-to/cacheon,community profile
-14,doc_contributing,latent-to/cacheon,community profile
+14,doc_contributing,latent-to/cacheon,CONTRIBUTING.md
 14,doc_incentive_desc,latent-to/cacheon,docs/miner-guide/incentives.md
 14,doc_site,latent-to/cacheon,https://cacheon.ai/docs/
 14,doc_readme,latent-to/developer-docs,community profile
@@ -102,7 +105,6 @@ netuid,item,repo,matched
 14,doc_validator_guide,latent-to/developer-docs,docs/local-build/mine-validate.md
 14,doc_incentive_desc,latent-to/developer-docs,docs/learn/anatomy-of-incentive-mechanism.md
 14,doc_requirements,latent-to/developer-docs,docs/subtensor-nodes/subtensor-node-requirements.md
-14,doc_site,latent-to/developer-docs,https://docs.learnbittensor.org
 14,doc_readme,latent-to/optima-docs,community profile
 14,doc_incentive_desc,latent-to/optima-docs,docs/validator-guide/scoring.md
 14,doc_readme,latent-to/subnet-template,community profile
@@ -110,7 +112,6 @@ netuid,item,repo,matched
 14,doc_validator_guide,latent-to/subnet-template,Running the Miner and Validator
 14,doc_incentive_desc,latent-to/subnet-template,Adjusting Scoring Logic
 14,doc_requirements,latent-to/subnet-template,Prerequisites
-14,doc_site,latent-to/subnet-template,https://docs.learnbittensor.org/subnets/create-a-subnet#creating-a-subnet-on-testchain
 15,doc_readme,ORO-AI/oro,community profile
 15,doc_license,ORO-AI/oro,community profile
 15,doc_miner_guide,ORO-AI/oro,For Miners
@@ -132,6 +133,7 @@ netuid,item,repo,matched
 17,doc_validator_guide,404-Repo/three-gen-subnet,Running a Validator
 18,doc_readme,Orpheus-AI/Zeus,community profile
 18,doc_license,Orpheus-AI/Zeus,community profile
+18,doc_contributing,Orpheus-AI/Zeus,Feedback and Contributions
 18,doc_miner_guide,Orpheus-AI/Zeus,docs/Mining.md
 18,doc_validator_guide,Orpheus-AI/Zeus,docs/Validating.md
 18,doc_incentive_desc,Orpheus-AI/Zeus,notebooks/ScoringChallengesCalculatingWeights.ipynb
@@ -145,7 +147,7 @@ netuid,item,repo,matched
 19,doc_requirements,taostat/blockmachine-miner,Node Eligibility Requirements
 19,doc_readme,taostat/gm-miner,community profile
 19,doc_license,taostat/gm-miner,community profile
-19,doc_contributing,taostat/gm-miner,community profile
+19,doc_contributing,taostat/gm-miner,CONTRIBUTING.md
 19,doc_miner_guide,taostat/gm-miner,gm-miner
 19,doc_readme,taostat/blockmachine-validator,community profile
 19,doc_license,taostat/blockmachine-validator,community profile
@@ -156,13 +158,14 @@ netuid,item,repo,matched
 20,doc_validator_guide,witnessvision/witness_subnet,docs/validator.md
 21,doc_readme,ippcteam/SN21-adtao,community profile
 21,doc_license,ippcteam/SN21-adtao,community profile
-21,doc_contributing,ippcteam/SN21-adtao,community profile
+21,doc_contributing,ippcteam/SN21-adtao,CONTRIBUTING.md
 21,doc_miner_guide,ippcteam/SN21-adtao,For miners
 21,doc_validator_guide,ippcteam/SN21-adtao,For validators
 21,doc_incentive_desc,ippcteam/SN21-adtao,How scoring works
 21,doc_requirements,ippcteam/SN21-adtao,Hardware requirements
 22,doc_readme,Desearch-ai/subnet-22,community profile
 22,doc_license,Desearch-ai/subnet-22,community profile
+22,doc_contributing,Desearch-ai/subnet-22,Contributors
 22,doc_miner_guide,Desearch-ai/subnet-22,Mining and validating
 22,doc_validator_guide,Desearch-ai/subnet-22,Mining and validating
 22,doc_incentive_desc,Desearch-ai/subnet-22,docs/desearch-2.0/desearch-2.0/04-incentives-and-rewards.md
@@ -173,8 +176,9 @@ netuid,item,repo,matched
 22,doc_miner_guide,Desearch-ai/subnet-22-internal,Running the Miner
 22,doc_validator_guide,Desearch-ai/subnet-22-internal,Running the Validator API with Automatic Updates
 22,doc_requirements,Desearch-ai/subnet-22-internal,min_compute.yml
-22,doc_site,Desearch-ai/subnet-22-internal,https://docs.wandb.ai/quickstart
+22,doc_site,Desearch-ai/subnet-22-internal,https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/
 23,doc_readme,TrishoolAI/trishool-phase2,community profile
+23,doc_contributing,TrishoolAI/trishool-phase2,tri-claw/CONTRIBUTING.md
 23,doc_miner_guide,TrishoolAI/trishool-phase2,Miners
 23,doc_validator_guide,TrishoolAI/trishool-phase2,8. Dynamic eval fixtures (tri-claw + validator ground truth)
 23,doc_requirements,TrishoolAI/trishool-phase2,1. System prerequisites
@@ -182,6 +186,7 @@ netuid,item,repo,matched
 23,doc_validator_guide,TrishoolAI/trishool-ai-docs,content/validation-scoring-and-rewards.mdx
 23,doc_incentive_desc,TrishoolAI/trishool-ai-docs,content/validation-scoring-and-rewards.mdx
 23,doc_readme,TrishoolAI/trishool-subnet,community profile
+23,doc_contributing,TrishoolAI/trishool-subnet,Contributing
 23,doc_miner_guide,TrishoolAI/trishool-subnet,For Miners
 23,doc_validator_guide,TrishoolAI/trishool-subnet,Running the Validator
 23,doc_requirements,TrishoolAI/trishool-subnet,Prerequisites
@@ -208,7 +213,6 @@ netuid,item,repo,matched
 27,doc_miner_guide,SILX-LABS/Orion,Miner
 27,doc_validator_guide,SILX-LABS/Orion,Validator
 27,doc_incentive_desc,SILX-LABS/Orion,Rewards
-27,doc_site,SILX-LABS/Orion,https://docs.astral.sh/uv/getting-started/installation/
 27,doc_readme,SILX-LABS/QUASAR-SUBNET,community profile
 27,doc_license,SILX-LABS/QUASAR-SUBNET,community profile
 27,doc_miner_guide,SILX-LABS/QUASAR-SUBNET,Mainnet Miner Quick Start
@@ -216,7 +220,7 @@ netuid,item,repo,matched
 27,doc_incentive_desc,SILX-LABS/QUASAR-SUBNET,Rewards And Weights
 28,doc_readme,taostat/gm-miner,community profile
 28,doc_license,taostat/gm-miner,community profile
-28,doc_contributing,taostat/gm-miner,community profile
+28,doc_contributing,taostat/gm-miner,CONTRIBUTING.md
 28,doc_miner_guide,taostat/gm-miner,gm-miner
 28,doc_readme,taostat/blockmachine-miner,community profile
 28,doc_miner_guide,taostat/blockmachine-miner,Blockmachine Miner
@@ -228,44 +232,43 @@ netuid,item,repo,matched
 28,doc_requirements,taostat/blockmachine-validator,1. Requirements
 28,doc_readme,taostat/gm-validator,community profile
 28,doc_license,taostat/gm-validator,community profile
-28,doc_contributing,taostat/gm-validator,community profile
+28,doc_contributing,taostat/gm-validator,CONTRIBUTING.md
 28,doc_validator_guide,taostat/gm-validator,gm-validator
 28,doc_requirements,taostat/gm-validator,Prerequisites
-28,doc_site,taostat/gm-validator,https://docs.astral.sh/uv/
 29,doc_miner_guide,coldint/hotfloat,For Miners
 29,doc_validator_guide,coldint/hotfloat,For Validators
 29,doc_site,coldint/hotfloat,https://img.shields.io/badge/docs
 29,doc_readme,coldint/coldint_validator,community profile
 29,doc_license,coldint/coldint_validator,community profile
+29,doc_contributing,coldint/coldint_validator,contrib/CONTRIBUTING.md
 29,doc_miner_guide,coldint/coldint_validator,docs/miner.md
 29,doc_validator_guide,coldint/coldint_validator,docs/validator.md
 29,doc_requirements,coldint/coldint_validator,min_compute.yml
-29,doc_site,coldint/coldint_validator,https://docs.bittensor.com/learn/bittensor-building-blocks.
 32,doc_readme,It-s-AI/llm-detection,community profile
 32,doc_license,It-s-AI/llm-detection,community profile
+32,doc_contributing,It-s-AI/llm-detection,contrib/CONTRIBUTING.md
 32,doc_miner_guide,It-s-AI/llm-detection,[⛏️ Mining Docs](docs/mining.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🧑‍🏫 Validating Docs](docs/validating.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🎯Incentive mechanism](docs/incentive.md)
 32,doc_validator_guide,It-s-AI/llm-detection,[⛏️ Mining Docs](docs/mining.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🧑‍🏫 Validating Docs](docs/validating.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🎯Incentive mechanism](docs/incentive.md)
 32,doc_incentive_desc,It-s-AI/llm-detection,[⛏️ Mining Docs](docs/mining.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🧑‍🏫 Validating Docs](docs/validating.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🎯Incentive mechanism](docs/incentive.md)
 32,doc_requirements,It-s-AI/llm-detection,min_compute.yml
 33,doc_readme,afterpartyai/bittensor-conversation-genome-project,community profile
 33,doc_license,afterpartyai/bittensor-conversation-genome-project,community profile
+33,doc_contributing,afterpartyai/bittensor-conversation-genome-project,contrib/CONTRIBUTING.md
 33,doc_miner_guide,afterpartyai/bittensor-conversation-genome-project,"OpenAI is the default LLM provider for all miner and validator operations, utilizing GPT-4o."
 33,doc_validator_guide,afterpartyai/bittensor-conversation-genome-project,"OpenAI is the default LLM provider for all miner and validator operations, utilizing GPT-4o."
 33,doc_incentive_desc,afterpartyai/bittensor-conversation-genome-project,Reward Mechanism
 33,doc_requirements,afterpartyai/bittensor-conversation-genome-project,Installation & Compute Requirements
-33,doc_site,afterpartyai/bittensor-conversation-genome-project,https://platform.openai.com/docs/models
 34,doc_readme,BitMind-AI/bitmind-subnet,community profile
 34,doc_license,BitMind-AI/bitmind-subnet,community profile
+34,doc_contributing,BitMind-AI/bitmind-subnet,Contributing
 34,doc_miner_guide,BitMind-AI/bitmind-subnet,Miners: Start or restart generative miner
 34,doc_validator_guide,BitMind-AI/bitmind-subnet,Validators: Start or restart validator services
 34,doc_incentive_desc,BitMind-AI/bitmind-subnet,docs/Incentive.md
 34,doc_requirements,BitMind-AI/bitmind-subnet,min_compute.yml
-34,doc_site,BitMind-AI/bitmind-subnet,https://docs.bittensor.com/learn/bittensor-building-blocks
 34,doc_readme,BitMind-AI/subnet-io-registry,community profile
 34,doc_readme,BitMind-AI/gpu-validator-docker,community profile
 34,doc_validator_guide,BitMind-AI/gpu-validator-docker,BitMind Validator Setup
 34,doc_requirements,BitMind-AI/gpu-validator-docker,Step 2: Host Machine Prerequisites
-34,doc_site,BitMind-AI/gpu-validator-docker,https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html
 36,doc_readme,EpagoFoundation/epago,community profile
 36,doc_license,EpagoFoundation/epago,community profile
 36,doc_miner_guide,EpagoFoundation/epago,docs/MINING.md
@@ -276,14 +279,12 @@ netuid,item,repo,matched
 37,doc_miner_guide,Aurelius-Protocol/Aurelius-Protocol,Quickstart — Miner
 37,doc_validator_guide,Aurelius-Protocol/Aurelius-Protocol,Quickstart — Mainnet validator (SN 37)
 37,doc_requirements,Aurelius-Protocol/Aurelius-Protocol,Prerequisites
-37,doc_site,Aurelius-Protocol/Aurelius-Protocol,https://docs.bittensor.com
 38,doc_readme,chronollm/sn38,community profile
 38,doc_license,chronollm/sn38,community profile
 38,doc_miner_guide,chronollm/sn38,docs/miner.md
 38,doc_validator_guide,chronollm/sn38,docs/validator.md
 38,doc_incentive_desc,chronollm/sn38,Stage 5: Reward distribution
 38,doc_requirements,chronollm/sn38,Model requirements
-38,doc_site,chronollm/sn38,https://docs.learnbittensor.org/
 40,doc_readme,RalphLabsAI/ralph,community profile
 40,doc_miner_guide,RalphLabsAI/ralph,For miners
 40,doc_validator_guide,RalphLabsAI/ralph,Running as an auditor validator
@@ -292,10 +293,9 @@ netuid,item,repo,matched
 41,doc_miner_guide,corvxai/almanac,Miner and Validator Functionality
 41,doc_validator_guide,corvxai/almanac,Miner and Validator Functionality
 41,doc_requirements,corvxai/almanac,Requirements
-41,doc_site,corvxai/almanac,https://www.bittensor.com/docs
 43,doc_readme,GraphiteAI/Graphite-Subnet,community profile
 43,doc_license,GraphiteAI/Graphite-Subnet,community profile
-43,doc_contributing,GraphiteAI/Graphite-Subnet,community profile
+43,doc_contributing,GraphiteAI/Graphite-Subnet,CONTRIBUTING.md
 43,doc_miner_guide,GraphiteAI/Graphite-Subnet,docs/miner.md
 43,doc_validator_guide,GraphiteAI/Graphite-Subnet,docs/validator.md
 43,doc_incentive_desc,GraphiteAI/Graphite-Subnet,Reward Mechanism 💰
@@ -307,6 +307,7 @@ netuid,item,repo,matched
 45,doc_license,Team-Rizzo/alpharidge-ai,community profile
 45,doc_miner_guide,Team-Rizzo/alpharidge-ai,Quickstart: run a miner
 45,doc_validator_guide,Team-Rizzo/alpharidge-ai,How validation works
+45,doc_incentive_desc,Team-Rizzo/alpharidge-ai,Where the rest of the emission goes
 45,doc_requirements,Team-Rizzo/alpharidge-ai,1. Hardware
 46,doc_readme,Subnet46/sn46-validator,community profile
 46,doc_validator_guide,Subnet46/sn46-validator,sn46-validator
@@ -331,6 +332,7 @@ netuid,item,repo,matched
 49,doc_site,nepher-ai/nepher-subnet,https://docs.nepher.ai
 50,doc_readme,synthdataco/synth-subnet,community profile
 50,doc_license,synthdataco/synth-subnet,community profile
+50,doc_contributing,synthdataco/synth-subnet,contrib/CONTRIBUTING.md
 50,doc_miner_guide,synthdataco/synth-subnet,1.2. Task Presented to the Miners
 50,doc_validator_guide,synthdataco/synth-subnet,1.3. Validator's Scoring Methodology
 50,doc_incentive_desc,synthdataco/synth-subnet,1.3. Validator's Scoring Methodology
@@ -338,6 +340,7 @@ netuid,item,repo,matched
 50,doc_site,synthdataco/synth-subnet,https://api.synthdata.co/docs
 51,doc_readme,Datura-ai/lium-io,community profile
 51,doc_license,Datura-ai/lium-io,community profile
+51,doc_contributing,Datura-ai/lium-io,contrib/CONTRIBUTING.md
 51,doc_validator_guide,Datura-ai/lium-io,For validators
 51,doc_incentive_desc,Datura-ai/lium-io,How incentives work
 51,doc_requirements,Datura-ai/lium-io,Requirements
@@ -347,11 +350,13 @@ netuid,item,repo,matched
 52,doc_validator_guide,tensorplex-labs/dojo,Validator
 52,doc_site,tensorplex-labs/dojo,https://docs.tensorplex.ai/tensorplex-docs/tensorplex-dojo-bittensor-subnet/subnet-mechanism
 52,doc_readme,tensorplex-labs/subnet-docs,community profile
+52,doc_contributing,tensorplex-labs/subnet-docs,Contribution Process
 53,doc_readme,hanlinai/engy,community profile
 53,doc_miner_guide,hanlinai/engy,Run a miner
 53,doc_validator_guide,hanlinai/engy,Run a light validator
 54,doc_readme,yanez-compliance/MIID-subnet,community profile
 54,doc_license,yanez-compliance/MIID-subnet,community profile
+54,doc_contributing,yanez-compliance/MIID-subnet,contrib/CONTRIBUTING.md
 54,doc_miner_guide,yanez-compliance/MIID-subnet,🛠️ **Miners: Generate Face Image Variations**
 54,doc_validator_guide,yanez-compliance/MIID-subnet,🧑‍🏫 **Validators: Evaluate & Score Miners**
 54,doc_incentive_desc,yanez-compliance/MIID-subnet,🏆 **Incentives for Participants**
@@ -363,6 +368,7 @@ netuid,item,repo,matched
 55,doc_validator_guide,genomesio/subnet-niome,Validators
 55,doc_readme,genomesio/subnet-niome-v2,community profile
 55,doc_license,genomesio/subnet-niome-v2,community profile
+55,doc_contributing,genomesio/subnet-niome-v2,contrib/CONTRIBUTING.md
 55,doc_miner_guide,genomesio/subnet-niome-v2,Guide for Miners and Validators
 55,doc_validator_guide,genomesio/subnet-niome-v2,Guide for Miners and Validators
 55,doc_requirements,genomesio/subnet-niome-v2,min_compute.yml
@@ -372,6 +378,7 @@ netuid,item,repo,matched
 56,doc_validator_guide,gradients-ai/G.O.D,ops/docker/requirements/validator.txt
 60,doc_readme,Bitsec-AI/sandbox,community profile
 60,doc_license,Bitsec-AI/sandbox,community profile
+60,doc_contributing,Bitsec-AI/sandbox,contrib/CONTRIBUTING.md
 60,doc_miner_guide,Bitsec-AI/sandbox,Miner Guide
 60,doc_validator_guide,Bitsec-AI/sandbox,Validator Guide
 60,doc_requirements,Bitsec-AI/sandbox,Requirements
@@ -380,13 +387,14 @@ netuid,item,repo,matched
 60,doc_license,Bitsec-AI/subnet-reports,community profile
 60,doc_readme,Bitsec-AI/subnet,community profile
 60,doc_license,Bitsec-AI/subnet,community profile
+60,doc_contributing,Bitsec-AI/subnet,contrib/CONTRIBUTING.md
 60,doc_miner_guide,Bitsec-AI/subnet,miner_and_validator_setup.md
 60,doc_validator_guide,Bitsec-AI/subnet,miner_and_validator_setup.md
 60,doc_incentive_desc,Bitsec-AI/subnet,Subnet Incentive Mechanism Reports
 60,doc_requirements,Bitsec-AI/subnet,min_compute.yml
-60,doc_site,Bitsec-AI/subnet,https://docs.bittensor.com/learn/bittensor-building-blocks
 61,doc_readme,RedTeamSubnet/RedTeam,community profile
 61,doc_license,RedTeamSubnet/RedTeam,community profile
+61,doc_contributing,RedTeamSubnet/RedTeam,docs/dev/contributing.md
 61,doc_miner_guide,RedTeamSubnet/RedTeam,Miner Setup
 61,doc_validator_guide,RedTeamSubnet/RedTeam,Validator Setup
 61,doc_incentive_desc,RedTeamSubnet/RedTeam,"Scoring System: Fair, Dynamic, and Motivating"
@@ -406,7 +414,7 @@ netuid,item,repo,matched
 62,doc_site,ridgesai/ridges,https://docs.ridges.ai
 63,doc_readme,qbittensor-labs/enigma,community profile
 63,doc_license,qbittensor-labs/enigma,community profile
-63,doc_contributing,qbittensor-labs/enigma,community profile
+63,doc_contributing,qbittensor-labs/enigma,CONTRIBUTING.md
 63,doc_miner_guide,qbittensor-labs/enigma,Miner Setup
 63,doc_validator_guide,qbittensor-labs/enigma,Validator Setup
 63,doc_incentive_desc,qbittensor-labs/enigma,Incentive Mechanism (Important)
@@ -423,10 +431,12 @@ netuid,item,repo,matched
 64,doc_incentive_desc,chutesai/chutes-docs,src/miner-resources/scoring.md
 65,doc_readme,taofu-labs/true-performance-network,community profile
 65,doc_license,taofu-labs/true-performance-network,community profile
+65,doc_contributing,taofu-labs/true-performance-network,docs/Contributor.md
 65,doc_miner_guide,taofu-labs/true-performance-network,Miner collateral
 65,doc_validator_guide,taofu-labs/true-performance-network,docs/Validator.md
 65,doc_readme,taofu-labs/tpn-subnet,community profile
 65,doc_license,taofu-labs/tpn-subnet,community profile
+65,doc_contributing,taofu-labs/tpn-subnet,contrib/CONTRIBUTING.md
 65,doc_miner_guide,taofu-labs/tpn-subnet,3: Configure keys (mining pool/validator only)
 65,doc_validator_guide,taofu-labs/tpn-subnet,3: Configure keys (mining pool/validator only)
 65,doc_incentive_desc,taofu-labs/tpn-subnet,Note on rewards algorithm
@@ -434,12 +444,14 @@ netuid,item,repo,matched
 66,doc_readme,conjectures-io/conjectures-validator,community profile
 66,doc_miner_guide,conjectures-io/conjectures-validator,docs/MINER.md
 66,doc_validator_guide,conjectures-io/conjectures-validator,conjectures.io — Bittensor Subnet 66 Validator
+66,doc_incentive_desc,conjectures-io/conjectures-validator,Treasury emissions
 66,doc_site,conjectures-io/conjectures-validator,https://pay.taomarketcap.com/docs/getting-started/overview
 66,doc_readme,conjectures-io/conjectures-miner,community profile
 66,doc_miner_guide,conjectures-io/conjectures-miner,conjectures-miner
 67,doc_readme,harnyx/harnyx,community profile
 67,doc_miner_guide,harnyx/harnyx,How miners qualify for the main round
 67,doc_validator_guide,harnyx/harnyx,docs/api/generated/validator.md
+67,doc_incentive_desc,harnyx/harnyx,How participant miner emission works
 68,doc_readme,metanova-labs/nova,community profile
 68,doc_miner_guide,metanova-labs/nova,GitHub configs - FOR MINERS
 68,doc_validator_guide,metanova-labs/nova,For validators
@@ -454,22 +466,21 @@ netuid,item,repo,matched
 71,doc_miner_guide,leadpoet/leadpoet,docs/miner-model-submissions.md
 71,doc_validator_guide,leadpoet/leadpoet,Validators and rewards
 71,doc_incentive_desc,leadpoet/leadpoet,Validators and rewards
-71,doc_site,leadpoet/leadpoet,https://www.bittensor.com/docs/concepts/wallets
 72,doc_readme,natixnetwork/streetvision-subnet,community profile
 72,doc_license,natixnetwork/streetvision-subnet,community profile
+72,doc_contributing,natixnetwork/streetvision-subnet,docs/contribution.md
 72,doc_miner_guide,natixnetwork/streetvision-subnet,docs/mining.md
 72,doc_validator_guide,natixnetwork/streetvision-subnet,docs/validating.md
 72,doc_incentive_desc,natixnetwork/streetvision-subnet,docs/incentive.md
 72,doc_requirements,natixnetwork/streetvision-subnet,min_compute.yml
-72,doc_site,natixnetwork/streetvision-subnet,https://docs.bittensor.com/learn/bittensor-building-blocks.
 74,doc_readme,entrius/gittensor,community profile
 74,doc_license,entrius/gittensor,community profile
-74,doc_contributing,entrius/gittensor,community profile
+74,doc_contributing,entrius/gittensor,CONTRIBUTING.md
 74,doc_miner_guide,entrius/gittensor,Miners
 74,doc_validator_guide,entrius/gittensor,Broadcast PAT to validators
 74,doc_incentive_desc,entrius/gittensor,Reward Algorithm
 74,doc_requirements,entrius/gittensor,min_compute.yml
-74,doc_site,entrius/gittensor,https://docs.learnbittensor.org/subnets/understanding-subnets
+74,doc_site,entrius/gittensor,https://docs.gittensor.io/miner.html
 75,doc_readme,thenervelab/thebrain,community profile
 75,doc_license,thenervelab/thebrain,community profile
 75,doc_validator_guide,thenervelab/thebrain,validator-setup.md
@@ -485,18 +496,18 @@ netuid,item,repo,matched
 75,doc_validator_guide,thenervelab/validator-brain,IPFS Service Validator
 76,doc_readme,heroncovelabs/ormas-subnet,community profile
 76,doc_license,heroncovelabs/ormas-subnet,community profile
-76,doc_contributing,heroncovelabs/ormas-subnet,community profile
+76,doc_contributing,heroncovelabs/ormas-subnet,CONTRIBUTING.md
 76,doc_miner_guide,heroncovelabs/ormas-subnet,How miners are paid (planned — not yet live)
 77,doc_readme,CreativeBuilds/sn77,community profile
+77,doc_contributing,CreativeBuilds/sn77,Contributing
 77,doc_miner_guide,CreativeBuilds/sn77,⛏️ Miners
 77,doc_validator_guide,CreativeBuilds/sn77,Validator (`validator/index.ts`)
 77,doc_site,CreativeBuilds/sn77,https://thegraph.com/docs/en/subgraphs/querying/managing-api-keys/
 78,doc_readme,Umi-BitSign/umi,community profile
 78,doc_license,Umi-BitSign/umi,community profile
-78,doc_contributing,Umi-BitSign/umi,community profile
+78,doc_contributing,Umi-BitSign/umi,CONTRIBUTING.md
 78,doc_miner_guide,Umi-BitSign/umi,Miners: start here
 78,doc_validator_guide,Umi-BitSign/umi,Validators: start here
-78,doc_site,Umi-BitSign/umi,https://www.bittensor.com/docs/guides/mining
 79,doc_readme,taos-im/sn-79,community profile
 79,doc_license,taos-im/sn-79,community profile
 79,doc_miner_guide,taos-im/sn-79,"Miner Role <span id=""mechanism-miner""><span>"
@@ -522,7 +533,6 @@ netuid,item,repo,matched
 85,doc_miner_guide,vidAio-subnet/vidaio-subnet,2.2 Miners
 85,doc_validator_guide,vidAio-subnet/vidaio-subnet,2.3 Validators
 85,doc_incentive_desc,vidAio-subnet/vidaio-subnet,2.5 Incentive mechanism
-85,doc_site,vidAio-subnet/vidaio-subnet,https://docs.bittensor.com
 85,doc_readme,vidAio-subnet/miner-vidaio,community profile
 85,doc_license,vidAio-subnet/miner-vidaio,community profile
 85,doc_miner_guide,vidAio-subnet/miner-vidaio,miner-vidaio
@@ -536,7 +546,6 @@ netuid,item,repo,matched
 88,doc_validator_guide,mobiusfund/investing,Validator
 88,doc_incentive_desc,mobiusfund/investing,Scoring
 88,doc_requirements,mobiusfund/investing,min_compute.yml
-88,doc_site,mobiusfund/investing,https://www.bittensor.com/docs/guides/mining
 89,doc_readme,DeltaCompute24/InfiniteQuant-Subnet,community profile
 89,doc_license,DeltaCompute24/InfiniteQuant-Subnet,community profile
 89,doc_miner_guide,DeltaCompute24/InfiniteQuant-Subnet,one HF call (same wallet/hotkey as your LF miner)
@@ -544,7 +553,7 @@ netuid,item,repo,matched
 89,doc_incentive_desc,DeltaCompute24/InfiniteQuant-Subnet,Scoring
 90,doc_readme,KubeTEE-AI/kubetee-subnet,community profile
 90,doc_license,KubeTEE-AI/kubetee-subnet,community profile
-90,doc_contributing,KubeTEE-AI/kubetee-subnet,community profile
+90,doc_contributing,KubeTEE-AI/kubetee-subnet,CONTRIBUTING.md
 90,doc_miner_guide,KubeTEE-AI/kubetee-subnet,Miner Infrastructure
 90,doc_validator_guide,KubeTEE-AI/kubetee-subnet,Validator Scoring & Attestation
 90,doc_incentive_desc,KubeTEE-AI/kubetee-subnet,Incentive Mechanism: Infrastructure (Early Access)
@@ -583,6 +592,7 @@ netuid,item,repo,matched
 94,doc_validator_guide,cathedralai/cathedral-validator-release-e2e,Cathedral Validator
 96,doc_readme,verathos-ai/verathos,community profile
 96,doc_license,verathos-ai/verathos,community profile
+96,doc_contributing,verathos-ai/verathos,Contribute compute
 96,doc_miner_guide,verathos-ai/verathos,vLLM miner
 96,doc_validator_guide,verathos-ai/verathos,Validators
 96,doc_requirements,verathos-ai/verathos,min_compute.yml
@@ -595,7 +605,7 @@ netuid,item,repo,matched
 98,doc_incentive_desc,neverplayalone/neverplayalone_subnet,Incentive mechanism
 100,doc_readme,CortexLM/cortex,community profile
 100,doc_license,CortexLM/cortex,community profile
-100,doc_contributing,CortexLM/cortex,community profile
+100,doc_contributing,CortexLM/cortex,CONTRIBUTING.md
 100,doc_validator_guide,CortexLM/cortex,docs/external-miner/validators.md
 100,doc_incentive_desc,CortexLM/cortex,docs/spikes/prism-v3/research/15-incentives-and-landscape.md
 100,doc_readme,CortexLM/docs,community profile
@@ -610,19 +620,21 @@ netuid,item,repo,matched
 101,doc_requirements,tag101-ai/tag101,min_compute.yml
 102,doc_readme,Connito-AI/Connito,community profile
 102,doc_license,Connito-AI/Connito,community profile
+102,doc_contributing,Connito-AI/Connito,Contributing & License
 102,doc_miner_guide,Connito-AI/Connito,docs/miner-faq/miner-config.md
 102,doc_validator_guide,Connito-AI/Connito,docs/miner-validation-group-promotion.md
 102,doc_incentive_desc,Connito-AI/Connito,docs/miner-faq/scoring.md
 102,doc_site,Connito-AI/Connito,https://connito.ai/docs/miner
 103,doc_readme,Capcomp-AI/capability-composition-subnet,community profile
 103,doc_license,Capcomp-AI/capability-composition-subnet,community profile
-103,doc_contributing,Capcomp-AI/capability-composition-subnet,community profile
+103,doc_contributing,Capcomp-AI/capability-composition-subnet,CONTRIBUTING.md
 103,doc_miner_guide,Capcomp-AI/capability-composition-subnet,What miners actually submit
 103,doc_validator_guide,Capcomp-AI/capability-composition-subnet,Install what your role needs. A validator never touches the tensor stack.
-103,doc_incentive_desc,Capcomp-AI/capability-composition-subnet,submission. Runs without a chain; scoring wants a GPU. Its search is
+103,doc_incentive_desc,Capcomp-AI/capability-composition-subnet,How a run's emission splits
 103,doc_requirements,Capcomp-AI/capability-composition-subnet,min_compute.yml
 104,doc_readme,taostatus/taostatus-subnet,community profile
 104,doc_license,taostatus/taostatus-subnet,community profile
+104,doc_contributing,taostatus/taostatus-subnet,contrib/CONTRIBUTING.md
 104,doc_miner_guide,taostatus/taostatus-subnet,Running a Miner
 104,doc_validator_guide,taostatus/taostatus-subnet,Running a Validator
 104,doc_incentive_desc,taostatus/taostatus-subnet,Incentive Mechanism
@@ -644,21 +656,23 @@ netuid,item,repo,matched
 107,doc_requirements,minos-protocol/minos_subnet,System Prerequisites
 108,doc_readme,TatsuProject/ChipForge_SN108,community profile
 108,doc_license,TatsuProject/ChipForge_SN108,community profile
+108,doc_contributing,TatsuProject/ChipForge_SN108,Contributing
 108,doc_miner_guide,TatsuProject/ChipForge_SN108,For Miners
 108,doc_validator_guide,TatsuProject/ChipForge_SN108,Submit a solution (with validation)
 108,doc_incentive_desc,TatsuProject/ChipForge_SN108,Scoring System
 108,doc_requirements,TatsuProject/ChipForge_SN108,Prerequisites
-108,doc_site,TatsuProject/ChipForge_SN108,https://docs.learnbittensor.org/btcli
 108,doc_readme,TatsuProject/Document_Understanding_Subnet,community profile
 108,doc_license,TatsuProject/Document_Understanding_Subnet,community profile
+108,doc_contributing,TatsuProject/Document_Understanding_Subnet,contrib/CONTRIBUTING.md
 108,doc_incentive_desc,TatsuProject/Document_Understanding_Subnet,Reward Mechanism
 108,doc_requirements,TatsuProject/Document_Understanding_Subnet,min_compute.yml
 108,doc_readme,TatsuProject/Identity-Subnet,community profile
 108,doc_license,TatsuProject/Identity-Subnet,community profile
+108,doc_contributing,TatsuProject/Identity-Subnet,contrib/CONTRIBUTING.md
 108,doc_requirements,TatsuProject/Identity-Subnet,min_compute.yml
 111,doc_readme,DeSciClaims/Claims,community profile
 111,doc_license,DeSciClaims/Claims,community profile
-111,doc_contributing,DeSciClaims/Claims,community profile
+111,doc_contributing,DeSciClaims/Claims,CONTRIBUTING.md
 111,doc_miner_guide,DeSciClaims/Claims,Miner
 111,doc_validator_guide,DeSciClaims/Claims,Validator
 111,doc_incentive_desc,DeSciClaims/Claims,docs/0002-validator-scoring.md
@@ -678,6 +692,7 @@ netuid,item,repo,matched
 117,doc_validator_guide,everyframe-studios/everyframe-miner,VALIDATION.md
 118,doc_readme,ditto-assistant/ditto-subnet,community profile
 118,doc_license,ditto-assistant/ditto-subnet,community profile
+118,doc_contributing,ditto-assistant/ditto-subnet,apps/platform/CONTRIBUTING.md
 118,doc_miner_guide,ditto-assistant/ditto-subnet,Miner CLI summary
 118,doc_validator_guide,ditto-assistant/ditto-subnet,Validator quickstart
 118,doc_incentive_desc,ditto-assistant/ditto-subnet,docs/coding-memory-scoring-v2.md
@@ -690,19 +705,19 @@ netuid,item,repo,matched
 121,doc_readme,sundae-bar/sb-validator,community profile
 121,doc_validator_guide,sundae-bar/sb-validator,sundae_bar Validator
 121,doc_requirements,sundae-bar/sb-validator,System Requirements
-121,doc_site,sundae-bar/sb-validator,https://docs.learnbittensor.org/keys/wallets
 121,doc_readme,sundae-bar/sundae_bar-bittensor-subnet,community profile
 122,doc_readme,CookingTao/CookingTAO-Subnet,community profile
 122,doc_license,CookingTao/CookingTAO-Subnet,community profile
+122,doc_contributing,CookingTao/CookingTAO-Subnet,contrib/CONTRIBUTING.md
 122,doc_validator_guide,CookingTao/CookingTAO-Subnet,Configure the validator
 122,doc_requirements,CookingTao/CookingTAO-Subnet,Requirements
-122,doc_site,CookingTao/CookingTAO-Subnet,https://docs.astral.sh/uv/
 123,doc_readme,Barbariandev/MANTIS,community profile
 123,doc_miner_guide,Barbariandev/MANTIS,MINER_GUIDE.md
 123,doc_incentive_desc,Barbariandev/MANTIS,Scoring
 123,doc_requirements,Barbariandev/MANTIS,min_compute.yml
 124,doc_readme,swarm-subnet/swarm,community profile
 124,doc_license,swarm-subnet/swarm,community profile
+124,doc_contributing,swarm-subnet/swarm,contrib/CONTRIBUTING.md
 124,doc_miner_guide,swarm-subnet/swarm,miner/docs/miner.md
 124,doc_validator_guide,swarm-subnet/swarm,validator/docs/validator.md
 124,doc_incentive_desc,swarm-subnet/swarm,Scoring &amp; Rewards

@@ -3,7 +3,9 @@
 Source: Taostats /api/delegation/v1 for the owner coldkey (as of T) on its own subnet,
 over the 90 days before T. Transfers are dropped and moves between validators are netted
 out (snprice.events.net_owner_trades). The owner cut received in a window is 18% of the
-subnet's alpha emission, read from the chain.
+subnet's alpha emission, read from the chain, over the blocks at which the subnet emitted
+(from its first emission block on). The ratio of alpha sold to owner cut is missing when
+no owner cut was received.
 
 These are flows through the pool: a purchase moves the price in the same window by
 construction. The codebook marks them `mechanical (flow)`; the lagged columns exist so
@@ -19,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from snprice import chain, paths  # noqa: E402
 from snprice.events import net_owner_trades  # noqa: E402
 from snprice.io import archive, read_table, taostats, write_table  # noqa: E402
-from snprice.windows import bounds  # noqa: E402
+from snprice.windows import bounds, emitting_blocks  # noqa: E402
 
 P = "SubtensorModule"
 RAO = 10 ** 9
@@ -46,6 +48,7 @@ def main():
     rows = []
     for i, r in enumerate(roster, 1):
         n, owner, reg_block = int(r["netuid"]), r["owner_coldkey"], int(r["registered_block"])
+        first_emission = int(r["first_emission_block"]) if r["first_emission_block"] else None
         start = max(long_lo, reg_block)
         events = tao.get_all("/api/delegation/v1", per_page=200, nominator=owner, netuid=n,
                              block_start=start + 1, block_end=T) if owner else []
@@ -57,12 +60,14 @@ def main():
             return net_owner_trades([e for e in events if lo < int(e["block_number"]) <= hi])
 
         def cut_alpha(lo, hi, b_lo, b_hi):
-            lo = max(lo, reg_block)
-            if lo >= hi:
-                return None
-            rates = [chain.decode_uint(emission[b][n]) for b in (b_lo, b_hi)]
+            if max(lo, reg_block) >= hi:
+                return None                                    # not registered in this window
+            blocks = emitting_blocks(lo, hi, first_emission)    # nothing is emitted before the first emission block
+            if not blocks:
+                return 0.0
+            rates = [chain.decode_uint(emission[b][n]) for b in (b_lo, b_hi) if b >= reg_block]   # not a previous occupant's
             rates = [x / RAO for x in rates if x is not None]
-            return cut * (sum(rates) / len(rates)) * (hi - lo) if rates else None
+            return cut * (sum(rates) / len(rates)) * blocks if rates else None
 
         w, lag, long = trades(w_lo, w_hi), trades(l_lo, l_hi), trades(long_lo, w_hi)
         cut_w, cut_l = cut_alpha(w_lo, w_hi, w_lo, T), cut_alpha(l_lo, l_hi, l_lo, w_lo)

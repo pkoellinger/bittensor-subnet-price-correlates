@@ -1,0 +1,5205 @@
+[
+ {
+  "netuid": 1,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Scientific & Technical Problem Solving",
+   "url": "README",
+   "quote": "Anyone can bring a problem. A global network of miners competes to solve it."
+  },
+  "searched": [
+   "https://apex.macrocosmos.ai",
+   "https://docs.macrocosmos.ai/subnets/subnet-1-apex",
+   "https://macrocosmos.ai/delegation-guide",
+   "https://docs.macrocosmos.ai",
+   "https://macrocosmos.ai/team",
+   "https://apex.macrocosmos.ai/competitions/13",
+   "README"
+  ],
+  "notes": "product_live 0: home page is a competition explorer plus 'Click here to find out more' for owners, no sign-up or API (borderline). No page mentions an API or MCP (owner repo list names macrocosmos-mcp only). Team page passage is hiring text, no names."
+ },
+ {
+  "netuid": 2,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://subnet2.inferencelabs.com",
+   "quote": "LAUNCH_STUDIOVIEW_DOCS"
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "onchain",
+   "quote": "Verifiable and distributed inference on Bittensor"
+  },
+  "searched": [
+   "https://subnet2.inferencelabs.com",
+   "https://sn2-docs.inferencelabs.com",
+   "README"
+  ],
+  "notes": "product_live rests only on the LAUNCH_STUDIO / TRY_STUDIO buttons (Studio app is not described on any page). Owner repo list has inference-network-whitepaper but no page offers it, so whitepaper 0."
+ },
+ {
+  "netuid": 3,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://teutonic.ai/paper.html",
+   "quote": "Teutonic-I 10B — Technical Report"
+  },
+  "whitepaper_url": "https://teutonic.ai/paper.html",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://teutonic.ai/paper.html",
+   "quote": "Jacob Steeves · Krzysztof Warchoł · Hubert Korzeniewski · Antoni Bombała"
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "README",
+   "quote": "is a king-of-the-hill pretraining system for Bittensor subnet 3."
+  },
+  "searched": [
+   "https://www.teutonic.ai/",
+   "https://teutonic.ai/paper.html",
+   "README"
+  ],
+  "notes": "Whitepaper = Teutonic-I 10B Technical Report by the named subnet authors (HTML and PDF). Home page is a competition dashboard only; model weights are linked but no explicit use or download instructions, so product_live 0."
+ },
+ {
+  "netuid": 4,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://targon.com/releases/intel-whitepaper",
+   "quote": "Intel x TVM Whitepaper"
+  },
+  "whitepaper_url": "https://targon.com/releases/intel-whitepaper",
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.targon.com/",
+   "quote": "REST API for sandboxes, workloads, templates, and inventory."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://targon.com/releases/intel-whitepaper",
+   "quote": "As Robert Myers, CEO of Manifold Labs, explains:"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://targon.com",
+   "quote": "Rent a fully secure Nvidia H100 VM"
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM)."
+  },
+  "searched": [
+   "https://targon.com",
+   "https://targon.com/releases/intel-whitepaper",
+   "https://docs.targon.com/",
+   "https://targon.com/sign-in",
+   "https://targon.com/sign-up",
+   "README"
+  ],
+  "notes": "Intel x TVM whitepaper is co-authored by Manifold Labs staff and Intel; docs list a REST API and Python SDK; GPU VMs can be rented after sign-up."
+ },
+ {
+  "netuid": 5,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "onchain",
+   "quote": "Hone training"
+  },
+  "searched": [
+   "https://honedashboard.com",
+   "README"
+  ],
+  "notes": "Site is a validator-view dashboard of miner performance only; README is validator setup (RLVR subnet, coding tasks graded in sandbox). Category from the on-chain 'Hone training'."
+ },
+ {
+  "netuid": 6,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://truth-alpha.notion.site/numinous-forecasts-api",
+   "quote": "Given a question about a future event, the API returns a probability estimate between 0 and 1 reflecting the likelihood that the event resolves positively."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://truth-alpha.notion.site/numinous-forecasts-api",
+   "quote": "Access is granted by paying a small USDC fee per request via the x402 protocol."
+  },
+  "category": {
+   "value": "Forecasting & Prediction",
+   "url": "onchain",
+   "quote": "Numinous is a forecasting protocol whose goal is to aggregate agents into superhuman LLM forecasters."
+  },
+  "searched": [
+   "https://numinouslabs.io/",
+   "https://api.numinouslabs.io/api/docs",
+   "https://truth-alpha.notion.site/numinous-forecasts-api",
+   "README"
+  ],
+  "notes": "Home page has a 'Vision' link and an 'Open Claw skill' but no document or MCP server is shown. API: Swagger docs plus Forecasts API page (pay-per-request or key)."
+ },
+ {
+  "netuid": 7,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "README",
+   "quote": "a public API call (`api.all-ways.io`) with structured output"
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "README",
+   "quote": "agents operated by the team and by users originate swaps today"
+  },
+  "category": {
+   "value": "DeFi & Crypto Infrastructure",
+   "url": "README",
+   "quote": "Native cross-chain transactions for programs that hold one asset and need to pay in another"
+  },
+  "searched": [
+   "https://all-ways.io/",
+   "README"
+  ],
+  "notes": "Home page text is only 'Allways'; all evidence is from the README."
+ },
+ {
+  "netuid": 8,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://www.vantanetwork.io/",
+   "quote": "Full SDK, CLI, and OpenClaw integration for automated strategies"
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.vantanetwork.io/",
+   "quote": "Access a full trading terminal or connect via API."
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "onchain",
+   "quote": "The first decentralized & trustless liquidity and execution engine for prop firms and traders"
+  },
+  "searched": [
+   "https://www.vantanetwork.io/",
+   "https://www.vantanetwork.io/dashboard",
+   "README"
+  ],
+  "notes": "api_public and product_live rest on Vanta Trading and Hyperscaled (terminal, API, SDK as present-tense features); no API documentation shown in the dossier, so ambiguous. Vanta Hedge Fund is marked coming soon."
+ },
+ {
+  "netuid": 9,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "README",
+   "quote": "For a more comprehensive overview, please refer to our technical paper"
+  },
+  "whitepaper_url": "https://www.macrocosmos.ai/research/iota_primer.pdf",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "onchain",
+   "quote": "Bringing liquid training to the world"
+  },
+  "searched": [
+   "https://iota.macrocosmos.ai/",
+   "https://iota.macrocosmos.ai/use-iota",
+   "https://iota.macrocosmos.ai/docs",
+   "https://macrocosmos.ai/delegation-guide",
+   "https://docs.macrocosmos.ai",
+   "https://iota.macrocosmos.ai/sdk",
+   "https://macrocosmos.ai/team",
+   "https://iota.macrocosmos.ai/dashboard",
+   "https://iota.macrocosmos.ai/train-with-iota",
+   "README"
+  ],
+  "notes": "IOTA technical paper (primer PDF, ArXiv) is linked from the README as 'our technical paper'. SDK page says 'coming soon'; the managed route is contact-the-founding-team only, so product_live 0 (borderline). Text of the team page is not shown in the dossier, so team_named 0. macrocosmos-mcp appears only in the owner repo list, no page evidence."
+ },
+ {
+  "netuid": 10,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Optimization & Compression",
+   "url": "https://www.pareton.ai/docs",
+   "quote": "Pareton continuously discovers, validates, and deploys the optimal serving configuration for a workload, across models, hardware, and serving stacks."
+  },
+  "searched": [
+   "https://www.pareton.ai/",
+   "https://www.pareton.ai/docs",
+   "https://www.pareton.ai/dashboard",
+   "README"
+  ],
+  "notes": "Docs list api.pareton.ai as a read-only public API for campaign and submission status (patches stay private), coded 0 for api_public; home page says Coming Soon."
+ },
+ {
+  "netuid": 11,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "README",
+   "quote": "that decide, per request, which open-weight models on Engy answer an agent and in what combination."
+  },
+  "searched": [
+   "https://trajrl.com",
+   "https://trajrl.com/docs",
+   "README"
+  ],
+  "notes": "Category is ambiguous: onchain says 'Agentic RL as a Service' (training or agent optimisation), but the README for Season 2 describes model-routing fusion policies to be served on Engy as engy/auto, so coded from the README. Serving on Engy is future tense; web-submit API and epoch API are for miners and validators only."
+ },
+ {
+  "netuid": 12,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "README",
+   "quote": "A Python SDK is available to help **subnet owners and validators** run jobs on ComputeHorde."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "README",
+   "quote": "A Python SDK is available to help **subnet owners and validators** run jobs on ComputeHorde."
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "README",
+   "quote": "By transforming untrusted GPUs provided by miners into trusted compute resources"
+  },
+  "searched": [
+   "README"
+  ],
+  "notes": "No site and no on-chain text; README only. api_public and product_live rest on the SDK offered to validators and owners of OTHER subnets (external customers of the GPU compute); a stricter reading ('only for validators') would give 0."
+ },
+ {
+  "netuid": 13,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "README",
+   "quote": "Access Gravity via the API: https://docs.macrocosmos.ai/developers/api-documentation/sn13-data-universe"
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "README",
+   "quote": "You can integrate subnet 13, Data-Universe, directly into Claude and Cursor via our MCP."
+  },
+  "team_named": {
+   "value": 1,
+   "url": "README",
+   "quote": "Will Squires, Co-Founder and CEO"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://datauniverse.macrocosmos.ai/",
+   "quote": "Discover and purchase ready-made datasets curated by others."
+  },
+  "category": {
+   "value": "Data & Database Construction",
+   "url": "https://datauniverse.macrocosmos.ai/",
+   "quote": "Data Universe is your gateway to 55+ billion rows of structured, high-fidelity social media data"
+  },
+  "searched": [
+   "https://datauniverse.macrocosmos.ai/",
+   "https://docs.macrocosmos.ai",
+   "https://macrocosmos.ai/delegation-guide",
+   "https://macrocosmos.ai/team",
+   "https://app.macrocosmos.ai",
+   "README"
+  ],
+  "notes": "White-paper passages are GDPR guidance links only. Product has sign-up, pay-as-you-go and paid plans."
+ },
+ {
+  "netuid": 14,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://cacheon.ai",
+   "quote": "Shivanshu Purohit"
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Optimization & Compression",
+   "url": "onchain",
+   "quote": "A competition where miners submit optimized kernels to compete on end-to-end inference speed against target models."
+  },
+  "searched": [
+   "https://cacheon.ai",
+   "https://cacheon.ai/docs",
+   "https://cacheon.ai/docs/miner-guide/submitting",
+   "https://cacheon.ai/docs/validator-guide/fidelity",
+   "https://dash.cacheon.ai/",
+   "README"
+  ],
+  "notes": "README says pre-release software; production inference provider is a future roadmap phase. The 'API docs at /docs' on the dashboard belong to a read-only intake view, not a product API. Team section on the home page names four people."
+ },
+ {
+  "netuid": 15,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://oroagents.com/whitepaper",
+   "quote": "White Paper | ORO"
+  },
+  "whitepaper_url": "https://oroagents.com/whitepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://oroagents.com",
+   "quote": "Shardul Bansal"
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Agents & Automation",
+   "url": "onchain",
+   "quote": "AI commerce agents"
+  },
+  "searched": [
+   "https://oroagents.com",
+   "https://oroagents.com/whitepaper",
+   "https://oroagents.com/docs",
+   "https://oroagents.com/docs/resources/changelog",
+   "https://docs.oroagents.com/docs/miners/quick-start",
+   "https://oroagents.com/dashboard",
+   "README"
+  ],
+  "notes": "White Paper page is authored by ORO Team. API, SDK and CLI docs serve miners (agent submission, status) and validators, public endpoints give leaderboard and status only, so api_public 0. Arena is for miners; no end-user product shown. Category alternative: Marketing, Sales & Commerce."
+ },
+ {
+  "netuid": 16,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 17,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Media & Voice AI",
+   "url": "onchain",
+   "quote": "a decentralized 3D content generation competition"
+  },
+  "searched": [
+   "https://www.404.xyz",
+   "https://www.404.xyz/about",
+   "https://www.404.xyz/app",
+   "README"
+  ],
+  "notes": "Home nav lists app, plugin and catalog, but the dossier shows no text describing a usable product, so product_live 0."
+ },
+ {
+  "netuid": 18,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://www.zeussubnet.com/",
+   "quote": "Read our whitepaperOpens PDF in a new tab"
+  },
+  "whitepaper_url": "https://www.zeussubnet.com/news-and-updates/ZEUS_V2_Benchmark.pdf",
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.zeussubnet.com/docs/introduction",
+   "quote": "The BOREAS Edge API exposes operational, metadata, and forecast endpoints for customer integrations."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://www.zeussubnet.com/company",
+   "quote": "Wouter Haringhuizen"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://docs.zeussubnet.com/docs/introduction",
+   "quote": "Free-plan keys use https://free-api.zeussubnet.com instead."
+  },
+  "category": {
+   "value": "Forecasting & Prediction",
+   "url": "onchain",
+   "quote": "Pushing weather forecasts beyond state-of-the-art"
+  },
+  "searched": [
+   "https://www.zeussubnet.com/",
+   "https://docs.zeussubnet.com/docs/introduction",
+   "https://docs.zeussubnet.com/docs/forecast/point",
+   "https://www.zeussubnet.com/company",
+   "https://www.zeussubnet.com/pricing",
+   "README"
+  ],
+  "notes": "whitepaper coded 1 on the label: the home page offers a PDF as 'our whitepaper', but the document is the Zeus V2 benchmark report (a strict reading of the benchmark-report exclusion would give 0)."
+ },
+ {
+  "netuid": 19,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "README",
+   "quote": "Whitepaper: https://blockmachine.io/whitepaper"
+  },
+  "whitepaper_url": "https://blockmachine.io/whitepaper",
+  "api_public": {
+   "value": 1,
+   "url": "https://blockmachine.io/docs/ai-agents",
+   "quote": "An agent with no account can buy its own API key"
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://blockmachine.io",
+   "quote": "Mark Davison"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://blockmachine.io",
+   "quote": "The core network, customer console, Ethereum RPC, and crypto payment rails are live."
+  },
+  "category": {
+   "value": "DeFi & Crypto Infrastructure",
+   "url": "https://blockmachine.io",
+   "quote": "Blockmachine provides RPC access across supported chains."
+  },
+  "searched": [
+   "https://blockmachine.io",
+   "https://blockmachine.io/whitepaper",
+   "https://blockmachine.io/docs/ai-agents",
+   "https://blockmachine.io/docs",
+   "https://blockmachine.io/docs/referrals",
+   "https://blockmachine.io/pricing",
+   "https://blockmachine.io/login",
+   "https://blockmachine.io/login?redirect=%2Fdashboard%2Fplans",
+   "README"
+  ],
+  "notes": "mcp_server 0: the AI-agents docs page says 'No SDK, no custom MCP'. Whitepaper is a full page with PDF download."
+ },
+ {
+  "netuid": 20,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "https://witnessvision.io/",
+   "quote": "Witness rewards the model that best works out what happens in a video: what is seen, what is said, what is written on screen, what is heard."
+  },
+  "searched": [
+   "https://witnessvision.io/",
+   "https://witnessvision.io/dashboard",
+   "README"
+  ],
+  "notes": "category: miners submit model weights and a king model wins (model competition); Media & Voice AI is the alternative reading. Only a subnet dashboard and miner/validator guides are shown, no end-user product."
+ },
+ {
+  "netuid": 21,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "README",
+   "quote": "Protocol background (weekly-era sections historical): [Whitepaper](docs/whitepaper.md)."
+  },
+  "whitepaper_url": "https://github.com/ippcteam/SN21-adtao/blob/HEAD/docs/whitepaper.md",
+  "api_public": {
+   "value": 1,
+   "url": "https://adtao.io/mcp",
+   "quote": "Create an account, get an API key, and see what each of the four levels unlocks."
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://adtao.io/mcp",
+   "quote": "Point your host at mcp.adtao.io, add the skills package, run your first portfolio report."
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://adtao.io/login",
+   "quote": "Add AdTAO as a connector in Claude, on the web or in Claude Desktop, and sign in with your AdTAO account."
+  },
+  "category": {
+   "value": "Marketing, Sales & Commerce",
+   "url": "onchain",
+   "quote": "Counterfactual impact prediction for advertising interventions"
+  },
+  "searched": [
+   "https://adtao.io",
+   "https://adtao.io/mcp",
+   "https://adtao.io/about",
+   "https://adtao.io/pricing",
+   "https://adtao.io/login",
+   "https://adtao.io/contact",
+   "README"
+  ],
+  "notes": "whitepaper_url built from the main repository URL plus the path docs/whitepaper.md listed in the dossier. Category alternative: Forecasting & Prediction (subnet miners predict ad outcomes), chosen Marketing because the product is the Google Ads decision layer."
+ },
+ {
+  "netuid": 22,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://www.desearch.ai/whitepaper",
+   "quote": "Whitepaper / Bittensor Subnet 22Technical design proposal"
+  },
+  "whitepaper_url": "https://www.desearch.ai/whitepaper",
+  "api_public": {
+   "value": 1,
+   "url": "https://www.desearch.ai/",
+   "quote": "Desearch is a search API for AI agents: one API key searches the web and X for fresh results with source links."
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://www.desearch.ai/docs/guide/introduction/desearch-ai",
+   "quote": "Connect over MCP (hosted HTTP) with your Desearch API key. Endpoint: https://mcp.desearch.ai/mcp. See live tools/list."
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.desearch.ai/docs/guide/introduction/desearch-ai",
+   "quote": "Desearch Console: create API keys, test requests in the playground, monitor usage, and manage billing."
+  },
+  "category": {
+   "value": "Search & Knowledge Retrieval",
+   "url": "onchain",
+   "quote": "Decentralized search engine"
+  },
+  "searched": [
+   "https://www.desearch.ai/",
+   "https://www.desearch.ai/whitepaper",
+   "https://www.desearch.ai/blog",
+   "https://www.desearch.ai/docs/guide/introduction/desearch-ai",
+   "https://www.desearch.ai/blog/integrate-search-apis-langchain",
+   "https://www.desearch.ai/blog/real-time-search-apis-managing-latency-scale",
+   "https://www.desearch.ai/docs/guide/introduction/pricing-and-billing",
+   "https://www.desearch.ai/docs/api-reference",
+   "https://www.desearch.ai/docs/guide/sdk/desearch-api-sdk",
+   "README"
+  ],
+  "notes": "Whitepaper is the Desearch 2.0 paper v0.1 dated 21 September 2026, with a 20-page PDF at /whitepapers/desearch-v0.1.pdf; an older whitepaper is archived. No individual team members are named in the dossier."
+ },
+ {
+  "netuid": 23,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://trishool.ai",
+   "quote": "Docs Discord Litepaper"
+  },
+  "whitepaper_url": "https://litepaper.trishool.ai",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "https://trishool.ai",
+   "quote": "Subnet 23 is a miner-driven adversarial training network for AI agent security."
+  },
+  "searched": [
+   "https://trishool.ai",
+   "https://litepaper.trishool.ai",
+   "https://guide.trishool.ai/",
+   "https://docs.trishool.ai",
+   "https://trishool.ai/dashboard",
+   "README"
+  ],
+  "notes": "Litepaper is linked from the home page as LITEPAPER (litepaper.trishool.ai), but the page text in the dossier is unreadable binary, so existence rests on the link label. Guard API / SDK is only Phase 7 planned. MCP appears only as an attack category."
+ },
+ {
+  "netuid": 24,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "README",
+   "quote": "Quasar Training is the production training system for continuing Quasar model"
+  },
+  "searched": [
+   "https://silxinc.com/",
+   "README"
+  ],
+  "notes": "Home page is 'Deployment Paused'. README describes only the miner/validator/orchestrator pretraining system; the on-chain text (long-context) is less specific than the README."
+ },
+ {
+  "netuid": 25,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://ur.xyz/docs/litepaper",
+   "quote": "UR Litepaper: A privacy network coordinated on Bittensor"
+  },
+  "whitepaper_url": "https://ur.xyz/docs/litepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://ur.xyz/about",
+   "quote": "Brien Colwell"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://ur.xyz/",
+   "quote": "For URnetwork products (eg. VPN), go to ur.io"
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "The peer to peer privacy network and encryption layer for the internet"
+  },
+  "searched": [
+   "https://ur.xyz/",
+   "https://ur.xyz/research",
+   "https://ur.xyz/docs/litepaper",
+   "https://ur.xyz/docs",
+   "https://ur.xyz/about",
+   "README"
+  ],
+  "notes": "README also names WHITEPAPER.md as the full specification. product_live rests on the home page pointing to ur.io for URnetwork products such as the VPN; ur.io itself is not in the dossier. Category alternative: Cybersecurity, Authenticity & Verification."
+ },
+ {
+  "netuid": 26,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://www.perturbai.io/whitepaper",
+   "quote": "Download Whitepaper"
+  },
+  "whitepaper_url": "https://www.perturbai.io/whitepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://www.perturbai.io/",
+   "quote": "Koyuki Nakamori"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.perturbai.io/login",
+   "quote": "Sign in to your Perturb AI account"
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "https://www.perturbai.io/",
+   "quote": "Perturb helps you discover vulnerabilities before attackers do."
+  },
+  "searched": [
+   "https://www.perturbai.io/",
+   "https://www.perturbai.io/whitepaper",
+   "https://www.perturbai.io/login",
+   "https://www.perturbai.io/playground",
+   "README"
+  ],
+  "notes": "Playground and login pages both show an account sign-in with create-account option. APIs named in README and whitepaper are for validators and miners."
+ },
+ {
+  "netuid": 27,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Data & Database Construction",
+   "url": "onchain",
+   "quote": "A decentralized data subnet that discovers, generates, and curates high-quality training data for LLMs"
+  },
+  "searched": [
+   "https://silxinc.com",
+   "README"
+  ],
+  "notes": "Website shows 'Deployment Paused'; README is miner and validator instructions only."
+ },
+ {
+  "netuid": 28,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.saygm.com",
+   "quote": "Create an API key, discover an available model, and make your first request."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://docs.saygm.com",
+   "quote": "Sign in at saygm.com to manage API keys, credit, and usage."
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "onchain",
+   "quote": "Drop-in access to Claude, GPT, and Gemini."
+  },
+  "searched": [
+   "https://saygm.com/",
+   "https://docs.saygm.com",
+   "https://docs.saygm.com/platform/guardrails/",
+   "https://saygm.com/developers",
+   "https://saygm.com/login",
+   "README"
+  ],
+  "notes": "Owner repository list includes gm-mcp, but no page mentions an MCP server; coded 0."
+ },
+ {
+  "netuid": 29,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Optimization & Compression",
+   "url": "onchain",
+   "quote": "Inference optimization"
+  },
+  "searched": [
+   "https://coldint.io/",
+   "README"
+  ],
+  "notes": "dossier mismatch: the README describes Cacheon (SN14), not this subnet, and the coldint.io home page says the old subnet has no new plan. Category taken from the on-chain description."
+ },
+ {
+  "netuid": 30,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://endure.network",
+   "quote": "Read the litepaper"
+  },
+  "whitepaper_url": "https://docs.endure.network/build/resources/litepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "DeFi & Crypto Infrastructure",
+   "url": "https://endure.network",
+   "quote": "Providing risk management & efficiency parameters by competing world class analysts."
+  },
+  "searched": [
+   "https://endure.network",
+   "https://docs.endure.network"
+  ],
+  "notes": "Litepaper is a page under docs.endure.network. Docs navigation lists an API Reference page but its content is not shown and the home page puts APIs in a later roadmap phase; coded 0. Forge (first product) is not shown as live. Category could also be Financial Markets & Investing."
+ },
+ {
+  "netuid": 31,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Search & Knowledge Retrieval",
+   "url": "onchain",
+   "quote": "Think of it as an always-improving, community-owned search engine with citations."
+  },
+  "searched": [],
+  "notes": "only an on-chain description, no pages offered; nothing shows a usable product or interface."
+ },
+ {
+  "netuid": 32,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.its-ai.org/",
+   "quote": "AI content detection, plagiarism and grammar checking API. One endpoint per scan type."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://its-ai.org/en/about",
+   "quote": "Sign up for free"
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "onchain",
+   "quote": "high-quality AI detection for texts"
+  },
+  "searched": [
+   "https://its-ai.org/en",
+   "https://docs.its-ai.org/",
+   "https://app.its-ai.org/en/main/api/table",
+   "https://its-ai.org/en/about",
+   "https://app.its-ai.org/en",
+   "https://app.its-ai.org/en/main/subscription",
+   "README"
+  ],
+  "notes": "CEO appears only as 'Sergey' (first name only); named people on the home page are customer testimonials. Accuracy report is a benchmark report, not a whitepaper."
+ },
+ {
+  "netuid": 33,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "README",
+   "quote": "directory contains a standalone MCP server that makes the [llms_txt_store](https://github.com/afterpartyai/llms_txt_store) dataset queryable by LLM agents."
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "README",
+   "quote": "The MCP server ingests these into a local SQLite database and exposes four tools:"
+  },
+  "category": {
+   "value": "Data & Database Construction",
+   "url": "README",
+   "quote": "ReadyAI is a low-cost, structured data pipeline to turn your raw data into structured data for your vector databases and AI applications."
+  },
+  "searched": [
+   "README"
+  ],
+  "notes": "No website and no on-chain description. product_live rests on the downloadable llms.txt MCP server and public Hugging Face dataset in the README; no customer-facing service is shown, so ambiguous."
+ },
+ {
+  "netuid": 34,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://bitmind.ai/research",
+   "quote": "A Generative Adversarial Framework for Evolving Deepfake Detection"
+  },
+  "whitepaper_url": "https://bitmind.ai/research",
+  "api_public": {
+   "value": 1,
+   "url": "https://bitmind.ai/developers",
+   "quote": "Sign up for free and get 100 API calls per month. No credit card required."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://bitmind.ai/",
+   "quote": "BitMind founder Ken Jon Miyachi"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://bitmind.ai/",
+   "quote": "Browser plugins and mobile apps for individuals and teams. Verify content while browsing or sharing on social platforms."
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "onchain",
+   "quote": "Deepfake Detection"
+  },
+  "searched": [
+   "https://bitmind.ai/",
+   "https://bitmind.ai/research",
+   "https://bitmind.ai/developers",
+   "https://docs.bitmind.ai",
+   "https://bitmind.ai/product/api",
+   "https://bitmind.ai/contact",
+   "https://app.bitmind.ai/",
+   "https://bitmind.ai/product/custom-solutions",
+   "https://bitmind.ai/product/applications",
+   "README"
+  ],
+  "notes": "Whitepaper = peer-reviewed research paper by the BitMind Research Team on the generative adversarial framework (the subnet's method); no direct document link listed, so whitepaper_url is the research page. Owner repository list includes bittensor-mcp but no page mentions it; mcp coded 0."
+ },
+ {
+  "netuid": 35,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 36,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "README",
+   "quote": "[**Whitepaper**](docs/WHITEPAPER.md)"
+  },
+  "whitepaper_url": "https://epago.ai/whitepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "README",
+   "quote": "The world's frontier open deep-research model, forged by adversarial competition"
+  },
+  "searched": [
+   "https://epago.ai/",
+   "https://epago.ai/whitepaper",
+   "https://epago.ai/litepaper",
+   "https://leaderboard.epago.ai",
+   "README"
+  ],
+  "notes": "api_public 0: home page says the public agent-facing API is not open yet (roadmap). product_live 0: only a 'Try the demo' button and a leaderboard; README status is testnet ready (borderline). Category is a model competition; could also be read as research/knowledge output."
+ },
+ {
+  "netuid": 37,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://aureliusaligned.ai",
+   "quote": "Explore the technical foundation powering open, multi-agentic alignment."
+  },
+  "whitepaper_url": "https://aureliusaligned.ai/assets/pdf/Aurelius__A_Peer-to-Peer_Alignment_Protocol.pdf",
+  "api_public": {
+   "value": 1,
+   "url": "https://aureliusaligned.ai/product/",
+   "quote": "Agents connect via API and iterate using Proba before committing to training"
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://aureliusaligned.ai/product/",
+   "quote": "Proba is built to be driven by agents as well. Point yours at the MCP skill and API reference, and it can run the predict, edit, verify loop on its own."
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://aureliusaligned.ai/product/",
+   "quote": "Try Proba today"
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "https://aureliusaligned.ai",
+   "quote": "The best-performing agents produce training data. That data trains future AI to reason through uncertainty."
+  },
+  "searched": [
+   "https://aureliusaligned.ai",
+   "https://aureliusaligned.ai/about/alignment/",
+   "https://aureliusaligned.ai/about/",
+   "https://aureliusaligned.ai/team/",
+   "https://aureliusaligned.ai/product/",
+   "README"
+  ],
+  "notes": "mcp_server coded 1 on the product-page reference to an MCP skill plus API reference for Proba (not certain it is a server). Team page is listed but its text is not in the dossier; Derek Okafor on the About page is a scenario character, so team_named 0."
+ },
+ {
+  "netuid": 38,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://chronollm.com/",
+   "quote": "import chronollm as cl"
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://chronollm.com/",
+   "quote": "Jean Herelle"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://chronollm.com/",
+   "quote": "Download the weights and run ChronoLLM entirely on your own hardware."
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "onchain",
+   "quote": "Competitive training of chronologically consistent Large Language Models"
+  },
+  "searched": [
+   "https://chronollm.com/",
+   "README"
+  ],
+  "notes": "whitepaper 0 (borderline): arXiv papers are shown as 'open academic research' (ChronoGPT models under manelalab), and 'Read the methodology' links to arXiv 2510.11677; not shown as the team's own paper. team_named: Jean Herelle appears as Founder of CrunchDAO, the operator (borderline: could be read as a partner)."
+ },
+ {
+  "netuid": 39,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": "onchain",
+   "quote": "deprecated"
+  },
+  "searched": [],
+  "notes": "no material beyond the on-chain description deprecated"
+ },
+ {
+  "netuid": 40,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "README",
+   "quote": "every crown ships as downloadable weights."
+  },
+  "category": {
+   "value": "AI Optimization & Compression",
+   "url": "onchain",
+   "quote": "The same model, small enough to run on your phone. Compress the frontier models into GGUFs."
+  },
+  "searched": [
+   "https://www.ralphlabs.ai/",
+   "https://www.ralphlabs.ai/research",
+   "https://www.ralphlabs.ai/dashboard",
+   "README"
+  ],
+  "notes": "Product is the downloadable compressed models (crowns). Only miner handles appear, no named people."
+ },
+ {
+  "netuid": 41,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Forecasting & Prediction",
+   "url": "https://almnc.ai",
+   "quote": "Almanac is a decentralized forecasting competition where agents compete in research and prediction across complex global events"
+  },
+  "searched": [
+   "https://almnc.ai",
+   "https://portal.almnc.ai/auth/signin?redirect_url=https%3A%2F%2Fportal.almnc.ai%2Fdashboard",
+   "README"
+  ],
+  "notes": "Ambiguous product_live: Alma is an early-access waitlist; the trading terminal and portal sign-in read as participation tools for miners/traders. Trade-via-API in README is for miners."
+ },
+ {
+  "netuid": 42,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 43,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Scientific & Technical Problem Solving",
+   "url": "README",
+   "quote": "A decentralized network for solving graph optimization problems, built on Bittensor, the foremost decentralised AI network."
+  },
+  "searched": [
+   "README"
+  ],
+  "notes": "README only; no website page in the dossier (README links a website but no page text was saved)."
+ },
+ {
+  "netuid": 44,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.wearescore.com/",
+   "quote": "Try Score Studio"
+  },
+  "category": {
+   "value": "Media & Voice AI",
+   "url": "https://www.wearescore.com/",
+   "quote": "models that turn raw video into structured intelligence"
+  },
+  "searched": [
+   "https://www.wearescore.com/",
+   "https://www.wearescore.com/get-started",
+   "README"
+  ],
+  "notes": "Repo lists method PDFs (documentation/*.pdf) but they are not called a white paper and appear on no page. product_live rests on the 'Try Score Studio' link (borderline). Category is video/vision AI; could also be read as Data & Database Construction (structured data from footage) or AI Inference."
+ },
+ {
+  "netuid": 45,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://alpharidge.ai/pricing",
+   "quote": "Personal API + MCP access"
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://alpharidge.ai/docs/mcp",
+   "quote": "claude mcp add --transport http alpharidge https://mcp.alpharidge.ai/mcp"
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://alpharidge.ai/pricing",
+   "quote": "Start free. The full platform, one price."
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "onchain",
+   "quote": "Real-time market intelligence across equities, FX, crypto, commodities and indices."
+  },
+  "searched": [
+   "https://alpharidge.ai",
+   "https://alpharidge.ai/docs/mcp",
+   "https://alpharidge.ai/pricing",
+   "https://alpharidge.ai/login",
+   "https://alpharidge.ai/register",
+   "https://alpharidge.ai/features",
+   "README"
+  ],
+  "notes": "Remote MCP server documented at /docs/mcp; README also lists a public sentiment and events API. Brokerage execution not yet live, paper trading free. README calls SN45 the data layer, so Data & Database Construction is the alternative category."
+ },
+ {
+  "netuid": 46,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "onchain",
+   "quote": "Lighning Fast Uncensored Inference"
+  },
+  "searched": [
+   "https://instantnetwork.ai",
+   "README"
+  ],
+  "notes": "Home page is a miner scoreboard (subnet statistics); README is validator installation. No user-facing product or API shown."
+ },
+ {
+  "netuid": 47,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "Miners execute signed, immutable training workloads on eligible NVIDIA H100 GPUs"
+  },
+  "searched": [
+   "https://gpuforge-gpuforge.static.hf.space/index.html",
+   "README"
+  ],
+  "notes": "README calls it a proposed subnet under development, not ready for use; site is a simulated explorer demo. Category could also be AI Training & Model Improvement."
+ },
+ {
+  "netuid": 48,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "https://www.qbittensorlabs.com/",
+   "quote": "Democratizing access to quantum computing through Bittensor's decentralized network."
+  },
+  "searched": [
+   "https://www.qbittensorlabs.com/",
+   "https://www.qbittensorlabs.com/about",
+   "README"
+  ],
+  "notes": "product_live 0: home banner says open quantum mining is still coming, README says contact us to get started, and the Sign In target is not described. API integration appears only as a roadmap item. Category alternative: Scientific & Technical Problem Solving."
+ },
+ {
+  "netuid": 49,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://docs.nepher.ai",
+   "quote": "Nepher Robotics White Paper"
+  },
+  "whitepaper_url": "https://docs.nepher.ai/whitepaper",
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.nepher.ai/nepher-cli",
+   "quote": "Create API keys at nepher.ai/account/api-keys. Keys are shown only once."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.nepher.ai/",
+   "quote": "Log inGet started"
+  },
+  "category": {
+   "value": "Robotics & Physical AI",
+   "url": "onchain",
+   "quote": "Pioneering Simulation-First Robotics Development"
+  },
+  "searched": [
+   "https://www.nepher.ai/",
+   "https://www.nepher.ai/enterprise/hire-and-solve",
+   "https://www.nepher.ai/nepher-verified",
+   "https://www.nepher.ai/enterprise/brand-and-credibility",
+   "https://docs.nepher.ai",
+   "https://docs.nepher.ai/nepher-cli",
+   "https://www.nepher.ai/about",
+   "https://www.nepher.ai/account/login?redirect=%2F",
+   "https://www.nepher.ai/account/signup",
+   "README"
+  ],
+  "notes": "White paper (September 2026) is linked from the docs. api_public rests on documented API keys, nepher-cli and api.nepher.ai for platform users such as EnvHub downloads (borderline: much of it is miner submission). product_live rests on account log-in/sign-up and EnvHub; enterprise engagements are not self-serve and SimStore is coming soon. Text of the about page is not shown, so team_named 0."
+ },
+ {
+  "netuid": 50,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "README",
+   "quote": "https://github.com/synthdataco/synth-subnet/blob/main/Synth%20Whitepaper%20v1.pdf"
+  },
+  "whitepaper_url": "https://synthdataco.github.io/synth-subnet/Synth%20Whitepaper%20v1.pdf",
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.synthdata.co/",
+   "quote": "Synth API offers programmatic access to probabilistic price forecasts across 1-hour and 24-hour horizons for Equities, Commodities and Cryptocurrencies"
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://docs.synthdata.co/",
+   "quote": "MCP"
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://docs.synthdata.co/",
+   "quote": "The API equips traders, developers, and institutions with predictive intelligence to gain a competitive edge, identify opportunities, and make informed decisions in dynamic markets."
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "onchain",
+   "quote": "Predictive intelligence for financial markets and beyond"
+  },
+  "searched": [
+   "https://synthdata.co",
+   "https://synthdata.co/research",
+   "https://synthdata.co/research/kalshi-bitcoin-price-discovery",
+   "https://synthdata.co/research/introducing-synth-ultra",
+   "https://synthdata.co/research/adapting-timesfm-to-synth",
+   "https://synthdata.co/research/chronos2-fine-tuned-foundation-model",
+   "https://docs.synthdata.co/",
+   "https://dashboard.synthdata.co/dashboard/",
+   "README"
+  ],
+  "notes": "Whitepaper PDF is in the repo and linked from the site. MCP inferred from the docs navigation item MCP plus the owner repository synth-mcp (quote is only the nav label). Team referred to collectively, no personal names."
+ },
+ {
+  "netuid": 51,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.lium.io/developers/sdk",
+   "quote": "The lium.io package ships both the CLI and a Python SDK for managing GPU pods programmatically."
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://docs.lium.io",
+   "quote": "AI agents can use the /mcp endpoint (search + read_page tools)."
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "README",
+   "quote": "Lium is a GPU rental marketplace."
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "README",
+   "quote": "The decentralized GPU cloud on Bittensor Subnet 51."
+  },
+  "searched": [
+   "https://lium.io",
+   "https://docs.lium.io",
+   "https://docs.lium.io/developers/cli/overview",
+   "https://docs.lium.io/developers/sdk",
+   "https://docs.lium.io/providers/quickstart",
+   "https://lium.io/api-keys",
+   "https://lium.io/documents",
+   "https://lium.io/login",
+   "https://lium.io/register",
+   "README"
+  ],
+  "notes": "MCP is the /mcp endpoint of the docs site (search and read_page tools), also an MCP Endpoint docs page. No whitepaper and no named people; Datura AI Corp is a company name only."
+ },
+ {
+  "netuid": 52,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "README",
+   "quote": "Dojo V2 transforms conventional Generative Adversarial Network (GAN) into a competitive, decentralized GAN built on the principle of zero-sum incentives."
+  },
+  "searched": [
+   "https://www.tensorplex.ai",
+   "https://docs.tensorplex.ai/",
+   "README"
+  ],
+  "notes": "Ambiguous. On-chain description empty; home page is the company Tensorplex Labs. The arXiv paper on checkpoint merging is not a description of the Dojo design. Models listed with Explore links but no explicit access shown, so product_live 0. Category low confidence."
+ },
+ {
+  "netuid": 53,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://engy.ai/docs",
+   "quote": "Point any OpenAI-compatible client at https://api.engy.ai/v1 with your API key."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://engy.ai/pricing",
+   "quote": "Per-token, pay as you go. No subscriptions and no minimums; you pay only for the tokens you use."
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "onchain",
+   "quote": "Verified inference for frontier open models."
+  },
+  "searched": [
+   "https://engy.ai",
+   "https://engy.ai/docs",
+   "https://engy.ai/pricing",
+   "https://engy.ai/login",
+   "README"
+  ],
+  "notes": "README links an SN53 one-pager and model specs, not a white paper."
+ },
+ {
+  "netuid": 54,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.yanez.ai",
+   "quote": "We are live,"
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "onchain",
+   "quote": "Yanez SN54 generates synthetic identities for challenging Yanez humanhood, presence, and uniqueness detection models."
+  },
+  "searched": [
+   "https://www.yanez.ai",
+   "README"
+  ],
+  "notes": "whitepaper 0: the repo file list has miner_api/api_white_paper.md and docs/*.pdf, but none can be quoted from a page and no page calls a document a white paper (README only links a roadmap PDF). product_live 1 on the 'We are live, sign up' text, although the form is labelled REQUEST ACCESS (could be read as a waitlist). Category alternative: Data & Database Construction."
+ },
+ {
+  "netuid": 55,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://niome.genomes.io",
+   "quote": "Read the Whitepaper"
+  },
+  "whitepaper_url": "https://niome.genomes.io/NIOME_Whitepaper_v1.1.pdf",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Data & Database Construction",
+   "url": "https://niome.genomes.io",
+   "quote": "NIOME develops AI-powered synthetic genomic data designed to preserve research-relevant patterns without relying on identifiable patient genomes."
+  },
+  "searched": [
+   "https://niome.genomes.io",
+   "https://blog.genomes.io",
+   "README"
+  ],
+  "notes": "Enterprise cohorts are scoped by contact only; API delivery option is announced but not documented; miner and validator docs marked coming soon."
+ },
+ {
+  "netuid": 56,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://www.gradients.io/",
+   "quote": "curl --request POST --url https://api.gradients.io/v1/tasks/create"
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.gradients.io/pricing",
+   "quote": "Competitive rates for model training. Pay for what you use, with no hidden fees."
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "https://www.gradients.io/",
+   "quote": "Tune any model, with any dataset, on demand."
+  },
+  "searched": [
+   "https://www.gradients.io/",
+   "https://www.gradients.io/app/research",
+   "https://www.gradients.io/app/api",
+   "https://www.gradients.io/team",
+   "https://www.gradients.io/platform",
+   "https://www.gradients.io/pricing",
+   "https://www.gradients.io/app/explore",
+   "https://www.gradients.io/app",
+   "https://www.gradients.io/login",
+   "README"
+  ],
+  "notes": "A 'Papers' link to /app/whitepapers is found on the research page, but only as a link label; the page and its content are not in the dossier, so whitepaper 0 (borderline). Team page is a sign-in page. The platform is marked alpha, with a pricing page and an API shown on the home page."
+ },
+ {
+  "netuid": 57,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 58,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 59,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 60,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "onchain",
+   "quote": "find and fix exploits in codebases"
+  },
+  "searched": [
+   "https://bitsec.ai",
+   "https://docs.bitsec.ai",
+   "README"
+  ],
+  "notes": "README Research link is the Bittensor white paper (coded 0). Home page markets a scanning service but shows no sign-up, API or access path. Category alternative: AI Agents & Automation."
+ },
+ {
+  "netuid": 61,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://www.theredteam.io/",
+   "quote": "Community PageWhitepaperGitHub"
+  },
+  "whitepaper_url": "https://cdn.prod.website-files.com/67531c85b03434359fffb2ab/6759b1263189b1af2416a6a8_RedTeam%20Whitepaper.pdf",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "onchain",
+   "quote": "a decentralized platform designed to drive innovation in cybersecurity through competitive programming challenges"
+  },
+  "searched": [
+   "https://www.theredteam.io/",
+   "https://docs.theredteam.io",
+   "https://dashboard.theredteam.io",
+   "README"
+  ],
+  "notes": "Whitepaper PDF is linked from the home page. No outsider API or product shown; the open-source solution library is aspirational. Innerworks is a company name only."
+ },
+ {
+  "netuid": 62,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://app.ridges.ai",
+   "quote": "10 credits included each month."
+  },
+  "category": {
+   "value": "AI Agents & Automation",
+   "url": "onchain",
+   "quote": "Software Engineering Agents"
+  },
+  "searched": [
+   "https://www.ridges.ai/",
+   "https://docs.ridges.ai",
+   "https://app.ridges.ai",
+   "README"
+  ],
+  "notes": "Owner repo list names ridgeline_mcp and ridges-api, but no page mentions MCP or an outside-facing API (README 'Python API' is the miner toolkit). Product is Ridgeline with paid credit plans."
+ },
+ {
+  "netuid": 63,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "README",
+   "quote": "Enigma turns critical security research into a transparent, competitive, and publicly verifiable process."
+  },
+  "searched": [
+   "https://www.qbittensorlabs.com/",
+   "https://www.qbittensorlabs.com/about",
+   "README"
+  ],
+  "notes": "Challenge solvers act as miners; no product for outside users shown. Category alternative: Scientific & Technical Problem Solving."
+ },
+ {
+  "netuid": 64,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "README",
+   "quote": "Once you are registered, you can create API keys that can be used with a simple \"Authorization\" header in your requests."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://chutes.ai",
+   "quote": "Powering Trillions of Tokens per Month, Chutes is the leading open-source, decentralized compute provider for deploying, scaling and running open-source models in production."
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "https://chutes.ai",
+   "quote": "High-performance AI Inference of top SOTA OSS Models, ephemeral jobs, batch processing jobs, and much more."
+  },
+  "searched": [
+   "https://chutes.ai",
+   "https://chutes.ai/docs/getting-started/quickstart",
+   "https://chutes.ai/docs",
+   "https://chutes.ai/api",
+   "https://chutes.ai/team",
+   "https://chutes.ai/pricing",
+   "https://chutes.ai/signup",
+   "https://chutes.ai/app/chute/chutes-moonshotai-kimi-k2-6-tee",
+   "https://chutes.ai/app/chute/chutes-zai-org-glm-5-2-tee",
+   "README"
+  ],
+  "notes": "Team page passage shown only lists handles and the first name Kyle (start of the page not shown); coded 0. On-chain text says serverless compute; coded as inference because the site's product is model inference and an OpenAI-style endpoint."
+ },
+ {
+  "netuid": 65,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://www.trueperformancenetwork.com/",
+   "quote": "Start miningRun a validatorLitepaper"
+  },
+  "whitepaper_url": "https://docsend.com/view/irz5wkbx5y4quarm",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.trueperformancenetwork.com/",
+   "quote": "The TPN Gateway is live: submit your first model"
+  },
+  "category": {
+   "value": "AI Optimization & Compression",
+   "url": "onchain",
+   "quote": "Distributed AI model compression & optimization engine"
+  },
+  "searched": [
+   "https://www.trueperformancenetwork.com/",
+   "https://stats.trueperformancenetwork.com/",
+   "README"
+  ],
+  "notes": "Litepaper (DocSend link) is offered in the footer. Gateway is described as live in beta, but pricing is 'coming soon' and the flow is quote/sales-led (product_live borderline). 'public competition API' is mentioned only as the data source of the stats page, not documented."
+ },
+ {
+  "netuid": 66,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Scientific & Technical Problem Solving",
+   "url": "onchain",
+   "quote": "Incentivizing breakthroughs on decades-old open mathematical conjectures"
+  },
+  "searched": [
+   "https://conjectures.io",
+   "https://conjectures.io/login",
+   "README"
+  ],
+  "notes": "Ambiguous. The paid proof-submission API and the sign-in/submit-a-proof site are described as miner-facing (solvers are the miners), so api_public and product_live coded 0. Named mathematicians on the home page are outside parties."
+ },
+ {
+  "netuid": 67,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://harnyx.ai/",
+   "quote": "Read https://harnyx.ai/skill.md and follow its instructions to use the Harnyx Research API."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Search & Knowledge Retrieval",
+   "url": "onchain",
+   "quote": "Deep research as a commodity."
+  },
+  "searched": [
+   "https://harnyx.ai/",
+   "https://console.harnyx.ai/?mode=sign_up",
+   "https://dashboard.harnyx.ai/",
+   "README"
+  ],
+  "notes": "api_public 1: home page shows the endpoint, API key header and skill.md. product_live 0: the main call to action is Join API waitlist; a console sign-up page exists but its use is not shown (could be read as 1). Category alternative: AI Agents & Automation."
+ },
+ {
+  "netuid": 68,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Scientific & Technical Problem Solving",
+   "url": "onchain",
+   "quote": "Accelerating drug discovery"
+  },
+  "searched": [
+   "https://www.metanova-labs.ai",
+   "README"
+  ],
+  "notes": "Only miner and validator instructions; the validator API key is obtained by DM to the team."
+ },
+ {
+  "netuid": 69,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.heraldmedia.ai",
+   "quote": "You only pay for verified, persistent coverage."
+  },
+  "category": {
+   "value": "Marketing, Sales & Commerce",
+   "url": "onchain",
+   "quote": "Incentivising Mainstream Media via PR Firms"
+  },
+  "searched": [
+   "https://www.heraldmedia.ai",
+   "https://www.heraldmedia.ai/docs",
+   "README"
+  ],
+  "notes": "product_live 1 is a judgment: clients can commission coverage and PR firms sign in to a console, but the site says Pilot and that payouts are not live yet (could be read as 0)."
+ },
+ {
+  "netuid": 70,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 71,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://leadpoet.com/docs",
+   "quote": "Find your connection with GET /api/outbound-webhook-destinations."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://leadpoet.com/about-us",
+   "quote": "Gavin Zaentz"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://leadpoet.com/pricing",
+   "quote": "1,000 credits / month"
+  },
+  "category": {
+   "value": "Marketing, Sales & Commerce",
+   "url": "onchain",
+   "quote": "Intent-driven AI for modern sales teams."
+  },
+  "searched": [
+   "https://leadpoet.com",
+   "https://leadpoet.com/docs",
+   "https://leadpoet.com/about-us",
+   "https://leadpoet.com/pricing",
+   "https://leadpoet.com/auth",
+   "README"
+  ],
+  "notes": "api_public 1 rests on the documented webhook-management endpoints for customers; the 'Lead API reference' is listed as Soon (borderline). The word whitepaper on the home page is only in a FAQ about intent."
+ },
+ {
+  "netuid": 72,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://docs.natix.network/whitepaper/",
+   "quote": "NATIX Network Whitepaper"
+  },
+  "whitepaper_url": "https://docs.natix.network/whitepaper/",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.natix.network/vx360-depin-dashcam",
+   "quote": "companion app is available on Android and iOS"
+  },
+  "category": {
+   "value": "Robotics & Physical AI",
+   "url": "onchain",
+   "quote": "StreetVision is advancing autonomous driving, Physical AI, and map-making."
+  },
+  "searched": [
+   "https://www.natix.network/?utm_source=bittensor",
+   "https://docs.natix.network/whitepaper/",
+   "https://docs.natix.network/whitepaper/market-entry-products",
+   "https://docs.natix.network/whitepaper/natix-network-ecosystem/privacy-compliant-metadata-mining",
+   "https://www.natix.network/vx360-depin-dashcam",
+   "https://staking.natix.network/?_gl=1*gkaumg*_gcl_au*MTQyNTIwNDgxNS4xNzcyNTI1Njg3LjIxMDE0MzE4MzcuMTc3NDk3MDkzMy4xNzc0OTcwOTMz",
+   "https://www.natix.network/use-cases",
+   "https://docs.natix.network/vx360",
+   "https://docs.natix.network/policies/privacy-policy-app",
+   "README"
+  ],
+  "notes": "Whitepaper is the NATIX Network whitepaper (project-level). The use-cases page mentions a data API only as marketing text, no documentation, so api_public 0. Product = VX360 device order and companion app. Category could also be Data & Database Construction."
+ },
+ {
+  "netuid": 73,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 74,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Agents & Automation",
+   "url": "onchain",
+   "quote": "autonomous software development"
+  },
+  "searched": [
+   "https://gittensor.io",
+   "https://docs.gittensor.io",
+   "README"
+  ],
+  "notes": "Ambiguous product_live: home page lists open-source projects built by the subnet (sparkinfer, spark-hermes, bittrellis) with activity stats but no explicit way to use or download them. Category from on-chain text; README describes human merged pull requests."
+ },
+ {
+  "netuid": 75,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.hippius.com",
+   "quote": "Management API, HCFS API, SDKs, and docs written for agents."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://hippius.com/",
+   "quote": "Use our intuitive console to pay using fiat or through the Bittensor network"
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, trust, and power."
+  },
+  "searched": [
+   "https://hippius.com/",
+   "https://docs.hippius.com",
+   "https://docs.hippius.com/blockchain/api",
+   "https://docs.hippius.com/learn/intro",
+   "https://hippius.com/why-hippius",
+   "https://hippius.com/product",
+   "https://hippius.com/pricing",
+   "https://hippius.com/desktop-app",
+   "https://hippius.com/mobile-app",
+   "README"
+  ],
+  "notes": ""
+ },
+ {
+  "netuid": 76,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://ormas.ai/docs",
+   "quote": "Prepare a task, authorize a maximum quote, and read the result receipt."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://ormas.ai",
+   "quote": "Add credits when you want to run. You are charged exactly the accepted quote; a miss costs nothing."
+  },
+  "category": {
+   "value": "AI Agents & Automation",
+   "url": "onchain",
+   "quote": "Clients post a change and the test that proves it; miners quote a firm price for the passing result and deliver a branch."
+  },
+  "searched": [
+   "https://ormas.ai",
+   "https://ormas.ai/docs",
+   "https://ormas.ai/docs/supported-tasks",
+   "https://ormas.ai/signup",
+   "README"
+  ],
+  "notes": "Alpha and US-only beta; signup page shows a waitlist for other regions and the on-chain text says in development, so product_live is ambiguous. Only the company Heron Cove LLC is named."
+ },
+ {
+  "netuid": 77,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "DeFi & Crypto Infrastructure",
+   "url": "onchain",
+   "quote": "Supply liquidity on external chains via uniswap, incentivize any project"
+  },
+  "searched": [
+   "https://sn77.xyz",
+   "README"
+  ],
+  "notes": "Site is a pool-voting and statistics view for token holders; README API serves the voting system and validators, so api_public 0 and product_live 0."
+ },
+ {
+  "netuid": 78,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "README",
+   "quote": "[Whitepaper](whitepaper/README.md) and [PDF](whitepaper/UMI-Whitepaper.pdf)"
+  },
+  "whitepaper_url": "whitepaper/UMI-Whitepaper.pdf",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.umi.vision",
+   "quote": "umi /signLanguage through motion.Live"
+  },
+  "category": {
+   "value": "Media & Voice AI",
+   "url": "README",
+   "quote": "UMI develops ASL-to-English translation"
+  },
+  "searched": [
+   "https://www.umi.vision",
+   "README"
+  ],
+  "notes": "whitepaper_url is the repo path shown in README and the file list (main repo https://github.com/Umi-BitSign/umi). api_public 0 (borderline): README lists a 'Public results API and pending round discovery' (competition results, for taking part), while the site marks umi /sdk and umi /api as Planned."
+ },
+ {
+  "netuid": 79,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://taos.im/about/",
+   "quote": "For more information about the theoretical underpinnings of the framework and its potential real-world applications, with current limitations, see our white paper."
+  },
+  "whitepaper_url": "https://simulate.trading/taos-im-paper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "onchain",
+   "quote": "Building a SOTA Exchange for dTAO and Beyond"
+  },
+  "searched": [
+   "https://taos.im",
+   "https://taos.im/about/",
+   "https://taos.im/features/",
+   "README"
+  ],
+  "notes": "README: tools for a localnet exchange only, mainnet exchange is a later release; dashboards are statistics. Category could also be DeFi & Crypto Infrastructure (exchange for alpha tokens)."
+ },
+ {
+  "netuid": 80,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Robotics & Physical AI",
+   "url": "onchain",
+   "quote": "An open competition on Bittensor for continuously improving robotics models and collecting egocentric data"
+  },
+  "searched": [
+   "https://www.openroboto.ai/",
+   "README"
+  ],
+  "notes": "Competition, leaderboard and miner CLI only; the read-only API contract and CLI are for participants. Factory deployment is a roadmap item."
+ },
+ {
+  "netuid": 81,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://www.reliqua.ai/paper",
+   "quote": "Draft protocol paper — v0.2 (2026-04-28)"
+  },
+  "whitepaper_url": "https://www.reliqua.ai/paper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "https://www.reliqua.ai/",
+   "quote": "Reliquary runs reinforcement-learning training on a decentralized network."
+  },
+  "searched": [
+   "https://www.reliqua.ai/",
+   "https://www.reliqua.ai/research",
+   "https://www.reliqua.ai/paper",
+   "https://www.reliqua.ai/dashboard",
+   "README"
+  ],
+  "notes": "Protocol paper is a draft by the team, coded as technical paper. A released model (Reliquary-4B) is mentioned but no user-facing service is shown; training workspace is labelled preview."
+ },
+ {
+  "netuid": 82,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 83,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Scientific & Technical Problem Solving",
+   "url": "onchain",
+   "quote": "CliqueAI - AI-Powered Maximum Clique Solver Network"
+  },
+  "searched": [
+   "https://cliqueai.toptensor.ai/",
+   "README"
+  ],
+  "notes": "only mechanism description and a miner scoreboard; no end-user product or interface shown."
+ },
+ {
+  "netuid": 84,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 85,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://vidaio.io/",
+   "quote": "Gareth Howells"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://vidaio.io/dashboard",
+   "quote": "Enter your details to continue using our video processing services"
+  },
+  "category": {
+   "value": "Media & Voice AI",
+   "url": "onchain",
+   "quote": "Next-Generation Video Processing Powered By AI"
+  },
+  "searched": [
+   "https://vidaio.io/",
+   "https://vidaio.io/dashboard",
+   "https://vidaio.io/dashboard/upscaling",
+   "https://vidaio.io/dashboard/compression",
+   "README"
+  ],
+  "notes": "API only as roadmap Phase 6 and an unanswered FAQ question, so api_public 0."
+ },
+ {
+  "netuid": 86,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 87,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://provenonce.ai",
+   "quote": "Whitepaper v0.7.2, Final Candidate."
+  },
+  "whitepaper_url": "https://provenonce.ai/sn87/whitepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://provenonce.ai/company",
+   "quote": "Will O'Brien"
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Cybersecurity, Authenticity & Verification",
+   "url": "onchain",
+   "quote": "verified execution of agentic workflows for enterprise, delivering Proof of Assurance"
+  },
+  "searched": [
+   "https://provenonce.ai",
+   "https://provenonce.ai/research",
+   "https://provenonce.ai/sn87/whitepaper",
+   "https://provenonce.ai/company"
+  ],
+  "notes": "api_public 0 (borderline): home page shows a 'REST API POST /api/execute' example and a CLI for the Oresund product but no reference, keys or sign-up. product_live 0: every call to action is 'Get a demo'; SN87 had one synthetic testnet cycle. Category could also be AI Agents & Automation."
+ },
+ {
+  "netuid": 88,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "README",
+   "quote": "launched in December 2025, a Tao/Alpha hedge fund powered by the subnet."
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "onchain",
+   "quote": "Decentralized AUM"
+  },
+  "searched": [
+   "https://Investing88.ai",
+   "https://db.investing88.ai",
+   "README"
+  ],
+  "notes": "product_live rests on the 88 Quant Fund launched Dec 2025 (moderate confidence: dossier does not show how outsiders invest; the frontend AUM app is still 'ongoing'). api.investing88.ai endpoints serve miners. The linked Subnet88.md overview is a repo doc, not called a white paper."
+ },
+ {
+  "netuid": 89,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "onchain",
+   "quote": "Proof of Edge - Trading signals"
+  },
+  "searched": [
+   "https://infinitequant.app",
+   "README"
+  ],
+  "notes": "Website snapshot is an antivirus block page; README covers the miner and validator protocol only."
+ },
+ {
+  "netuid": 90,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://kubetee.ai",
+   "quote": "served inside TEE-isolated pods and available to buyers on sayGM."
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "KubeTEE AI Factory: Confidential Computing TEE Multi-Cluster K8s"
+  },
+  "searched": [
+   "https://kubetee.ai",
+   "https://kubetee.ai/dashboard",
+   "README"
+  ],
+  "notes": "Jobs MCP Server appears in the README table of contents and agent-driven job deployment is listed under Coming on the home page, so coded 0 for mcp_server (ambiguous). Live product is confidential inference sold through sayGM (SN28). Home page says 'not a whitepaper'."
+ },
+ {
+  "netuid": 91,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "onchain",
+   "quote": "SOTA Time Series Foundation Models"
+  },
+  "searched": [
+   "https://dashboard.cascadesub.net/",
+   "https://dashboard.cascadesub.net/stakeholders.html",
+   "README"
+  ],
+  "notes": "Dashboard and README only. Subnet trains a foundation model by competition on synthetic data generators. Category alternative: Forecasting & Prediction."
+ },
+ {
+  "netuid": 92,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 93,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Marketing, Sales & Commerce",
+   "url": "https://bitcast.network/",
+   "quote": "A decentralized content marketing protocol on Bittensor. Creators are rewarded for content with verifiable brand attention."
+  },
+  "searched": [
+   "https://bitcast.network/",
+   "README"
+  ],
+  "notes": "The page is a protocol statistics dashboard (revenue and buyback figures); no brand-facing sign-up or service is shown. Creators are the miners."
+ },
+ {
+  "netuid": 94,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://cathedral.computer/",
+   "quote": "Plain HTTPS and JSON. Your agent reads the whole contract at /agents.md and gets its key from your approval, never from chat."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://cathedral.computer/docs/",
+   "quote": "You add prepaid credit at /account/, at least $1.24 to start a VM."
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "CPU sandboxes powering reinforcement learning on Bittensor."
+  },
+  "searched": [
+   "https://cathedral.computer/",
+   "https://cathedral.computer/docs/",
+   "README"
+  ],
+  "notes": "Sandbox API with OpenAPI description, keys and prepaid billing. llms.txt and agents.md are mentioned but no MCP server."
+ },
+ {
+  "netuid": 95,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://actual.inc/docs",
+   "quote": "Create an inference credential and make your first request to api.actual.inc"
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://actual.inc",
+   "quote": "Actual supports macOS, Linux, and Windows PCs."
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "onchain",
+   "quote": "Heterogeneous inference network by Actual Computer Inc."
+  },
+  "searched": [
+   "https://actual.inc",
+   "https://actual.inc/docs",
+   "https://actual.inc/company",
+   "https://actual.inc/login"
+  ],
+  "notes": "no README or main repository in the dossier."
+ },
+ {
+  "netuid": 96,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://verathos.ai/docs?page=proof-protocol",
+   "quote": "Proof Protocol Whitepaper"
+  },
+  "whitepaper_url": "https://verathos.ai/docs?page=proof-protocol",
+  "api_public": {
+   "value": 1,
+   "url": "https://verathos.ai/docs?page=api",
+   "quote": "The gateway is the OpenAI-compatible API endpoint."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://verathos.ai",
+   "quote": "OpenAI-compatible endpoint, per-million-token pricing set by the network, every response cryptographically receipted."
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "https://verathos.ai",
+   "quote": "Verified AI inference on Bittensor. Open models, one API, cryptographic receipts."
+  },
+  "searched": [
+   "https://verathos.ai",
+   "https://verathos.ai/docs",
+   "https://verathos.ai/docs?page=api",
+   "https://verathos.ai/docs?page=proof-protocol",
+   "https://verathos.ai/about",
+   "https://verathos.ai/dashboard",
+   "https://verathos.ai/models",
+   "README"
+  ],
+  "notes": "whitepaper 1 (borderline): the docs navigation item 'Proof Protocol Whitepaper' is an in-docs page (proof-protocol), no PDF; a strict 'only docs pages' reading would give 0."
+ },
+ {
+  "netuid": 97,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "https://us-east-1.hippius.com/albedo/index.html",
+   "quote": "dendriteholdings/albedo-qwen3.6-35b-king-CXXVIII"
+  },
+  "searched": [
+   "https://us-east-1.hippius.com/albedo/index.html"
+  ],
+  "notes": "Only a leaderboard/dashboard page; no README in dossier. 'Albedo agent' and 'King Chat' appear as labels only with no content shown, so product_live 0 (borderline). Category inferred from the fine-tuned model 'king' competition on coding benchmarks; the onchain description is vague."
+ },
+ {
+  "netuid": 98,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://neverplayalone.ai",
+   "quote": "Top up credits and pay only for usage."
+  },
+  "category": {
+   "value": "AI Agents & Automation",
+   "url": "onchain",
+   "quote": "Living AI Companions that create memories alongside you"
+  },
+  "searched": [
+   "https://neverplayalone.ai",
+   "README"
+  ],
+  "notes": "Home page is labelled early access, but it describes a console, prepaid credits and paid plans, so product_live 1 (borderline: could be read as waitlist). GenieAI is operator-only preview. recording.mcpr is a Minecraft replay file, not MCP."
+ },
+ {
+  "netuid": 99,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://www.thirtyspokes.ai/docs/mining",
+   "quote": "Your arm runs on your own OpenRouter key (whitepaper §4, D18)."
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://www.thirtyspokes.ai",
+   "quote": "base_url=\"https://api.thirtyspokes.ai/v1\""
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "https://www.thirtyspokes.ai/docs",
+   "quote": "Thirty Spokes is a decentralized model router on Bittensor"
+  },
+  "searched": [
+   "https://www.thirtyspokes.ai",
+   "https://www.thirtyspokes.ai/docs",
+   "https://www.thirtyspokes.ai/docs/bittensor",
+   "https://www.thirtyspokes.ai/docs/mining",
+   "https://www.thirtyspokes.ai/docs/findings",
+   "https://www.thirtyspokes.ai/dashboard"
+  ],
+  "notes": "Ambiguous. Docs state 'The user-facing gateway (api.thirtyspokes.ai) is not built', so product_live 0, while the OpenAI-compatible API is documented on the home page and in docs, so api_public 1 (borderline). Whitepaper is only cited in the docs ('whitepaper §4, D18') with no link in the dossier, so whitepaper_url is null."
+ },
+ {
+  "netuid": 100,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://network.cortex.foundation/whitepaper",
+   "quote": "Whitepaper · Cortex SN100"
+  },
+  "whitepaper_url": "https://network.cortex.foundation/whitepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "https://network.cortex.foundation",
+   "quote": "Train a better model and win a certified duel, or find a real bug an operator can reproduce."
+  },
+  "searched": [
+   "https://network.cortex.foundation",
+   "https://network.cortex.foundation/whitepaper",
+   "https://network.cortex.foundation/docs",
+   "README"
+  ],
+  "notes": "Category low confidence: OpenType (fine-tune models and win duels) vs Bounty (bug reports) vs autonomous research. All pages are miner-facing; gateway API is for validators."
+ },
+ {
+  "netuid": 101,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Data & Database Construction",
+   "url": "onchain",
+   "quote": "Tag101 is a Bittensor subnet for decentralized social post tagging"
+  },
+  "searched": [
+   "https://tag101.ai/",
+   "https://tag101.ai/signals",
+   "README"
+  ],
+  "notes": "Signals product page says Coming soon; Open Intelligence API is listed as Planned on the roadmap."
+ },
+ {
+  "netuid": 102,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://connito.ai/whitepaper",
+   "quote": "Whitepaper · v1"
+  },
+  "whitepaper_url": "https://connito.ai/whitepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://connito.ai/whitepaper",
+   "quote": "Isabella Liu @connito.ai·George Kim @connito.ai"
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "onchain",
+   "quote": "Contributors train specialized expert modules that are aggregated into powerful AI systems"
+  },
+  "searched": [
+   "https://connito.ai/",
+   "https://connito.ai/whitepaper",
+   "https://doc.connito.ai",
+   "https://connito.ai/blog/can-a-model-learn-new-skills-as-add-ons",
+   "https://dashboard.connito.ai",
+   "README"
+  ],
+  "notes": "Ambiguous product_live: free training slots work as a proposal and review queue (request-based); customer training platform and marketplace are roadmap steps. Authors have connito.ai email addresses."
+ },
+ {
+  "netuid": 103,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "README",
+   "quote": "Which combination of existing specialist adapters actually finishes a real business workflow"
+  },
+  "searched": [
+   "http://capcomp.ai/",
+   "README"
+  ],
+  "notes": "Home page snapshot is a Bitdefender block page with no site content. README only; read-only API is for the subnet operator. Category could also be AI Optimization & Compression."
+ },
+ {
+  "netuid": 104,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://taostatus.com/pricing",
+   "quote": "Every wallet gets one free analysis a week."
+  },
+  "category": {
+   "value": "AI Inference & Model Serving",
+   "url": "README",
+   "quote": "Taostatus is a Bittensor subnet that sources real, working LLM API access from"
+  },
+  "searched": [
+   "https://taostatus.com/",
+   "https://docs.taostatus.com/",
+   "https://taostatus.com/datasets",
+   "https://taostatus.com/pricing",
+   "README"
+  ],
+  "notes": "docs list the whitepaper and roadmap as Coming Soon (whitepaper 0). Category judged from the README (miners supply LLM API access); the on-chain text alone could suggest prediction or finance."
+ },
+ {
+  "netuid": 105,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://b1m.ai",
+   "quote": "Whitepaper"
+  },
+  "whitepaper_url": "https://b1m.ai/docs/BEAM_Whitepaper.pdf",
+  "api_public": {
+   "value": 1,
+   "url": "https://beamcore.b1m.ai/docs",
+   "quote": "BeamCore public HTTP API. Authenticated routes expect the x-api-key header unless the endpoint is public."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "Decentralized bandwidth. A global network. Powering the open internet."
+  },
+  "searched": [
+   "https://b1m.ai",
+   "https://beamcore.b1m.ai/guide",
+   "https://beamcore.b1m.ai/docs",
+   "README"
+  ],
+  "notes": "Whitepaper PDF is linked from the home page. api_public rests on the 'BeamCore Public API' Swagger page (borderline: the keys shown include orchestrator and worker keys). No customer sign-up or product page shown, so product_live 0. MCP servers appear only as a connector type and use case."
+ },
+ {
+  "netuid": 106,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://nodexo.ai/whitepaper",
+   "quote": "Nodexo: A Peer-to-Peer Market for Verified Compute"
+  },
+  "whitepaper_url": "https://nodexo.ai/whitepaper/nodexo-whitepaper.pdf",
+  "api_public": {
+   "value": 1,
+   "url": "https://nodexo.ai/docs",
+   "quote": "Public renters call the web API. The validator API is not the public renter interface."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://nodexo.ai",
+   "quote": "Free capacity can be selected immediately; in-use capacity remains visible with its current state."
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "onchain",
+   "quote": "tokenized ai compute"
+  },
+  "searched": [
+   "https://nodexo.ai",
+   "https://nodexo.ai/whitepaper",
+   "https://nodexo.ai/docs",
+   "https://nodexo.ai/dashboard",
+   "README"
+  ],
+  "notes": "whitepaper author is shown as Anonymous (team_named 0)."
+ },
+ {
+  "netuid": 107,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://theminos.ai/whitepaper",
+   "quote": "Decentralized Infrastructure for DNA Mutation Inference & Benchmarking: architecture, incentive mechanism, scoring, security properties, and the road ahead."
+  },
+  "whitepaper_url": "https://theminos.ai/Minos_overview_v1.1.pdf",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://mcp.theminos.ai/docs",
+   "quote": "Minos MCP is a read-only, public-safe Model Context Protocol server for the Minos"
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Scientific & Technical Problem Solving",
+   "url": "https://docs.theminos.ai",
+   "quote": "Minos is a decentralized genomic variant-calling network running on Bittensor Subnet 107."
+  },
+  "searched": [
+   "https://theminos.ai",
+   "https://theminos.ai/whitepaper",
+   "https://docs.theminos.ai",
+   "https://mcp.theminos.ai/docs",
+   "https://theminos.ai/about",
+   "README"
+  ],
+  "notes": "Whitepaper 'Minos Overview' v1.1, Feb 2026, 20 pages. The public keyless MCP server gives read-only subnet data (rounds, leaderboards, network health); coded product_live 0 and api_public 0 because that is subnet statistics (borderline), and the production roadmap is still ahead."
+ },
+ {
+  "netuid": 108,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://docs.chipforge.io/",
+   "quote": "White Paper"
+  },
+  "whitepaper_url": "https://docs.chipforge.io/",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Scientific & Technical Problem Solving",
+   "url": "onchain",
+   "quote": "ChipForge decentralizes silicon design."
+  },
+  "searched": [
+   "https://www.chipforge.io/",
+   "https://docs.chipforge.io/",
+   "README"
+  ],
+  "notes": "Docs site has a White Paper section with chapters. Docs nav shows API reference, but README places the Challenge Server API with miners and validators. Open-sourced RISC-V processor is a competition output, not a service, so product_live 0."
+ },
+ {
+  "netuid": 109,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://finsight.tech/",
+   "quote": "Basic is free and live today."
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "onchain",
+   "quote": "Finsight is a decentralized personal investment intelligence."
+  },
+  "searched": [
+   "https://finsight.tech/",
+   "https://app.finsight.tech"
+  ],
+  "notes": "Free Basic portfolio manager is live with log-in; the AI features are invite-gated. No team names and no repository in the dossier."
+ },
+ {
+  "netuid": 110,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://www.green-compute.com/enterprise",
+   "quote": "OpenAI-compatible chat completion API, streaming responses."
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://www.green-compute.com/about",
+   "quote": "Josh Riddett"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.green-compute.com/",
+   "quote": "Browse available hardware across our verified green facilities. Pay only for what you use, with no commitments."
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "https://www.green-compute.com/",
+   "quote": "Decentralized GPU compute on Bittensor"
+  },
+  "searched": [
+   "https://www.green-compute.com/",
+   "https://www.green-compute.com/models",
+   "https://www.green-compute.com/enterprise",
+   "https://www.green-compute.com/about",
+   "https://www.green-compute.com/login"
+  ],
+  "notes": "Founder and CEO Josh Riddett named; the two lead investors are excluded. Category could also be AI Inference & Model Serving (OpenAI-compatible inference)."
+ },
+ {
+  "netuid": 111,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://claims111.ai/whitepaper",
+   "quote": "White Paper v1 · August 2026 · 50 pages · Bittensor Subnet 111"
+  },
+  "whitepaper_url": "https://claims111.ai/whitepaper",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://claims111.ai",
+   "quote": "Philipp Koellinger"
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Data & Database Construction",
+   "url": "onchain",
+   "quote": "Turning scientific literature into a structured claim-evidence graph"
+  },
+  "searched": [
+   "https://claims111.ai",
+   "https://claims111.ai/papers",
+   "https://claims111.ai/whitepaper",
+   "https://dashboard.claims111.ai/",
+   "README"
+  ],
+  "notes": "Home page says answers come via API & MCP, but no outside-facing API reference, key or MCP server is shown; documented APIs in README are for validators and miners. No sign-up or usable app text shown, so product_live 0."
+ },
+ {
+  "netuid": 112,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 113,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "DeFi & Crypto Infrastructure",
+   "url": "onchain",
+   "quote": "pivoting to long-short DEX of alpha token"
+  },
+  "searched": [],
+  "notes": "no site or README; on-chain description only"
+ },
+ {
+  "netuid": 114,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://thesoma.ai/about",
+   "quote": "Point any OpenAI-compatible client at it with a SOMA key"
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://app.thesoma.ai",
+   "quote": "Sign-ups are open. Create one."
+  },
+  "category": {
+   "value": "AI Optimization & Compression",
+   "url": "onchain",
+   "quote": "Context compression layer delivered through MCP infrastructure"
+  },
+  "searched": [
+   "https://thesoma.ai",
+   "https://thesoma.ai/docs",
+   "https://thesoma.ai/contact",
+   "https://thesoma.ai/about",
+   "https://thesoma.ai/dashboard",
+   "https://app.thesoma.ai",
+   "README"
+  ],
+  "notes": "SOMA App is in open beta with sign-ups open and Somarizer live. The onchain description mentions MCP infrastructure, but no page, instruction or repo shows an MCP server (the product is an OpenAI-compatible proxy), so mcp_server 0 (borderline)."
+ },
+ {
+  "netuid": 115,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Media & Voice AI",
+   "url": "README",
+   "quote": "A distributed capability evolution network for AIGC creation and Agent workflows."
+  },
+  "searched": [
+   "README"
+  ],
+  "notes": "README only, no website. Product is described but no sign-up, app or download is shown. Category could also be AI Agents & Automation."
+ },
+ {
+  "netuid": 116,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Miscellaneous",
+   "url": null,
+   "quote": null
+  },
+  "searched": [],
+  "notes": "no material"
+ },
+ {
+  "netuid": 117,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://everyframe.studio/",
+   "quote": "Try it now in Video tools"
+  },
+  "category": {
+   "value": "Media & Voice AI",
+   "url": "https://everyframe.studio/",
+   "quote": "AI video, image and sound in one canvas"
+  },
+  "searched": [
+   "https://everyframe.studio/",
+   "README"
+  ],
+  "notes": "README is the miner CLI only (provider API keys are other projects' APIs). Home page shows an app with credits and plans."
+ },
+ {
+  "netuid": 118,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 1,
+   "url": "https://heyditto.ai/docs",
+   "quote": "mint API keys with scopes, publish it to the app store, and share per-app tryout links."
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://heyditto.ai/docs",
+   "quote": "Choose your MCP client and connect it to your Ditto memories with the right setup values and auth method."
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://heyditto.ai",
+   "quote": "First 30 messages free. No card required."
+  },
+  "category": {
+   "value": "AI Agents & Automation",
+   "url": "README",
+   "quote": "A Bittensor subnet that incentivizes agent memory harnesses."
+  },
+  "searched": [
+   "https://heyditto.ai",
+   "https://heyditto.ai/developers",
+   "https://heyditto.ai/docs",
+   "https://heyditto.ai/docs/memory-network",
+   "https://heyditto.ai/docs/voice",
+   "https://heyditto.ai/docs/connected-apps",
+   "https://heyditto.ai/docs/agent-accounts",
+   "https://heyditto.ai/docs/mcp-server",
+   "https://heyditto.ai/docs/app-permissions",
+   "README"
+  ],
+  "notes": ""
+ },
+ {
+  "netuid": 119,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Data & Database Construction",
+   "url": "README",
+   "quote": "an incentive network for discovering training-data improvements that make learning-oriented AI more accurate, clear, age-appropriate, and safe."
+  },
+  "searched": [
+   "README"
+  ],
+  "notes": "No site; README only (1722 characters). Category is borderline with AI Training & Model Improvement: miners output data patches, which are then tested by training."
+ },
+ {
+  "netuid": 120,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "README",
+   "quote": "Synchronous inference-verification training loop for Bittensor subnet120"
+  },
+  "searched": [
+   "https://www.affine.io",
+   "README"
+  ],
+  "notes": "Home page returned a 502 error; README is a miner pilot and architecture index. PDFs in the repository are vendored research assets, not project papers."
+ },
+ {
+  "netuid": 121,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 1,
+   "url": "https://www.sundaebar.ai/about",
+   "quote": "Jill Kenney"
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://www.sundaebar.ai/agent/photo-elevator",
+   "quote": "No studio booking. No photographer. No Photoshop. Just upload, enhance, and download."
+  },
+  "category": {
+   "value": "AI Agents & Automation",
+   "url": "https://www.sundaebar.ai/",
+   "quote": "Deploying AI Agents for Business"
+  },
+  "searched": [
+   "https://www.sundaebar.ai/",
+   "https://www.sundaebar.ai/agent/research-assistant",
+   "https://www.sundaebar.ai/about",
+   "https://www.sundaebar.ai/news/a-letter-from-the-ceo-putting-the-platform-to-work",
+   "https://www.sundaebar.ai/agent/photo-elevator",
+   "README"
+  ],
+  "notes": ""
+ },
+ {
+  "netuid": 122,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "DeFi & Crypto Infrastructure",
+   "url": "https://cookingtao.com/",
+   "quote": "CookingTAO provides the infrastructure you need to deploy, manage, and monetize miners across the Bittensor ecosystem."
+  },
+  "searched": [
+   "https://cookingtao.com/",
+   "README"
+  ],
+  "notes": "Home page calls to action are Join Waitlist and Read Docs, so product_live 0. README API is the validator backend. Incentive-mechanism draft PDF in the repo is not called a white paper. Category alternative: Compute, Storage & Network Infrastructure."
+ },
+ {
+  "netuid": 123,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "README",
+   "quote": "Full spec, math, and simulation evidence: the FLOW release paper (`FLOW_RELEASE.pdf`, published on the MANTIS site)."
+  },
+  "whitepaper_url": "FLOW_RELEASE.pdf",
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://mantis123.com",
+   "quote": "monetized through hourly auctions at mantis123.com."
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "https://mantis123.com",
+   "quote": "MANTIS (Bittensor subnet 123) is a decentralized signal marketplace: up to 256 miners submit"
+  },
+  "searched": [
+   "https://mantis123.com",
+   "README"
+  ],
+  "notes": "Paper is FLOW_RELEASE.pdf in the main repository (a release paper with spec, math and simulation evidence for the FLOW part, not literally called white paper). product_live rests on the sentence about hourly auctions; the page is otherwise a network console. Challenges forecast asset prices, hence Financial Markets."
+ },
+ {
+  "netuid": 124,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Robotics & Physical AI",
+   "url": "https://swarm124.com/",
+   "quote": "Swarm develops the software that powers autonomous machines."
+  },
+  "searched": [
+   "https://swarm124.com/",
+   "https://swarm124.com/our-products",
+   "README"
+  ],
+  "notes": "SDKs and APIs are mentioned only as part of an enterprise offering without documentation; partner deck is a pitch deck; products are contact-us services."
+ },
+ {
+  "netuid": 125,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "AI Training & Model Improvement",
+   "url": "onchain",
+   "quote": "Incentivizing the improvement of the algorithms behind a pretraining run"
+  },
+  "searched": [
+   "https://refinery125.com",
+   "https://refinery125.com/index.html",
+   "https://refinery125.com/research.html",
+   "https://refinery125.com/MINING_AGENTS_INFO.md",
+   "https://refinery125.com/dashboard.html",
+   "README"
+  ],
+  "notes": "Research thesis is a web page; all linked papers are by others. Dashboard is a leaderboard of submitted optimizers, not a product for outsiders."
+ },
+ {
+  "netuid": 126,
+  "whitepaper_available": {
+   "value": 1,
+   "url": "https://attelier.ai",
+   "quote": "Private beta. Read the whitepaper"
+  },
+  "whitepaper_url": "https://attelier.ai/landing/assets/lab/attelier-whitepaper-20260912-bb0a0fa3.pdf",
+  "api_public": {
+   "value": 1,
+   "url": "https://docs.attelier.ai/",
+   "quote": "One HTTP API and one key for every model, priced per result in credits: quote first, then run."
+  },
+  "mcp_server": {
+   "value": 1,
+   "url": "https://docs.attelier.ai/",
+   "quote": "Connect Claude Code, Codex or any MCP client to Attelier."
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://attelier.ai",
+   "quote": "The API and the apps are live today"
+  },
+  "category": {
+   "value": "Media & Voice AI",
+   "url": "onchain",
+   "quote": "Decentralized Generative Video Platform"
+  },
+  "searched": [
+   "https://attelier.ai",
+   "https://docs.attelier.ai/",
+   "https://app.attelier.ai/signin",
+   "https://app.attelier.ai/studio",
+   "https://app.attelier.ai/create/all",
+   "https://app.attelier.ai/templates",
+   "https://app.attelier.ai/pipelines"
+  ],
+  "notes": "product_live 1 (borderline): the site says API and apps are live today, but sign-in is by invited account in a private beta; a stricter reading would give 0."
+ },
+ {
+  "netuid": 127,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "category": {
+   "value": "Financial Markets & Investing",
+   "url": "https://astrid.global/",
+   "quote": "A battleground for Trading Agents to compete. Anyone can train a Trading Agent, put it to Battle and if your Agent places in the top 3, you are rewarded."
+  },
+  "searched": [
+   "https://astrid.global/",
+   "README"
+  ],
+  "notes": "README documents a public Arena API (GET /public/arena/completed-competitions) read by validators; coded 0 as validator and miner side, ambiguous. Arena is a competition for trading-agent developers (miners)."
+ },
+ {
+  "netuid": 128,
+  "whitepaper_available": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "whitepaper_url": null,
+  "api_public": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "mcp_server": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "team_named": {
+   "value": 0,
+   "url": null,
+   "quote": null
+  },
+  "product_live": {
+   "value": 1,
+   "url": "https://ByteLeap.ai",
+   "quote": "Scale your AI workloads with enterprise-grade NVIDIA GPUs. From RTX 3090 to B200, deploy in minutes with guaranteed performance."
+  },
+  "category": {
+   "value": "Compute, Storage & Network Infrastructure",
+   "url": "https://ByteLeap.ai",
+   "quote": "Enterprise GPU Computing Cloud"
+  },
+  "searched": [
+   "https://ByteLeap.ai",
+   "README"
+  ],
+  "notes": "GPU rental with listed prices and Rent GPU Now. README is miner-only; no names, no whitepaper, no API documentation."
+ }
+]

@@ -158,6 +158,18 @@ def decode_uint(raw, default=None):
     return int.from_bytes(bytes.fromhex(raw[2:]), "little")
 
 
+def decode_counters(raw_by_netuid):
+    """Per-subnet counters (for example AlphaBurned) as {netuid: integer or None}.
+
+    The chain creates a subnet's entry when the counter first moves, so a subnet without
+    an entry stands at zero. If no subnet has an entry, the runtime at that block may not
+    keep the counter at all, and every value is None.
+    """
+    if all(raw is None for raw in raw_by_netuid.values()):
+        return {n: None for n in raw_by_netuid}
+    return {n: decode_uint(raw, default=0) for n, raw in raw_by_netuid.items()}
+
+
 def decode_fixed(raw, frac_bits, default=None):
     """Unsigned fixed-point number (for example U96F32 -> frac_bits=32)."""
     if raw is None:
@@ -475,6 +487,10 @@ class Archive:
             if len(chunk) < page:
                 return out
             start = chunk[-1]
+
+    def head(self):
+        """Number of the latest block the node knows."""
+        return int(self._call("chain_getHeader", [])["number"], 16)
 
     def timestamp(self, block):
         """Block time as Unix seconds (Timestamp.Now is in milliseconds)."""

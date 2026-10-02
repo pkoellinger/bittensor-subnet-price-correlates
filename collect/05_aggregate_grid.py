@@ -7,7 +7,11 @@ is in snprice/aggregate.py.
 A sample is used for a subnet only if the subnet that occupies the netuid at T was
 already registered at that block, so values of a previous occupant never enter.
 
-Reads   data/chain/grid_wave<N>.csv, data/chain/blocks_wave<N>.csv,
+Burn and miner payments are taken only from blocks at which the subnet paid emissions and
+some UID held incentive. Before a subnet's first payout the chain stores a burn of 0 by
+default; that is not a measurement and is written as missing (see snprice/aggregate.py).
+
+Reads   data/chain/grid_wave<N>.csv, data/chain/blocks_wave<N>.csv, data/chain/roster_wave<N>.csv,
         data/intermediate/incentive_wave<N>.csv.gz
 Writes  data/intermediate/grid_agg_wave<N>.csv        one row per subnet
         data/intermediate/miner_shares_wave<N>.csv    wallet-level shares per subnet and window (not committed)
@@ -22,7 +26,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import paths  # noqa: E402
-from snprice.aggregate import window_summary  # noqa: E402
+from snprice.aggregate import emissions_paid_after, measured_blocks, window_summary  # noqa: E402
 from snprice.io import read_table, write_table  # noqa: E402
 from snprice.windows import sample_blocks  # noqa: E402
 
@@ -51,22 +55,28 @@ def main():
                 if b in blocks:
                     incentive[n][w].append(r)
 
-    out, share_rows = [], []
+    out, share_rows, burn_gaps, unmeasured = [], [], [], 0
     for n in sorted(roster):
         row = {"netuid": n}
+        first_emission = roster[n]["first_emission_block"]
+        paid_after = emissions_paid_after(int(first_emission) if first_emission else None, int(roster[n]["tempo"]))
+        measured = {w: measured_blocks(incentive[n][w], paid_after) for w in window_blocks}
         at_t = grid[n].get(T)
         at_lag = grid[n].get(lag_end)
         row["price_tao"] = float(at_t["price_tao"]) if at_t and at_t["price_tao"] else None
         row["price_tao_lag30"] = float(at_lag["price_tao"]) if at_lag and at_lag["price_tao"] else None
         row["logret_30d"] = (math.log(row["price_tao"] / row["price_tao_lag30"])
                              if row["price_tao"] and row["price_tao_lag30"] else None)
-        row["burn_now"] = float(at_t["miner_burned"]) if at_t else None
+        row["burn_now"] = float(at_t["miner_burned"]) if at_t and T in measured["30d"] else None
         row["reg_cost_tao_now"] = float(at_t["reg_cost_tao"]) if at_t and at_t["reg_cost_tao"] else None
 
         for w, blocks in window_blocks.items():
             samples = [grid[n][b] for b in sorted(blocks) if b in grid[n]]
             rows = incentive[n][w]
-            summary = window_summary(samples, rows, day_of)
+            summary = window_summary(samples, rows, day_of, paid_after)
+            unmeasured += sum(1 for s in samples if int(s["block"]) not in measured[w])
+            burn_gaps += [abs(float(s["miner_burned"]) - float(s["owner_incentive_share"])) for s in samples
+                          if int(s["block"]) in measured[w] and s["owner_incentive_share"]]
             shares = summary.pop("shares")
             for key, value in summary.items():
                 name = f"price_tao_avg{'30' if w == '30d' else '30_lag30'}" if key == "price_tao_avg" else f"{key}_{w}"
@@ -86,7 +96,7 @@ def main():
                                    "first_registered_block": first_reg.get(wallet),
                                    "ips": "|".join(sorted(ips[wallet]))})
 
-        now = [r for r in incentive[n]["30d"] if int(r["block"]) == T and r["owner"] != "1"]
+        now = [r for r in incentive[n]["30d"] if int(r["block"]) == T and r["owner"] != "1" and T in measured["30d"]]
         row["miners_active_now"] = len(now) if at_t else None
         out.append(row)
 
@@ -97,6 +107,12 @@ def main():
     print(f"wrote grid aggregates for {len(out)} subnets; {paid_any} paid at least one miner in the 30-day window")
     print(f"  wallets paid in the 30-day window: {sum(1 for s in share_rows if s['window'] == '30d')}, "
           f"of which at or above the {cfg['lineage_share_floor']:.1%} share floor: {traced}")
+    burn_gaps.sort()
+    print(f"  burn: {len(burn_gaps)} measured subnet-samples, {unmeasured} without a measurement (no payout yet, or "
+          f"no incentive); no burn at T: {[r['netuid'] for r in out if r['burn_now'] is None]}")
+    print(f"  check MinerBurned against the owner share of incentive attributed here: median difference "
+          f"{burn_gaps[len(burn_gaps) // 2]:.4f}, 95th percentile {burn_gaps[int(0.95 * len(burn_gaps))]:.4f}, "
+          f"99th {burn_gaps[int(0.99 * len(burn_gaps))]:.4f}, largest {burn_gaps[-1]:.4f}")
     probe = next(r for r in out if r["netuid"] == 111)
     print("  SN111:", {k: (round(v, 4) if isinstance(v, float) else v) for k, v in probe.items()
                        if k in ("price_tao", "price_tao_avg30", "burn_mean_30d", "miners_paid_coldkeys_30d",

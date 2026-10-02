@@ -1,6 +1,6 @@
 import unittest
 
-from snprice.windows import bounds, sample_blocks
+from snprice.windows import bounds, emitting_blocks, sample_blocks
 
 CFG = {"t_block": 9184186, "grid_blocks": 900, "blocks_per_day": 7200, "window_days": 30, "lag_days": 30}
 T = CFG["t_block"]
@@ -39,6 +39,26 @@ class WindowsTest(unittest.TestCase):
     def test_unknown_window_name(self):
         with self.assertRaises(ValueError):
             sample_blocks(CFG, "future")
+
+
+class EmittingBlocksTest(unittest.TestCase):
+    """Blocks of a window (lo, hi] in which a subnet emitted alpha."""
+
+    def test_subnet_that_emitted_since_before_the_window(self):
+        self.assertEqual(emitting_blocks(1000, 2000, first_emission=500), 1000)
+
+    def test_emissions_that_started_inside_the_window_count_from_their_first_block(self):
+        self.assertEqual(emitting_blocks(1000, 2000, first_emission=1901), 100)
+        self.assertEqual(emitting_blocks(1000, 2000, first_emission=2000), 1)
+
+    def test_first_block_of_the_window(self):
+        self.assertEqual(emitting_blocks(1000, 2000, first_emission=1001), 1000)
+
+    def test_emissions_that_started_after_the_window(self):
+        self.assertEqual(emitting_blocks(1000, 2000, first_emission=2001), 0)
+
+    def test_subnet_that_has_not_started_emissions(self):
+        self.assertEqual(emitting_blocks(1000, 2000, first_emission=None), 0)
 
 
 if __name__ == "__main__":

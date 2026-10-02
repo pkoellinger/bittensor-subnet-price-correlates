@@ -65,11 +65,11 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 14,latent-to/optima-docs,0,0,0,4,
 14,latent-to/aio-substrate-interface,0,2,13,55,
 14,latent-to/TAOApp-specs,0,3,0,3,
-15,ORO-AI/oro,1,72,24,123,9eb8525194ccb320733efa2eeada77026c637540
+15,ORO-AI/oro,1,73,23,123,9eb8525194ccb320733efa2eeada77026c637540
 15,ORO-AI/bittensor-auth,0,0,2,2,
 17,404-Repo/gateway-rs,0,0,0,1,
 17,404-Repo/404-gen-subnet,1,1,2,6,c4dc2262c8d95b2630131a2f9e7d56ed089d3fdf
-17,404-Repo/404-active-competition,0,1884,945,4567,
+17,404-Repo/404-active-competition,0,1894,935,4567,
 17,404-Repo/404-raman-test,0,0,0,3,
 17,404-Repo/gta-racer-demo,0,0,2,2,
 17,404-Repo/404-game-recipe,0,12,26,38,
@@ -113,8 +113,8 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 23,TrishoolAI/trishool-ai-docs,0,0,1,1,
 24,SILX-LABS/Orion,0,0,0,21,
 24,SILX-LABS/QUASAR-SUBNET,1,0,0,0,f95c1a995c1ef559ae365fc5ea518c11faf2110f
-25,urfoundation/sn,1,1457,58,1535,71cd446f3346d86ff8cdbb76c88ae52898161b56
-25,urfoundation/meso-miner,0,0,576,929,
+25,urfoundation/sn,1,1459,56,1535,71cd446f3346d86ff8cdbb76c88ae52898161b56
+25,urfoundation/meso-miner,0,0,580,929,
 26,0xsigurd/Perturb,1,12,11,56,d3bb64ee9c554da6c0d005da9172f1b53b8fef8a
 27,SILX-LABS/Orion,1,0,0,21,66196badf1878694b04d6048e1c4728261f79830
 28,taostat/taostats-docs,0,0,5,6,
@@ -153,7 +153,7 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 44,score-technologies/score-studio-cursor-plugin,0,0,5,5,
 44,score-technologies/score-studio-agent-plugins,0,0,6,6,
 45,Team-Rizzo/alpharidge-ai,1,72,20,113,f61d16bbfa3d190478f72543f1138a647afb6ab5
-45,Team-Rizzo/alpharidge-ai-api,0,20,4,36,
+45,Team-Rizzo/alpharidge-ai-api,0,20,4,38,
 46,Subnet46/sn46-validator,1,22,0,22,5b4ce6fff8c9e243f7e9da5763c4cd471a7c71e7
 46,Subnet46/sn46-miner-releases,0,3,0,3,
 47,forgenet47/gpuforge,1,23,0,23,7f9e0a7de8157f9147f2b28529e091a5ded51815
@@ -223,7 +223,7 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 66,conjectures-io/conjectures-validator,1,108,210,344,d24e86cab809e69d388417b9114ce8d34a2256fc
 66,conjectures-io/conjectures-tasks,0,18,34,59,
 66,conjectures-io/conjectures-miner,0,2,26,28,
-66,conjectures-io/conjectures-contribution,0,193,34,227,
+66,conjectures-io/conjectures-contribution,0,195,32,227,
 66,conjectures-io/conjectures-optimisation-deflate,0,117,0,117,
 66,conjectures-io/conjectures-compression-corpus-1,0,3,0,3,
 67,harnyx/harnyx,1,81,132,369,a8fd4998d0aadda1e5099faeaacba9948a8de6b5
@@ -231,7 +231,7 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 68,metanova-labs/nova-blueprint,0,31,7,49,
 68,metanova-labs/nova-oracle,0,1,0,1,
 69,HeraldMedia/herald,1,55,0,77,a336b04ae224a87c646eb5f9e504824451055b2c
-71,leadpoet/leadpoet,1,2106,1143,4303,3b6f1d7c6c4b87b5e57637bfec6dcdc13bc544cc
+71,leadpoet/leadpoet,1,2107,1146,4307,3b6f1d7c6c4b87b5e57637bfec6dcdc13bc544cc
 72,natixnetwork/streetvision-subnet,1,0,0,0,5d0756bfb5c827929b02d66446b261fcb14c063a
 74,entrius/gittensor,1,55,52,150,5cdf813cdec7096d4b22df290630c8dc0cf050ae
 75,thenervelab/hippius-doc,0,45,9,58,
@@ -263,7 +263,7 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 80,openroboto-ai/openroboto-cli,0,25,90,123,
 80,openroboto-ai/jev-robot-control,0,1,0,1,
 80,openroboto-ai/axis-task-selector,0,2,0,2,
-81,reliquadotai/reliquary,1,575,254,1212,34f76bcc2b2205095433ddcf9fdd2340d5ac9483
+81,reliquadotai/reliquary,1,583,246,1212,34f76bcc2b2205095433ddcf9fdd2340d5ac9483
 81,reliquadotai/.github,0,0,0,1,
 81,reliquadotai/reliquary-fleet,0,0,2,6,
 81,reliquadotai/reliquary-environments,0,54,0,54,
@@ -279,7 +279,7 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 91,TensorLink-AI/cascade,1,320,213,919,a9e427de069633de1e20bb53438c51a733d5bbc3
 91,TensorLink-AI/Gnomon,0,136,719,934,
 91,TensorLink-AI/AionBench,0,0,0,3,
-91,TensorLink-AI/cascade-miner,0,0,23,40,
+91,TensorLink-AI/cascade-miner,0,0,24,40,
 93,bitcast-network/bitcast,1,8,1,16,e27397ed0a10402d0a14e6ae8a327802fcee8c43
 93,bitcast-network/bitcast-x,0,11,25,45,
 93,bitcast-network/brand-assets,0,2,0,2,
@@ -333,7 +333,7 @@ netuid,repo,is_listed_repo,commits_30d,commits_lag30,commits_90d,head_sha_at_t
 118,ditto-assistant/ditto-harness,0,2,1,12,
 118,ditto-assistant/dittobench-starter-kit,0,0,5,38,
 118,ditto-assistant/dittobench-api,0,0,24,203,
-118,ditto-assistant/ditto-platform,0,0,46,604,
+118,ditto-assistant/ditto-platform,0,0,47,604,
 118,ditto-assistant/dittobench-datagen,0,0,1,73,
 118,ditto-assistant/ditto-screener,0,0,10,150,
 118,ditto-assistant/google-messages-bridge,0,2,2,4,

@@ -1,0 +1,162 @@
+name,label,type,unit,window,role,asof,source,script,price_link,notes
+netuid,Subnet number,integer,,,id,T,chain,collect/00_snapshot.py,,
+subnet_uid,Subnet number and registration block (panel key),text,,,id,T,chain,collect/00_snapshot.py,,A netuid is reused after a subnet is deregistered. The registration block tells its occupants apart.
+wave,Collection wave,integer,,,id,T,config/snapshot.json,build/build_dataset.py,,
+snapshot_date,Date of the snapshot block T (UTC),date,,,id,T,config/snapshot.json,build/build_dataset.py,,
+subnet_name,Name in the on-chain identity,text,,,id,T,chain,collect/00_snapshot.py,,
+team_id,Team: lowest netuid among the subnets of the same team,text,,,id,collection,links table,build/build_dataset.py,,"Subnets that share the GitHub owner, website domain, contact e-mail domain or X account. Keep a team's subnets in the same cross-validation fold."
+team_n_subnets,Subnets run by the same team,integer,subnets,,feature,collection,links table,build/build_dataset.py,none known,
+flag_placeholder_identity,"On-chain identity is a placeholder (blank, for sale, parked, deprecated, unknown)",binary,,,flag,T,chain,collect/00_snapshot.py,,
+flag_registered_in_window,Subnet was registered inside the 30-day window,binary,,,flag,T,chain,collect/00_snapshot.py,,
+window_days_observed_30d,Days of the 30-day window on which the subnet existed,integer,days,30d,flag,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,
+startup_mode,Subnet has not yet started emissions,binary,,,flag,T,chain,collect/02_chain_state.py,,"No first emission block on chain at T. Nothing is emitted, nobody is paid, and burn, owner cut and dividend shares are missing."
+flag_full_burn_30d,Miner burn was 100% in every measured sample of the window,binary,,30d,flag,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,0 if the subnet paid no emissions in the window (see startup_mode).
+flag_no_miner_paid_30d,No miner was paid in the window,binary,,30d,flag,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,Covers full burn and subnets that have not started emissions.
+price_tao,Alpha price in TAO at T,number,TAO per alpha,,outcome,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,Pool reserves SubnetTAO / SubnetAlphaIn at block T.
+price_usd,Alpha price in US dollars at T,number,USD per alpha,,outcome,T,chain; Taostats,build/build_dataset.py,,price_tao x tao_usd.
+tao_usd,TAO price in US dollars at T (same for all subnets),number,USD per TAO,,outcome,T,Taostats,collect/18_tao_usd.py,,
+price_tao_avg30,Mean alpha price in TAO over the window,number,TAO per alpha,30d,outcome,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,Mean of the samples taken every 900 blocks (240 samples in 30 days).
+price_tao_lag30,Alpha price in TAO 30 days before T,number,TAO per alpha,,outcome,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,Missing if the subnet was registered later.
+price_tao_avg30_lag30,Mean alpha price in TAO over the lagged window,number,TAO per alpha,lag30,outcome,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,
+logret_30d,Log change of the alpha price in TAO over the window,number,log points,30d,outcome,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,ln(price_tao / price_tao_lag30).
+burn_now,Share of miner emission burned at T,number,share 0-1,,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,enters the emission gate together with the price,"Chain value MinerBurned. Missing in startup mode, where the chain stores 0 by default: no emission is paid, so there is nothing to burn."
+burn_mean_30d,Mean share of miner emission burned,number,share 0-1,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,enters the emission gate together with the price,"Chain value MinerBurned at the samples where it is a measurement: the subnet has paid emissions and some UID holds incentive. Elsewhere the chain stores 0 by default, which is not a burn of zero. Missing if the window has no such sample."
+burn_time_share_ge50_30d,Share of the window with at least half of miner emission burned,number,share 0-1,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,enters the emission gate together with the price,Same samples as burn_mean_30d.
+burn_mean_lag30,"Mean share of miner emission burned, lagged window",number,share 0-1,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,As burn_mean_30d.
+burn_time_share_ge50_lag30,Share of the lagged window with at least half of miner emission burned,number,share 0-1,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,As burn_mean_30d.
+miners_paid_hotkeys_30d,Miner hotkeys that were paid,integer,hotkeys,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,Non-owner UIDs with incentive above zero; samples every 900 blocks. Incentive held before the subnet's first payout pays nobody and does not count.
+miners_paid_coldkeys_30d,Miner wallets (coldkeys) that were paid,integer,wallets,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,Non-owner UIDs with incentive above zero; samples every 900 blocks. Incentive held before the subnet's first payout pays nobody and does not count.
+miner_paid_days_30d,Days on which at least one miner was paid,integer,days,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+miner_hhi_coldkey_30d,Concentration of miner pay across wallets (Herfindahl index),number,index 0-1,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,A wallet's share is its incentive summed over the window divided by all incentive paid to miners. Missing if nobody was paid.
+miner_top1_share_30d,Share of miner pay earned by the largest wallet,number,share 0-1,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+miners_ip_coverage_30d,Share of paid hotkeys that publish an IP address,number,share 0-1,30d,quality,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,,
+miners_distinct_ips_30d,Distinct IP addresses of paid miners,integer,addresses,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,Reported only if at least half of the paid hotkeys publish an address; otherwise missing.
+miners_paid_hotkeys_lag30,"Miner hotkeys that were paid, lagged window",integer,hotkeys,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+miners_paid_coldkeys_lag30,"Miner wallets that were paid, lagged window",integer,wallets,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+miner_paid_days_lag30,"Days on which at least one miner was paid, lagged window",integer,days,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+miner_hhi_coldkey_lag30,"Concentration of miner pay across wallets, lagged window",number,index 0-1,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+miner_top1_share_lag30,"Share of miner pay earned by the largest wallet, lagged window",number,share 0-1,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+miners_lineage_clusters_lb_30d,"Independent miner operators, lower bound",integer,operators,30d,feature,T,chain; Taostats transfers,collect/06_lineage.py,none known,"Wallets are merged when the same address paid at least 20% of the registration cost before they registered. Lower bound: any shared funder merges, exchanges included."
+miners_lineage_clusters_best_30d,"Independent miner operators, best estimate",integer,operators,30d,feature,T,chain; Taostats transfers,collect/06_lineage.py,none known,"As the lower bound, but funders with more than 1,500 transfers (exchanges) do not merge wallets, while a shared IP address or a batch withdrawal does."
+miner_hhi_lineage_best_30d,"Concentration of miner pay across operators, best estimate",number,index 0-1,30d,feature,T,chain; Taostats transfers,collect/06_lineage.py,none known,
+owner_linked_incentive_share_30d,Share of miner pay earned by wallets that exchanged TAO with the subnet owner,number,share 0-1,30d,feature,T,chain; Taostats transfers,collect/06_lineage.py,none known,
+miners_unattrib_share_30d,Share of miner pay whose operator cannot be told (funded from exchanges only),number,share 0-1,30d,quality,T,chain; Taostats transfers,collect/06_lineage.py,,
+lineage_untraced_share_30d,Share of miner pay earned by wallets too small to be traced,number,share 0-1,30d,quality,T,chain; Taostats transfers,collect/06_lineage.py,,
+miners_active_now,Miners with incentive above zero at T,integer,UIDs,,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,Non-owner UIDs with incentive above zero at T; 0 in startup mode.
+uids_registered_now,Registered UIDs at T,integer,UIDs,,feature,T,chain,collect/02_chain_state.py,none known,
+uids_immune_share_now,Share of UIDs still in their immunity period at T,number,share 0-1,,feature,T,chain,collect/02_chain_state.py,none known,
+gh_status,"GitHub repository: found, owner_only (owner page listed, main repository chosen by rule), not_listed, dead",category,,,flag,collection,chain identity; Taostats; GitHub,collect/10_links.py,,
+gh_commits_30d_repo,Commits to the main repository,integer,commits,30d,feature,T,GitHub,collect/11_github.py,none known,"Default branch, by committer date."
+gh_commits_30d_org,Commits to all public repositories of the owner,integer,commits,30d,feature,T,GitHub,collect/11_github.py,none known,Organisation: all public non-fork repositories pushed in the last 90 days. Personal account: the main repository only.
+gh_authors_30d_org,Distinct commit authors,integer,people,30d,feature,T,GitHub,collect/11_github.py,none known,
+gh_prs_merged_30d_org,Merged pull requests,integer,pull requests,30d,feature,T,GitHub,collect/11_github.py,none known,
+gh_active_days_30d_org,Days with at least one commit,integer,days,30d,feature,T,GitHub,collect/11_github.py,none known,Less sensitive to commit spam than the commit count.
+gh_commits_lag30_repo,"Commits to the main repository, lagged window",integer,commits,lag30,feature_lag,T-30d,GitHub,collect/11_github.py,none known,
+gh_commits_lag30_org,"Commits to all public repositories of the owner, lagged window",integer,commits,lag30,feature_lag,T-30d,GitHub,collect/11_github.py,none known,
+gh_authors_lag30_org,"Distinct commit authors, lagged window",integer,people,lag30,feature_lag,T-30d,GitHub,collect/11_github.py,none known,
+gh_prs_merged_lag30_org,"Merged pull requests, lagged window",integer,pull requests,lag30,feature_lag,T-30d,GitHub,collect/11_github.py,none known,
+gh_active_days_lag30_org,"Days with at least one commit, lagged window",integer,days,lag30,feature_lag,T-30d,GitHub,collect/11_github.py,none known,
+gh_authors_90d_org,Distinct commit authors in 90 days,integer,people,90d,feature,T,GitHub,collect/11_github.py,none known,
+gh_contributors_alltime_repo,"Contributors to the main repository, all time",integer,people,,feature,collection,GitHub,collect/11_github.py,none known,
+gh_stars_repo,Stars of the main repository,integer,stars,,feature,collection,GitHub,collect/11_github.py,likely two-way,
+gh_forks_repo,Forks of the main repository,integer,forks,,feature,collection,GitHub,collect/11_github.py,likely two-way,
+gh_stars_org,Stars of all public repositories of the owner,integer,stars,,feature,collection,GitHub,collect/11_github.py,likely two-way,
+gh_repo_age_days,Age of the main repository at T,number,days,,feature,T,GitHub,collect/11_github.py,none known,
+gh_days_since_push,Days from the last commit before T to T,number,days,,feature,T,GitHub,collect/11_github.py,none known,
+gh_releases_repo,Releases of the main repository,integer,releases,,feature,collection,GitHub,collect/11_github.py,none known,
+doc_readme,Repository has a README,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_license,Repository has a licence,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_contributing,Repository has a contributing guide,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_miner_guide,Repository documents how to mine,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_validator_guide,Repository documents how to validate,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_incentive_desc,Repository describes the incentive mechanism,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_requirements,Repository states hardware requirements,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_site,Project has a documentation site,binary,,,feature,collection,GitHub,collect/11_github.py,none known,"Fixed rules on the community profile, the file tree and README headings (snprice/github.py)."
+doc_score,Number of the eight documentation items present,integer,items 0-8,,feature,collection,GitHub,collect/11_github.py,none known,
+website_status,"Website: live, live_no_text, parked, blocked, replaced_by_security_software, dead, not_listed",category,,,flag,collection,website,collect/12_web.py,,
+website_live,Subnet has a working website,binary,,,feature,collection,website,collect/12_web.py,none known,"1 for live and live_no_text; missing where the site could not be judged; 0 otherwise, including no site found."
+whitepaper_available,"Project offers a white paper, litepaper or own technical paper",binary,,,feature,collection,website; README,collect/12b_dossiers.py; build/verify_evidence.py,none known,Two independent coders read the saved pages; every yes quotes the page; disagreements settled by a third reading (config/coding_protocol.md).
+wp_pages,Pages of the white paper,integer,pages,,feature,collection,white paper,collect/12e_whitepapers.py,none known,"PDF documents only; missing for web pages and Markdown files. Missing if there is no white paper or it could not be read (login gate, encrypted viewer)."
+wp_references,White paper has a list of references,binary,,,feature,collection,white paper,collect/12e_whitepapers.py,none known,"A heading References or Bibliography (snprice.whitepaper.has_reference_list). Missing if there is no white paper or it could not be read (login gate, encrypted viewer)."
+wp_named_authors,White paper names at least one person as author,binary,,,feature,collection,white paper,collect/12e_whitepapers.py; build/whitepaper_features.py,none known,"Two independent coders, from the first 1,500 characters. Missing if there is no white paper or it could not be read (login gate, encrypted viewer)."
+wp_formal_mechanism,White paper states a rule of the mechanism as a formula,binary,,,feature,collection,white paper,collect/12e_whitepapers.py; build/whitepaper_features.py,none known,"Two independent coders, from the lines that look like formulas. Missing if there is no white paper or it could not be read (login gate, encrypted viewer)."
+api_public,Project documents an API or SDK that outsiders can call,binary,,,feature,collection,website; README,collect/12b_dossiers.py; build/verify_evidence.py,none known,Two independent coders read the saved pages; every yes quotes the page; disagreements settled by a third reading (config/coding_protocol.md).
+mcp_server,Project offers an MCP server for its product or data,binary,,,feature,collection,website; README,collect/12b_dossiers.py; build/verify_evidence.py,none known,Two independent coders read the saved pages; every yes quotes the page; disagreements settled by a third reading (config/coding_protocol.md).
+team_named,At least one team member is named with first and last name,binary,,,feature,collection,website; README,collect/12b_dossiers.py; build/verify_evidence.py,none known,Two independent coders read the saved pages; every yes quotes the page; disagreements settled by a third reading (config/coding_protocol.md).
+product_live,An outsider can use a product or service today,binary,,,feature,collection,website; README,collect/12b_dossiers.py; build/verify_evidence.py,none known,Two independent coders read the saved pages; every yes quotes the page; disagreements settled by a third reading (config/coding_protocol.md).
+category,Product category (16 categories),category,,,feature,collection,Subnet catalog of 20 Aug 2026; website; README,collect/12b_dossiers.py; build/verify_evidence.py,none known,config/category_codebook.md. First coder is the catalog where the subnet kept its name; second coder reads the dossier.
+category8,Product category collapsed to 8 groups,category,,,feature,collection,derived from category,build/verify_evidence.py,none known,Grouping fixed on 2 Oct 2026 before prices were compared across categories.
+x_status,"X account: found, dead (handle listed but account gone), not_listed",category,,,flag,collection,chain identity; Taostats; GitHub; website; X,collect/10_links.py; collect/13_x_accounts.py,,
+x_followers,Followers of the subnet's X account,integer,accounts,,feature,collection,X,collect/13_x_accounts.py,likely two-way,
+x_account_age_days,Age of the subnet's X account at T,number,days,,feature,T,X,collect/13_x_accounts.py,none known,
+x_posts_30d,Posts by the subnet's X account (reposts excluded),integer,posts,30d,feature,T,X,collect/13_x_accounts.py,likely two-way,Daily counts from the archive count endpoint; day boundaries are UTC midnight.
+x_posts_original_30d,Original posts by the subnet's X account (reposts and replies excluded),integer,posts,30d,feature,T,X,collect/13_x_accounts.py,likely two-way,
+x_posts_lag30,"Posts by the subnet's X account, lagged window",integer,posts,lag30,feature_lag,T-30d,X,collect/13_x_accounts.py,none known,
+x_posts_original_lag30,"Original posts by the subnet's X account, lagged window",integer,posts,lag30,feature_lag,T-30d,X,collect/13_x_accounts.py,none known,
+days_since_registration,Days since the subnet was registered,number,days,,feature,T,chain,collect/03_history_events.py,none known,
+days_since_first_emission,Days since the subnet first received emissions,number,days,,feature,T,chain,collect/00_snapshot.py; collect/03_history_events.py,none known,Missing in startup mode.
+days_since_owner_change,Days since the owner key last changed,number,days,,feature,T,"Taostats owner history, checked on chain",collect/03_history_events.py,none known,Missing if the owner key never changed. A change can be a wallet migration by the same team.
+days_since_identity_change,"Days since the name, GitHub owner or website last changed",number,days,,feature,T,Taostats identity history,collect/03_history_events.py,none known,Missing if none changed. Extensions of a name and moves within a domain do not count.
+project_age_days,Days since the current project took over the subnet,number,days,,feature,T,chain; Taostats identity history,collect/03_history_events.py,none known,Counted from the later of registration and the latest rename that came with another GitHub owner (snprice.events.project_start).
+owner_buy_tao_30d,TAO the owner spent buying its own alpha,number,TAO,30d,feature,T,Taostats delegation events,collect/08_owner_trades.py,mechanical (flow): a purchase through the pool raises the price in the same window,
+owner_sell_tao_30d,TAO the owner received selling its own alpha,number,TAO,30d,feature,T,Taostats delegation events,collect/08_owner_trades.py,mechanical (flow): a purchase through the pool raises the price in the same window,
+owner_net_buy_tao_30d,Owner's net purchases of its own alpha,number,TAO,30d,feature,T,Taostats delegation events,collect/08_owner_trades.py,mechanical (flow): a purchase through the pool raises the price in the same window,Transfers dropped; moves between validators netted out.
+owner_cut_sold_ratio_30d,Alpha sold by the owner relative to the owner cut it received,number,ratio,30d,feature,T,Taostats delegation events; chain,collect/08_owner_trades.py,mechanical (flow): a purchase through the pool raises the price in the same window,"Can exceed 1. The owner cut is 18% of the subnet's alpha emission, counted from the first emission block. Missing if no owner cut was received."
+owner_net_buy_tao_lag30,"Owner's net purchases of its own alpha, lagged window",number,TAO,lag30,feature_lag,T-30d,Taostats delegation events,collect/08_owner_trades.py,none known,
+owner_cut_sold_ratio_lag30,"Alpha sold by the owner relative to its owner cut, lagged window",number,ratio,lag30,feature_lag,T-30d,Taostats delegation events; chain,collect/08_owner_trades.py,none known,As owner_cut_sold_ratio_30d.
+owner_net_buy_tao_90d,Owner's net purchases of its own alpha in 90 days,number,TAO,90d,feature,T,Taostats delegation events,collect/08_owner_trades.py,mechanical (flow): a purchase through the pool raises the price in the same window,
+owner_bought_any_90d,Owner bought its own alpha at least once in 90 days,binary,,90d,feature,T,Taostats delegation events,collect/08_owner_trades.py,mechanical (flow): a purchase through the pool raises the price in the same window,
+tao_emission_on_share_30d,Share of the window in which the subnet received TAO emissions,number,share 0-1,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,mechanical (gate): TAO is injected only while price x (1 - burn) is above the bar,Samples with SubnetTaoInEmission above zero.
+emission_flag_on_share_30d,Share of the window with the emission flag switched on,number,share 0-1,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,mechanical (gate): TAO is injected only while price x (1 - burn) is above the bar,The flag was switched on for nearly all subnets on 9 Sep 2026 and no longer tells who receives TAO; see tao_emission_on_share_30d.
+tao_emission_on_share_lag30,Share of the lagged window in which the subnet received TAO emissions,number,share 0-1,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,depends on the price in the lagged window,
+emission_flag_on_share_lag30,Share of the lagged window with the emission flag switched on,number,share 0-1,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,depends on the price in the lagged window,
+baskets_net_buyers_n_30d,Validator baskets that were net buyers of the subnet's alpha,integer,baskets,30d,feature,T,Taostats event index (BasketSwapped),collect/09_baskets.py,mechanical (flow): a purchase through the pool raises the price in the same window,"Basket trading has been live since 21 Sep 2026, so the window covers ten days of trading."
+basket_net_buy_tao_30d,Net TAO value moved into the subnet by validator baskets,number,TAO,30d,feature,T,Taostats event index (BasketSwapped),collect/09_baskets.py,mechanical (flow): a purchase through the pool raises the price in the same window,
+basket_alpha_share_issued,Alpha held in validator baskets as a share of alpha issued,number,share 0-1,,feature,collection,Taostats basket history,collect/09_baskets.py,likely two-way,Holdings are mostly dividends accrued passively; descriptive.
+podcast_episodes_12m,Podcast episodes about the subnet in the 12 months before T,integer,episodes,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,likely two-way,Episodes whose title names the subnet; a stream and its re-upload within 14 days count once.
+podcast_shows_12m,Number of the six shows that featured the subnet,integer,shows 0-6,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,likely two-way,"The sixth show, The TAO Pod, named no subnet in an episode title in the window and has no column of its own."
+podcast_days_since_last,Days since the last episode about the subnet,number,days,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,none known,Missing if none in 12 months.
+podcast_episodes_12m_lag30,Podcast episodes about the subnet in the 12 months before T-30d,integer,episodes,12m to T-30d,feature_lag,T-30d,RSS feeds; YouTube,collect/15_podcasts.py,none known,
+podcast_novelty_search_12m,Episodes about the subnet on Novelty Search (Opentensor Foundation channel),integer,episodes,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,likely two-way,
+podcast_hash_rate_12m,Episodes about the subnet on Hash Rate,integer,episodes,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,likely two-way,
+podcast_ventura_labs_12m,Episodes about the subnet on Ventura Labs,integer,episodes,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,likely two-way,
+podcast_revenue_search_12m,Episodes about the subnet on Revenue Search,integer,episodes,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,likely two-way,
+podcast_bittensor_guru_12m,Episodes about the subnet on Bittensor Guru,integer,episodes,12m,feature,T,RSS feeds; YouTube,collect/15_podcasts.py,likely two-way,
+exploit26_presented,A member of the subnet's team spoke at the Exploit 26 summit (28-29 Sep 2026),binary,,,feature,28-29 Sep 2026,stream.vidaio.io,collect/16_exploit.py,likely two-way,"Speaker's affiliation is the subnet, an alias or its team (config/name_aliases.csv). Moderators do not count."
+exploit26_sessions_n,Summit sessions with a speaker from the subnet's team,integer,sessions,,feature,28-29 Sep 2026,stream.vidaio.io,collect/16_exploit.py,likely two-way,
+exploit26_mentions_n,Summit sessions of other teams in which the subnet was named,integer,sessions,,feature,28-29 Sep 2026,stream.vidaio.io,collect/16_exploit.py,likely two-way,From speech-recognition transcripts: a lower bound. Includes hosts announcing the next speaker.
+owner_lock_share_owner_alpha,Share of the owner's alpha that is locked,number,share 0-1,,feature,T,chain,collect/02_chain_state.py,none known,Decaying locks are rolled forward to T with the on-chain unlock rate. Missing if the owner holds no alpha.
+ownerhk_lock_share_issued,"Alpha locked to the owner hotkey by anyone, as a share of alpha issued",number,share 0-1,,feature,T,chain,collect/02_chain_state.py,none known,
+owner_lock_perpetual,Owner holds a lock that does not decay,binary,,,feature,T,chain,collect/02_chain_state.py,none known,
+owner_cut_autolock,Owner cut is locked automatically,binary,,,feature,T,chain,collect/02_chain_state.py,none known,
+owner_lock_share_owner_alpha_lag30,"Share of the owner's alpha that is locked, 30 days before T",number,share 0-1,,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,
+ownerhk_lock_share_issued_lag30,"Alpha locked to the owner hotkey as a share of alpha issued, 30 days before T",number,share 0-1,,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,
+holders_positions_n,Stake positions in the subnet,integer,positions,,feature,collection,Taostats,collect/07_holders.py,likely two-way,No historical count exists; as of collection.
+holders_top10_share,Share of staked alpha held by the ten largest wallets (lower bound),number,share 0-1,,feature,T,Taostats positions; chain balances at T,collect/07_holders.py,likely two-way,"Largest positions found through Taostats, balances re-read at T, summed by wallet. Basket custody wallet excluded. Missing if no alpha is staked in the subnet."
+holders_top10_share_upper,Share of staked alpha held by the ten largest wallets (upper bound),number,share 0-1,,quality,T,Taostats positions; chain balances at T,collect/07_holders.py,,
+holders_hhi,"Concentration of staked alpha across wallets (Herfindahl index, lower bound)",number,index 0-1,,feature,T,Taostats positions; chain balances at T,collect/07_holders.py,likely two-way,
+holders_hhi_upper,Concentration of staked alpha across wallets (upper bound),number,index 0-1,,quality,T,Taostats positions; chain balances at T,collect/07_holders.py,,
+holders_untraced_share,Share of staked alpha in positions that were not traced,number,share 0-1,,quality,T,Taostats positions; chain balances at T,collect/07_holders.py,,
+stake_share_owner_validator,Share of staked alpha that sits on the owner's validator hotkey,number,share 0-1,,feature,T,chain,collect/02_chain_state.py,none known,Missing if no alpha is staked in the subnet.
+owner_alpha_share_issued,Owner's alpha as a share of alpha issued,number,share 0-1,,feature,T,chain,collect/02_chain_state.py,none known,
+alpha_burned_share,Alpha burned as a share of alpha issued,number,share 0-1,,feature,T,chain,collect/02_chain_state.py,none known,Chain counter AlphaBurned. A subnet without an entry has burned nothing (0).
+stake_share_owner_validator_lag30,"Share of staked alpha on the owner's validator hotkey, 30 days before T",number,share 0-1,,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,
+owner_alpha_share_issued_lag30,"Owner's alpha as a share of alpha issued, 30 days before T",number,share 0-1,,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,
+alpha_burned_share_lag30,"Alpha burned as a share of alpha issued, 30 days before T",number,share 0-1,,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,
+reg_cost_tao_now,Cost of registering a miner at T,number,TAO,,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+reg_cost_tao_mean_30d,Mean cost of registering a miner,number,TAO,30d,feature,T,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+reg_cost_tao_mean_lag30,"Mean cost of registering a miner, lagged window",number,TAO,lag30,feature_lag,T-30d,chain,collect/01_chain_grid.py; collect/05_aggregate_grid.py,none known,
+reg_recycled_tao_30d,TAO recycled through miner registrations,number,TAO,30d,feature,T,chain,collect/02_chain_state.py; build/build_dataset.py,none known,Change of the cumulative chain counter between T-30d and T. Missing if the subnet was registered inside the window.
+registrations_30d,Miner registrations,integer,registrations,30d,feature,T,Taostats,collect/04_registrations.py,none known,
+registrations_lag30,"Miner registrations, lagged window",integer,registrations,lag30,feature_lag,T-30d,Taostats,collect/04_registrations.py,none known,
+validators_n,Validators with a permit at T,integer,validators,,feature,T,chain,collect/02_chain_state.py,none known,
+owner_validator_div_share,Share of validator dividends earned by the owner's hotkey,number,share 0-1,30d,feature,T,chain,collect/02_chain_state.py,none known,"Mean of 30 daily readings before T, taken only on days on which the subnet paid emissions. Missing in startup mode."
+validator_stake_hhi,Concentration of stake weight across validators (Herfindahl index),number,index 0-1,,feature,T,chain,collect/02_chain_state.py,none known,
+validators_n_lag30,"Validators with a permit, 30 days before T",integer,validators,,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,
+owner_validator_div_share_lag30,"Share of validator dividends earned by the owner's hotkey, 30 days to T-30d",number,share 0-1,lag30,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,As owner_validator_div_share.
+validator_stake_hhi_lag30,"Concentration of stake weight across validators, 30 days before T",number,index 0-1,,feature_lag,T-30d,chain,collect/02_chain_state.py,none known,
+commit_reveal_on,Commit-reveal of weights is switched on,binary,,,feature,T,chain,collect/02_chain_state.py,none known,
+yuma3_on,Yuma consensus version 3 is switched on,binary,,,feature,T,chain,collect/02_chain_state.py,none known,
+liquid_alpha_on,Liquid alpha is switched on,binary,,,feature,T,chain,collect/02_chain_state.py,none known,
+mech_count,Number of incentive mechanisms,integer,mechanisms,,feature,T,chain,collect/02_chain_state.py,none known,
+max_neurons,Maximum number of UIDs,integer,UIDs,,feature,T,chain,collect/02_chain_state.py,none known,

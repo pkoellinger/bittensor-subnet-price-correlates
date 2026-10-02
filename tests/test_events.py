@@ -216,7 +216,7 @@ class ProjectStartTest(unittest.TestCase):
 
 class ContactTest(unittest.TestCase):
     def test_email_is_reduced_to_its_domain(self):
-        self.assertEqual(contact_without_mailbox("hello@macrocosmos.ai"), "@macrocosmos.ai")
+        self.assertEqual(contact_without_mailbox("hello@acme.ai"), "@acme.ai")
         self.assertEqual(contact_without_mailbox("write to Jane.Doe+sn@Example.co.uk please"),
                          "write to @example.co.uk please")
 
@@ -229,7 +229,7 @@ class ContactTest(unittest.TestCase):
         self.assertEqual(contact_without_mailbox("  "), "")
 
     def test_contact_domain(self):
-        self.assertEqual(contact_domain("hello@macrocosmos.ai"), "macrocosmos.ai")
+        self.assertEqual(contact_domain("hello@acme.ai"), "acme.ai")
         self.assertEqual(contact_domain("someone@gmail.com"), "")      # generic mailbox providers link nobody
         self.assertEqual(contact_domain("https://x.com/SomaSubnet"), "")
         self.assertEqual(contact_domain(None), "")

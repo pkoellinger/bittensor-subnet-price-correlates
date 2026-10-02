@@ -1,7 +1,7 @@
 import unittest
 
-from snprice.webtext import (doc_links, is_blocked, is_parked, page_links, pick_pages, safe_url, same_site,
-                             visible_text, windows, x_profiles)
+from snprice.webtext import (doc_links, is_blocked, is_parked, is_security_warning, page_links, pick_pages,
+                             safe_url, same_site, site_status, visible_text, windows, x_profiles)
 
 HTML = """<!DOCTYPE html><html><head><title>Acme  Subnet</title><style>p{color:red}</style>
 <script>var hidden = "do not show";</script></head>
@@ -176,6 +176,45 @@ class XProfilesTest(unittest.TestCase):
     def test_accounts_of_the_network_itself_are_not_the_subnets_account(self):
         links = [("https://x.com/opentensor", "Bittensor"), ("https://x.com/bittensor_", ""), ("https://x.com/acme_ai", "")]
         self.assertEqual(x_profiles(links), ["acme_ai"])
+
+
+class SecurityWarningTest(unittest.TestCase):
+    def test_page_replaced_by_local_security_software(self):
+        self.assertTrue(is_security_warning("Web Protection by Bitdefender\nPhishing page blocked for your protection"))
+        self.assertTrue(is_security_warning("Your connection is not private\nNET::ERR_CERT_COMMON_NAME_INVALID"))
+
+    def test_real_pages(self):
+        self.assertFalse(is_security_warning("Acme protects your data with web protection for teams."))
+        self.assertFalse(is_security_warning(""))
+
+
+class SiteStatusTest(unittest.TestCase):
+    LONG = "Acme sells compute on Bittensor. " * 20
+
+    def test_live_site(self):
+        self.assertEqual(site_status(self.LONG, 200), "live")
+
+    def test_bot_protection_refuses_scripts_but_the_browser_shows_the_site(self):
+        self.assertEqual(site_status(self.LONG, 403), "live")
+        self.assertEqual(site_status(self.LONG, 429), "live")
+        self.assertEqual(site_status(self.LONG, None), "live")
+
+    def test_server_error_page_is_not_a_live_site_however_long_its_text(self):
+        error_page = "affine.io | 502: Bad gateway\nError code 502\n" + "Cloudflare " * 40
+        self.assertEqual(site_status(error_page, 502), "dead")
+        self.assertEqual(site_status("Deployment Paused " * 20, 402), "dead")
+        self.assertEqual(site_status("Not found " * 40, 404), "dead")
+
+    def test_parked_blocked_and_replaced_pages(self):
+        self.assertEqual(site_status("acme.ai is for sale! Buy this domain today", 200), "parked")
+        self.assertEqual(site_status("Just a moment...\nVerifying you are human.", 403), "blocked")
+        self.assertEqual(site_status("Web Protection by Bitdefender\nSuspicious page blocked for your protection", None),
+                         "replaced_by_security_software")
+
+    def test_page_without_text(self):
+        self.assertEqual(site_status("Acme", 200), "live_no_text")
+        self.assertEqual(site_status("", None), "dead")
+        self.assertEqual(site_status("", 403), "dead")
 
 
 if __name__ == "__main__":

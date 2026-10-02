@@ -42,6 +42,7 @@ def main():
 
     reg = arch.read_map(P, "NetworkRegisteredAt", netuids, T)
     first = arch.read_map(P, "FirstEmissionBlockNumber", netuids, T)
+    tempo = arch.read_map(P, "Tempo", netuids, T)
     owner = arch.read_map(P, "SubnetOwner", netuids, T)
     owner_hk = arch.read_map(P, "SubnetOwnerHotkey", netuids, T)
     ident = arch.read_map(P, "SubnetIdentitiesV3", netuids, T,
@@ -54,6 +55,9 @@ def main():
         if reg_block is None:
             raise SystemExit(f"netuid {n} has no registration block")
         first_block = chain.decode_uint(first[n])
+        tempo_blocks = chain.decode_uint(tempo[n])
+        if not tempo_blocks:
+            raise SystemExit(f"netuid {n} has no tempo")
         identity = chain.decode_identity(ident[n]) or {}
         name = (identity.get("subnet_name") or "").strip()
         rows.append({
@@ -63,6 +67,7 @@ def main():
             "registered_utc": utc(arch.timestamp(reg_block)),
             "first_emission_block": first_block,
             "first_emission_utc": utc(arch.timestamp(first_block)) if first_block else None,
+            "tempo": tempo_blocks,
             "flag_registered_in_window": int(reg_block > lo30),
             "owner_coldkey": chain.decode_account(owner[n]),
             "owner_hotkey": chain.decode_account(owner_hk[n]),

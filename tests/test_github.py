@@ -159,6 +159,35 @@ class DocChecklistTest(unittest.TestCase):
         self.assertEqual(doc_checklist(self.PROFILE, readme, [], "", "")["doc_site"], 1)
         self.assertEqual(doc_checklist(self.PROFILE, "x" * 600, [], "", "https://chutes.ai")["doc_site"], 0)
 
+    # --- rules corrected after the hand check of 15 repositories (data/manual/doc_checklist_hand_check.json)
+    def test_docs_of_bittensor_or_of_tools_are_not_the_projects_docs_site(self):
+        for link in ("https://docs.bittensor.com/miners", "https://docs.learnbittensor.org/subnets",
+                     "https://docs.github.com/en/actions", "https://docs.docker.com/get-docker/",
+                     "https://docs.python.org/3/", "https://docs.taostats.io/"):
+            readme = f"# X\nSee {link} for details\n" + "x" * 600
+            self.assertEqual(doc_checklist(self.PROFILE, readme, [], "", "")["doc_site"], 0, link)
+
+    def test_own_docs_site_is_found_even_when_bittensor_docs_are_linked_first(self):
+        readme = "# X\nRead https://docs.bittensor.com first, then https://docs.acme.ai/start\n" + "x" * 600
+        out = doc_checklist(self.PROFILE, readme, [], "", "")
+        self.assertEqual(out["doc_site"], 1)
+        self.assertIn("docs.acme.ai", out["evidence"]["doc_site"])
+
+    def test_contributing_guide_outside_the_standard_place(self):
+        for paths in (["contrib/CONTRIBUTING.md"], ["docs/contribution.md"], ["docs/contributing-guide.rst"]):
+            self.assertEqual(doc_checklist(self.PROFILE, "x" * 600, paths, "", "")["doc_contributing"], 1, paths)
+        for heading in ("## Contribution Guidelines", "## Contributing & License"):
+            readme = f"# X\n{heading}\n" + "x" * 600
+            self.assertEqual(doc_checklist(self.PROFILE, readme, [], "", "")["doc_contributing"], 1, heading)
+
+    def test_files_that_merely_contain_the_word_are_not_a_contributing_guide(self):
+        paths = ["docs/MODEL_CONTRIBUTION_TERMS.md", "src/contributions.py"]
+        self.assertEqual(doc_checklist(self.PROFILE, "x" * 600, paths, "", "")["doc_contributing"], 0)
+
+    def test_heading_about_emissions_is_an_incentive_description(self):
+        readme = "# X\n### How participant miner emission works\n" + "y" * 600
+        self.assertEqual(doc_checklist(self.PROFILE, readme, [], "", "")["doc_incentive_desc"], 1)
+
     def test_no_repo_gives_missing_values(self):
         out = doc_checklist(None, None, None, "", "")
         self.assertIsNone(out["doc_score"])

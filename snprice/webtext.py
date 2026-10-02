@@ -17,7 +17,9 @@ _SPACE = re.compile(r"[ \t\r\f\v\xa0​]+")
 SHARED_HOSTS = ("github.io", "gitbook.io", "notion.site", "vercel.app", "netlify.app", "webflow.io",
                 "framer.website", "framer.app", "pages.dev", "web.app", "readme.io", "mintlify.app",
                 "readthedocs.io", "substack.com", "medium.com", "carrd.co", "wixsite.com", "super.site",
-                "herokuapp.com", "onrender.com", "streamlit.app", "hf.space")
+                "herokuapp.com", "onrender.com", "streamlit.app", "hf.space",
+                # object storage: a page kept there belongs to whoever uploaded it
+                "amazonaws.com", "storage.googleapis.com", "ipfs.io", "us-east-1.hippius.com")
 _TWO_PART_SUFFIXES = ("co.uk", "com.au", "co.jp", "com.br", "co.in", "com.sg", "co.kr")
 # documentation hosts that a project links to instead of hosting its docs itself
 DOC_HOSTS = ("gitbook.io", "gitbook.com", "notion.site", "readme.io", "mintlify.app", "readthedocs.io", "github.io")
@@ -231,6 +233,43 @@ def safe_url(text):
 def is_blocked(text):
     """A short page that only asks the visitor to prove they are human, or denies access."""
     return len(text or "") < 1500 and bool(_BLOCKED.search(text or ""))
+
+
+_SECURITY_WARNING = re.compile(r"web protection by bitdefender|blocked for your protection|"
+                               r"your connection is not private|net::err_cert", re.I)
+MIN_TEXT = 200                                   # characters of text that make a page a real page
+_DEAD_CODES = {402, 404, 410}                    # paused, gone; server errors (500 and up) are dead as well
+_BOT_CODES = {401, 403, 429}                     # scripts are refused, a browser may still get the site
+
+
+def is_security_warning(text):
+    """The page was replaced by a warning of the browser or of security software on this computer
+    (bad certificate, suspected phishing). The site's own content was never shown."""
+    return bool(_SECURITY_WARNING.search(text or ""))
+
+
+def site_status(text, http_code):
+    """Status of a website from the text of its home page and the answer to a plain request.
+
+    live                            at least MIN_TEXT characters of the site's own text
+    live_no_text                    the server answers 200 but the page shows almost no text
+    parked                          domain-parking page
+    blocked                         the site asks visitors to prove they are human
+    replaced_by_security_software   a certificate or phishing warning was shown instead of the site
+    dead                            no answer, an error status, or an error page
+    """
+    text = text or ""
+    if is_security_warning(text):
+        return "replaced_by_security_software"
+    if is_parked(text):
+        return "parked"
+    if is_blocked(text):
+        return "blocked"
+    if http_code is not None and (http_code >= 500 or http_code in _DEAD_CODES):
+        return "dead"
+    if len(text) >= MIN_TEXT:
+        return "live"
+    return "live_no_text" if http_code == 200 else "dead"
 
 
 _X_HOSTS = {"x.com", "twitter.com", "mobile.twitter.com"}

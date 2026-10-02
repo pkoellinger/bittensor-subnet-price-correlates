@@ -1,0 +1,65 @@
+netuid,item,value_a,check_a,quote_a,value_b,check_b,quote_b,final,how
+3,wp_named_authors,1,verified,Jacob Steeves   Krzysztof Warchoł   Hubert Korzeniewski   Antoni Bombała,1,verified,Jacob Steeves   Krzysztof Warchoł   Hubert Korzeniewski   Antoni Bombała,1,both coders
+3,wp_formal_mechanism,1,verified,"The challenger is crowned if / LCB > δ, δ = 0 . 0015 , (5)",1,verified,"The challenger is crowned if / LCB > δ, δ = 0 . 0015 , (5)",1,both coders
+4,wp_named_authors,1,verified,"Intel : Haidong Xia, Sathi Nair",1,verified,"Manifold Labs : Venish   Patidar, Dhruv Bindra, Ahmed   Darwich , Josh   Brown",1,both coders
+4,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+15,wp_named_authors,1,verified,Shardul Bansal,1,verified,Shardul Bansal,1,both coders
+15,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+18,wp_named_authors,1,verified,Wouter Lubbert Antoon Haringhuizen,1,verified,Wouter Lubbert Antoon Haringhuizen,1,both coders
+18,wp_formal_mechanism,1,verified,iwScore = 0 . 5 · iwRMSE + 0 . 5 · iwMAE (3),1,verified,iwScore = 0 . 5 · iwRMSE + 0 . 5 · iwMAE (3),1,both coders
+19,wp_named_authors,0,verified,,0,verified,,0,both coders
+19,wp_formal_mechanism,1,verified,"The scale factor reconciles total miner asks against emissions: / scale = min (1,",1,verified,"The scale factor reconciles total miner asks against emissions: / scale = min (1, / 𝑀",1,both coders
+21,wp_named_authors,0,verified,,0,verified,,0,both coders
+21,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+22,wp_named_authors,0,verified,,0,verified,,0,both coders
+22,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+23,wp_named_authors,0,verified,,0,verified,,0,both coders
+23,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+25,wp_named_authors,0,verified,,0,verified,,0,both coders
+25,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+26,wp_named_authors,0,verified,,0,verified,,0,both coders
+26,wp_formal_mechanism,1,verified,score = 1.0 × perturbation_score + 0.03 × margin_score + 0.01 × novelty_score,1,verified,score = 1.0 × perturbation_score + 0.03 × margin_score + 0.01 × novelty_score,1,both coders
+30,wp_named_authors,0,verified,,0,verified,,0,both coders
+30,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+34,wp_named_authors,0,verified,,0,verified,,0,both coders
+34,wp_formal_mechanism,1,verified,V t = 0 . 05 · C t + 0 . 95 · V t − 1 (5),1,verified,V t = 0 . 05 · C t + 0 . 95 · V t − 1 (5),1,both coders
+36,wp_named_authors,0,verified,,0,verified,,0,both coders
+36,wp_formal_mechanism,1,verified,where 𝛿 = max ( 0 . 0 5 ⋅ ( 1 − acc / EMA,1,verified,") > 0 , / where 𝛿 = max ( 0 . 0 5 ⋅ ( 1 − acc / EMA",1,both coders
+37,wp_named_authors,1,verified,Kai Viren,1,verified,Kai Viren,1,both coders
+37,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+49,wp_named_authors,0,verified,,0,verified,,0,both coders
+49,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+50,wp_named_authors,1,verified,"Mode Network, Sam Hyatt, James Ross, Amber Shi",1,verified,"Mode Network, Sam Hyatt, James Ross, Amber Shi",1,both coders
+50,wp_formal_mechanism,1,verified,"● is the decay constant, with half-life λ = / 𝑙𝑛2",1,verified,"● is the decay constant, with half-life λ = / 𝑙𝑛2",1,both coders
+55,wp_named_authors,0,verified,,0,verified,,0,both coders
+55,wp_formal_mechanism,1,verified,"score_i = 1 - (1/K) * Σ_k CE(y_k, p_hat[i,k]) - λ * (1/K) * Σ_k penalty(l[i,k])",1,verified,"score_i = 1 - (1/K) * Σ_k CE(y_k, p_hat[i,k]) - λ * (1/K) * Σ_k penalty(l[i,k])",1,both coders
+61,wp_named_authors,0,verified,,0,verified,,0,both coders
+61,wp_formal_mechanism,1,verified,"Diversity points = min(Performance * Diversity * 10, remaining diversity points) / Total points = Diversity points + Performance points",1,verified,"Performance Points= max( Performance - previous best performance, 0) * 100",1,both coders
+72,wp_named_authors,0,verified,,0,verified,,0,both coders
+72,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+78,wp_named_authors,0,verified,,0,verified,,0,both coders
+78,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+81,wp_named_authors,0,verified,,0,verified,,0,both coders
+81,wp_formal_mechanism,1,verified,"Computes s'_i = ⟨H'[i], r⟩ mod PRIME_Q. / Accepts iff |s'_i - s_i| ≤ PROOF_SKETCH_TOLERANCE_BASE",1,verified,Accepts iff |s'_i - s_i| ≤ PROOF_SKETCH_TOLERANCE_BASE,1,both coders
+87,wp_named_authors,1,verified,"Will O’Brien, Founder & CEO, Provenonce",1,verified,"Will O’Brien, Founder & CEO, Provenonce",1,both coders
+87,wp_formal_mechanism,1,verified,"quality = bounded_geometric_mean(active_dimensions, omit_missing=True) / penalty = exp(-response_indexed_costs(i,q)) / return quality * penalty",1,verified,𝑣 𝑖 𝑞 / ( ℎ ) = exp ( ∑ / 𝑘 ∈ 𝒦 0 ( 𝑞 ),1,both coders
+96,wp_named_authors,0,verified,,0,verified,,0,both coders
+96,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+100,wp_named_authors,0,verified,,0,verified,,0,both coders
+100,wp_formal_mechanism,0,verified,,0,verified,,0,both coders
+102,wp_named_authors,1,verified,Isabella Liu,1,verified,Isabella Liu,1,both coders
+102,wp_formal_mechanism,1,verified,The miner’s utility is measured relative to the current global model: / u i = max,1,verified,The miner’s utility is measured relative to the current global model: / u i = max,1,both coders
+105,wp_named_authors,0,verified,,0,verified,,0,both coders
+105,wp_formal_mechanism,1,verified,Score SLA = uptime × bandwidth × latency × success (9) / Reward total = Score SLA × stake weight × availability (10),1,verified,Reward total = Score SLA × stake weight × availability (10),1,both coders
+106,wp_named_authors,0,verified,,0,verified,,0,both coders
+106,wp_formal_mechanism,1,verified,"C = 24 x sum(p) / a_i = min( m x C x v_i / V , a_cap )",1,verified,"a_i = min( m x C x v_i / V , a_cap )",1,both coders
+107,wp_named_authors,0,verified,,0,verified,,0,both coders
+107,wp_formal_mechanism,1,verified,S = w 1 · C core + w 2 · C complete + w 3 · C FP + w 4 · C quality,1,verified,S = w 1 · C core + w 2 · C complete + w 3 · C FP + w 4 · C quality,1,both coders
+108,wp_named_authors,0,verified,,0,verified,,0,both coders
+108,wp_formal_mechanism,1,verified,F_c = \frac{N_{correct}}{N_{total}},1,verified,F_c = \frac{N_{correct}}{N_{total}},1,both coders
+111,wp_named_authors,1,verified,Philipp Koellinger,1,verified,Philipp Koellinger,1,both coders
+111,wp_formal_mechanism,1,verified,"V h = 1 + β 1 { k h ≥ 2 } ,",1,verified,"For accepted item h , let k h be the number of distinct supplying families and define / V h = 1 + β 1 { k h ≥ 2 } .",1,both coders
+123,wp_named_authors,0,verified,,0,verified,,0,both coders
+123,wp_formal_mechanism,1,verified,"S path = S base − γR M AE , S tail = S path",1,verified,"Path penalty, tail amplifier, Kelly weight: / S path = S base − γR M AE",1,both coders
+126,wp_named_authors,0,verified,,0,verified,,0,both coders
+126,wp_formal_mechanism,1,verified,𝑖 / = ∑ / 𝑝,1,verified,𝑖 / = ∑ / 𝑝,1,both coders

@@ -93,6 +93,15 @@ class DecodeTest(unittest.TestCase):
         self.assertIs(chain.decode_bool(None, default=True), True)
         self.assertIsNone(chain.decode_bool(None))
 
+    def test_counter_without_an_entry_is_zero_when_other_subnets_have_one(self):
+        # the chain creates a subnet's AlphaBurned entry at its first burn: no entry = nothing burned
+        raw = {64: "0x" + (5_000_000_000).to_bytes(8, "little").hex(), 82: None}
+        self.assertEqual(chain.decode_counters(raw), {64: 5_000_000_000, 82: 0})
+
+    def test_counter_that_no_subnet_has_is_unknown_not_zero(self):
+        # nobody has an entry: the runtime at that block may not keep the counter at all
+        self.assertEqual(chain.decode_counters({64: None, 82: None}), {64: None, 82: None})
+
     def test_bool(self):
         self.assertIs(chain.decode_bool("0x01"), True)
         self.assertIs(chain.decode_bool("0x00"), False)
@@ -235,6 +244,13 @@ class ArchiveTest(unittest.TestCase):
             ], tmp)
             out = arch.read(["0x01", "0x02"], block=100)
             self.assertEqual(out, {"0x01": "0xff", "0x02": None})
+
+    def test_head_is_the_number_of_the_latest_block(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            arch, rpc = self.make([{"result": {"number": "0x8c2a3a", "parentHash": "0x00"}}], tmp)
+            self.assertEqual(arch.head(), 9185850)
+            self.assertEqual(rpc.calls[0][0], "chain_getHeader")
 
     def test_second_read_is_served_from_disk(self):
         import tempfile

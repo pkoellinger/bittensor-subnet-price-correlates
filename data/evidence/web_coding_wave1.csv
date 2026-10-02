@@ -1,0 +1,769 @@
+netuid,item,value_a,check_a,url_a,quote_a,value_b,check_b,url_b,quote_b,final,how
+1,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+1,api_public,0,verified,,,0,verified,,,0,both coders
+1,mcp_server,0,verified,,,0,verified,,,0,both coders
+1,team_named,0,verified,,,0,verified,,,0,both coders
+1,product_live,0,verified,,,0,verified,,,0,both coders
+1,category,Scientific & Technical Problem Solving,verified,README,Anyone can bring a problem. A global network of miners competes to solve it.,Scientific & Technical Problem Solving,verified,https://apex.macrocosmos.ai,A living landscape of optimization challenges. Each competition rewards the best-performing algorithm submitted by the agent network.,Scientific & Technical Problem Solving,both coders
+2,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+2,api_public,0,verified,,,0,verified,,,0,both coders
+2,mcp_server,0,verified,,,0,verified,,,0,both coders
+2,team_named,0,verified,,,0,verified,,,0,both coders
+2,product_live,1,verified,https://subnet2.inferencelabs.com,LAUNCH_STUDIOVIEW_DOCS,1,verified,https://subnet2.inferencelabs.com,LAUNCH_STUDIO,1,both coders
+2,category,AI Inference & Model Serving,verified,onchain,Verifiable and distributed inference on Bittensor,AI Inference & Model Serving,verified,onchain,Verifiable and distributed inference on Bittensor,AI Inference & Model Serving,both coders
+3,whitepaper_available,1,verified,https://teutonic.ai/paper.html,Teutonic-I 10B — Technical Report,1,verified,https://www.teutonic.ai/,PAPER: Teutonic-I 10B Technical Report,1,both coders
+3,api_public,0,verified,,,0,verified,,,0,both coders
+3,mcp_server,0,verified,,,0,verified,,,0,both coders
+3,team_named,1,verified,https://teutonic.ai/paper.html,Jacob Steeves · Krzysztof Warchoł · Hubert Korzeniewski · Antoni Bombała,1,verified,https://teutonic.ai/paper.html,Jacob Steeves · Krzysztof Warchoł · Hubert Korzeniewski · Antoni Bombała,1,both coders
+3,product_live,0,verified,,,1,verified,https://teutonic.ai/paper.html,Model Weights,1,third reading
+3,category,AI Training & Model Improvement,verified,README,is a king-of-the-hill pretraining system for Bittensor subnet 3.,AI Training & Model Improvement,verified,README,is a king-of-the-hill pretraining system for Bittensor subnet 3.,AI Training & Model Improvement,both coders
+4,whitepaper_available,1,verified,https://targon.com/releases/intel-whitepaper,Intel x TVM Whitepaper,1,verified,https://targon.com/releases/intel-whitepaper,Intel x TVM Whitepaper,1,both coders
+4,api_public,1,verified,https://docs.targon.com/,"REST API for sandboxes, workloads, templates, and inventory.",1,verified,https://docs.targon.com/,"We provide a easy-to-use API, SDK, and CLI for managing your workloads.",1,both coders
+4,mcp_server,0,verified,,,0,verified,,,0,both coders
+4,team_named,1,verified,https://targon.com/releases/intel-whitepaper,"As Robert Myers, CEO of Manifold Labs, explains:",1,verified,https://targon.com/releases/intel-whitepaper,"As Robert Myers, CEO of Manifold Labs, explains:",1,both coders
+4,product_live,1,verified,https://targon.com,Rent a fully secure Nvidia H100 VM,1,verified,https://targon.com,Rent a fully secure Nvidia H100 VM,1,both coders
+4,category,AI Inference & Model Serving,verified,onchain,Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).,"Compute, Storage & Network Infrastructure",verified,onchain,Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).,"Compute, Storage & Network Infrastructure",third reading
+5,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+5,api_public,0,verified,,,0,verified,,,0,both coders
+5,mcp_server,0,verified,,,0,verified,,,0,both coders
+5,team_named,0,verified,,,0,verified,,,0,both coders
+5,product_live,0,verified,,,0,verified,,,0,both coders
+5,category,AI Training & Model Improvement,verified,onchain,Hone training,AI Training & Model Improvement,verified,onchain,Hone training,AI Training & Model Improvement,both coders
+6,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+6,api_public,1,verified,https://truth-alpha.notion.site/numinous-forecasts-api,"Given a question about a future event, the API returns a probability estimate between 0 and 1 reflecting the likelihood that the event resolves positively.",1,verified,https://truth-alpha.notion.site/numinous-forecasts-api,The Numinous Forecasts API enables programmatic access to Numinous's probabilistic forecasting system.,1,both coders
+6,mcp_server,0,verified,,,0,verified,,,0,both coders
+6,team_named,0,verified,,,0,verified,,,0,both coders
+6,product_live,1,verified,https://truth-alpha.notion.site/numinous-forecasts-api,Access is granted by paying a small USDC fee per request via the x402 protocol.,1,verified,https://truth-alpha.notion.site/numinous-forecasts-api,Access is granted by paying a small USDC fee per request via the x402 protocol. No account or API key is required — just a funded crypto wallet.,1,both coders
+6,category,Forecasting & Prediction,verified,onchain,Numinous is a forecasting protocol whose goal is to aggregate agents into superhuman LLM forecasters.,Forecasting & Prediction,verified,onchain,Numinous is a forecasting protocol whose goal is to aggregate agents into superhuman LLM forecasters.,Forecasting & Prediction,both coders
+7,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+7,api_public,1,verified,README,a public API call (`api.all-ways.io`) with structured output,1,verified,README,"Every step of a swap — quote discovery, reservation, deposit, and settlement — is a CLI command (`alw swap now`) or a public API call (`api.all-ways.io`) with structured output",1,both coders
+7,mcp_server,0,verified,,,0,verified,,,0,both coders
+7,team_named,0,verified,,,0,verified,,,0,both coders
+7,product_live,1,verified,README,agents operated by the team and by users originate swaps today,1,verified,README,This is how the network is used in practice: agents operated by the team and by users originate swaps today,1,both coders
+7,category,DeFi & Crypto Infrastructure,verified,README,Native cross-chain transactions for programs that hold one asset and need to pay in another,DeFi & Crypto Infrastructure,verified,README,"Native cross-chain transactions for programs that hold one asset and need to pay in another — no wrapped tokens, no bridges, no custodian.",DeFi & Crypto Infrastructure,both coders
+8,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+8,api_public,1,verified,https://www.vantanetwork.io/,"Full SDK, CLI, and OpenClaw integration for automated strategies",1,verified,https://www.vantanetwork.io/,Access a full trading terminal or connect via API.,1,both coders
+8,mcp_server,0,verified,,,0,verified,,,0,both coders
+8,team_named,0,verified,,,0,verified,,,0,both coders
+8,product_live,1,verified,https://www.vantanetwork.io/,Access a full trading terminal or connect via API.,1,verified,https://www.vantanetwork.io/,"The structured prop firm experience, powered by the network. Access a full trading terminal or connect via API.",1,both coders
+8,category,Financial Markets & Investing,verified,onchain,The first decentralized & trustless liquidity and execution engine for prop firms and traders,Financial Markets & Investing,verified,https://www.vantanetwork.io/,Decentralized Prop Trading on Bittensor Subnet 8,Financial Markets & Investing,both coders
+9,whitepaper_available,1,verified,README,"For a more comprehensive overview, please refer to our technical paper",1,verified,README,"For a more comprehensive overview, please refer to our technical paper",1,both coders
+9,api_public,0,verified,,,0,verified,,,0,both coders
+9,mcp_server,0,verified,,,0,verified,,,0,both coders
+9,team_named,0,verified,,,0,verified,,,0,both coders
+9,product_live,0,verified,,,0,verified,,,0,both coders
+9,category,AI Training & Model Improvement,verified,onchain,Bringing liquid training to the world,AI Training & Model Improvement,verified,README,"is a framework for pretraining large language models across a network of heterogeneous, unreliable, permissionless and token incentivized machines",AI Training & Model Improvement,both coders
+10,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+10,api_public,0,verified,,,0,verified,,,0,both coders
+10,mcp_server,0,verified,,,0,verified,,,0,both coders
+10,team_named,0,verified,,,0,verified,,,0,both coders
+10,product_live,0,verified,,,0,verified,,,0,both coders
+10,category,AI Optimization & Compression,verified,https://www.pareton.ai/docs,"Pareton continuously discovers, validates, and deploys the optimal serving configuration for a workload, across models, hardware, and serving stacks.",AI Optimization & Compression,verified,https://www.pareton.ai/docs,"Pareton continuously discovers, validates, and deploys the optimal serving configuration for a workload, across models, hardware, and serving stacks.",AI Optimization & Compression,both coders
+11,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+11,api_public,0,verified,,,0,verified,,,0,both coders
+11,mcp_server,0,verified,,,0,verified,,,0,both coders
+11,team_named,0,verified,,,0,verified,,,0,both coders
+11,product_live,0,verified,,,0,verified,,,0,both coders
+11,category,AI Agents & Automation,verified,README,"that decide, per request, which open-weight models on Engy answer an agent and in what combination.",AI Agents & Automation,verified,onchain,"Optimize agent trajectories to make agents cheaper, safer, and more reliable.",AI Agents & Automation,both coders
+12,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+12,api_public,1,verified,README,A Python SDK is available to help **subnet owners and validators** run jobs on ComputeHorde.,1,verified,README,See [ComputeHorde SDK README](compute_horde_sdk/README.md#readme) for installation and usage examples.,1,both coders
+12,mcp_server,0,verified,,,0,verified,,,0,both coders
+12,team_named,0,verified,,,0,verified,,,0,both coders
+12,product_live,1,verified,README,A Python SDK is available to help **subnet owners and validators** run jobs on ComputeHorde.,1,verified,README,A Python SDK is available to help **subnet owners and validators** run jobs on ComputeHorde.,1,both coders
+12,category,"Compute, Storage & Network Infrastructure",verified,README,By transforming untrusted GPUs provided by miners into trusted compute resources,"Compute, Storage & Network Infrastructure",verified,README,designed to **supercharge Bittensor with scalable and trusted GPU computing power**.,"Compute, Storage & Network Infrastructure",both coders
+13,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+13,api_public,1,verified,README,Access Gravity via the API: https://docs.macrocosmos.ai/developers/api-documentation/sn13-data-universe,1,verified,README,Access Gravity via the API: https://docs.macrocosmos.ai/developers/api-documentation/sn13-data-universe,1,both coders
+13,mcp_server,1,verified,README,"You can integrate subnet 13, Data-Universe, directly into Claude and Cursor via our MCP.",1,verified,README,"You can integrate subnet 13, Data-Universe, directly into Claude and Cursor via our MCP.",1,both coders
+13,team_named,1,verified,README,"Will Squires, Co-Founder and CEO",1,verified,README,"**Will Squires, Co-Founder and CEO**: Will is an entrepreneur with experience building AI startups.",1,both coders
+13,product_live,1,verified,https://datauniverse.macrocosmos.ai/,Discover and purchase ready-made datasets curated by others.,1,verified,README,Try Gravity here: https://app.macrocosmos.ai/gravity,1,both coders
+13,category,Data & Database Construction,verified,https://datauniverse.macrocosmos.ai/,"Data Universe is your gateway to 55+ billion rows of structured, high-fidelity social media data",Data & Database Construction,verified,onchain,Scraping the world's social media data,Data & Database Construction,both coders
+14,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+14,api_public,0,verified,,,0,verified,,,0,both coders
+14,mcp_server,0,verified,,,0,verified,,,0,both coders
+14,team_named,1,verified,https://cacheon.ai,Shivanshu Purohit,1,verified,https://cacheon.ai,Shivanshu Purohit,1,both coders
+14,product_live,0,verified,,,0,verified,,,0,both coders
+14,category,AI Optimization & Compression,verified,onchain,A competition where miners submit optimized kernels to compete on end-to-end inference speed against target models.,AI Optimization & Compression,verified,onchain,A competition where miners submit optimized kernels to compete on end-to-end inference speed against target models.,AI Optimization & Compression,both coders
+15,whitepaper_available,1,verified,https://oroagents.com/whitepaper,White Paper | ORO,1,verified,https://oroagents.com/whitepaper,Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces,1,both coders
+15,api_public,0,verified,,,0,verified,,,0,both coders
+15,mcp_server,0,verified,,,0,verified,,,0,both coders
+15,team_named,1,verified,https://oroagents.com,Shardul Bansal,1,verified,https://oroagents.com,Shardul Bansal,1,both coders
+15,product_live,0,verified,,,0,verified,,,0,both coders
+15,category,"Marketing, Sales & Commerce",verified,onchain,AI commerce agents,AI Agents & Automation,verified,onchain,AI commerce agents,AI Agents & Automation,third reading
+16,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+16,api_public,0,verified,,,0,verified,,,0,both coders
+16,mcp_server,0,verified,,,0,verified,,,0,both coders
+16,team_named,0,verified,,,0,verified,,,0,both coders
+16,product_live,0,verified,,,0,verified,,,0,both coders
+16,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+17,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+17,api_public,0,verified,,,0,verified,,,0,both coders
+17,mcp_server,0,verified,,,0,verified,,,0,both coders
+17,team_named,0,verified,,,0,verified,,,0,both coders
+17,product_live,0,verified,,,0,verified,,,0,both coders
+17,category,Media & Voice AI,verified,onchain,a decentralized 3D content generation competition,Media & Voice AI,verified,onchain,a decentralized 3D content generation competition,Media & Voice AI,both coders
+18,whitepaper_available,1,verified,https://www.zeussubnet.com/,Read our whitepaperOpens PDF in a new tab,0,verified,,,1,third reading
+18,api_public,1,verified,https://docs.zeussubnet.com/docs/introduction,"The BOREAS Edge API exposes operational, metadata, and forecast endpoints for customer integrations.",1,verified,https://docs.zeussubnet.com/docs/introduction,"The BOREAS Edge API exposes operational, metadata, and forecast endpoints for customer integrations.",1,both coders
+18,mcp_server,0,verified,,,0,verified,,,0,both coders
+18,team_named,1,verified,https://www.zeussubnet.com/company,Wouter Haringhuizen,1,verified,https://www.zeussubnet.com/company,Wouter Haringhuizen,1,both coders
+18,product_live,1,verified,https://docs.zeussubnet.com/docs/introduction,Free-plan keys use https://free-api.zeussubnet.com instead.,1,verified,https://docs.zeussubnet.com/docs/introduction,Free-plan keys use https://free-api.zeussubnet.com instead.,1,both coders
+18,category,Forecasting & Prediction,verified,onchain,Pushing weather forecasts beyond state-of-the-art,Forecasting & Prediction,verified,onchain,Pushing weather forecasts beyond state-of-the-art,Forecasting & Prediction,both coders
+19,whitepaper_available,1,verified,README,Whitepaper: https://blockmachine.io/whitepaper,1,verified,README,Whitepaper: https://blockmachine.io/whitepaper,1,both coders
+19,api_public,1,verified,https://blockmachine.io/docs/ai-agents,An agent with no account can buy its own API key,1,verified,https://blockmachine.io,Point your app at a blockmachine endpoint. Standard JSON-RPC — nothing custom.,1,both coders
+19,mcp_server,0,verified,,,0,verified,,,0,both coders
+19,team_named,1,verified,https://blockmachine.io,Mark Davison,1,verified,https://blockmachine.io,Mark Davison,1,both coders
+19,product_live,1,verified,https://blockmachine.io,"The core network, customer console, Ethereum RPC, and crypto payment rails are live.",1,verified,https://blockmachine.io,"The core network, customer console, Ethereum RPC, and crypto payment rails are live.",1,both coders
+19,category,DeFi & Crypto Infrastructure,verified,https://blockmachine.io,Blockmachine provides RPC access across supported chains.,DeFi & Crypto Infrastructure,verified,https://blockmachine.io,Blockmachine provides RPC access across supported chains.,DeFi & Crypto Infrastructure,both coders
+20,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+20,api_public,0,verified,,,0,verified,,,0,both coders
+20,mcp_server,0,verified,,,0,verified,,,0,both coders
+20,team_named,0,verified,,,0,verified,,,0,both coders
+20,product_live,0,verified,,,0,verified,,,0,both coders
+20,category,AI Training & Model Improvement,verified,https://witnessvision.io/,"Witness rewards the model that best works out what happens in a video: what is seen, what is said, what is written on screen, what is heard.",AI Training & Model Improvement,verified,onchain,Decentralized models to understand video,AI Training & Model Improvement,both coders
+21,whitepaper_available,1,verified,README,Protocol background (weekly-era sections historical): [Whitepaper](docs/whitepaper.md).,1,verified,README,Protocol background (weekly-era sections historical): [Whitepaper](docs/whitepaper.md).,1,both coders
+21,api_public,1,verified,https://adtao.io/mcp,"Create an account, get an API key, and see what each of the four levels unlocks.",1,verified,https://adtao.io/mcp,"Create an account, get an API key, and see what each of the four levels unlocks.",1,both coders
+21,mcp_server,1,verified,https://adtao.io/mcp,"Point your host at mcp.adtao.io, add the skills package, run your first portfolio report.",1,verified,https://adtao.io/mcp,"Point your host at mcp.adtao.io, add the skills package, run your first portfolio report.",1,both coders
+21,team_named,0,verified,,,0,verified,,,0,both coders
+21,product_live,1,verified,https://adtao.io/login,"Add AdTAO as a connector in Claude, on the web or in Claude Desktop, and sign in with your AdTAO account.",1,verified,https://adtao.io/login,"Add AdTAO as a connector in Claude, on the web or in Claude Desktop, and sign in with your AdTAO account.",1,both coders
+21,category,"Marketing, Sales & Commerce",verified,onchain,Counterfactual impact prediction for advertising interventions,"Marketing, Sales & Commerce",verified,https://adtao.io,The decision layer for AI-managed Google Ads.,"Marketing, Sales & Commerce",both coders
+22,whitepaper_available,1,verified,https://www.desearch.ai/whitepaper,Whitepaper / Bittensor Subnet 22Technical design proposal,1,verified,https://www.desearch.ai/whitepaper,Desearch 2.0 Whitepaper — A Maintained Web Index for AI,1,both coders
+22,api_public,1,verified,https://www.desearch.ai/,Desearch is a search API for AI agents: one API key searches the web and X for fresh results with source links.,1,verified,https://www.desearch.ai/docs/guide/introduction/desearch-ai,REST API: call search and retrieval endpoints directly from your backend.,1,both coders
+22,mcp_server,1,verified,https://www.desearch.ai/docs/guide/introduction/desearch-ai,Connect over MCP (hosted HTTP) with your Desearch API key. Endpoint: https://mcp.desearch.ai/mcp. See live tools/list.,1,verified,https://www.desearch.ai/docs/guide/introduction/desearch-ai,Connect over MCP (hosted HTTP) with your Desearch API key. Endpoint: https://mcp.desearch.ai/mcp. See live tools/list.,1,both coders
+22,team_named,0,verified,,,0,verified,,,0,both coders
+22,product_live,1,verified,https://www.desearch.ai/docs/guide/introduction/desearch-ai,"Desearch Console: create API keys, test requests in the playground, monitor usage, and manage billing.",1,verified,https://www.desearch.ai/docs/guide/introduction/desearch-ai,"Desearch Console: create API keys, test requests in the playground, monitor usage, and manage billing.",1,both coders
+22,category,Search & Knowledge Retrieval,verified,onchain,Decentralized search engine,Search & Knowledge Retrieval,verified,onchain,Decentralized search engine,Search & Knowledge Retrieval,both coders
+23,whitepaper_available,1,verified,https://trishool.ai,Docs Discord Litepaper,1,verified,https://trishool.ai,Docs Discord Litepaper,1,both coders
+23,api_public,0,verified,,,0,verified,,,0,both coders
+23,mcp_server,0,verified,,,0,verified,,,0,both coders
+23,team_named,0,verified,,,0,verified,,,0,both coders
+23,product_live,0,verified,,,0,verified,,,0,both coders
+23,category,"Cybersecurity, Authenticity & Verification",verified,https://trishool.ai,Subnet 23 is a miner-driven adversarial training network for AI agent security.,"Cybersecurity, Authenticity & Verification",verified,https://trishool.ai,Subnet 23 is a miner-driven adversarial training network for AI agent security.,"Cybersecurity, Authenticity & Verification",both coders
+24,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+24,api_public,0,verified,,,0,verified,,,0,both coders
+24,mcp_server,0,verified,,,0,verified,,,0,both coders
+24,team_named,0,verified,,,0,verified,,,0,both coders
+24,product_live,0,verified,,,0,verified,,,0,both coders
+24,category,AI Training & Model Improvement,verified,README,Quasar Training is the production training system for continuing Quasar model,AI Training & Model Improvement,verified,README,Quasar Training is the production training system for continuing Quasar model,AI Training & Model Improvement,both coders
+25,whitepaper_available,1,verified,https://ur.xyz/docs/litepaper,UR Litepaper: A privacy network coordinated on Bittensor,1,verified,README,The full specification is in [`WHITEPAPER.md`](WHITEPAPER.md),1,both coders
+25,api_public,0,verified,,,0,verified,,,0,both coders
+25,mcp_server,0,verified,,,0,verified,,,0,both coders
+25,team_named,1,verified,https://ur.xyz/about,Brien Colwell,1,verified,https://ur.xyz/about,Brien Colwell,1,both coders
+25,product_live,1,verified,https://ur.xyz/,"For URnetwork products (eg. VPN), go to ur.io",1,verified,https://ur.xyz/,"For URnetwork products (eg. VPN), go to ur.io",1,both coders
+25,category,"Compute, Storage & Network Infrastructure",verified,onchain,The peer to peer privacy network and encryption layer for the internet,"Compute, Storage & Network Infrastructure",verified,onchain,The peer to peer privacy network and encryption layer for the internet,"Compute, Storage & Network Infrastructure",both coders
+26,whitepaper_available,1,verified,https://www.perturbai.io/whitepaper,Download Whitepaper,1,verified,https://www.perturbai.io/whitepaper,Download Whitepaper,1,both coders
+26,api_public,0,verified,,,0,verified,,,0,both coders
+26,mcp_server,0,verified,,,0,verified,,,0,both coders
+26,team_named,1,verified,https://www.perturbai.io/,Koyuki Nakamori,1,verified,https://www.perturbai.io/,Koyuki Nakamori,1,both coders
+26,product_live,1,verified,https://www.perturbai.io/login,Sign in to your Perturb AI account,1,verified,https://www.perturbai.io/playground,Don't have an account? Create an account,1,both coders
+26,category,"Cybersecurity, Authenticity & Verification",verified,https://www.perturbai.io/,Perturb helps you discover vulnerabilities before attackers do.,"Cybersecurity, Authenticity & Verification",verified,onchain,Decentralized adversarial robustness network,"Cybersecurity, Authenticity & Verification",both coders
+27,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+27,api_public,0,verified,,,0,verified,,,0,both coders
+27,mcp_server,0,verified,,,0,verified,,,0,both coders
+27,team_named,0,verified,,,0,verified,,,0,both coders
+27,product_live,0,verified,,,0,verified,,,0,both coders
+27,category,Data & Database Construction,verified,onchain,"A decentralized data subnet that discovers, generates, and curates high-quality training data for LLMs",Data & Database Construction,verified,onchain,"A decentralized data subnet that discovers, generates, and curates high-quality training data for LLMs",Data & Database Construction,both coders
+28,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+28,api_public,1,verified,https://docs.saygm.com,"Create an API key, discover an available model, and make your first request.",1,verified,https://docs.saygm.com,"Create an API key, discover an available model, and make your first request.",1,both coders
+28,mcp_server,0,verified,,,0,verified,,,0,both coders
+28,team_named,0,verified,,,0,verified,,,0,both coders
+28,product_live,1,verified,https://docs.saygm.com,"Sign in at saygm.com to manage API keys, credit, and usage.",1,verified,https://docs.saygm.com,"Sign in at saygm.com to manage API keys, credit, and usage.",1,both coders
+28,category,AI Inference & Model Serving,verified,onchain,"Drop-in access to Claude, GPT, and Gemini.",AI Inference & Model Serving,verified,onchain,"Drop-in access to Claude, GPT, and Gemini.",AI Inference & Model Serving,both coders
+29,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+29,api_public,0,verified,,,0,verified,,,0,both coders
+29,mcp_server,0,verified,,,0,verified,,,0,both coders
+29,team_named,0,verified,,,0,verified,,,0,both coders
+29,product_live,0,verified,,,0,verified,,,0,both coders
+29,category,AI Optimization & Compression,verified,onchain,Inference optimization,AI Optimization & Compression,verified,onchain,Inference optimization,AI Optimization & Compression,both coders
+30,whitepaper_available,1,verified,https://endure.network,Read the litepaper,1,verified,https://endure.network,Read the litepaper,1,both coders
+30,api_public,0,verified,,,0,verified,,,0,both coders
+30,mcp_server,0,verified,,,0,verified,,,0,both coders
+30,team_named,0,verified,,,0,verified,,,0,both coders
+30,product_live,0,verified,,,1,verified,https://endure.network,"Forge is the first product built on the network, giving Endure real demand, outcome data, and a live proving ground.",0,third reading
+30,category,DeFi & Crypto Infrastructure,verified,https://endure.network,Providing risk management & efficiency parameters by competing world class analysts.,DeFi & Crypto Infrastructure,verified,https://endure.network,Decentralized Risk Intelligence for DeFi,DeFi & Crypto Infrastructure,both coders
+31,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+31,api_public,0,verified,,,0,verified,,,0,both coders
+31,mcp_server,0,verified,,,0,verified,,,0,both coders
+31,team_named,0,verified,,,0,verified,,,0,both coders
+31,product_live,0,verified,,,0,verified,,,0,both coders
+31,category,Search & Knowledge Retrieval,verified,onchain,"Think of it as an always-improving, community-owned search engine with citations.",Search & Knowledge Retrieval,verified,onchain,Recall provides decentralized retrieval-augmented generation to Bittensor.,Search & Knowledge Retrieval,both coders
+32,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+32,api_public,1,verified,https://docs.its-ai.org/,"AI content detection, plagiarism and grammar checking API. One endpoint per scan type.",1,verified,https://docs.its-ai.org/,"AI content detection, plagiarism and grammar checking API. One endpoint per scan type. Authenticate with Authorization: APIKey <your_key> header.",1,both coders
+32,mcp_server,0,verified,,,0,verified,,,0,both coders
+32,team_named,0,verified,,,0,verified,,,0,both coders
+32,product_live,1,verified,https://its-ai.org/en/about,Sign up for free,1,verified,https://its-ai.org/en/about,Sign up for free,1,both coders
+32,category,"Cybersecurity, Authenticity & Verification",verified,onchain,high-quality AI detection for texts,"Cybersecurity, Authenticity & Verification",verified,onchain,ItsAI is a bittensor subnet focused on high-quality AI detection for texts.,"Cybersecurity, Authenticity & Verification",both coders
+33,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+33,api_public,0,verified,,,0,verified,,,0,both coders
+33,mcp_server,1,verified,README,directory contains a standalone MCP server that makes the [llms_txt_store](https://github.com/afterpartyai/llms_txt_store) dataset queryable by LLM agents.,1,verified,README,directory contains a standalone MCP server that makes the [llms_txt_store](https://github.com/afterpartyai/llms_txt_store) dataset queryable by LLM agents.,1,both coders
+33,team_named,0,verified,,,0,verified,,,0,both coders
+33,product_live,1,verified,README,The MCP server ingests these into a local SQLite database and exposes four tools:,1,verified,README,This will download the training data from [ReadyAi/5000-podcast-conversations-with-metadata-and-embedding-dataset],1,both coders
+33,category,Data & Database Construction,verified,README,"ReadyAI is a low-cost, structured data pipeline to turn your raw data into structured data for your vector databases and AI applications.",Data & Database Construction,verified,README,"ReadyAI is a low-cost, structured data pipeline to turn your raw data into structured data for your vector databases and AI applications.",Data & Database Construction,both coders
+34,whitepaper_available,1,verified,https://bitmind.ai/research,A Generative Adversarial Framework for Evolving Deepfake Detection,1,verified,https://bitmind.ai/research,A Generative Adversarial Framework for Evolving Deepfake Detection,1,both coders
+34,api_public,1,verified,https://bitmind.ai/developers,Sign up for free and get 100 API calls per month. No credit card required.,1,verified,https://bitmind.ai/developers,"Complete API documentation with all endpoints, parameters, and response formats.",1,both coders
+34,mcp_server,0,verified,,,0,verified,,,0,both coders
+34,team_named,1,verified,https://bitmind.ai/,BitMind founder Ken Jon Miyachi,1,verified,https://bitmind.ai/,says BitMind founder Ken Jon Miyachi on deepfake scams,1,both coders
+34,product_live,1,verified,https://bitmind.ai/,Browser plugins and mobile apps for individuals and teams. Verify content while browsing or sharing on social platforms.,1,verified,https://bitmind.ai/developers,Sign up for free and get 100 API calls per month. No credit card required.,1,both coders
+34,category,"Cybersecurity, Authenticity & Verification",verified,onchain,Deepfake Detection,"Cybersecurity, Authenticity & Verification",verified,onchain,Deepfake Detection,"Cybersecurity, Authenticity & Verification",both coders
+35,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+35,api_public,0,verified,,,0,verified,,,0,both coders
+35,mcp_server,0,verified,,,0,verified,,,0,both coders
+35,team_named,0,verified,,,0,verified,,,0,both coders
+35,product_live,0,verified,,,0,verified,,,0,both coders
+35,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+36,whitepaper_available,1,verified,README,[**Whitepaper**](docs/WHITEPAPER.md),1,verified,README,[**Whitepaper**](docs/WHITEPAPER.md),1,both coders
+36,api_public,0,verified,,,0,verified,,,0,both coders
+36,mcp_server,0,verified,,,0,verified,,,0,both coders
+36,team_named,0,verified,,,0,verified,,,0,both coders
+36,product_live,0,verified,,,0,verified,,,0,both coders
+36,category,AI Training & Model Improvement,verified,README,"The world's frontier open deep-research model, forged by adversarial competition",AI Training & Model Improvement,verified,README,"The world's frontier open deep-research model, forged by adversarial competition",AI Training & Model Improvement,both coders
+37,whitepaper_available,1,verified,https://aureliusaligned.ai,"Explore the technical foundation powering open, multi-agentic alignment.",1,verified,https://aureliusaligned.ai,"Explore the technical foundation powering open, multi-agentic alignment.",1,both coders
+37,api_public,1,verified,https://aureliusaligned.ai/product/,Agents connect via API and iterate using Proba before committing to training,1,verified,https://aureliusaligned.ai/product/,Agents connect via API and iterate using Proba before committing to training,1,both coders
+37,mcp_server,1,verified,https://aureliusaligned.ai/product/,"Proba is built to be driven by agents as well. Point yours at the MCP skill and API reference, and it can run the predict, edit, verify loop on its own.",1,verified,https://aureliusaligned.ai/product/,"Proba is built to be driven by agents as well. Point yours at the MCP skill and API reference, and it can run the predict, edit, verify loop on its own.",1,both coders
+37,team_named,0,verified,,,0,verified,,,0,both coders
+37,product_live,1,verified,https://aureliusaligned.ai/product/,Try Proba today,1,verified,https://aureliusaligned.ai/product/,Try Proba today,1,both coders
+37,category,Data & Database Construction,verified,https://aureliusaligned.ai,The best-performing agents produce training data. That data trains future AI to reason through uncertainty.,AI Training & Model Improvement,verified,onchain,Decentralized Alignment of Artificial Intelligence,AI Training & Model Improvement,third reading
+38,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+38,api_public,1,verified,https://chronollm.com/,import chronollm as cl,1,verified,https://chronollm.com/,client = cl.Client('YOUR_API_KEY'),1,both coders
+38,mcp_server,0,verified,,,0,verified,,,0,both coders
+38,team_named,1,verified,https://chronollm.com/,Jean Herelle,1,verified,https://chronollm.com/,Jean Herelle,1,both coders
+38,product_live,1,verified,https://chronollm.com/,Download the weights and run ChronoLLM entirely on your own hardware.,1,verified,https://chronollm.com/,"The full model, free to download and run on your own hardware. Built for quants and engineers who want to self-host and verify it themselves.",1,both coders
+38,category,AI Training & Model Improvement,verified,onchain,Competitive training of chronologically consistent Large Language Models,AI Training & Model Improvement,verified,onchain,Competitive training of chronologically consistent Large Language Models,AI Training & Model Improvement,both coders
+39,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+39,api_public,0,verified,,,0,verified,,,0,both coders
+39,mcp_server,0,verified,,,0,verified,,,0,both coders
+39,team_named,0,verified,,,0,verified,,,0,both coders
+39,product_live,0,verified,,,0,verified,,,0,both coders
+39,category,Miscellaneous,verified,onchain,deprecated,Miscellaneous,verified,onchain,deprecated,Miscellaneous,both coders
+40,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+40,api_public,0,verified,,,0,verified,,,0,both coders
+40,mcp_server,0,verified,,,0,verified,,,0,both coders
+40,team_named,0,verified,,,0,verified,,,0,both coders
+40,product_live,1,verified,README,every crown ships as downloadable weights.,1,verified,https://www.ralphlabs.ai/,Download the crown.,1,both coders
+40,category,AI Optimization & Compression,verified,onchain,"The same model, small enough to run on your phone. Compress the frontier models into GGUFs.",AI Optimization & Compression,verified,onchain,Compress the frontier models into GGUFs.,AI Optimization & Compression,both coders
+41,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+41,api_public,0,verified,,,0,verified,,,0,both coders
+41,mcp_server,0,verified,,,0,verified,,,0,both coders
+41,team_named,0,verified,,,0,verified,,,0,both coders
+41,product_live,0,verified,,,1,verified,https://almnc.ai,Make informed predictions on real-world outcomes by trading prediction market contracts through our terminal.,0,third reading
+41,category,Forecasting & Prediction,verified,https://almnc.ai,Almanac is a decentralized forecasting competition where agents compete in research and prediction across complex global events,Forecasting & Prediction,verified,https://almnc.ai,Almanac is a decentralized forecasting competition where agents compete in research and prediction across complex global events,Forecasting & Prediction,both coders
+42,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+42,api_public,0,verified,,,0,verified,,,0,both coders
+42,mcp_server,0,verified,,,0,verified,,,0,both coders
+42,team_named,0,verified,,,0,verified,,,0,both coders
+42,product_live,0,verified,,,0,verified,,,0,both coders
+42,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+43,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+43,api_public,0,verified,,,0,verified,,,0,both coders
+43,mcp_server,0,verified,,,0,verified,,,0,both coders
+43,team_named,0,verified,,,0,verified,,,0,both coders
+43,product_live,0,verified,,,0,verified,,,0,both coders
+43,category,Scientific & Technical Problem Solving,verified,README,"A decentralized network for solving graph optimization problems, built on Bittensor, the foremost decentralised AI network.",Scientific & Technical Problem Solving,verified,README,"A decentralized network for solving graph optimization problems, built on Bittensor, the foremost decentralised AI network.",Scientific & Technical Problem Solving,both coders
+44,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+44,api_public,0,verified,,,0,verified,,,0,both coders
+44,mcp_server,0,verified,,,0,verified,,,0,both coders
+44,team_named,0,verified,,,0,verified,,,0,both coders
+44,product_live,1,verified,https://www.wearescore.com/,Try Score Studio,1,verified,https://www.wearescore.com/,Try Score Studio,1,both coders
+44,category,Data & Database Construction,verified,https://www.wearescore.com/,models that turn raw video into structured intelligence,Media & Voice AI,verified,README,TurboVision is Score's decentralized intelligence layer for live video and imagery.,Media & Voice AI,third reading
+45,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+45,api_public,1,verified,https://alpharidge.ai/pricing,Personal API + MCP access,1,verified,https://alpharidge.ai/pricing,Personal API + MCP access,1,both coders
+45,mcp_server,1,verified,https://alpharidge.ai/docs/mcp,claude mcp add --transport http alpharidge https://mcp.alpharidge.ai/mcp,1,verified,https://alpharidge.ai/docs/mcp,claude mcp add --transport http alpharidge https://mcp.alpharidge.ai/mcp,1,both coders
+45,team_named,0,verified,,,0,verified,,,0,both coders
+45,product_live,1,verified,https://alpharidge.ai/pricing,"Start free. The full platform, one price.",1,verified,https://alpharidge.ai/pricing,"Start free. The full platform, one price.",1,both coders
+45,category,Financial Markets & Investing,verified,onchain,"Real-time market intelligence across equities, FX, crypto, commodities and indices.",Financial Markets & Investing,verified,onchain,"Real-time market intelligence across equities, FX, crypto, commodities and indices.",Financial Markets & Investing,both coders
+46,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+46,api_public,0,verified,,,0,verified,,,0,both coders
+46,mcp_server,0,verified,,,0,verified,,,0,both coders
+46,team_named,0,verified,,,0,verified,,,0,both coders
+46,product_live,0,verified,,,0,verified,,,0,both coders
+46,category,Forecasting & Prediction,verified,onchain,Lighning Fast Uncensored Inference,AI Inference & Model Serving,verified,onchain,Lighning Fast Uncensored Inference,AI Inference & Model Serving,third reading
+47,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+47,api_public,0,verified,,,0,verified,,,0,both coders
+47,mcp_server,0,verified,,,0,verified,,,0,both coders
+47,team_named,0,verified,,,0,verified,,,0,both coders
+47,product_live,0,verified,,,0,verified,,,0,both coders
+47,category,"Compute, Storage & Network Infrastructure",verified,onchain,"Miners execute signed, immutable training workloads on eligible NVIDIA H100 GPUs","Compute, Storage & Network Infrastructure",verified,onchain,"Miners execute signed, immutable training workloads on eligible NVIDIA H100 GPUs","Compute, Storage & Network Infrastructure",both coders
+48,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+48,api_public,0,verified,,,0,verified,,,0,both coders
+48,mcp_server,0,verified,,,0,verified,,,0,both coders
+48,team_named,0,verified,,,0,verified,,,0,both coders
+48,product_live,0,verified,,,0,verified,,,0,both coders
+48,category,"Compute, Storage & Network Infrastructure",verified,https://www.qbittensorlabs.com/,Democratizing access to quantum computing through Bittensor's decentralized network.,"Compute, Storage & Network Infrastructure",verified,https://www.qbittensorlabs.com/,Democratizing access to quantum computing through Bittensor's decentralized network.,"Compute, Storage & Network Infrastructure",both coders
+49,whitepaper_available,1,verified,https://docs.nepher.ai,Nepher Robotics White Paper,1,verified,https://docs.nepher.ai,Nepher Robotics White Paper,1,both coders
+49,api_public,1,verified,https://docs.nepher.ai/nepher-cli,Create API keys at nepher.ai/account/api-keys. Keys are shown only once.,1,verified,https://docs.nepher.ai/nepher-cli,Create API keys at nepher.ai/account/api-keys. Keys are shown only once.,1,both coders
+49,mcp_server,0,verified,,,0,verified,,,0,both coders
+49,team_named,0,verified,,,0,verified,,,0,both coders
+49,product_live,1,verified,https://www.nepher.ai/,Log inGet started,1,verified,https://docs.nepher.ai,"Everything lives on one website, nepher.ai, and all products share a single Nepher Account for sign-in, API keys, coldkey registration, and platform balance.",1,both coders
+49,category,Robotics & Physical AI,verified,onchain,Pioneering Simulation-First Robotics Development,Robotics & Physical AI,verified,onchain,Pioneering Simulation-First Robotics Development,Robotics & Physical AI,both coders
+50,whitepaper_available,1,verified,README,https://github.com/synthdataco/synth-subnet/blob/main/Synth%20Whitepaper%20v1.pdf,1,verified,README,https://github.com/synthdataco/synth-subnet/blob/main/Synth%20Whitepaper%20v1.pdf,1,both coders
+50,api_public,1,verified,https://docs.synthdata.co/,"Synth API offers programmatic access to probabilistic price forecasts across 1-hour and 24-hour horizons for Equities, Commodities and Cryptocurrencies",1,verified,https://docs.synthdata.co/,"Synth API offers programmatic access to probabilistic price forecasts across 1-hour and 24-hour horizons for Equities, Commodities and Cryptocurrencies",1,both coders
+50,mcp_server,1,verified,https://docs.synthdata.co/,MCP,1,verified,https://docs.synthdata.co/,MCP,1,both coders
+50,team_named,0,verified,,,0,verified,,,0,both coders
+50,product_live,1,verified,https://docs.synthdata.co/,"The API equips traders, developers, and institutions with predictive intelligence to gain a competitive edge, identify opportunities, and make informed decisions in dynamic markets.",1,verified,https://docs.synthdata.co/,"The API equips traders, developers, and institutions with predictive intelligence to gain a competitive edge",1,both coders
+50,category,Financial Markets & Investing,verified,onchain,Predictive intelligence for financial markets and beyond,Financial Markets & Investing,verified,onchain,Predictive intelligence for financial markets and beyond,Financial Markets & Investing,both coders
+51,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+51,api_public,1,verified,https://docs.lium.io/developers/sdk,The lium.io package ships both the CLI and a Python SDK for managing GPU pods programmatically.,1,verified,https://docs.lium.io/developers/sdk,The lium.io package ships both the CLI and a Python SDK for managing GPU pods programmatically.,1,both coders
+51,mcp_server,1,verified,https://docs.lium.io,AI agents can use the /mcp endpoint (search + read_page tools).,1,verified,https://docs.lium.io,AI agents can use the /mcp endpoint (search + read_page tools).,1,both coders
+51,team_named,0,verified,,,0,verified,,,0,both coders
+51,product_live,1,verified,README,Lium is a GPU rental marketplace.,1,verified,https://docs.lium.io,Rent GPU compute for ML / data workloads on lium.io,1,both coders
+51,category,"Compute, Storage & Network Infrastructure",verified,README,The decentralized GPU cloud on Bittensor Subnet 51.,"Compute, Storage & Network Infrastructure",verified,README,Lium is a GPU rental marketplace.,"Compute, Storage & Network Infrastructure",both coders
+52,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+52,api_public,0,verified,,,0,verified,,,0,both coders
+52,mcp_server,0,verified,,,0,verified,,,0,both coders
+52,team_named,0,verified,,,0,verified,,,0,both coders
+52,product_live,0,verified,,,1,verified,https://www.tensorplex.ai,DOJO-INTERFACE-CODER-7B is here!,1,third reading
+52,category,AI Training & Model Improvement,verified,README,"Dojo V2 transforms conventional Generative Adversarial Network (GAN) into a competitive, decentralized GAN built on the principle of zero-sum incentives.",Data & Database Construction,verified,README,V2 challenges miners to create outputs that are not only indistinguishable from a high-quality baseline but are also superior to it.,AI Training & Model Improvement,third reading
+53,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+53,api_public,1,verified,https://engy.ai/docs,Point any OpenAI-compatible client at https://api.engy.ai/v1 with your API key.,1,verified,https://engy.ai/docs,Point any OpenAI-compatible client at https://api.engy.ai/v1 with your API key.,1,both coders
+53,mcp_server,0,verified,,,0,verified,,,0,both coders
+53,team_named,0,verified,,,0,verified,,,0,both coders
+53,product_live,1,verified,https://engy.ai/pricing,"Per-token, pay as you go. No subscriptions and no minimums; you pay only for the tokens you use.",1,verified,https://engy.ai/pricing,"Per-token, pay as you go. No subscriptions and no minimums; you pay only for the tokens you use.",1,both coders
+53,category,AI Inference & Model Serving,verified,onchain,Verified inference for frontier open models.,AI Inference & Model Serving,verified,onchain,Verified inference for frontier open models.,AI Inference & Model Serving,both coders
+54,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+54,api_public,0,verified,,,0,verified,,,0,both coders
+54,mcp_server,0,verified,,,0,verified,,,0,both coders
+54,team_named,0,verified,,,0,verified,,,0,both coders
+54,product_live,1,verified,https://www.yanez.ai,"We are live,",0,verified,,,0,third reading
+54,category,"Cybersecurity, Authenticity & Verification",verified,onchain,"Yanez SN54 generates synthetic identities for challenging Yanez humanhood, presence, and uniqueness detection models.","Cybersecurity, Authenticity & Verification",verified,onchain,"Yanez SN54 generates synthetic identities for challenging Yanez humanhood, presence, and uniqueness detection models.","Cybersecurity, Authenticity & Verification",both coders
+55,whitepaper_available,1,verified,https://niome.genomes.io,Read the Whitepaper,1,verified,https://niome.genomes.io,Read the Whitepaper,1,both coders
+55,api_public,0,verified,,,0,verified,,,0,both coders
+55,mcp_server,0,verified,,,0,verified,,,0,both coders
+55,team_named,0,verified,,,0,verified,,,0,both coders
+55,product_live,0,verified,,,0,verified,,,0,both coders
+55,category,Data & Database Construction,verified,https://niome.genomes.io,NIOME develops AI-powered synthetic genomic data designed to preserve research-relevant patterns without relying on identifiable patient genomes.,Data & Database Construction,verified,onchain,NIOME is a decentralized AI subnet that enables privacy-safe genomic intelligence by replacing real human genomes with high-fidelity synthetic genomic profiles,Data & Database Construction,both coders
+56,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+56,api_public,1,verified,https://www.gradients.io/,curl --request POST --url https://api.gradients.io/v1/tasks/create,1,verified,https://www.gradients.io/,Begin training with a single simple user interface — or programmatically with our API.,1,both coders
+56,mcp_server,0,verified,,,0,verified,,,0,both coders
+56,team_named,0,verified,,,0,verified,,,0,both coders
+56,product_live,1,verified,https://www.gradients.io/pricing,"Competitive rates for model training. Pay for what you use, with no hidden fees.",1,verified,https://www.gradients.io/pricing,"Competitive rates for model training. Pay for what you use, with no hidden fees.",1,both coders
+56,category,AI Training & Model Improvement,verified,https://www.gradients.io/,"Tune any model, with any dataset, on demand.",AI Training & Model Improvement,verified,https://www.gradients.io/,Gradients allows anyone in the world to train image & text models,AI Training & Model Improvement,both coders
+57,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+57,api_public,0,verified,,,0,verified,,,0,both coders
+57,mcp_server,0,verified,,,0,verified,,,0,both coders
+57,team_named,0,verified,,,0,verified,,,0,both coders
+57,product_live,0,verified,,,0,verified,,,0,both coders
+57,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+58,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+58,api_public,0,verified,,,0,verified,,,0,both coders
+58,mcp_server,0,verified,,,0,verified,,,0,both coders
+58,team_named,0,verified,,,0,verified,,,0,both coders
+58,product_live,0,verified,,,0,verified,,,0,both coders
+58,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+59,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+59,api_public,0,verified,,,0,verified,,,0,both coders
+59,mcp_server,0,verified,,,0,verified,,,0,both coders
+59,team_named,0,verified,,,0,verified,,,0,both coders
+59,product_live,0,verified,,,0,verified,,,0,both coders
+59,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+60,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+60,api_public,0,verified,,,0,verified,,,0,both coders
+60,mcp_server,0,verified,,,0,verified,,,0,both coders
+60,team_named,0,verified,,,0,verified,,,0,both coders
+60,product_live,0,verified,,,0,verified,,,0,both coders
+60,category,"Cybersecurity, Authenticity & Verification",verified,onchain,find and fix exploits in codebases,"Cybersecurity, Authenticity & Verification",verified,onchain,find and fix exploits in codebases,"Cybersecurity, Authenticity & Verification",both coders
+61,whitepaper_available,1,verified,https://www.theredteam.io/,Community PageWhitepaperGitHub,1,verified,https://www.theredteam.io/,Community PageWhitepaperGitHub,1,both coders
+61,api_public,0,verified,,,0,verified,,,0,both coders
+61,mcp_server,0,verified,,,0,verified,,,0,both coders
+61,team_named,0,verified,,,0,verified,,,0,both coders
+61,product_live,0,verified,,,0,verified,,,0,both coders
+61,category,"Cybersecurity, Authenticity & Verification",verified,onchain,a decentralized platform designed to drive innovation in cybersecurity through competitive programming challenges,"Cybersecurity, Authenticity & Verification",verified,README,The RedTeam subnet by Innerworks is a decentralized platform designed to drive innovation in cybersecurity through competitive programming challenges.,"Cybersecurity, Authenticity & Verification",both coders
+62,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+62,api_public,0,verified,,,0,verified,,,0,both coders
+62,mcp_server,0,verified,,,0,verified,,,0,both coders
+62,team_named,0,verified,,,0,verified,,,0,both coders
+62,product_live,1,verified,https://app.ridges.ai,10 credits included each month.,1,verified,https://app.ridges.ai,"One credit, one task. No hidden costs — and if you hold stake in the Ridges subnet, Ridgeline is free.",1,both coders
+62,category,AI Agents & Automation,verified,onchain,Software Engineering Agents,AI Agents & Automation,verified,onchain,Software Engineering Agents,AI Agents & Automation,both coders
+63,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+63,api_public,0,verified,,,0,verified,,,0,both coders
+63,mcp_server,0,verified,,,0,verified,,,0,both coders
+63,team_named,0,verified,,,0,verified,,,0,both coders
+63,product_live,0,verified,,,0,verified,,,0,both coders
+63,category,Scientific & Technical Problem Solving,verified,README,"Enigma turns critical security research into a transparent, competitive, and publicly verifiable process.","Cybersecurity, Authenticity & Verification",verified,README,"Enigma turns critical security research into a transparent, competitive, and publicly verifiable process.","Cybersecurity, Authenticity & Verification",third reading
+64,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+64,api_public,1,verified,README,"Once you are registered, you can create API keys that can be used with a simple ""Authorization"" header in your requests.",1,verified,README,"Once you are registered, you can create API keys that can be used with a simple",1,both coders
+64,mcp_server,0,verified,,,0,verified,,,0,both coders
+64,team_named,0,verified,,,0,verified,,,0,both coders
+64,product_live,1,verified,https://chutes.ai,"Powering Trillions of Tokens per Month, Chutes is the leading open-source, decentralized compute provider for deploying, scaling and running open-source models in production.",1,verified,https://chutes.ai,Explore ModelsCreate Account,1,both coders
+64,category,"Compute, Storage & Network Infrastructure",verified,https://chutes.ai,"High-performance AI Inference of top SOTA OSS Models, ephemeral jobs, batch processing jobs, and much more.",AI Inference & Model Serving,verified,https://chutes.ai,"High-performance AI Inference of top SOTA OSS Models, ephemeral jobs, batch processing jobs, and much more.",AI Inference & Model Serving,third reading
+65,whitepaper_available,1,verified,https://www.trueperformancenetwork.com/,Start miningRun a validatorLitepaper,1,verified,https://www.trueperformancenetwork.com/,Start miningRun a validatorLitepaper,1,both coders
+65,api_public,0,verified,,,0,verified,,,0,both coders
+65,mcp_server,0,verified,,,0,verified,,,0,both coders
+65,team_named,0,verified,,,0,verified,,,0,both coders
+65,product_live,1,verified,https://www.trueperformancenetwork.com/,The TPN Gateway is live: submit your first model,1,verified,https://www.trueperformancenetwork.com/,The TPN Gateway is live: submit your first model,1,both coders
+65,category,AI Optimization & Compression,verified,onchain,Distributed AI model compression & optimization engine,AI Optimization & Compression,verified,onchain,Distributed AI model compression & optimization engine,AI Optimization & Compression,both coders
+66,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+66,api_public,0,verified,,,0,verified,,,0,both coders
+66,mcp_server,0,verified,,,0,verified,,,0,both coders
+66,team_named,0,verified,,,0,verified,,,0,both coders
+66,product_live,0,verified,,,0,verified,,,0,both coders
+66,category,Scientific & Technical Problem Solving,verified,onchain,Incentivizing breakthroughs on decades-old open mathematical conjectures,Scientific & Technical Problem Solving,verified,onchain,Incentivizing breakthroughs on decades-old open mathematical conjectures,Scientific & Technical Problem Solving,both coders
+67,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+67,api_public,1,verified,https://harnyx.ai/,Read https://harnyx.ai/skill.md and follow its instructions to use the Harnyx Research API.,1,verified,https://harnyx.ai/,Read https://harnyx.ai/skill.md and follow its instructions to use the Harnyx Research API.,1,both coders
+67,mcp_server,0,verified,,,0,verified,,,0,both coders
+67,team_named,0,verified,,,0,verified,,,0,both coders
+67,product_live,0,verified,,,0,verified,,,0,both coders
+67,category,AI Agents & Automation,verified,onchain,Deep research as a commodity.,Search & Knowledge Retrieval,verified,onchain,"Deep research as a commodity. Faster, cheaper, traceable research — produced by a competitive swarm of miners on Bittensor SN67.",Search & Knowledge Retrieval,third reading
+68,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+68,api_public,0,verified,,,0,verified,,,0,both coders
+68,mcp_server,0,verified,,,0,verified,,,0,both coders
+68,team_named,0,verified,,,0,verified,,,0,both coders
+68,product_live,0,verified,,,0,verified,,,0,both coders
+68,category,Scientific & Technical Problem Solving,verified,onchain,Accelerating drug discovery,Scientific & Technical Problem Solving,verified,onchain,Accelerating drug discovery.,Scientific & Technical Problem Solving,both coders
+69,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+69,api_public,0,verified,,,0,verified,,,0,both coders
+69,mcp_server,0,verified,,,0,verified,,,0,both coders
+69,team_named,0,verified,,,0,verified,,,0,both coders
+69,product_live,1,verified,https://www.heraldmedia.ai,"You only pay for verified, persistent coverage.",1,verified,https://www.heraldmedia.ai,"Tell us the topic and the tier — DSV creates and funds the brief. You only pay for verified, persistent coverage.",1,both coders
+69,category,"Marketing, Sales & Commerce",verified,onchain,Incentivising Mainstream Media via PR Firms,"Marketing, Sales & Commerce",verified,https://www.heraldmedia.ai,Herald is the Bittensor subnet that turns real press into a verifiable commodity.,"Marketing, Sales & Commerce",both coders
+70,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+70,api_public,0,verified,,,0,verified,,,0,both coders
+70,mcp_server,0,verified,,,0,verified,,,0,both coders
+70,team_named,0,verified,,,0,verified,,,0,both coders
+70,product_live,0,verified,,,0,verified,,,0,both coders
+70,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+71,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+71,api_public,1,verified,https://leadpoet.com/docs,Find your connection with GET /api/outbound-webhook-destinations.,1,verified,https://leadpoet.com/docs,Make the API calls below to https://leadpoet.com with Authorization: Bearer <LEADPOET_SESSION_ACCESS_TOKEN> from the signed-in team owner or admin.,1,both coders
+71,mcp_server,0,verified,,,0,verified,,,0,both coders
+71,team_named,1,verified,https://leadpoet.com/about-us,Gavin Zaentz,1,verified,https://leadpoet.com/about-us,Gavin Zaentz,1,both coders
+71,product_live,1,verified,https://leadpoet.com/pricing,"1,000 credits / month",1,verified,https://leadpoet.com/pricing,$500/mo,1,both coders
+71,category,"Marketing, Sales & Commerce",verified,onchain,Intent-driven AI for modern sales teams.,"Marketing, Sales & Commerce",verified,onchain,Intent-driven AI for modern sales teams.,"Marketing, Sales & Commerce",both coders
+72,whitepaper_available,1,verified,https://docs.natix.network/whitepaper/,NATIX Network Whitepaper,1,verified,https://docs.natix.network/whitepaper/,NATIX Network Whitepaper,1,both coders
+72,api_public,0,verified,,,0,verified,,,0,both coders
+72,mcp_server,0,verified,,,0,verified,,,0,both coders
+72,team_named,0,verified,,,0,verified,,,0,both coders
+72,product_live,1,verified,https://www.natix.network/vx360-depin-dashcam,companion app is available on Android and iOS,1,verified,https://www.natix.network/vx360-depin-dashcam,companion app is available on Android and iOS,1,both coders
+72,category,Data & Database Construction,verified,onchain,"StreetVision is advancing autonomous driving, Physical AI, and map-making.",Robotics & Physical AI,verified,onchain,"StreetVision is advancing autonomous driving, Physical AI, and map-making.",Robotics & Physical AI,third reading
+73,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+73,api_public,0,verified,,,0,verified,,,0,both coders
+73,mcp_server,0,verified,,,0,verified,,,0,both coders
+73,team_named,0,verified,,,0,verified,,,0,both coders
+73,product_live,0,verified,,,0,verified,,,0,both coders
+73,category,Financial Markets & Investing,verified,,,Miscellaneous,verified,,,Miscellaneous,third reading
+74,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+74,api_public,0,verified,,,0,verified,,,0,both coders
+74,mcp_server,0,verified,,,0,verified,,,0,both coders
+74,team_named,0,verified,,,0,verified,,,0,both coders
+74,product_live,0,verified,,,1,verified,https://gittensor.io,These are the open source projects built by Gittensor.,1,third reading
+74,category,Scientific & Technical Problem Solving,verified,onchain,autonomous software development,AI Agents & Automation,verified,onchain,autonomous software development,AI Agents & Automation,third reading
+75,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+75,api_public,1,verified,https://docs.hippius.com,"Management API, HCFS API, SDKs, and docs written for agents.",1,verified,https://docs.hippius.com,"Management API, HCFS API, SDKs, and docs written for agents.",1,both coders
+75,mcp_server,0,verified,,,0,verified,,,0,both coders
+75,team_named,0,verified,,,0,verified,,,0,both coders
+75,product_live,1,verified,https://hippius.com/,Use our intuitive console to pay using fiat or through the Bittensor network,1,verified,https://hippius.com/,Use our intuitive console to pay using fiat or through the Bittensor network,1,both coders
+75,category,"Compute, Storage & Network Infrastructure",verified,onchain,"Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, trust, and power.","Compute, Storage & Network Infrastructure",verified,onchain,"Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, trust, and power.","Compute, Storage & Network Infrastructure",both coders
+76,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+76,api_public,1,verified,https://ormas.ai/docs,"Prepare a task, authorize a maximum quote, and read the result receipt.",1,verified,https://ormas.ai/docs,"Prepare a task, authorize a maximum quote, and read the result receipt.",1,both coders
+76,mcp_server,0,verified,,,0,verified,,,0,both coders
+76,team_named,0,verified,,,0,verified,,,0,both coders
+76,product_live,1,verified,https://ormas.ai,Add credits when you want to run. You are charged exactly the accepted quote; a miss costs nothing.,1,verified,https://ormas.ai,Add credits when you want to run. You are charged exactly the accepted quote; a miss costs nothing.,1,both coders
+76,category,AI Agents & Automation,verified,onchain,Clients post a change and the test that proves it; miners quote a firm price for the passing result and deliver a branch.,AI Agents & Automation,verified,onchain,"Ormas is an Outcomes API for coding work on Bittensor subnet 76, in development.",AI Agents & Automation,both coders
+77,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+77,api_public,0,verified,,,0,verified,,,0,both coders
+77,mcp_server,0,verified,,,0,verified,,,0,both coders
+77,team_named,0,verified,,,0,verified,,,0,both coders
+77,product_live,0,verified,,,0,verified,,,0,both coders
+77,category,DeFi & Crypto Infrastructure,verified,onchain,"Supply liquidity on external chains via uniswap, incentivize any project",DeFi & Crypto Infrastructure,verified,onchain,"Supply liquidity on external chains via uniswap, incentivize any project",DeFi & Crypto Infrastructure,both coders
+78,whitepaper_available,1,verified,README,[Whitepaper](whitepaper/README.md) and [PDF](whitepaper/UMI-Whitepaper.pdf),1,verified,README,[Whitepaper](whitepaper/README.md) and [PDF](whitepaper/UMI-Whitepaper.pdf),1,both coders
+78,api_public,0,verified,,,0,verified,,,0,both coders
+78,mcp_server,0,verified,,,0,verified,,,0,both coders
+78,team_named,0,verified,,,0,verified,,,0,both coders
+78,product_live,1,verified,https://www.umi.vision,umi /signLanguage through motion.Live,1,verified,https://www.umi.vision,umi /signLanguage through motion.Live,1,both coders
+78,category,Media & Voice AI,verified,README,UMI develops ASL-to-English translation,Media & Voice AI,verified,README,UMI develops ASL-to-English translation through endpoint competition and,Media & Voice AI,both coders
+79,whitepaper_available,1,verified,https://taos.im/about/,"For more information about the theoretical underpinnings of the framework and its potential real-world applications, with current limitations, see our white paper.",1,verified,https://taos.im/about/,"For more information about the theoretical underpinnings of the framework and its potential real-world applications, with current limitations, see our white paper.",1,both coders
+79,api_public,0,verified,,,0,verified,,,0,both coders
+79,mcp_server,0,verified,,,0,verified,,,0,both coders
+79,team_named,0,verified,,,0,verified,,,0,both coders
+79,product_live,0,verified,,,0,verified,,,0,both coders
+79,category,Financial Markets & Investing,verified,onchain,Building a SOTA Exchange for dTAO and Beyond,DeFi & Crypto Infrastructure,verified,onchain,Building a SOTA Exchange for dTAO and Beyond,Financial Markets & Investing,third reading
+80,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+80,api_public,0,verified,,,0,verified,,,0,both coders
+80,mcp_server,0,verified,,,0,verified,,,0,both coders
+80,team_named,0,verified,,,0,verified,,,0,both coders
+80,product_live,0,verified,,,0,verified,,,0,both coders
+80,category,Robotics & Physical AI,verified,onchain,An open competition on Bittensor for continuously improving robotics models and collecting egocentric data,Robotics & Physical AI,verified,onchain,An open competition on Bittensor for continuously improving robotics models and collecting egocentric data,Robotics & Physical AI,both coders
+81,whitepaper_available,1,verified,https://www.reliqua.ai/paper,Draft protocol paper — v0.2 (2026-04-28),1,verified,https://www.reliqua.ai/paper,Draft protocol paper — v0.2 (2026-04-28),1,both coders
+81,api_public,0,verified,,,0,verified,,,0,both coders
+81,mcp_server,0,verified,,,0,verified,,,0,both coders
+81,team_named,0,verified,,,0,verified,,,0,both coders
+81,product_live,0,verified,,,1,verified,https://www.reliqua.ai/,"Released model: Reliquary-4B, based on Qwen3-4B-Base.",1,third reading
+81,category,AI Training & Model Improvement,verified,https://www.reliqua.ai/,Reliquary runs reinforcement-learning training on a decentralized network.,AI Training & Model Improvement,verified,https://www.reliqua.ai/,Reliquary runs reinforcement-learning training on a decentralized network.,AI Training & Model Improvement,both coders
+82,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+82,api_public,0,verified,,,0,verified,,,0,both coders
+82,mcp_server,0,verified,,,0,verified,,,0,both coders
+82,team_named,0,verified,,,0,verified,,,0,both coders
+82,product_live,0,verified,,,0,verified,,,0,both coders
+82,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+83,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+83,api_public,0,verified,,,0,verified,,,0,both coders
+83,mcp_server,0,verified,,,0,verified,,,0,both coders
+83,team_named,0,verified,,,0,verified,,,0,both coders
+83,product_live,0,verified,,,0,verified,,,0,both coders
+83,category,Scientific & Technical Problem Solving,verified,onchain,CliqueAI - AI-Powered Maximum Clique Solver Network,Scientific & Technical Problem Solving,verified,onchain,CliqueAI - AI-Powered Maximum Clique Solver Network,Scientific & Technical Problem Solving,both coders
+84,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+84,api_public,0,verified,,,0,verified,,,0,both coders
+84,mcp_server,0,verified,,,0,verified,,,0,both coders
+84,team_named,0,verified,,,0,verified,,,0,both coders
+84,product_live,0,verified,,,0,verified,,,0,both coders
+84,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+85,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+85,api_public,0,verified,,,0,verified,,,0,both coders
+85,mcp_server,0,verified,,,0,verified,,,0,both coders
+85,team_named,1,verified,https://vidaio.io/,Gareth Howells,1,verified,https://vidaio.io/,Gareth Howells,1,both coders
+85,product_live,1,verified,https://vidaio.io/dashboard,Enter your details to continue using our video processing services,1,verified,https://vidaio.io/dashboard,Enter your details to continue using our video processing services,1,both coders
+85,category,Media & Voice AI,verified,onchain,Next-Generation Video Processing Powered By AI,Media & Voice AI,verified,onchain,Next-Generation Video Processing Powered By AI,Media & Voice AI,both coders
+86,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+86,api_public,0,verified,,,0,verified,,,0,both coders
+86,mcp_server,0,verified,,,0,verified,,,0,both coders
+86,team_named,0,verified,,,0,verified,,,0,both coders
+86,product_live,0,verified,,,0,verified,,,0,both coders
+86,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+87,whitepaper_available,1,verified,https://provenonce.ai,"Whitepaper v0.7.2, Final Candidate.",1,verified,https://provenonce.ai,"Whitepaper v0.7.2, Final Candidate.",1,both coders
+87,api_public,0,verified,,,0,verified,,,0,both coders
+87,mcp_server,0,verified,,,0,verified,,,0,both coders
+87,team_named,1,verified,https://provenonce.ai/company,Will O'Brien,1,verified,https://provenonce.ai/company,Will O'Brien,1,both coders
+87,product_live,0,verified,,,0,verified,,,0,both coders
+87,category,"Cybersecurity, Authenticity & Verification",verified,onchain,"verified execution of agentic workflows for enterprise, delivering Proof of Assurance","Cybersecurity, Authenticity & Verification",verified,https://provenonce.ai,Provenonce's proposal for an open Bittensor market for evidence-backed assurance of autonomous work.,"Cybersecurity, Authenticity & Verification",both coders
+88,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+88,api_public,0,verified,,,0,verified,,,0,both coders
+88,mcp_server,0,verified,,,0,verified,,,0,both coders
+88,team_named,0,verified,,,0,verified,,,0,both coders
+88,product_live,1,verified,README,"launched in December 2025, a Tao/Alpha hedge fund powered by the subnet.",1,verified,README,"The [88 Quant Fund](https://db.investing88.ai/88-quant-fund) launched in December 2025, a Tao/Alpha hedge fund powered by the subnet.",1,both coders
+88,category,Financial Markets & Investing,verified,onchain,Decentralized AUM,Financial Markets & Investing,verified,README,Investing is the Bittensor subnet with the mission to provide investment services for both retail and institutional investors.,Financial Markets & Investing,both coders
+89,whitepaper_available,0,verified,,,0,verified,,,,site could not be read
+89,api_public,0,verified,,,0,verified,,,,site could not be read
+89,mcp_server,0,verified,,,0,verified,,,,site could not be read
+89,team_named,0,verified,,,0,verified,,,,site could not be read
+89,product_live,0,verified,,,0,verified,,,,site could not be read
+89,category,Financial Markets & Investing,verified,onchain,Proof of Edge - Trading signals,Financial Markets & Investing,verified,onchain,Proof of Edge - Trading signals,Financial Markets & Investing,both coders
+90,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+90,api_public,0,verified,,,0,verified,,,0,both coders
+90,mcp_server,0,verified,,,0,verified,,,0,both coders
+90,team_named,0,verified,,,0,verified,,,0,both coders
+90,product_live,1,verified,https://kubetee.ai,served inside TEE-isolated pods and available to buyers on sayGM.,1,verified,https://kubetee.ai,served inside TEE-isolated pods and available to buyers on sayGM.,1,both coders
+90,category,"Compute, Storage & Network Infrastructure",verified,onchain,KubeTEE AI Factory: Confidential Computing TEE Multi-Cluster K8s,"Compute, Storage & Network Infrastructure",verified,onchain,KubeTEE AI Factory: Confidential Computing TEE Multi-Cluster K8s,"Compute, Storage & Network Infrastructure",both coders
+91,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+91,api_public,0,verified,,,0,verified,,,0,both coders
+91,mcp_server,0,verified,,,0,verified,,,0,both coders
+91,team_named,0,verified,,,0,verified,,,0,both coders
+91,product_live,0,verified,,,0,verified,,,0,both coders
+91,category,Data & Database Construction,verified,onchain,SOTA Time Series Foundation Models,AI Training & Model Improvement,verified,onchain,SOTA Time Series Foundation Models,AI Training & Model Improvement,third reading
+92,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+92,api_public,0,verified,,,0,verified,,,0,both coders
+92,mcp_server,0,verified,,,0,verified,,,0,both coders
+92,team_named,0,verified,,,0,verified,,,0,both coders
+92,product_live,0,verified,,,0,verified,,,0,both coders
+92,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+93,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+93,api_public,0,verified,,,0,verified,,,0,both coders
+93,mcp_server,0,verified,,,0,verified,,,0,both coders
+93,team_named,0,verified,,,0,verified,,,0,both coders
+93,product_live,0,verified,,,1,verified,https://bitcast.network/,REVENUE $446.6K,0,third reading
+93,category,"Marketing, Sales & Commerce",verified,https://bitcast.network/,A decentralized content marketing protocol on Bittensor. Creators are rewarded for content with verifiable brand attention.,"Marketing, Sales & Commerce",verified,https://bitcast.network/,A decentralized content marketing protocol on Bittensor.,"Marketing, Sales & Commerce",both coders
+94,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+94,api_public,1,verified,https://cathedral.computer/,"Plain HTTPS and JSON. Your agent reads the whole contract at /agents.md and gets its key from your approval, never from chat.",1,verified,https://cathedral.computer/docs/,The machine-readable API description (OpenAPI) is at /openapi.json.,1,both coders
+94,mcp_server,0,verified,,,0,verified,,,0,both coders
+94,team_named,0,verified,,,0,verified,,,0,both coders
+94,product_live,1,verified,https://cathedral.computer/docs/,"You add prepaid credit at /account/, at least $1.24 to start a VM.",1,verified,https://cathedral.computer/docs/,"Open Keys and continue with Google or a secure email link, then create a cat_sk_* key for each server that needs access.",1,both coders
+94,category,"Compute, Storage & Network Infrastructure",verified,onchain,CPU sandboxes powering reinforcement learning on Bittensor.,"Compute, Storage & Network Infrastructure",verified,onchain,CPU sandboxes powering reinforcement learning on Bittensor.,"Compute, Storage & Network Infrastructure",both coders
+95,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+95,api_public,1,verified,https://actual.inc/docs,Create an inference credential and make your first request to api.actual.inc,1,verified,https://actual.inc/docs,Create an inference credential and make your first request to api.actual.inc,1,both coders
+95,mcp_server,0,verified,,,0,verified,,,0,both coders
+95,team_named,0,verified,,,0,verified,,,0,both coders
+95,product_live,1,verified,https://actual.inc,"Actual supports macOS, Linux, and Windows PCs.",1,verified,https://actual.inc,"Actual runs on macOS, Linux, and Windows PCs. Install it on multiple computers and allow Actual to link them over an encrypted relay.",1,both coders
+95,category,AI Inference & Model Serving,verified,onchain,Heterogeneous inference network by Actual Computer Inc.,AI Inference & Model Serving,verified,onchain,Heterogeneous inference network by Actual Computer Inc.,AI Inference & Model Serving,both coders
+96,whitepaper_available,1,verified,https://verathos.ai/docs?page=proof-protocol,Proof Protocol Whitepaper,1,verified,https://verathos.ai/docs?page=proof-protocol,Proof Protocol Whitepaper,1,both coders
+96,api_public,1,verified,https://verathos.ai/docs?page=api,The gateway is the OpenAI-compatible API endpoint.,1,verified,https://verathos.ai/docs?page=api,The gateway is the OpenAI-compatible API endpoint. Drop-in replacement for any OpenAI SDK.,1,both coders
+96,mcp_server,0,verified,,,0,verified,,,0,both coders
+96,team_named,0,verified,,,0,verified,,,0,both coders
+96,product_live,1,verified,https://verathos.ai,"OpenAI-compatible endpoint, per-million-token pricing set by the network, every response cryptographically receipted.",1,verified,https://verathos.ai,Chat with qualified models and inspect the applicable Gleipnir verification tier on each response.,1,both coders
+96,category,AI Inference & Model Serving,verified,https://verathos.ai,"Verified AI inference on Bittensor. Open models, one API, cryptographic receipts.",AI Inference & Model Serving,verified,onchain,Verified AI inference and training subnet.,AI Inference & Model Serving,both coders
+97,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+97,api_public,0,verified,,,0,verified,,,0,both coders
+97,mcp_server,0,verified,,,0,verified,,,0,both coders
+97,team_named,0,verified,,,0,verified,,,0,both coders
+97,product_live,0,verified,,,0,verified,,,0,both coders
+97,category,AI Optimization & Compression,verified,https://us-east-1.hippius.com/albedo/index.html,dendriteholdings/albedo-qwen3.6-35b-king-CXXVIII,AI Training & Model Improvement,verified,https://us-east-1.hippius.com/albedo/index.html,dendriteholdings/albedo-qwen3.6-35b-king-CXXVIII,AI Training & Model Improvement,third reading
+98,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+98,api_public,0,verified,,,0,verified,,,0,both coders
+98,mcp_server,0,verified,,,0,verified,,,0,both coders
+98,team_named,0,verified,,,0,verified,,,0,both coders
+98,product_live,1,verified,https://neverplayalone.ai,Top up credits and pay only for usage.,1,verified,https://neverplayalone.ai,Top up credits and pay only for usage.,1,both coders
+98,category,AI Agents & Automation,verified,onchain,Living AI Companions that create memories alongside you,AI Agents & Automation,verified,onchain,Living AI Companions that create memories alongside you,AI Agents & Automation,both coders
+99,whitepaper_available,1,verified,https://www.thirtyspokes.ai/docs/mining,"Your arm runs on your own OpenRouter key (whitepaper §4, D18).",0,verified,,,0,third reading
+99,api_public,1,verified,https://www.thirtyspokes.ai,"base_url=""https://api.thirtyspokes.ai/v1""",0,verified,,,0,third reading
+99,mcp_server,0,verified,,,0,verified,,,0,both coders
+99,team_named,0,verified,,,0,verified,,,0,both coders
+99,product_live,0,verified,,,0,verified,,,0,both coders
+99,category,Media & Voice AI,verified,https://www.thirtyspokes.ai/docs,Thirty Spokes is a decentralized model router on Bittensor,AI Inference & Model Serving,verified,https://www.thirtyspokes.ai/docs,Thirty Spokes is a decentralized model router on Bittensor,AI Inference & Model Serving,third reading
+100,whitepaper_available,1,verified,https://network.cortex.foundation/whitepaper,Whitepaper · Cortex SN100,1,verified,https://network.cortex.foundation,"The whitepaper for the why, the docs for the how, and one plain-text page your LLM can read in a single breath: the network guide.",1,both coders
+100,api_public,0,verified,,,0,verified,,,0,both coders
+100,mcp_server,0,verified,,,0,verified,,,0,both coders
+100,team_named,0,verified,,,0,verified,,,0,both coders
+100,product_live,0,verified,,,0,verified,,,0,both coders
+100,category,AI Training & Model Improvement,verified,https://network.cortex.foundation,"Train a better model and win a certified duel, or find a real bug an operator can reproduce.",AI Training & Model Improvement,verified,https://network.cortex.foundation,OpenType trains the model. Bounty keeps the product honest.,AI Training & Model Improvement,both coders
+101,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+101,api_public,0,verified,,,0,verified,,,0,both coders
+101,mcp_server,0,verified,,,0,verified,,,0,both coders
+101,team_named,0,verified,,,0,verified,,,0,both coders
+101,product_live,0,verified,,,0,verified,,,0,both coders
+101,category,Data & Database Construction,verified,onchain,Tag101 is a Bittensor subnet for decentralized social post tagging,Data & Database Construction,verified,onchain,Tag101 is a Bittensor subnet for decentralized social post tagging,Data & Database Construction,both coders
+102,whitepaper_available,1,verified,https://connito.ai/whitepaper,Whitepaper · v1,1,verified,https://connito.ai/whitepaper,Whitepaper · v1,1,both coders
+102,api_public,0,verified,,,0,verified,,,0,both coders
+102,mcp_server,0,verified,,,0,verified,,,0,both coders
+102,team_named,1,verified,https://connito.ai/whitepaper,Isabella Liu @connito.ai·George Kim @connito.ai,1,verified,https://connito.ai/whitepaper,Isabella Liu @connito.ai,1,both coders
+102,product_live,0,verified,,,0,verified,,,0,both coders
+102,category,AI Training & Model Improvement,verified,onchain,Contributors train specialized expert modules that are aggregated into powerful AI systems,AI Training & Model Improvement,verified,onchain,"Contributors train specialized expert modules that are aggregated into powerful AI systems, without massive centralized compute.",AI Training & Model Improvement,both coders
+103,whitepaper_available,0,verified,,,0,verified,,,,site could not be read
+103,api_public,0,verified,,,0,verified,,,,site could not be read
+103,mcp_server,0,verified,,,0,verified,,,,site could not be read
+103,team_named,0,verified,,,0,verified,,,,site could not be read
+103,product_live,0,verified,,,0,verified,,,,site could not be read
+103,category,Forecasting & Prediction,verified,README,Which combination of existing specialist adapters actually finishes a real business workflow,AI Training & Model Improvement,verified,README,Which combination of existing specialist adapters actually finishes a real business workflow,AI Training & Model Improvement,third reading
+104,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+104,api_public,0,verified,,,0,verified,,,0,both coders
+104,mcp_server,0,verified,,,0,verified,,,0,both coders
+104,team_named,0,verified,,,0,verified,,,0,both coders
+104,product_live,1,verified,https://taostatus.com/pricing,Every wallet gets one free analysis a week.,1,verified,https://taostatus.com/pricing,"Every wallet gets one free analysis a week. Beyond that, each analysis costs one credit.",1,both coders
+104,category,AI Inference & Model Serving,verified,README,"Taostatus is a Bittensor subnet that sources real, working LLM API access from",AI Inference & Model Serving,verified,https://docs.taostatus.com/,allowing miners to contribute spare large-language-model (LLM) API capacity to a shared pool,AI Inference & Model Serving,both coders
+105,whitepaper_available,1,verified,https://b1m.ai,Whitepaper,1,verified,https://b1m.ai,Whitepaper,1,both coders
+105,api_public,1,verified,https://beamcore.b1m.ai/docs,BeamCore public HTTP API. Authenticated routes expect the x-api-key header unless the endpoint is public.,0,verified,,,0,third reading
+105,mcp_server,0,verified,,,0,verified,,,0,both coders
+105,team_named,0,verified,,,0,verified,,,0,both coders
+105,product_live,0,verified,,,0,verified,,,0,both coders
+105,category,"Compute, Storage & Network Infrastructure",verified,onchain,Decentralized bandwidth. A global network. Powering the open internet.,"Compute, Storage & Network Infrastructure",verified,onchain,Decentralized bandwidth. A global network. Powering the open internet.,"Compute, Storage & Network Infrastructure",both coders
+106,whitepaper_available,1,verified,https://nodexo.ai/whitepaper,Nodexo: A Peer-to-Peer Market for Verified Compute,1,verified,https://nodexo.ai/whitepaper,Nodexo: A Peer-to-Peer Market for Verified Compute,1,both coders
+106,api_public,1,verified,https://nodexo.ai/docs,Public renters call the web API. The validator API is not the public renter interface.,1,verified,https://nodexo.ai/docs,Public renters call the web API. The validator API is not the public renter interface.,1,both coders
+106,mcp_server,0,verified,,,0,verified,,,0,both coders
+106,team_named,0,verified,,,0,verified,,,0,both coders
+106,product_live,1,verified,https://nodexo.ai,Free capacity can be selected immediately; in-use capacity remains visible with its current state.,1,verified,https://nodexo.ai,Verified machines reported by validators. Free capacity can be selected immediately; in-use capacity remains visible with its current state.,1,both coders
+106,category,"Compute, Storage & Network Infrastructure",verified,onchain,tokenized ai compute,"Compute, Storage & Network Infrastructure",verified,https://nodexo.ai,Nodexo turns independent GPUs into a continuously verified network.,"Compute, Storage & Network Infrastructure",both coders
+107,whitepaper_available,1,verified,https://theminos.ai/whitepaper,"Decentralized Infrastructure for DNA Mutation Inference & Benchmarking: architecture, incentive mechanism, scoring, security properties, and the road ahead.",1,verified,https://theminos.ai/whitepaper,BITTENSOR · SUBNET 107 · WHITEPAPER,1,both coders
+107,api_public,0,verified,,,0,verified,,,0,both coders
+107,mcp_server,1,verified,https://mcp.theminos.ai/docs,"Minos MCP is a read-only, public-safe Model Context Protocol server for the Minos",1,verified,https://mcp.theminos.ai/docs,"Minos MCP is a read-only, public-safe Model Context Protocol server for the Minos",1,both coders
+107,team_named,0,verified,,,0,verified,,,0,both coders
+107,product_live,0,verified,,,0,verified,,,0,both coders
+107,category,Scientific & Technical Problem Solving,verified,https://docs.theminos.ai,Minos is a decentralized genomic variant-calling network running on Bittensor Subnet 107.,Scientific & Technical Problem Solving,verified,README,Minos (SN107) is a subnet for genomic variant calling and benchmarking powered by Bittensor.,Scientific & Technical Problem Solving,both coders
+108,whitepaper_available,1,verified,https://docs.chipforge.io/,White Paper,1,verified,https://docs.chipforge.io/,White Paper,1,both coders
+108,api_public,0,verified,,,0,verified,,,0,both coders
+108,mcp_server,0,verified,,,0,verified,,,0,both coders
+108,team_named,0,verified,,,0,verified,,,0,both coders
+108,product_live,0,verified,,,1,verified,https://www.chipforge.io/,"A microcontroller with built-in cryptography, designed in competition and open sourced.",1,third reading
+108,category,Scientific & Technical Problem Solving,verified,onchain,ChipForge decentralizes silicon design.,Scientific & Technical Problem Solving,verified,onchain,ChipForge decentralizes silicon design.,Scientific & Technical Problem Solving,both coders
+109,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+109,api_public,0,verified,,,0,verified,,,0,both coders
+109,mcp_server,0,verified,,,0,verified,,,0,both coders
+109,team_named,0,verified,,,0,verified,,,0,both coders
+109,product_live,1,verified,https://finsight.tech/,Basic is free and live today.,1,verified,https://finsight.tech/,Basic is free and live today. Everything AI-powered is invite-gated while we onboard the first cohort.,1,both coders
+109,category,Financial Markets & Investing,verified,onchain,Finsight is a decentralized personal investment intelligence.,Financial Markets & Investing,verified,onchain,Finsight is a decentralized personal investment intelligence.,Financial Markets & Investing,both coders
+110,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+110,api_public,1,verified,https://www.green-compute.com/enterprise,"OpenAI-compatible chat completion API, streaming responses.",1,verified,https://www.green-compute.com/enterprise,"OpenAI-compatible chat completion API, streaming responses.",1,both coders
+110,mcp_server,0,verified,,,0,verified,,,0,both coders
+110,team_named,1,verified,https://www.green-compute.com/about,Josh Riddett,1,verified,https://www.green-compute.com/about,Josh Riddett,1,both coders
+110,product_live,1,verified,https://www.green-compute.com/,"Browse available hardware across our verified green facilities. Pay only for what you use, with no commitments.",1,verified,https://www.green-compute.com/,"Browse available hardware across our verified green facilities. Pay only for what you use, with no commitments.",1,both coders
+110,category,"Compute, Storage & Network Infrastructure",verified,https://www.green-compute.com/,Decentralized GPU compute on Bittensor,"Compute, Storage & Network Infrastructure",verified,https://www.green-compute.com/,Decentralized GPU compute on Bittensor,"Compute, Storage & Network Infrastructure",both coders
+111,whitepaper_available,1,verified,https://claims111.ai/whitepaper,White Paper v1 · August 2026 · 50 pages · Bittensor Subnet 111,1,verified,https://claims111.ai/whitepaper,White Paper v1 · August 2026 · 50 pages · Bittensor Subnet 111,1,both coders
+111,api_public,0,verified,,,0,verified,,,0,both coders
+111,mcp_server,0,verified,,,0,verified,,,0,both coders
+111,team_named,1,verified,https://claims111.ai,Philipp Koellinger,1,verified,https://claims111.ai,Philipp Koellinger,1,both coders
+111,product_live,0,verified,,,0,verified,,,0,both coders
+111,category,Data & Database Construction,verified,onchain,Turning scientific literature into a structured claim-evidence graph,Data & Database Construction,verified,onchain,Turning scientific literature into a structured claim-evidence graph,Data & Database Construction,both coders
+112,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+112,api_public,0,verified,,,0,verified,,,0,both coders
+112,mcp_server,0,verified,,,0,verified,,,0,both coders
+112,team_named,0,verified,,,0,verified,,,0,both coders
+112,product_live,0,verified,,,0,verified,,,0,both coders
+112,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+113,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+113,api_public,0,verified,,,0,verified,,,0,both coders
+113,mcp_server,0,verified,,,0,verified,,,0,both coders
+113,team_named,0,verified,,,0,verified,,,0,both coders
+113,product_live,0,verified,,,0,verified,,,0,both coders
+113,category,DeFi & Crypto Infrastructure,verified,onchain,pivoting to long-short DEX of alpha token,DeFi & Crypto Infrastructure,verified,onchain,pivoting to long-short DEX of alpha token,DeFi & Crypto Infrastructure,both coders
+114,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+114,api_public,1,verified,https://thesoma.ai/about,Point any OpenAI-compatible client at it with a SOMA key,1,verified,https://thesoma.ai/about,Point any OpenAI-compatible client at it with a SOMA key and requests are compressed on the way to the upstream model,1,both coders
+114,mcp_server,0,verified,,,0,verified,,,0,both coders
+114,team_named,0,verified,,,0,verified,,,0,both coders
+114,product_live,1,verified,https://app.thesoma.ai,Sign-ups are open. Create one.,1,verified,https://app.thesoma.ai,Sign-ups are open. Create one.,1,both coders
+114,category,AI Optimization & Compression,verified,onchain,Context compression layer delivered through MCP infrastructure,AI Optimization & Compression,verified,onchain,Context compression layer delivered through MCP infrastructure,AI Optimization & Compression,both coders
+115,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+115,api_public,0,verified,,,0,verified,,,0,both coders
+115,mcp_server,0,verified,,,0,verified,,,0,both coders
+115,team_named,0,verified,,,0,verified,,,0,both coders
+115,product_live,0,verified,,,0,verified,,,0,both coders
+115,category,Media & Voice AI,verified,README,A distributed capability evolution network for AIGC creation and Agent workflows.,Media & Voice AI,verified,onchain,An evolving AIGC Harness for creators & agents.,Media & Voice AI,both coders
+116,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+116,api_public,0,verified,,,0,verified,,,0,both coders
+116,mcp_server,0,verified,,,0,verified,,,0,both coders
+116,team_named,0,verified,,,0,verified,,,0,both coders
+116,product_live,0,verified,,,0,verified,,,0,both coders
+116,category,Miscellaneous,verified,,,Miscellaneous,verified,,,Miscellaneous,both coders
+117,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+117,api_public,0,verified,,,0,verified,,,0,both coders
+117,mcp_server,0,verified,,,0,verified,,,0,both coders
+117,team_named,0,verified,,,0,verified,,,0,both coders
+117,product_live,1,verified,https://everyframe.studio/,Try it now in Video tools,1,verified,https://everyframe.studio/,"Your creative studio, powered by Bittensor",1,both coders
+117,category,Media & Voice AI,verified,https://everyframe.studio/,"AI video, image and sound in one canvas",Media & Voice AI,verified,https://everyframe.studio/,"Everyframe Studio — AI video, image and sound in one canvas",Media & Voice AI,both coders
+118,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+118,api_public,1,verified,https://heyditto.ai/docs,"mint API keys with scopes, publish it to the app store, and share per-app tryout links.",1,verified,https://heyditto.ai/docs,"Building Apps on Ditto Use the Developer tab to create an app, mint API keys with scopes, publish it to the app store, and share per-app tryout links.",1,both coders
+118,mcp_server,1,verified,https://heyditto.ai/docs,Choose your MCP client and connect it to your Ditto memories with the right setup values and auth method.,1,verified,https://heyditto.ai/docs,Choose your MCP client and connect it to your Ditto memories with the right setup values and auth method.,1,both coders
+118,team_named,0,verified,,,0,verified,,,0,both coders
+118,product_live,1,verified,https://heyditto.ai,First 30 messages free. No card required.,1,verified,https://heyditto.ai,First 30 messages free. No card required.,1,both coders
+118,category,AI Agents & Automation,verified,README,A Bittensor subnet that incentivizes agent memory harnesses.,AI Agents & Automation,verified,README,A Bittensor subnet that incentivizes agent memory harnesses.,AI Agents & Automation,both coders
+119,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+119,api_public,0,verified,,,0,verified,,,0,both coders
+119,mcp_server,0,verified,,,0,verified,,,0,both coders
+119,team_named,0,verified,,,0,verified,,,0,both coders
+119,product_live,0,verified,,,0,verified,,,0,both coders
+119,category,Data & Database Construction,verified,README,"an incentive network for discovering training-data improvements that make learning-oriented AI more accurate, clear, age-appropriate, and safe.",Data & Database Construction,verified,README,"an incentive network for discovering training-data improvements that make learning-oriented AI more accurate, clear, age-appropriate, and safe.",Data & Database Construction,both coders
+120,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+120,api_public,0,verified,,,0,verified,,,0,both coders
+120,mcp_server,0,verified,,,0,verified,,,0,both coders
+120,team_named,0,verified,,,0,verified,,,0,both coders
+120,product_live,0,verified,,,0,verified,,,0,both coders
+120,category,AI Training & Model Improvement,verified,README,Synchronous inference-verification training loop for Bittensor subnet120,AI Training & Model Improvement,verified,README,Synchronous inference-verification training loop for Bittensor subnet120: publish,AI Training & Model Improvement,both coders
+121,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+121,api_public,0,verified,,,0,verified,,,0,both coders
+121,mcp_server,0,verified,,,0,verified,,,0,both coders
+121,team_named,1,verified,https://www.sundaebar.ai/about,Jill Kenney,1,verified,https://www.sundaebar.ai/about,Jill Kenney,1,both coders
+121,product_live,1,verified,https://www.sundaebar.ai/agent/photo-elevator,"No studio booking. No photographer. No Photoshop. Just upload, enhance, and download.",1,verified,README,"sundae_bar operates an enterprise AI platform where businesses can discover, deploy and manage AI Skills, AI Agents and bespoke AI solutions",1,both coders
+121,category,AI Agents & Automation,verified,https://www.sundaebar.ai/,Deploying AI Agents for Business,AI Agents & Automation,verified,https://www.sundaebar.ai/,Deploying AI Agents for Business,AI Agents & Automation,both coders
+122,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+122,api_public,0,verified,,,0,verified,,,0,both coders
+122,mcp_server,0,verified,,,0,verified,,,0,both coders
+122,team_named,0,verified,,,0,verified,,,0,both coders
+122,product_live,0,verified,,,0,verified,,,0,both coders
+122,category,Miscellaneous,verified,https://cookingtao.com/,"CookingTAO provides the infrastructure you need to deploy, manage, and monetize miners across the Bittensor ecosystem.",DeFi & Crypto Infrastructure,verified,https://cookingtao.com/,"CookingTAO provides the infrastructure you need to deploy, manage, and monetize miners across the Bittensor ecosystem.",DeFi & Crypto Infrastructure,third reading
+123,whitepaper_available,1,verified,README,"Full spec, math, and simulation evidence: the FLOW release paper (`FLOW_RELEASE.pdf`, published on the MANTIS site).",1,verified,README,"Full spec, math, and simulation evidence: the FLOW release paper (`FLOW_RELEASE.pdf`, published on the MANTIS site).",1,both coders
+123,api_public,0,verified,,,0,verified,,,0,both coders
+123,mcp_server,0,verified,,,0,verified,,,0,both coders
+123,team_named,0,verified,,,0,verified,,,0,both coders
+123,product_live,1,verified,https://mantis123.com,monetized through hourly auctions at mantis123.com.,1,verified,https://mantis123.com,monetized through hourly auctions at mantis123.com.,1,both coders
+123,category,Financial Markets & Investing,verified,https://mantis123.com,MANTIS (Bittensor subnet 123) is a decentralized signal marketplace: up to 256 miners submit,Financial Markets & Investing,verified,https://mantis123.com,MANTIS (Bittensor subnet 123) is a decentralized signal marketplace: up to 256 miners submit,Financial Markets & Investing,both coders
+124,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+124,api_public,0,verified,,,0,verified,,,0,both coders
+124,mcp_server,0,verified,,,0,verified,,,0,both coders
+124,team_named,0,verified,,,0,verified,,,0,both coders
+124,product_live,0,verified,,,0,verified,,,0,both coders
+124,category,Robotics & Physical AI,verified,https://swarm124.com/,Swarm develops the software that powers autonomous machines.,Robotics & Physical AI,verified,https://swarm124.com/,Swarm develops the software that powers autonomous machines.,Robotics & Physical AI,both coders
+125,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+125,api_public,0,verified,,,0,verified,,,0,both coders
+125,mcp_server,0,verified,,,0,verified,,,0,both coders
+125,team_named,0,verified,,,0,verified,,,0,both coders
+125,product_live,0,verified,,,0,verified,,,0,both coders
+125,category,AI Training & Model Improvement,verified,onchain,Incentivizing the improvement of the algorithms behind a pretraining run,AI Training & Model Improvement,verified,onchain,Incentivizing the improvement of the algorithms behind a pretraining run,AI Training & Model Improvement,both coders
+126,whitepaper_available,1,verified,https://attelier.ai,Private beta. Read the whitepaper,1,verified,https://attelier.ai,Private beta. Read the whitepaper,1,both coders
+126,api_public,1,verified,https://docs.attelier.ai/,"One HTTP API and one key for every model, priced per result in credits: quote first, then run.",1,verified,https://docs.attelier.ai/,"One HTTP API and one key for every model, priced per result in credits: quote first, then run.",1,both coders
+126,mcp_server,1,verified,https://docs.attelier.ai/,"Connect Claude Code, Codex or any MCP client to Attelier.",1,verified,https://docs.attelier.ai/,"Connect Claude Code, Codex or any MCP client to Attelier.",1,both coders
+126,team_named,0,verified,,,0,verified,,,0,both coders
+126,product_live,1,verified,https://attelier.ai,The API and the apps are live today,0,verified,,,0,third reading
+126,category,Media & Voice AI,verified,onchain,Decentralized Generative Video Platform,Media & Voice AI,verified,onchain,Decentralized Generative Video Platform,Media & Voice AI,both coders
+127,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+127,api_public,0,verified,,,0,verified,,,0,both coders
+127,mcp_server,0,verified,,,0,verified,,,0,both coders
+127,team_named,0,verified,,,0,verified,,,0,both coders
+127,product_live,0,verified,,,0,verified,,,0,both coders
+127,category,Financial Markets & Investing,verified,https://astrid.global/,"A battleground for Trading Agents to compete. Anyone can train a Trading Agent, put it to Battle and if your Agent places in the top 3, you are rewarded.",Financial Markets & Investing,verified,https://astrid.global/,Our main endeavour is Astrid Arena which is an incentivised Trading Agent competition,Financial Markets & Investing,both coders
+128,whitepaper_available,0,verified,,,0,verified,,,0,both coders
+128,api_public,0,verified,,,0,verified,,,0,both coders
+128,mcp_server,0,verified,,,0,verified,,,0,both coders
+128,team_named,0,verified,,,0,verified,,,0,both coders
+128,product_live,1,verified,https://ByteLeap.ai,"Scale your AI workloads with enterprise-grade NVIDIA GPUs. From RTX 3090 to B200, deploy in minutes with guaranteed performance.",1,verified,https://ByteLeap.ai,Rent GPU Now,1,both coders
+128,category,"Compute, Storage & Network Infrastructure",verified,https://ByteLeap.ai,Enterprise GPU Computing Cloud,"Compute, Storage & Network Infrastructure",verified,https://ByteLeap.ai,ByteLeap - A Decentralized Public Cloud on Bittensor.,"Compute, Storage & Network Infrastructure",both coders

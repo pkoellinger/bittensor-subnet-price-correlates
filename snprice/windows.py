@@ -25,6 +25,17 @@ def sample_blocks(cfg, which="window"):
     return {"window": window, "lag": lag, "all": lag + window}[which]
 
 
+def emitting_blocks(lo, hi, first_emission):
+    """Number of blocks in (lo, hi] in which a subnet emitted alpha.
+
+    first_emission is the subnet's first emission block, or None if its emissions have
+    not started. Between registration and that block a subnet emits nothing.
+    """
+    if first_emission is None or first_emission > hi:
+        return 0
+    return hi - max(lo, first_emission - 1)
+
+
 def bounds(cfg, which="window", days=None):
     """(start, end] block range of a window; `days` overrides the window length."""
     if which not in ("window", "lag"):

@@ -14,6 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import chain, paths  # noqa: E402
+from snprice.aggregate import emissions_paid_after  # noqa: E402
 from snprice.io import archive, read_table, write_table  # noqa: E402
 from snprice.metrics import hhi_from_amounts  # noqa: E402
 from snprice.windows import bounds  # noqa: E402
@@ -53,6 +54,7 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
             ("owner_hk", n): nkey("SubnetOwnerHotkey", n),
             ("registered", n): nkey("NetworkRegisteredAt", n),
             ("first_emission", n): nkey("FirstEmissionBlockNumber", n),
+            ("tempo", n): nkey("Tempo", n),
             ("owner_lock", n): nkey("OwnerLock", n),
             ("decaying_owner_lock", n): nkey("DecayingOwnerLock", n),
             ("autolock", n): nkey("OwnerCutAutoLockEnabled", n),
@@ -103,7 +105,10 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
             third[("lock", n, k)] = k
     v3 = arch.read(list(third.values()), block) if third else {}
 
-    # dividend share of the owner hotkey, averaged over daily samples before the block
+    # dividend share of the owner hotkey, averaged over daily samples before the block.
+    # Dividend shares computed before a subnet's first payout pay nobody and are left out.
+    paid_after = {n: emissions_paid_after(chain.decode_uint(g("first_emission", n)),
+                                          chain.decode_uint(g("tempo", n), default=360)) for n in netuids}
     div_blocks = [block - cfg["blocks_per_day"] * d for d in range(DIVIDEND_SAMPLES)]
     div_share = {n: [] for n in netuids}
     for b in div_blocks:
@@ -114,6 +119,8 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
         for n in netuids:
             if dv[rk[n]] != g("registered", n):
                 continue                       # another subnet occupied this netuid then
+            if paid_after[n] is None or b <= paid_after[n]:
+                continue                       # no emissions paid yet
             vec = chain.decode_vec_u16(dv[dk[n]]) or []
             total = sum(vec)
             if total <= 0:
@@ -130,12 +137,13 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
         for (n, u), k in ak.items():
             ages.setdefault(n, []).append(chain.decode_uint(av[k], 0))
 
+    burned_rao = chain.decode_counters({n: g("burned", n) for n in netuids})
     rows = {}
     for n in netuids:
         alpha_in = chain.decode_uint(g("alpha_in", n), 0) / RAO
         alpha_out = chain.decode_uint(g("alpha_out", n), 0) / RAO
         issued = alpha_in + alpha_out
-        burned = chain.decode_uint(g("burned", n))
+        burned = burned_rao[n]
         protocol = chain.decode_uint(g("protocol", n), 0) / RAO
         staked = alpha_out - (burned or 0) / RAO - protocol
 

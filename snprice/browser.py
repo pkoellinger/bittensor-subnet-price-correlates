@@ -69,11 +69,16 @@ def render(url):
 
 
 def http_answer(url):
-    """(status code or None, final address, error name, HTML as sent by the server) of a plain request."""
+    """(status code or None, final address, error name, HTML as sent by the server) of a plain request.
+
+    If the address serves a PDF file instead of a page, the error name is "pdf" and no content is returned."""
     req = urllib.request.Request(url, headers={"User-Agent": AGENT, "Accept": "text/html,*/*"})
     try:
         with urllib.request.urlopen(req, timeout=25) as resp:
-            html = resp.read(STATIC_MAX_BYTES).decode("utf-8", "replace")
+            head = resp.read(5)
+            if head.startswith(b"%PDF"):
+                return resp.status, resp.geturl(), "pdf", ""      # a PDF file, not a page: nothing is kept
+            html = (head + resp.read(STATIC_MAX_BYTES)).decode("utf-8", "replace")
             return resp.status, resp.geturl(), None, html
     except urllib.error.HTTPError as exc:
         return exc.code, url, None, ""

@@ -10,6 +10,7 @@ import urllib.parse
 import urllib.request
 
 from .files import atomic_write
+from .webtext import site_of
 
 API = "https://api.github.com"
 
@@ -143,7 +144,7 @@ _DOC_FILE = r"\.(md|mdx|rst|txt|ipynb)$"
 _HEADING = {
     "doc_miner_guide": r"\b(miner|miners|mining)\b",
     "doc_validator_guide": r"\b(validator|validators|validating|validation)\b",
-    "doc_incentive_desc": r"\b(incentive|incentives|scoring|reward|rewards|mechanism)\b",
+    "doc_incentive_desc": r"\b(incentive|incentives|scoring|reward|rewards|mechanism|emission|emissions)\b",
     "doc_requirements": r"\b(requirement|requirements|hardware|prerequisite|prerequisites|specs?|specifications?)\b",
 }
 _PATH = {
@@ -157,6 +158,22 @@ _DOC_SITE = re.compile(
     r"|[^\s)\"'<>]+/docs(?:/[^\s)\"'<>]*)?)", re.I)
 
 
+_CONTRIBUTING_PATH = re.compile(r"(^|/)contribut[^/]*\.(md|mdx|rst|txt)$", re.I)
+# documentation of the network or of tools, which many READMEs link: not the project's own docs site
+NOT_OWN_DOCS = {"bittensor.com", "learnbittensor.org", "opentensor.ai", "taostats.io", "github.com", "python.org",
+                "docker.com", "astral.sh", "pytorch.org", "huggingface.co", "nvidia.com", "substrate.io",
+                "polkadot.network", "google.com", "microsoft.com", "amazon.com", "npmjs.com", "wandb.ai",
+                "openai.com", "anthropic.com", "rust-lang.org", "cloudflare.com", "runpod.io", "vast.ai",
+                "keymetrics.io", "ubuntu.com"}
+
+
+def _own_docs_site(text):
+    for m in _DOC_SITE.finditer(text or ""):
+        if site_of(m.group(0)) not in NOT_OWN_DOCS:
+            return m.group(0)
+    return None
+
+
 def doc_checklist(profile, readme, tree_paths, website_text, homepage):
     """Eight yes/no documentation items from fixed rules; all None when there is no repository.
 
@@ -167,7 +184,10 @@ def doc_checklist(profile, readme, tree_paths, website_text, homepage):
 
     A miner or validator guide, an incentive description and hardware requirements
     count only when they appear as a README heading or as a documentation file,
-    not when the word merely occurs in running text.
+    not when the word merely occurs in running text. A contributing guide counts
+    wherever it is kept (GitHub's community profile, a file whose name starts with
+    "contribut", or a README heading). A docs site must be the project's own:
+    links to the documentation of Bittensor or of tools (NOT_OWN_DOCS) do not count.
     """
     if profile is None and readme is None and tree_paths is None:
         return {**{k: None for k in DOC_ITEMS}, "doc_score": None, "evidence": {}}
@@ -179,7 +199,11 @@ def doc_checklist(profile, readme, tree_paths, website_text, homepage):
 
     out["doc_readme"] = int(bool(files.get("readme")) and len(readme) >= MIN_README_CHARS)
     out["doc_license"] = int(bool(files.get("license")))
-    out["doc_contributing"] = int(bool(files.get("contributing")))
+    guide = next((p for p in paths if _CONTRIBUTING_PATH.search(p)), None) or \
+        next((h for h in headings if re.search(r"\bcontribut", h, re.I)), None)
+    out["doc_contributing"] = int(bool(files.get("contributing")) or guide is not None)
+    if guide is not None:
+        evidence["doc_contributing"] = guide
     for item in ("doc_miner_guide", "doc_validator_guide", "doc_incentive_desc", "doc_requirements"):
         hit = next((h for h in headings if re.search(_HEADING[item], h, re.I)), None)
         if hit is None:
@@ -187,10 +211,10 @@ def doc_checklist(profile, readme, tree_paths, website_text, homepage):
         out[item] = int(hit is not None)
         if hit is not None:
             evidence[item] = hit
-    site = _DOC_SITE.search(homepage or "") or _DOC_SITE.search(readme) or _DOC_SITE.search(website_text or "")
+    site = _own_docs_site(homepage) or _own_docs_site(readme) or _own_docs_site(website_text)
     out["doc_site"] = int(site is not None)
     if site:
-        evidence["doc_site"] = site.group(0)
+        evidence["doc_site"] = site
     out["doc_score"] = sum(out[k] for k in DOC_ITEMS)
     out["evidence"] = evidence
     return out

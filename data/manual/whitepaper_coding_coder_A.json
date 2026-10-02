@@ -1,0 +1,386 @@
+[
+  {
+    "netuid": 3,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Jacob Steeves   Krzysztof Warchoł   Hubert Korzeniewski   Antoni Bombała"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "The challenger is crowned if / LCB > δ, δ = 0 . 0015 , (5)"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 4,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Intel : Haidong Xia, Sathi Nair"
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 15,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Shardul Bansal"
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "Formula-like lines are training hyperparameters only (max_length, temperature, KTO beta, learning rate, tool_weight = 0.5), the protocol's own 0 examples; no score or reward formula in the excerpt."
+  },
+  {
+    "netuid": 18,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Wouter Lubbert Antoon Haringhuizen"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "iwScore = 0 . 5 · iwRMSE + 0 . 5 · iwMAE (3)"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 19,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "The scale factor reconciles total miner asks against emissions: / scale = min (1,"
+    },
+    "notes": "Weaker doubt (formal): formula lines are fragmented by extraction (ASK = sum_i ..., scale = min(1, ...)), but the sentence before the scale formula says it reconciles miner asks against emissions, so coded 1. No byline in excerpt (title page plus contents)."
+  },
+  {
+    "netuid": 21,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "BORDERLINE (formal): only worked numeric examples (round(18 x 0.20) = 4; 0.60 x (0.85 / 3.40) = 0.150), table rows and code (WeightSetter(burn_fraction=0.95)); no formula with variables in the excerpt, so coded 0. Formula list is cut at 20 lines. Mike, Hannah and Vera are story characters, not authors."
+  },
+  {
+    "netuid": 22,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "Draft says reward rules are still to be specified; no formula lines found."
+  },
+  {
+    "netuid": 23,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "Only formula-like line is a shell command in an attack example."
+  },
+  {
+    "netuid": 25,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 26,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "score = 1.0 × perturbation_score + 0.03 × margin_score + 0.01 × novelty_score"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 30,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 34,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "V t = 0 . 05 · C t + 0 . 95 · V t − 1 (5)"
+    },
+    "notes": "Author line is 'BitMind' (company/subnet name), coded 0 per protocol."
+  },
+  {
+    "netuid": 36,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "where 𝛿 = max ( 0 . 0 5 ⋅ ( 1 − acc / EMA"
+    },
+    "notes": "Formula lines are garbled (delta = max(0.05 * (1 - acc ...), ...), LCB-based king-replacement test, false-coronation alpha), but clearly an acceptance rule; coded 1. Byline is 'The Epago Project'."
+  },
+  {
+    "netuid": 37,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Kai Viren"
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 49,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 50,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Mode Network, Sam Hyatt, James Ross, Amber Shi"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "● is the decay constant, with half-life λ = / 𝑙𝑛2"
+    },
+    "notes": "Weaker doubt (formal): formula lines are garbled (t_i = t_0 + i*dt, scaling factor beta, decay constant lambda = ln2/half-life, daily scores raised to exponent alpha = 2); read as the leaderboard scoring formulas, coded 1."
+  },
+  {
+    "netuid": 55,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "score_i = 1 - (1/K) * Σ_k CE(y_k, p_hat[i,k]) - λ * (1/K) * Σ_k penalty(l[i,k])"
+    },
+    "notes": "Author line is 'NIOME Subnet Contributors' (team name), coded 0 per protocol."
+  },
+  {
+    "netuid": 61,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "Diversity points = min(Performance * Diversity * 10, remaining diversity points) / Total points = Diversity points + Performance points"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 72,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 78,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "Only configuration values in the excerpt (UID 0 hotkey, required_evaluator_groups=1); the contents list a reward calculation section but no formula is shown."
+  },
+  {
+    "netuid": 81,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "Computes s'_i = ⟨H'[i], r⟩ mod PRIME_Q. / Accepts iff |s'_i - s_i| ≤ PROOF_SKETCH_TOLERANCE_BASE"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 87,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Will O’Brien, Founder & CEO, Provenonce"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "quality = bounded_geometric_mean(active_dimensions, omit_missing=True) / penalty = exp(-response_indexed_costs(i,q)) / return quality * penalty"
+    },
+    "notes": "Weaker doubt (formal): score is given as pseudo-code (quality = bounded geometric mean, penalty = exp(-costs), return quality * penalty) plus garbled typeset formulas (exp, max, sums); coded 1."
+  },
+  {
+    "netuid": 96,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "BORDERLINE (formal): the only formula-like line is 'compact proofs of selected X x W = Y relations' inside a prose list; it names what is proven rather than stating how a check is computed, so coded 0."
+  },
+  {
+    "netuid": 100,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 0,
+      "quote": null
+    },
+    "notes": "No byline; 'ECHOBT' looks like a handle, not a first and last name."
+  },
+  {
+    "netuid": 102,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Isabella Liu"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "The miner’s utility is measured relative to the current global model: / u i = max"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 105,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "Score SLA = uptime × bandwidth × latency × success (9) / Reward total = Score SLA × stake weight × availability (10)"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 106,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "C = 24 x sum(p) / a_i = min( m x C x v_i / V , a_cap )"
+    },
+    "notes": "Byline reads 'Anonymous'."
+  },
+  {
+    "netuid": 107,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "S = w 1 · C core + w 2 · C complete + w 3 · C FP + w 4 · C quality"
+    },
+    "notes": "Byline reads 'Minos Team'."
+  },
+  {
+    "netuid": 108,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "F_c = \\frac{N_{correct}}{N_{total}}"
+    },
+    "notes": "Formulas are garbled by LaTeX extraction (F_c = N_correct / N_total, IPS = IPC x F_max, threshold gate) but are clearly scoring formulas."
+  },
+  {
+    "netuid": 111,
+    "wp_named_authors": {
+      "value": 1,
+      "quote": "Philipp Koellinger"
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "V h = 1 + β 1 { k h ≥ 2 } ,"
+    },
+    "notes": ""
+  },
+  {
+    "netuid": 123,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "S path = S base − γR M AE , S tail = S path"
+    },
+    "notes": "Excerpt is the table of contents only, so no byline is visible. Formula lines are partly garbled but include S_path = S_base - gamma R_MAE and clearance thresholds t_stat >= z_in = 1.25."
+  },
+  {
+    "netuid": 126,
+    "wp_named_authors": {
+      "value": 0,
+      "quote": null
+    },
+    "wp_formal_mechanism": {
+      "value": 1,
+      "quote": "𝑖 / = ∑ / 𝑝"
+    },
+    "notes": "BORDERLINE (formal): the only formula-like text is one garbled fragment ('i = sum p') with no sentence saying what it computes; coded 1 as a typeset summation formula in a subnet paper, low confidence. Excerpt starts at section 1, so no byline is visible."
+  }
+]

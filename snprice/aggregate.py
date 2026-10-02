@@ -18,16 +18,42 @@ def _num(value):
     return None if value is None or value == "" else float(value)
 
 
-def window_summary(samples, rows, day_of):
+def emissions_paid_after(first_emission, tempo):
+    """Block after which a subnet has certainly paid emissions at least once.
+
+    A subnet pays miners at the end of each tempo. Between its registration and the end of
+    the first tempo after its emissions start, nobody is paid and the chain's MinerBurned
+    holds its default of 0. None if the emissions have not started.
+    """
+    return None if first_emission is None else int(first_emission) + int(tempo)
+
+
+def measured_blocks(rows, paid_after):
+    """Blocks at which the chain's MinerBurned is a measurement.
+
+    MinerBurned is the incentive withheld from the owner's UIDs divided by all incentive.
+    It is a measurement only where the subnet pays emissions (block after `paid_after`) and
+    some UID holds incentive (the block has incentive rows). Elsewhere the chain stores 0.
+    """
+    if paid_after is None:
+        return set()
+    return {int(r["block"]) for r in rows if int(r["block"]) > paid_after}
+
+
+def window_summary(samples, rows, day_of, paid_after):
     """Summarise a window.
 
-    samples  grid rows of the subnet in the window (block, price_tao, miner_burned,
-             emission_enabled, tao_in_emission, reg_cost_tao), only blocks at which the
-             current occupant of the netuid was registered
-    rows     incentive rows at those blocks (block, coldkey, hotkey, weight, owner, ip)
-    day_of   block -> UTC date
+    samples     grid rows of the subnet in the window (block, price_tao, miner_burned,
+                emission_enabled, tao_in_emission, reg_cost_tao), only blocks at which the
+                current occupant of the netuid was registered
+    rows        incentive rows at those blocks (block, coldkey, hotkey, weight, owner, ip)
+    day_of      block -> UTC date
+    paid_after  emissions_paid_after() of the subnet
 
     A window without samples (subnet not yet registered) gives missing values, never zeros.
+    Burn and miner payments are taken only from blocks at which the subnet paid emissions:
+    incentive held before that pays nobody. Price, emission shares and registration cost use
+    every sample.
     "shares" holds each paying wallet's share of the incentive paid to non-owner UIDs.
     """
     out = {"samples_observed": len(samples),
@@ -37,7 +63,9 @@ def window_summary(samples, rows, day_of):
         out.update({k: None for k in VALUE_KEYS})
         return out
 
-    burns = [_num(s["miner_burned"]) for s in samples]
+    measured = measured_blocks(rows, paid_after)
+    rows = [r for r in rows if int(r["block"]) in measured]
+    burns = [_num(s["miner_burned"]) for s in samples if int(s["block"]) in measured]
     out["price_tao_avg"] = _mean([_num(s["price_tao"]) for s in samples])
     out["burn_mean"] = _mean(burns)
     out["burn_time_share_ge50"] = _mean([float(b >= 0.5) for b in burns if b is not None])
