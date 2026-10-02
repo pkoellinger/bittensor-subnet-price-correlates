@@ -1,0 +1,22 @@
+# secrets
+.env
+*.env
+!.env.example
+
+# API caches and wallet-level intermediates (regenerable; see data/README.md)
+data/raw/
+data/intermediate/
+
+# python / R / OS
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.Rproj.user/
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# local tooling
+.claude/
+.remember/

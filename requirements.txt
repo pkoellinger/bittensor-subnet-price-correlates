@@ -1,0 +1,6 @@
+# Collection pipeline (Python >= 3.10). Tests need only the standard library.
+substrate-interface>=1.7   # typed chain reads (locks, identities) at historical blocks
+beautifulsoup4>=4.12       # website text for the coding protocol
+pypdf>=4.0                 # white-paper page counts
+# curl must be on PATH: Taostats rejects Python's default HTTP client.
+# R >= 4.0 (base only) builds the .rds: Rscript build/build_rds.R

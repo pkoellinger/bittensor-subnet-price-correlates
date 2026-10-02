@@ -1,0 +1,18 @@
+{
+  "wave": 1,
+  "snapshot_date": "2026-09-30",
+  "t_block": 9184186,
+  "t_note": "End of 30 Sep 2026 UTC (23:59:48), the block Taostats uses for its daily snapshot.",
+  "window_days": 30,
+  "lag_days": 30,
+  "long_window_days": 90,
+  "grid_blocks": 900,
+  "blocks_per_day": 7200,
+  "taostats_min_gap_seconds": 4.0,
+  "taostats_call_ceiling": 10000,
+  "x_usd_ceiling": 50.0,
+  "lineage_share_floor": 0.001,
+  "lineage_max_wallets_per_subnet": 90,
+  "lineage_level2_share_floor": 0.005,
+  "lineage_call_cap": 6000
+}
