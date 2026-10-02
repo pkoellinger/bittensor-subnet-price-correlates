@@ -1,0 +1,129 @@
+netuid,rule,aliases,team_aliases,note
+1,strict,,Macrocosmos,Apex is an ordinary word
+2,plain,,Inference Labs,
+3,context,,,Teutonic is an adjective
+4,plain,,Manifold|Manifold Labs,
+5,strict,,,Hone is an ordinary word
+6,context,,Numinous Labs,
+7,plain,,Entrius,
+8,context,Vanta Network,Taoshi,Vanta is also an unrelated company
+9,context,,Macrocosmos,iota is an ordinary word and another cryptocurrency
+10,plain,,,
+11,plain,TrajRL,,
+12,plain,ComputeHorde,Backend Developers,
+13,context,,Macrocosmos,
+14,plain,,Latent Holdings,
+15,strict,ORO Agents,ORO AI,three letters; Spanish word
+16,context,,,
+17,plain,404-GEN|404GEN|404 GEN,404,
+18,strict,,Orpheus AI|Ørpheus AI,Zeus is a common name
+19,plain,,Taostats,
+20,strict,Witness Vision,,
+21,plain,,,
+22,plain,,,
+23,plain,,,
+24,strict,,SILX|SILX Labs,
+25,strict,UR Network|URnetwork,UR Foundation,two letters
+26,strict,PerturbAI,,
+27,strict,,SILX|SILX Labs,
+28,plain,Say GM,Taostats,gm alone is not an alias (far too common)
+29,plain,hotfloat,,
+30,plain,,,
+31,plain,,,
+32,strict,,,its AI is an ordinary phrase; exact case only
+33,plain,,Afterparty AI,
+34,plain,,,
+35,placeholder,,,
+36,plain,,Epago Foundation,
+37,context,Aurelius Protocol,,Aurelius is a name
+38,plain,Chrono LLM,CrunchDAO,
+39,placeholder,,,
+40,strict,Ralph Labs,,Ralph is a given name
+41,strict,,Corvx,
+42,placeholder,,,
+43,strict,,,
+44,strict,,Score Technologies,
+45,plain,AlphaRidge,Team Rizzo,
+46,strict,Instant Network,Bigtensor,
+47,plain,,,
+48,strict,,qBitTensor Labs|qBittensor Labs|Quantum Rings,generic phrase. Quantum Rings is the partner that runs Open Quantum on this subnet (qbittensorlabs.com/about) and presented subnets 48 and 63 at Exploit 26 (talk agenda-9e8f19c8f58ce1c00329d49a58c5b7f4)
+49,plain,Nepher,,
+50,strict,,Mode Network,
+51,plain,Lium,Datura,
+52,strict,,Tensorplex|Tensorplex Labs,
+53,context,,,
+54,context,,Yanez Compliance,Yanez is a surname
+55,plain,,Genomes.io,
+56,strict,Gradients.io,,
+57,placeholder,,,
+58,placeholder,,,
+59,placeholder,,,
+60,plain,Bitsec,,
+61,strict,,,red team is a generic term
+62,strict,Ridges AI,,
+63,strict,,qBitTensor Labs|qBittensor Labs|Quantum Rings,Quantum Rings presented this subnet at Exploit 26 (talk agenda-9e8f19c8f58ce1c00329d49a58c5b7f4) and is the partner of qBitTensor Labs (qbittensorlabs.com/about)
+64,context,,Chutes Global,chutes is an ordinary word
+65,plain,,Taofu|TPN Labs,
+66,strict,,,
+67,plain,,,
+68,strict,,Metanova|Metanova Labs,nova is an ordinary word
+69,strict,Herald Media,,
+70,placeholder,,,
+71,plain,,,
+72,plain,StreetVision|NATIX,NATIX Network,
+73,placeholder,,,
+74,plain,,Entrius,
+75,plain,,The Nerve Lab,
+76,plain,,Heron Cove Labs,
+77,strict,,,
+78,strict,Umi Vision,,three letters
+79,plain,,TAOS,
+80,plain,Open Roboto,,
+81,context,,Reliqua,
+82,placeholder,,,
+83,plain,Clique AI,TopTensor,
+84,placeholder,,,
+85,plain,,Vidiao,Vidiao is the spelling of the Exploit 26 agenda; the speaker introduces himself as co-founder of Vidaio and names subnet 85
+86,placeholder,,,
+87,plain,,,
+88,strict,Investing88,Mobius Fund,
+89,plain,Infinite Quant,,
+90,plain,Kube TEE,,
+91,strict,,TensorLink,
+92,placeholder,,,
+93,plain,,,
+94,strict,Cathedral AI,,
+95,strict,Actual Computer|actual.inc,Actual Computer,
+96,plain,,,
+97,context,,,
+98,plain,Never Play Alone,,
+99,plain,ThirtySpokes,,
+100,strict,CortexLM|Cortex Foundation,,
+101,plain,,,
+102,plain,Connito,Connito AI,
+103,plain,,,
+104,plain,,,
+105,strict,Beam Network|b1m,,
+106,plain,,,
+107,context,Minos Protocol,,Minos is a name from mythology
+108,plain,,Tatsu,
+109,plain,,,
+110,strict,,,generic phrase
+111,strict,DeSci Claims,Luminto,Claims is an ordinary word
+112,placeholder,,Khala Research|Pylon Partners,on-chain identity is a placeholder; at Exploit 26 (talk agenda-7fc863e204aa59afefc6e6003e981f48) the speaker presents the team's new subnet as subnet 112
+113,strict,,,generic finance term
+114,strict,,Dendrite|DendriteHQ,soma is an ordinary word
+115,plain,,,
+116,placeholder,,,
+117,plain,everyframe|Every Frame,,
+118,strict,Hey Ditto,OmniAura,
+119,plain,CapabilityForge,,
+120,context,,Affine Foundation,affine is a mathematical term
+121,plain,sundae bar|sundaebar,,
+122,plain,Cooking TAO,,
+123,strict,,,mantis is an ordinary word
+124,strict,,,
+125,strict,,,
+126,plain,,,
+127,context,Astrid Intelligence,,Astrid is a given name
+128,plain,,,

@@ -1,0 +1,20 @@
+[
+ {"show": "novelty_search", "label": "Novelty Search (Opentensor Foundation channel)", "source": "youtube",
+  "channel_id": "UCq-UgxLUK1mYJBxrmOfP7aA", "bittensor_only": true,
+  "note": "Videos and live streams of youtube.com/@Opentensor. Novelty Search episodes are streamed there and re-uploaded as edited videos, often without the show's name in the title, so the whole channel is the show."},
+ {"show": "hash_rate", "label": "Hash Rate", "source": "youtube",
+  "channel_id": "UCjw0PV30AxyJMYoXBBu8obg", "bittensor_only": false,
+  "note": "youtube.com/@markjeffrey. The audio feed stopped in November 2024. The show also covers other crypto projects, so names that need context are matched only with a Bittensor term in the title."},
+ {"show": "ventura_labs", "label": "Ventura Labs", "source": "youtube",
+  "channel_id": "UCUvkCrx_4Kr4ZejBYrCqGoA", "bittensor_only": true,
+  "note": "youtube.com/@VenturaLabs. No audio feed."},
+ {"show": "revenue_search", "label": "Revenue Search", "source": "rss",
+  "url": "https://anchor.fm/s/1072f10cc/podcast/rss", "bittensor_only": true,
+  "note": "Audio feed of Revenue Search: Inside Bittensor."},
+ {"show": "tao_pod", "label": "The TAO Pod", "source": "rss",
+  "url": "https://anchor.fm/s/1074187c0/podcast/rss", "bittensor_only": true,
+  "note": "Audio feed; identical to the show's YouTube channel on 2 Oct 2026."},
+ {"show": "bittensor_guru", "label": "Bittensor Guru", "source": "rss",
+  "url": "https://rss.libsyn.com/shows/477294/destinations/4052955.xml", "bittensor_only": true,
+  "note": "Audio feed. Last episode 2 Dec 2025."}
+]

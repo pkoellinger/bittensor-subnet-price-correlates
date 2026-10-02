@@ -1,7 +1,8 @@
 """Sample the chain every 900 blocks over the feature window and the lagged window.
 
-For every sample block and subnet: pool reserves (price), miner burn, emission flag,
-miner registration cost, and the incentive vector with the wallet behind every paid UID.
+For every sample block and subnet: pool reserves (price), miner burn, emission flag, TAO
+injected into the pool per block, miner registration cost, and the incentive vector with the
+wallet behind every paid UID.
 
 Writes
   data/chain/blocks_wave<N>.csv                sample block, UTC time, runtime spec
@@ -9,8 +10,8 @@ Writes
   data/intermediate/incentive_wave<N>.csv.gz   one row per (sample block, subnet, paid UID)
 
 Source: public archive node only (no API key needed). Feeds price (Y1, Y2), miner burn
-(Y3), miner counts and concentration (Y4, D1), the emission flag (Y15) and the
-registration cost (C3).
+(Y3), miner counts and concentration (Y4, D1), the emission flag and TAO injection (Y15)
+and the registration cost (C3).
 """
 import csv
 import gzip
@@ -43,6 +44,7 @@ def sample_keys(netuids):
         keys[("alpha_in", n)] = chain.key(P, "SubnetAlphaIn", chain.u16(n))
         keys[("burn", n)] = chain.key(P, "MinerBurned", chain.u16(n))
         keys[("enabled", n)] = chain.key(P, "SubnetEmissionEnabled", chain.u16(n))
+        keys[("tao_em", n)] = chain.key(P, "SubnetTaoInEmission", chain.u16(n))
         keys[("owner", n)] = chain.key(P, "SubnetOwner", chain.u16(n))
         keys[("owner_hk", n)] = chain.key(P, "SubnetOwnerHotkey", chain.u16(n))
         keys[("registered", n)] = chain.key(P, "NetworkRegisteredAt", chain.u16(n))
@@ -141,6 +143,7 @@ def main():
                     "price_tao": (tao / alpha_in) if tao and alpha_in else None,
                     "miner_burned": chain.decode_fixed(get("burn", n), 32, default=0.0),
                     "emission_enabled": int(chain.decode_bool(get("enabled", n), default=True)),
+                    "tao_in_emission": (chain.decode_uint(get("tao_em", n)) or 0) / RAO,
                     "reg_cost_tao": reg_cost / RAO if reg_cost is not None else None,
                     "paid_uids": len(weights[n]),
                     "owner_incentive_share": owner_weight if weights[n] else None,

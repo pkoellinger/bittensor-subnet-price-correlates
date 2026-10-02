@@ -1,6 +1,7 @@
 import unittest
 
-from snprice.textmatch import Matcher, valid_for_project
+from snprice.textmatch import (Matcher, speaker_affiliations, spoken_ids, subnet_entries, subnets_of_affiliation,
+                               valid_for_project)
 
 SUBNETS = [
     {"netuid": 64, "name": "Chutes", "handles": ["chutes_ai"], "aliases": [], "rule": "plain"},
@@ -92,6 +93,44 @@ class MatcherTest(unittest.TestCase):
         self.assertEqual(self.strong("Claims (SN111) is live"), {111})
         self.assertEqual(self.strong("Score by @webuildscore"), {44})
 
+    def test_alias_is_distinctive_even_when_the_name_is_a_common_word(self):
+        m = Matcher([{"netuid": 111, "name": "Claims", "handles": [], "aliases": ["DeSci Claims"], "rule": "strict"},
+                     {"netuid": 9, "name": "iota", "handles": [], "aliases": ["IOTA subnet nine"], "rule": "context"}])
+        hit = m.find("DeSci Claims launched today")
+        self.assertEqual(hit[111]["strength"], "strong")
+        self.assertEqual(m.find("the IOTA subnet nine launch")[9]["strength"], "strong")
+
+    def test_common_word_name_followed_by_its_own_number_is_strong(self):
+        hit = self.m.find("4 Subnets // Cacheon 14, Cathedral 39, Score 44, Claims 111")
+        self.assertEqual({n for n, h in hit.items() if h["strength"] == "strong"}, {44, 111})
+        self.assertEqual(set(hit[44]["rules"]), {"name", "id"})
+
+    def test_common_word_name_followed_by_another_number_is_not_a_mention(self):
+        self.assertEqual(self.m.find("Score 45 points and Claims 11 times"), {})
+        self.assertEqual(self.m.find("Score 440"), {})
+
+    def test_ordinary_adjective_before_the_word_subnet_is_not_a_mention(self):
+        m = Matcher([{"netuid": 95, "name": "Actual", "handles": [], "aliases": [], "rule": "strict"}])
+        self.assertEqual(m.find("from an actual subnet perspective on Bittensor"), {})
+        self.assertEqual(m.find("for the actual subnet themselves"), {})
+        self.assertEqual(m.find("the Actual subnet prices energy")[95]["strength"], "strong")
+        self.assertEqual(m.find("the Actual Subnet prices energy")[95]["strength"], "strong")
+
+    # --- numbers written as words (speech transcripts)
+    def test_spoken_numbers_are_off_by_default(self):
+        self.assertEqual(self.m.find("we built subnet sixty-four"), {})
+
+    def test_spoken_number_after_subnet(self):
+        for text in ("we built Subnet sixty-four on Bittensor", "subnet sixty four.", "netuid sixty-four, and"):
+            hit = self.m.find(text, spoken_numbers=True)
+            self.assertEqual(set(hit), {64}, text)
+            self.assertEqual(hit[64]["rules"], ["id_spoken"])
+
+    def test_spoken_number_confirms_a_common_word_name(self):
+        hit = self.m.find("If you are fans of Subnet forty-four, Score has made progress", spoken_numbers=True)
+        self.assertEqual(hit[44]["strength"], "strong")
+        self.assertEqual(set(hit[44]["rules"]), {"id_spoken", "name"})
+
     def test_several_subnets_in_one_text(self):
         self.assertEqual(self.strong("SN64, SN51 and Chutes again"), {64, 51})
 
@@ -102,6 +141,116 @@ class MatcherTest(unittest.TestCase):
     def test_empty_text(self):
         self.assertEqual(self.m.find(""), {})
         self.assertEqual(self.m.find(None), {})
+
+
+class SpokenIdsTest(unittest.TestCase):
+    def ids(self, text):
+        return spoken_ids(text)
+
+    def test_cardinals(self):
+        self.assertEqual(self.ids("we gave it to subnet fourteen, and we said"), [14])
+        self.assertEqual(self.ids("Subnet forty-four"), [44])
+        self.assertEqual(self.ids("subnet forty four"), [44])
+        self.assertEqual(self.ids("I will use Subnet Seventeen as an example"), [17])
+        self.assertEqual(self.ids("subnet ten is well-positioned"), [10])
+        self.assertEqual(self.ids("buyback on the subnet four token"), [4])
+        self.assertEqual(self.ids("Open Roboto, subnet eighty. And we see"), [80])
+
+    def test_number_keyword(self):
+        self.assertEqual(self.ids("Teutonic, subnet number three, and Open Roboto"), [3])
+
+    def test_digit_by_digit(self):
+        self.assertEqual(self.ids("This is subnet one one two. We're focused"), [112])
+        self.assertEqual(self.ids("founder of Beam, Subnet one oh five on Bittensor"), [105])
+
+    def test_hundreds(self):
+        self.assertEqual(self.ids("subnet one hundred and eleven"), [111])
+        self.assertEqual(self.ids("subnet one hundred eleven"), [111])
+        self.assertEqual(self.ids("subnet one hundred twenty-eight"), [128])
+        self.assertEqual(self.ids("subnet one eleven"), [111])
+        self.assertEqual(self.ids("subnet one twenty"), [120])
+        self.assertEqual(self.ids("subnet one twenty-four"), [124])
+
+    def test_several(self):
+        self.assertEqual(self.ids("subnet ninety, like I said, with GM, the subnet twenty-eight."), [90, 28])
+
+    def test_a_quantity_is_not_a_subnet_number(self):
+        self.assertEqual(self.ids("we've only had the subnet four months"), [])
+        self.assertEqual(self.ids("we ran the subnet two years ago"), [])
+        self.assertEqual(self.ids("a great subnet one of the best"), [])
+        self.assertEqual(self.ids("the subnet three times"), [])
+
+    def test_number_one_is_a_rank(self):
+        self.assertEqual(self.ids("the subnet number one for so many months"), [])
+
+    def test_words_that_do_not_form_a_number_are_rejected(self):
+        self.assertEqual(self.ids("subnet twenty-nineteen"), [])
+        self.assertEqual(self.ids("subnet forty fourteen"), [])
+        self.assertEqual(self.ids("subnet hundred"), [])
+
+    def test_trigger_must_be_the_singular_word(self):
+        self.assertEqual(self.ids("subnets one and two"), [])
+        self.assertEqual(self.ids("SN twenty"), [])
+        self.assertEqual(self.ids("twenty subnets"), [])
+
+    def test_digits_are_left_to_the_id_rule(self):
+        self.assertEqual(self.ids("subnet 64"), [])
+
+    def test_empty(self):
+        self.assertEqual(self.ids(""), [])
+        self.assertEqual(self.ids(None), [])
+
+
+class EntriesTest(unittest.TestCase):
+    def test_entries_combine_roster_links_and_alias_table(self):
+        roster = [{"netuid": "111", "subnet_name": "Claims"}, {"netuid": "35", "subnet_name": None}]
+        links = [{"netuid": "111", "x_handle": "DeSciClaims"}, {"netuid": "35", "x_handle": None}]
+        alias = [{"netuid": "111", "rule": "strict", "aliases": "DeSci Claims|", "team_aliases": "Luminto"},
+                 {"netuid": "35", "rule": "placeholder", "aliases": "", "team_aliases": ""}]
+        out = subnet_entries(roster, links, alias)
+        self.assertEqual(out[0], {"netuid": 111, "name": "Claims", "rule": "strict", "handles": ["DeSciClaims"],
+                                  "aliases": ["DeSci Claims"], "team_aliases": ["Luminto"]})
+        self.assertEqual(out[1]["rule"], "placeholder")
+        self.assertEqual(out[1]["handles"], [])
+
+    def test_subnet_missing_from_the_alias_table_is_an_error(self):
+        with self.assertRaises(KeyError):
+            subnet_entries([{"netuid": "1", "subnet_name": "Apex"}], [{"netuid": "1", "x_handle": None}], [])
+
+    def test_team_lookup_is_case_insensitive_and_returns_all_subnets_of_the_team(self):
+        entries = [
+            {"netuid": 1, "name": "Apex", "rule": "strict", "handles": [], "aliases": [], "team_aliases": ["Macrocosmos"]},
+            {"netuid": 9, "name": "iota", "rule": "context", "handles": [], "aliases": [], "team_aliases": ["Macrocosmos"]},
+            {"netuid": 111, "name": "Claims", "rule": "strict", "handles": [], "aliases": ["DeSci Claims"], "team_aliases": []},
+        ]
+        self.assertEqual(subnets_of_affiliation("macrocosmos", entries), {1, 9})
+        self.assertEqual(subnets_of_affiliation("Claims", entries), {111})         # a subnet's own name
+        self.assertEqual(subnets_of_affiliation("DeSci Claims", entries), {111})   # or alias
+        self.assertEqual(subnets_of_affiliation("Bitcast, SN93", entries + [
+            {"netuid": 93, "name": "Bitcast", "rule": "plain", "handles": [], "aliases": [], "team_aliases": []}]), {93})
+        self.assertEqual(subnets_of_affiliation("Tao.com", entries), set())
+        self.assertEqual(subnets_of_affiliation("", entries), set())
+
+    def test_team_of_a_subnet_with_placeholder_identity_is_found_by_its_team_name_only(self):
+        entries = [{"netuid": 112, "name": "for sale", "rule": "placeholder", "handles": [], "aliases": [],
+                    "team_aliases": ["Khala Research"]}]
+        self.assertEqual(subnets_of_affiliation("Khala Research", entries), {112})
+        self.assertEqual(subnets_of_affiliation("For Sale", entries), set())
+
+
+class SpeakerAffiliationsTest(unittest.TestCase):
+    def test_labels_in_brackets(self):
+        self.assertEqual(speaker_affiliations("Will Squires and Steffen Cruz (Macrocosmos)"), ["Macrocosmos"])
+        self.assertEqual(speaker_affiliations("Jose Caldera (Yanez), Seby Rubino (Bigtensor)"), ["Yanez", "Bigtensor"])
+
+    def test_moderators_are_left_out(self):
+        text = "Keith Singery (Tao.com), Brien Colwell (UR Foundation); moderated by Jack Ai Leung (Khala Research)"
+        self.assertEqual(speaker_affiliations(text), ["Tao.com", "UR Foundation"])
+        self.assertEqual(speaker_affiliations("A (X) Moderated by B (Y)"), ["X"])
+
+    def test_no_speakers(self):
+        self.assertEqual(speaker_affiliations(None), [])
+        self.assertEqual(speaker_affiliations("Jane Doe"), [])
 
 
 class ProjectDateRuleTest(unittest.TestCase):

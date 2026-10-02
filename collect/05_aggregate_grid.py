@@ -1,7 +1,8 @@
 """Aggregate the 900-block chain samples to one row per subnet and window.
 
 Price (Y1, Y2), miner burn (Y3), miner counts and concentration by wallet (Y4, D1),
-emission flag (Y15), registration cost (C3).
+emission flag and TAO injection (Y15), registration cost (C3). The arithmetic of a window
+is in snprice/aggregate.py.
 
 A sample is used for a subnet only if the subnet that occupies the netuid at T was
 already registered at that block, so values of a previous occupant never enter.
@@ -21,16 +22,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import paths  # noqa: E402
+from snprice.aggregate import window_summary  # noqa: E402
 from snprice.io import read_table, write_table  # noqa: E402
-from snprice.metrics import hhi_from_amounts, pooled_shares  # noqa: E402
 from snprice.windows import sample_blocks  # noqa: E402
-
-IP_MIN_COVERAGE = 0.5
-
-
-def mean(values):
-    values = [v for v in values if v is not None]
-    return sum(values) / len(values) if values else None
 
 
 def main():
@@ -71,37 +65,17 @@ def main():
 
         for w, blocks in window_blocks.items():
             samples = [grid[n][b] for b in sorted(blocks) if b in grid[n]]
-            row[f"samples_observed_{w}"] = len(samples)
-            row[f"window_days_observed_{w}"] = len({day_of[int(s["block"])] for s in samples})
-            row[f"price_tao_avg{'30' if w == '30d' else '30_lag30'}"] = mean(
-                [float(s["price_tao"]) for s in samples if s["price_tao"]])
-            burns = [float(s["miner_burned"]) for s in samples]
-            row[f"burn_mean_{w}"] = mean(burns)
-            row[f"burn_time_share_ge50_{w}"] = mean([float(b >= 0.5) for b in burns])
-            row[f"emission_enabled_days_share_{w}"] = mean([float(s["emission_enabled"]) for s in samples])
-            row[f"reg_cost_tao_mean_{w}"] = mean([float(s["reg_cost_tao"]) for s in samples if s["reg_cost_tao"]])
-
             rows = incentive[n][w]
-            pooled = pooled_shares({"sample": r["block"], "wallet": r["coldkey"] or r["hotkey"],
-                                    "value": float(r["weight"]), "owner": r["owner"] == "1"} for r in rows)
-            paid = [r for r in rows if r["owner"] != "1"]
-            hotkeys = {r["hotkey"] for r in paid}
-            with_ip = {r["hotkey"] for r in paid if r["ip"]}
-            coverage = len(with_ip) / len(hotkeys) if hotkeys else None
-            shares = pooled["shares"]
-            row.update({
-                f"miners_paid_hotkeys_{w}": len(hotkeys),
-                f"miners_paid_coldkeys_{w}": len(shares),
-                f"miner_paid_days_{w}": len({day_of[int(r["block"])] for r in paid}),
-                f"miner_hhi_coldkey_{w}": hhi_from_amounts(shares.values()),
-                f"miner_top1_share_{w}": max(shares.values()) if shares else None,
-                f"miners_ip_coverage_{w}": coverage,
-                f"miners_distinct_ips_{w}": (len({r["ip"] for r in paid if r["ip"]})
-                                             if coverage is not None and coverage >= IP_MIN_COVERAGE else None),
-                f"owner_incentive_share_{w}": pooled["owner_share"],
-            })
+            summary = window_summary(samples, rows, day_of)
+            shares = summary.pop("shares")
+            for key, value in summary.items():
+                name = f"price_tao_avg{'30' if w == '30d' else '30_lag30'}" if key == "price_tao_avg" else f"{key}_{w}"
+                row[name] = value
+
             first_reg, ips = {}, defaultdict(set)
-            for r in paid:
+            for r in rows:
+                if r["owner"] == "1":
+                    continue
                 wallet = r["coldkey"] or r["hotkey"]
                 if r["uid_registered_block"]:
                     first_reg[wallet] = min(first_reg.get(wallet, 10 ** 12), int(r["uid_registered_block"]))
@@ -111,8 +85,6 @@ def main():
                 share_rows.append({"netuid": n, "window": w, "coldkey": wallet, "share": repr(share),
                                    "first_registered_block": first_reg.get(wallet),
                                    "ips": "|".join(sorted(ips[wallet]))})
-            row[f"flag_no_miner_paid_{w}"] = int(not shares)
-            row[f"flag_full_burn_{w}"] = int(bool(burns) and min(burns) >= 0.999)
 
         now = [r for r in incentive[n]["30d"] if int(r["block"]) == T and r["owner"] != "1"]
         row["miners_active_now"] = len(now) if at_t else None

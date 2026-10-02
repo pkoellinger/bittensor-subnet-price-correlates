@@ -6,6 +6,7 @@ from snprice.metrics import (
     holder_bounds,
     mech_weighted,
     pooled_shares,
+    spaced_count,
     uid_weights,
 )
 
@@ -171,6 +172,27 @@ class HolderBoundsTest(unittest.TestCase):
         # balances and the total can be read a few blocks apart
         out = holder_bounds([60, 41], total=100)
         self.assertAlmostEqual(out["untraced_share"], 0.0)
+
+
+class SpacedCountTest(unittest.TestCase):
+    DAY = 86400
+
+    def test_no_events(self):
+        self.assertEqual(spaced_count([], gap=14 * self.DAY), 0)
+
+    def test_events_far_apart_all_count(self):
+        self.assertEqual(spaced_count([0, 15 * self.DAY, 40 * self.DAY], gap=14 * self.DAY), 3)
+
+    def test_event_soon_after_a_counted_one_is_the_same_event(self):
+        # a live stream and its edited re-upload six days later
+        self.assertEqual(spaced_count([0, 6 * self.DAY], gap=14 * self.DAY), 1)
+
+    def test_gap_is_measured_from_the_last_counted_event(self):
+        self.assertEqual(spaced_count([0, 10 * self.DAY, 20 * self.DAY], gap=14 * self.DAY), 2)
+        self.assertEqual(spaced_count([0, 6 * self.DAY, 13 * self.DAY], gap=14 * self.DAY), 1)
+
+    def test_order_of_input_does_not_matter(self):
+        self.assertEqual(spaced_count([20 * self.DAY, 0, 10 * self.DAY], gap=14 * self.DAY), 2)
 
 
 if __name__ == "__main__":

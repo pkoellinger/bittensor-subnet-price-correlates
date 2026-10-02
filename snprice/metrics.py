@@ -137,3 +137,17 @@ def holder_bounds(known_amounts, total):
         "top10_upper": min(1.0, top10 + rest / total),
         "untraced_share": rest / total,
     }
+
+
+def spaced_count(times, gap):
+    """Number of events when events closer than `gap` to the last counted one are the same event.
+
+    Used for podcast appearances: a live stream and its edited re-upload a few days
+    later are one appearance. `times` and `gap` are in the same unit (seconds).
+    """
+    count, last = 0, None
+    for t in sorted(times):
+        if last is None or t - last >= gap:
+            count += 1
+            last = t
+    return count
