@@ -5,23 +5,22 @@ The data are built for regressions with the subnet's token price as dependent va
 for tests of out-of-sample prediction. This repository holds the dataset, a codebook, and the
 code that collected every variable.
 
-**Status (2 Oct 2026):** wave 1 is collected and validated except one block of columns. The
-columns on posts by independent commentators are half done: the account list is approved, two
-of nine accounts are read and labelled, and the rest waits for a top-up of the prepaid X API
-credits. Wave 2 is scheduled for 31 Oct 2026 (`WAVE2.md`). `PLAN.md` has the details.
+**Status (2 Oct 2026):** wave 1 is complete, validated and frozen under the git tag `wave1`.
+Wave 2 is scheduled for 31 Oct 2026 (`WAVE2.md`); it adds the price change over October and
+joins both waves into a panel. `PLAN.md` has the plan and the log of every design decision.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| `data/final/subnets_wave1_2026-09-30.csv` | The dataset: 128 rows, 161 columns |
+| `data/final/subnets_wave1_2026-09-30.csv` | The dataset: 128 rows, 171 columns |
 | `data/final/subnets_wave1_2026-09-30.rds` | The same as an R data frame; every column carries its label, unit, role and source as attributes |
 | `codebook.csv` | One row per variable: label, type, unit, window, role, as-of time, source, script, link to price, notes |
 | `collect/` | One script per block of variables; `collect/run_all.py --list` shows the order |
 | `build/` | Joins the collected tables, validates the result, writes the `.rds`, runs the cross-checks |
 | `snprice/` | Shared library (chain decoding, API clients with budgets, text matching, clustering) |
-| `tests/` | 485 unit tests of the library |
-| `config/` | Snapshot definition, alias table, podcast list, coding protocol, coder briefs, screening rule |
+| `tests/` | 506 unit tests of the library |
+| `config/` | Snapshot definition, alias table, podcast list, coding protocol, coder briefs, screening and reading rules for commentator posts |
 | `data/chain/` | Tables read from the chain: reproducible without any API key |
 | `data/evidence/` | What each coded or matched value rests on: page addresses, episode lists, session lists, coder answers |
 | `data/manual/` | Everything decided by a person or a coder, with the reason |
@@ -55,7 +54,7 @@ Four subnets were registered inside September. Their windows start at registrati
 
 ## Variables
 
-161 columns: 7 outcomes, 104 features, 29 lagged features, 9 flags, 6 quality measures, 6 identifiers.
+171 columns: 7 outcomes, 111 features, 32 lagged features, 9 flags, 6 quality measures, 6 identifiers.
 
 | Block | Examples | Source | Script |
 |---|---|---|---|
@@ -73,6 +72,7 @@ Four subnets were registered inside September. Their windows start at registrati
 | Website and coded facts | `website_live`, `product_live`, `api_public`, `mcp_server`, `team_named`, `category8` | subnet websites | `12_web`, `12b_dossiers`, `build/verify_evidence` |
 | White paper | `whitepaper_available`, `wp_pages`, `wp_formal_mechanism` | subnet websites | `12e_whitepapers`, `build/whitepaper_features` |
 | X account of the subnet | `x_followers`, `x_posts_30d` | X | `13_x_accounts` |
+| Posts by independent commentators | `kol_posts_90d`, `kol_accounts_90d`, `kol_pos_posts_90d`, `kol_neg_posts_90d` | X, two coders, two readers | `14_kol`, `build/kol_polarity` |
 | Podcasts | `podcast_episodes_12m` | RSS feeds, YouTube | `15_podcasts` |
 | Exploit 26 summit | `exploit26_presented`, `exploit26_mentions_n` | stream.vidaio.io | `16_exploit` |
 
@@ -83,7 +83,7 @@ Four subnets were registered inside September. Their windows start at registrati
 Requirements: Python 3 (run with 3.12; standard library only), `curl`, Chrome, and R (run with 4.6.1) for the `.rds`.
 
 ```bash
-python -m unittest discover -s tests          # 485 tests, under a second
+python -m unittest discover -s tests          # 506 tests, under a second
 python collect/run_all.py --list              # the steps in order
 python collect/run_all.py                     # runs them; stops where a person has to act
 python build/build_dataset.py && python build/validate.py --final
@@ -101,13 +101,15 @@ python build/check_doc_checklist.py           # documentation checklist against 
 
 Wave 1 needs about 5,600 Taostats calls (at most 15 a minute, so the Taostats steps take about
 six hours; tracing miner funding is three quarters of it), about 2,000 GitHub calls, about 2,000
-batched requests to the archive node, and $7 on X before any post is read. Every answer is saved,
+batched requests to the archive node, and about $26 on X ($7 for profiles and counts, $18 for
+the 3,497 posts of the nine approved accounts; the X API is prepaid). Every answer is saved,
 so a repeated run makes no call twice. Call counts and spending are kept in a ledger with hard
 ceilings (`config/snapshot.json`).
 
-Four steps need a person or two independent coders: the double coding of website facts, of two
-white paper features and of the commentator posts, and the approval of the X accounts whose
-posts are read. `config/coding_protocol.md`, `config/polarity_criteria.md` and
+Five steps need a person or two independent coders: the double coding of website facts, of two
+white paper features and of the commentator posts, the double reading of posts that name a
+subnet by its number alone, and the approval of the X accounts whose posts are read.
+`config/coding_protocol.md`, `config/polarity_criteria.md`, `config/kol_attribution.md` and
 `config/kol_rule.md` give the rules; `config/coder_briefs.md` holds the instructions the
 coders of wave 1 received, and `build/coding_material.py` hands out their material.
 
@@ -142,6 +144,18 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   ("Subnet 78") counts only for the project that held the netuid on that day.
 - **Website facts** are coded 0 when the saved pages do not show them, and missing when the
   site could not be read.
+- **Commentator posts** come from nine X accounts that pass a written rule and that the project
+  owner approved before any post was read (`config/kol_rule.md`, `config/kol_accounts.csv`).
+  Their original posts of the 90 days before T count (no reposts, no replies) when they name
+  the subnet by number, handle or name; a post that names several subnets counts for each.
+  Two coders labelled every post-subnet pair. A direction (speaks well, speaks badly) counts
+  only if both chose it; everything else is neutral.
+- **A subnet number can mean an earlier project.** A post that gives only the number counts
+  for the project that held the netuid on the day of the post. A post written later can still
+  mean the predecessor, for example when it looks back at a subnet that held the number a
+  year earlier. The 125 pairs matched by the number alone
+  were therefore read by two readers who had the netuid's history, and a pair was dropped
+  where both found that the number stands for another project (`config/kol_attribution.md`).
 
 ## Quality checks
 
@@ -162,6 +176,11 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   (Cohen's kappa 0.84 to 1.00) and on 86% of categories (kappa 0.85). Every quote was found on
   the page it cites.
 - White paper features: the coders agreed on all 64 answers.
+- Commentator posts: the two coders gave the same label to 94% of the 937 post-subnet pairs
+  (Cohen's kappa 0.89). 53 of their 57 disagreements are between "speaks well" and neutral,
+  and such a pair counts as neutral. The two readers of the 125 pairs matched by the number
+  alone gave the same answer in every case: 7 pairs were dropped, 6 because the number meant
+  an earlier project and 1 because it was no subnet number.
 - Documentation checklist against a reader on a fresh sample of 15 repositories: 90% of answers
   agree. README, licence, contributing guide and docs site agree in all 15; miner guide in 14;
   validator guide in 12; incentive description and hardware requirements in 11 each
@@ -187,9 +206,16 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   30% of miner pay goes to such wallets (`miners_unattrib_share_30d`), so operator counts are
   not comparable across subnets without that column. Wallets below 0.1% of miner pay are not
   traced (at most 3.8% of pay in any subnet).
-- Three sites could not be read: the security software on the collecting computer blocked two
-  (subnets 89 and 103), and one answered with a server error on three visits (subnet 120).
-  Their website facts are missing, not 0.
+- Two sites could not be read: the security software on the collecting computer blocked them
+  (subnets 89 and 103). Their website facts are missing, not 0. A third site (subnet 120)
+  answered with a server error on three visits in the morning of 2 Oct 2026 and was read in
+  the afternoon of the same day.
+- The commentator columns measure nine English-language accounts on X, not "the market's
+  attention". Posts deleted before collection are not in the data: X counted 3,552 original
+  posts in the window and delivered 3,497. A text posted twice counts twice. Posts that speak
+  badly of a subnet are rare (14 of 920 counted pairs, in 8 subnets), so the `kol_neg_*`
+  columns vary little. Half of all counted pairs name one of ten subnets; 53 subnets were
+  not named at all.
 
 ## Who made this
 

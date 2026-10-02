@@ -357,7 +357,7 @@ netuid,chars,fetched_utc,how,page,sha256,topic,url
 118,6352,2026-10-02T05:29:47Z,,6,4f00f401f9cf3cb63dafb629d10c945b60e19456e745bc95ead1fddc36788421,docs,https://heyditto.ai/docs/agent-accounts
 118,8826,2026-10-02T05:29:49Z,,7,1a5dddd5ba157e20e4e1bf038672cf7daaafec8857cd9d1166d721a792f59e75,docs,https://heyditto.ai/docs/mcp-server
 118,6005,2026-10-02T05:29:50Z,,8,5127eeda0db605f0f652f773062680d2de5deb3d8cceadf53ca7e8029bd14717,docs,https://heyditto.ai/docs/app-permissions
-120,428,2026-10-02T07:35:38Z,browser,0,6ee04a4d2857fbc5e3125086b51c3deb15e9705ac7b3c26a4ae0bafe1cdc8b24,home,https://www.affine.io
+120,4671,2026-10-02T14:28:08Z,browser,0,51de5e48f69d0a5c591d73357f7ce72334bc064f0a80a1c60fd01e5b30ad9965,home,https://affine.io/
 121,4709,2026-10-02T05:47:16Z,static,0,dd2a7f3aee92d5dfb6600d782a9bfa9a6c51324c9196b8c1e244d8bef6323943,home,https://www.sundaebar.ai/
 121,1144,2026-10-02T05:48:31Z,static,1,d2562d85743ac7742cc55be49a3e24c273a3e5e8c3f07221bbb432506ed55ea0,paper,https://www.sundaebar.ai/agent/research-assistant
 121,3272,2026-10-02T05:49:47Z,static,2,820bf80d9a32533ccb201d6ebbbc75c480be471dd5d8573121d5bbb7d4cd9027,team,https://www.sundaebar.ai/about

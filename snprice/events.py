@@ -222,6 +222,20 @@ def last_real_identity_change(rows, registered_block):
     return latest
 
 
+def names_carried(rows):
+    """Every name that was set on a netuid, oldest first: [{"block", "utc", "name"}].
+
+    rows: identity-set events of one netuid, earlier registrations included. An event that
+    repeats the name before it, or leaves the name blank, adds nothing.
+    """
+    out = []
+    for event in sorted(rows, key=lambda r: int(r["block_number"])):
+        name = (event.get("subnet_name") or "").strip()
+        if name and (not out or out[-1]["name"] != name):
+            out.append({"block": int(event["block_number"]), "utc": event.get("timestamp"), "name": name})
+    return out
+
+
 def project_start(rows, registered_block):
     """Block at which the current project took over the netuid, or None if it has run it
     since registration.

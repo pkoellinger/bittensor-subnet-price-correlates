@@ -25,6 +25,9 @@ COST_POST = 0.005
 COST_USER = 0.010
 COST_COUNT = 0.010
 PAGE = 100
+SEARCH_PACE = 1.5                        # seconds between requests to the archive search
+RATE_LIMIT_PAUSES = (5, 20, 60, 120)     # seconds to wait after a passing failure before asking again
+PASSING_FAILURES = {429, 500, 502, 503, 504}     # too many requests, or the server failed for the moment
 
 
 class XError(RuntimeError):
@@ -66,19 +69,33 @@ class XClient:
         self.sleep = sleep
         os.makedirs(cache_dir, exist_ok=True)
 
-    def _get(self, path, params, worst_cost, actual_cost):
+    def _get(self, path, params, worst_cost, actual_cost, pace=0):
+        """One request, answered from the cache if it was made before.
+
+        pace: seconds to wait before a request that is really sent (cached answers do not wait).
+        HTTP 429 (too many requests) and server errors of the moment (500, 502, 503, 504) are not
+        refusals: the request is repeated after a pause, and nothing is charged for the attempts
+        that failed. HTTP 402 (no credits left) and other refusals are raised at once.
+        """
         url = f"{self.BASE}{path}?" + urllib.parse.urlencode(sorted(params.items()))
         cache = os.path.join(self.cache_dir, hashlib.sha256(url.encode()).hexdigest()[:32] + ".json")
         if os.path.exists(cache):
             with open(cache, encoding="utf-8") as fh:
                 return json.load(fh)["body"]
-        self.ledger.book("x_usd", worst_cost)          # raises before anything is sent
-        try:
-            status, body = self.transport(url, {"Authorization": f"Bearer {self.bearer}"})
-            parsed = json.loads(body) if status == 200 else None
-        except Exception as exc:
+        for wait in RATE_LIMIT_PAUSES + (None,):
+            if pace:
+                self.sleep(pace)
+            self.ledger.book("x_usd", worst_cost)          # raises before anything is sent
+            try:
+                status, body = self.transport(url, {"Authorization": f"Bearer {self.bearer}"})
+                parsed = json.loads(body) if status == 200 else None
+            except Exception as exc:
+                self.ledger.book("x_usd", -worst_cost)
+                raise XError(f"{path}: {exc!r}") from exc
+            if status not in PASSING_FAILURES or wait is None:
+                break
             self.ledger.book("x_usd", -worst_cost)
-            raise XError(f"{path}: {exc!r}") from exc
+            self.sleep(wait)
         if status != 200 or not isinstance(parsed, dict):
             self.ledger.book("x_usd", -worst_cost)
             raise XError(f"{path}: HTTP {status}: {str(body)[:300]}")
@@ -134,12 +151,12 @@ class XClient:
             if token:
                 params["next_token"] = token
             body = self._get("/tweets/search/all", params, worst_cost=COST_POST * PAGE,
-                             actual_cost=lambda b: COST_POST * len(b.get("data") or []))
+                             actual_cost=lambda b: COST_POST * len(b.get("data") or []),
+                             pace=SEARCH_PACE)     # the archive search allows one request a second
             rows.extend(body.get("data") or [])
             token = (body.get("meta") or {}).get("next_token")
             if not token:
                 return rows
-            self.sleep(1.1)          # the archive search allows one request a second
         raise XError(f"@{name}: more than {max_pages} pages in the window; window not complete")
 
     def user_posts(self, user_id, username, start, end, exclude=("retweets", "replies"), max_pages=40,

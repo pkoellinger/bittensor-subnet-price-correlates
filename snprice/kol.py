@@ -85,18 +85,42 @@ def merge_posts(earlier, new, start, end):
     return sorted(by_id.values(), key=lambda p: (epoch(p["created_at"]), p["id"]))
 
 
-def carry_labels(earlier_labels, earlier_uids, current_uids):
+def carry_labels(earlier_labels, earlier_uids, current_uids, field="label"):
     """Labels of an earlier wave that still apply: {(post_id, netuid): label}.
 
     earlier_labels  [{"post_id", "netuid", "label"}] of the earlier wave
     earlier_uids, current_uids  {netuid: subnet_uid} in the two waves
+    field           the key that holds the coder's answer ("label", or "refers_to_current")
 
     A label says how a post speaks about the subnet that held the netuid then. It is carried
     over only if the same subnet (same registration) holds the netuid now.
     """
-    return {(str(r["post_id"]), int(r["netuid"])): r["label"] for r in earlier_labels
+    return {(str(r["post_id"]), int(r["netuid"])): r[field] for r in earlier_labels
             if earlier_uids.get(int(r["netuid"])) is not None
             and earlier_uids.get(int(r["netuid"])) == current_uids.get(int(r["netuid"]))}
+
+
+ATTRIBUTIONS = ("yes", "no")              # does the number stand for the project that holds the netuid now?
+
+
+def by_number_alone(rules):
+    """Whether a subnet was found in a text only through its number ("SN90"), with no name
+    or handle of the current project next to it. `rules`: the matching rules joined by "|"."""
+    return set(str(rules).split("|")) <= {"id", "id_spoken"}
+
+
+def stands_for_current(reading_a, reading_b):
+    """Whether a number in a post is taken to mean the subnet's current project, after two readings.
+
+    Netuids are reused: "SN90" written after the current project started can still mean the
+    project that held the number before, and a digit after "subnet" need not be a subnet
+    number. Each reader answers yes or no (config/kol_attribution.md). The mention is dropped
+    only if both say no; if they differ, the date rule of post_mentions stands.
+    """
+    for reading in (reading_a, reading_b):
+        if reading not in ATTRIBUTIONS:
+            raise ValueError(f"unknown reading {reading!r}")
+    return not (reading_a == "no" and reading_b == "no")
 
 
 def mention_decision(strength, label_a, label_b):

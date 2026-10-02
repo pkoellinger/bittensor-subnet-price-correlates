@@ -54,6 +54,20 @@ def check_answer(answer, sources):
     return "verified" if quote_found(quote, pages[_address(url)]) else "quote not on the cited page"
 
 
+def _word_list(text):
+    return re.findall(r"[^\W_]+", (text or "").lower())
+
+
+def copies_passage(reason, text, words=6):
+    """Whether `reason` repeats `words` or more words in a row from `text`.
+
+    Case, spacing and punctuation are ignored. A reader's reason for a decision about a
+    post is committed, the post's text is not, so a reason has to be in the reader's own words.
+    """
+    said, source = _word_list(reason), " " + " ".join(_word_list(text)) + " "
+    return any(" " + " ".join(said[i:i + words]) + " " in source for i in range(len(said) - words + 1))
+
+
 def cohen_kappa(a, b):
     """Cohen's kappa of two coders' answers to the same cases; None if nothing varies."""
     if len(a) != len(b):

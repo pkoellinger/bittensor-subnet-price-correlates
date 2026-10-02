@@ -4868,13 +4868,13 @@
   "category": {
    "value": "AI Training & Model Improvement",
    "url": "README",
-   "quote": "Synchronous inference-verification training loop for Bittensor subnet120"
+   "quote": "Synchronous inference-verification training loop for Bittensor subnet120: publish"
   },
   "searched": [
-   "https://www.affine.io",
+   "https://affine.io/",
    "README"
   ],
-  "notes": "Home page returned a 502 error; README is a miner pilot and architecture index. PDFs in the repository are vendored research assets, not project papers."
+  "notes": "Home page is a pilot network and evaluation dashboard; README describes the subnet's own training loop and miner pilot instructions; the two PDFs in the repo are vendored third-party benchmark material. No white paper, public API, MCP server, named person or outsider-usable product shown in the dossier. product_live is borderline (public open-source repo of subnet code and a dashboard, but nothing for non-miners), coded 0."
  },
  {
   "netuid": 121,

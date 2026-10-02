@@ -50,6 +50,10 @@ answer is saved, so a step that was interrupted continues where it stopped.
      accounts; continue.
    - **Post labels.** `kol prepare`, two coders, `kol merge`. Only the days since wave 1 are
      read from X; earlier posts and their labels are reused.
+   - **Which project a number stands for.** `attribution prepare`, two readers (brief 4 in
+     `config/coder_briefs.md`, rule in `config/kol_attribution.md`), `attribution merge`.
+     Only pairs matched by the subnet's number alone are read, and only those not read in
+     wave 1. `build/kol_polarity.py` stops until every such pair has both readings.
 4. `python build/build_dataset.py`, `python build/validate.py --final`,
    `Rscript build/build_rds.R data/final/subnets_wave2_<date>.csv codebook.csv`.
 5. `python build/build_panel.py`, then
@@ -76,10 +80,14 @@ answer is saved, so a step that was interrupted continues where it stopped.
 - **X credits.** The X API is prepaid. HTTP 402 "credits depleted" means the balance is used
   up: the X steps stop without loss, everything else continues, and the report tells the
   project owner. Wave 1 ran into this on 2 Oct 2026.
-- **Screening differs from reading.** `14_kol.py posts` stops if the posts read for an
-  account differ from the count at screening by more than 3%. Deleted posts can cause this
-  for the days reused from wave 1. Look at the two numbers, and if deletion explains them,
-  note it in `PLAN.md` and raise `COUNT_TOLERANCE` for that run only.
+- **Screening counts more posts than reading delivers.** X's count includes posts it no longer
+  delivers (deleted or withheld); in wave 1 the gap was up to 7% for one account, and reading
+  single days again brought nothing back. `14_kol.py posts` records both numbers per account
+  and stops only if fewer than 80% of the counted posts are delivered. If that happens, look
+  at where the gap lies (which days) before deciding anything.
+- **X answers "too many requests" or "service unavailable".** The client waits and asks again
+  by itself (up to four times, nothing is charged for failed attempts). If it still stops,
+  run the step again later: it continues from the saved answers.
 
 ## Known traps
 

@@ -1,6 +1,6 @@
 # PLAN: Bittensor subnet price-correlates dataset
 
-**Status:** IN PROGRESS (wave 1 collected and validated, 128 × 161, except commentator posts, which wait for approval of the account list)
+**Status:** WAVE 1 COMPLETE (128 × 171, validated, frozen under the tag `wave1`); wave 2 is scheduled for 31 Oct 2026
 **Created:** 2026-10-02
 **Last updated:** 2026-10-02
 **Owner:** Philipp Koellinger (decisions), Claude (build)
@@ -51,21 +51,23 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [x] `12_web` (382 pages of 106 sites), `12b_dossiers`, double coding of five facts and the category, `build/verify_evidence.py`
 - [x] `12e_whitepapers`: 32 of 35 white papers read; two features by rule, two by double coding
 
-### Phase 3: Attention — DONE except commentator posts
+### Phase 3: Attention — DONE
 
 - [x] `13_x_accounts` (92 subnets with an X account), `12c_site_handles`, `12d_x_handle_guess`
 - [x] `15_podcasts` (219 episodes of six shows), `16_exploit` (51 sessions)
 - [x] `14_kol.py candidates`: 15 candidate accounts screened without reading any post
 - [x] Written and tested without reading a post: `14_kol.py posts`, `config/polarity_criteria.md`, `build/kol_polarity.py`
 - [x] Account list approved by Philipp on 2 Oct 2026: nine accounts (`config/kol_accounts.csv`)
-- [ ] `14_kol.py posts`: two of nine accounts read (648 posts, 109 post-subnet pairs, labelled by both coders: 95% agreement, kappa 0.92). **Stopped: the prepaid credits of the X account are used up (HTTP 402).** About $14 are needed for the other seven accounts. Then: run the step again, two coders label the new pairs, `build/kol_polarity.py`, add the ten `kol_*` columns to the codebook
+- [x] `14_kol.py posts`: all nine accounts read after the X credits were topped up (3,497 of the 3,552 posts X counted; 602 posts name a subnet; 937 post-subnet pairs)
+- [x] Two coders labelled every pair (94% agreement, kappa 0.89). Two readers read the 125 pairs matched by the number alone (same answer in every case; 7 dropped). 920 pairs count: 418 speak well, 14 speak badly, 75 subnets are named at least once
 
-### Phase 4: Build, validate, freeze, document — IN PROGRESS
+### Phase 4: Build, validate, freeze, document — DONE
 
 - [x] `codebook.csv`, `build/build_dataset.py`, `build/validate.py`, `build/build_rds.R`, README
 - [x] Cross-checks: `build/check_sources.py` (chain prices against Taostats), `build/check_doc_checklist.py`
 - [x] Build with lineage columns
-- [ ] Final build with commentator columns; tag and hash wave 1
+- [x] Final build with commentator columns: 128 × 171, `validate.py --final` passes, 506 tests pass. Frozen under the tag `wave1`. sha256 of `data/final/subnets_wave1_2026-09-30.csv`: `9793e83facb8bfd7762f2559d70b2bcb8ced2b52ffa6ee753002d8e8c35cb32f`
+- [x] Spending of wave 1: 5,623 Taostats calls, $25.56 on X
 
 ### Phase 5: Wave 2 — PREPARED, scheduled for 31 Oct 2026
 
@@ -73,7 +75,7 @@ Because only 128 subnets exist, the design adds time: features for September, la
 
 - [x] Runbook `WAVE2.md`; `collect/make_wave_config.py`; coder briefs (`config/coder_briefs.md`) and `build/coding_material.py`; `build/build_panel.py` tested on a fabricated second wave
 - [x] One-time scheduled task on the collecting laptop: 31 Oct 2026, 09:30 local time
-- [ ] Run: `python collect/make_wave_config.py 2`, `python collect/run_all.py --config snapshot_wave2.json`, the three coding steps, `build/build_panel.py`
+- [ ] Run: `python collect/make_wave_config.py 2`, `python collect/run_all.py --config snapshot_wave2.json`, the four coding steps, `build/build_panel.py`
 
 ## Risks
 
@@ -143,12 +145,24 @@ Because only 128 subnets exist, the design adds time: features for September, la
 | 2026-10-02 | A follow-up wave reads only the new days from X and reuses the earlier wave's posts and labels for the overlapping days, as long as the netuid still belongs to the same subnet | Reading 90 days again would cost about $18 and break the $25 budget of a follow-up wave |
 | 2026-10-02 | Coder files in `data/manual` carry the wave in their name; the coders' briefs are kept in `config/coder_briefs.md` | Wave 2 codes its own page snapshots under the same instructions |
 | 2026-10-02 | Evicted subnets keep an outcome in the panel: the last price observed before they lost the netuid (`price_tao_last`, `logret_to_last`) | Dropping them would leave only survivors |
+| 2026-10-02 | X's count endpoint includes posts that the search no longer delivers (deleted or withheld). An account is accepted when at least 80% of its counted posts are delivered, and both numbers are recorded (`data/evidence/kol_accounts_wave1.csv`): 3,497 of 3,552 | Reading single days again brought nothing back and cost about $0.87. The largest gap is 24 of 346 posts for one account |
+| 2026-10-02 | The X client pauses and retries when X answers HTTP 429 or a server error (after 5, 20, 60 and 120 seconds) and paces archive searches at 1.5 seconds. A refused request (402 and others) stops the step at once. The amount booked for a failed request goes back to the ledger | The archive search answered 429 and 503 in passing; without the retry the step stopped in the middle of an account |
+| 2026-10-02 | Coders label posts in batches of at most 150 posts, one agent per coder and batch | One agent does not label 500 posts with the same care; the instructions stay identical across batches |
+| 2026-10-02 | **Posts that name a subnet by its number alone are read by two readers who get the netuid's name history. A pair is dropped only if both find that the number stands for another project or is no subnet number** (`config/kol_attribution.md`, `build/coding_material.py attribution`, `snprice.kol.stands_for_current`). Wave 1: 125 such pairs, the readers agree on all of them, 7 dropped (subnets 5, 53, 67, 90 twice, 98, 103) | The date rule cannot catch a post that looks back at an earlier holder of the number after the current project has started. Two of the 16 negative mentions were of this kind: they were about the subnet that held netuid 90 in 2025. The coders flagged the problem; they do not see a netuid's history, so the reading is a step of its own |
+| 2026-10-02 | A post that reports the new registration of a netuid but attaches the number to the project that was deregistered counts for neither | The columns count posts that name the subnet. Such a post names its predecessor |
+| 2026-10-02 | `collect/03_history_events.py` also writes every name that was ever set on a netuid (`data/intermediate/names_wave<N>.csv`) | Material for the two readers; taken from identity events that were already saved, no new API call |
+| 2026-10-02 | Checked once, by one reader: the 17 podcast titles and the 7 summit transcripts that match a subnet by number alone all refer to the current project | Same risk as for posts; nothing had to change |
+| 2026-10-02 | Subnet 120 (Affine): the site answered on a fourth visit at 14:27 UTC on 2 Oct and was read. Both coders code its five website facts 0; its status is `live`. `build/coding_material.py web prepare <folder> <netuid ...>` hands out single subnets, and `web merge` replaces a coder's earlier answer for them | The plan was to visit again at the final build. The failed visit stays beside the new one in the raw folder |
+| 2026-10-02 | The coder files hold 938 labels for 937 pairs | One pair of the first batch disappeared when links were removed before matching; its two labels stay in the files and are not used |
+| 2026-10-02 | `.gitattributes` fixes LF line ends for text files on every platform | The file hash recorded for a frozen wave must match the file after a checkout on Windows |
 
 ## Open Questions
 
-- [ ] **X API credits are used up** (HTTP 402 on 2 Oct 2026). The prepaid balance of the X developer account has to be topped up by the account owner: about $14 for the rest of wave 1 and about $15 for wave 2. The daily signals digest uses the same account.
+- [x] X API credits were used up on 2 Oct 2026 (HTTP 402) and topped up by Philipp the same day; wave 1 then finished at $25.56.
+- [ ] Wave 2 needs about $15 on X (profiles, counts and 30 new days of posts). The prepaid balance of the X developer account has to cover it on 31 Oct 2026; the daily signals digest draws on the same balance.
 - [x] Taostats plan: 20,000 credits a month, 20 a minute (Philipp, 2 Oct 2026). Wave 1 used 5,623 calls; wave 2 will need about as many, both in October.
 - [x] Wave 2 is scheduled (one-time task, 31 Oct 2026, 09:30 local time).
 - [ ] Terms of Taostats and X on publishing derived data, before the repository goes public.
 - [ ] Before the repository goes public: Christian Roessler's consent to naming his subnet catalog and to publishing the category table taken from it (`data/manual/catalog_categories_2026-08-20.csv`).
-- [ ] Subnet 120 (Affine): the site answered HTTP 502 on three visits on 2 Oct 2026 (06:19 to 07:36 UTC). Visit again at the final build; if it answers, read it and code its five website facts.
+- [x] Subnet 120 (Affine): the site answered HTTP 502 on three visits on 2 Oct 2026 (06:19 to 07:36 UTC) and HTTP 200 at 14:27 UTC. It was read and coded before the final build.
+- [ ] The analysis itself (pre-analysis plan, regressions, repeated cross-validation in R) is a separate plan and is not started. Write it before looking at how any feature relates to the price.

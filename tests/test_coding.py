@@ -1,6 +1,6 @@
 import unittest
 
-from snprice.coding import ITEMS, check_answer, cohen_kappa, quote_found, settle, without_mailboxes
+from snprice.coding import ITEMS, check_answer, cohen_kappa, copies_passage, quote_found, settle, without_mailboxes
 
 SOURCES = {
     "https://acme.ai": "Acme\nGet an API key and call the endpoint.\nSign up  today",
@@ -41,6 +41,28 @@ class QuoteFoundTest(unittest.TestCase):
         self.assertEqual(without_mailboxes("Jane Doe jane.doe@acme.ai"), "Jane Doe @acme.ai")
         self.assertEqual(without_mailboxes("no address here"), "no address here")
         self.assertIsNone(without_mailboxes(None))
+
+
+class CopiesPassageTest(unittest.TestCase):
+    """A reader's reason is written in the reader's own words: post texts are not republished."""
+
+    POST = "Just to be clear, this old sir had a subnet. SN900. It was one of the biggest failures we have ever seen."
+
+    def test_reason_in_own_words(self):
+        self.assertFalse(copies_passage("speaks of an earlier subnet with this number that failed", self.POST))
+
+    def test_single_words_and_names_from_the_text_are_fine(self):
+        self.assertFalse(copies_passage("the old subnet SN900 is meant, called one of the failures", self.POST))
+
+    def test_reason_that_repeats_six_words_in_a_row(self):
+        self.assertTrue(copies_passage("says it was one of the biggest failures ever", self.POST))
+
+    def test_case_spacing_and_punctuation_do_not_hide_a_copy(self):
+        self.assertTrue(copies_passage("IT WAS  ONE OF THE BIGGEST, FAILURES", self.POST))
+
+    def test_empty_reason(self):
+        self.assertFalse(copies_passage("", self.POST))
+        self.assertFalse(copies_passage(None, self.POST))
 
 
 class CheckAnswerTest(unittest.TestCase):

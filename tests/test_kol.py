@@ -1,7 +1,7 @@
 import unittest
 
-from snprice.kol import (agreed_polarity, carry_labels, mention_counts, mention_decision, merge_posts, post_mentions,
-                         post_text, screen)
+from snprice.kol import (agreed_polarity, by_number_alone, carry_labels, mention_counts, mention_decision, merge_posts,
+                         post_mentions, post_text, screen, stands_for_current)
 from snprice.textmatch import Matcher
 from snprice.timeutil import epoch
 
@@ -168,6 +168,45 @@ class CarryLabelsTest(unittest.TestCase):
     def test_label_is_not_carried_when_the_netuid_went_to_another_subnet(self):
         out = carry_labels(self.EARLIER, {64: "64-100", 82: "82-200"}, {64: "64-100", 82: "82-900"})
         self.assertEqual(out, {("1", 64): "positive"})
+
+    def test_another_field_is_carried_the_same_way(self):
+        earlier = [{"post_id": "1", "netuid": 64, "refers_to_current": "no"}]
+        out = carry_labels(earlier, {64: "64-100"}, {64: "64-100"}, field="refers_to_current")
+        self.assertEqual(out, {("1", 64): "no"})
+
+
+class ByNumberAloneTest(unittest.TestCase):
+    """A subnet found only through its number may be an earlier holder of that number."""
+
+    def test_number_without_a_name_or_handle(self):
+        self.assertTrue(by_number_alone("id"))
+        self.assertTrue(by_number_alone("id_spoken"))
+
+    def test_number_next_to_a_name_or_handle_names_the_current_project(self):
+        self.assertFalse(by_number_alone("id|name"))
+        self.assertFalse(by_number_alone("handle|id"))
+
+    def test_name_or_handle_without_a_number(self):
+        self.assertFalse(by_number_alone("name"))
+        self.assertFalse(by_number_alone("handle|name"))
+
+
+class StandsForCurrentTest(unittest.TestCase):
+    """Two readers say whether a number in a post means the project that holds the netuid now."""
+
+    def test_mention_is_dropped_only_if_both_readers_say_another_project_is_meant(self):
+        self.assertFalse(stands_for_current("no", "no"))
+
+    def test_one_doubt_leaves_the_date_rule_in_force(self):
+        self.assertTrue(stands_for_current("no", "yes"))
+        self.assertTrue(stands_for_current("yes", "no"))
+        self.assertTrue(stands_for_current("yes", "yes"))
+
+    def test_unknown_reading_is_an_error(self):
+        with self.assertRaises(ValueError):
+            stands_for_current("maybe", "no")
+        with self.assertRaises(ValueError):
+            stands_for_current("yes", None)
 
 
 class MentionDecisionTest(unittest.TestCase):

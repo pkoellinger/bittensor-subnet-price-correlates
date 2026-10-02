@@ -13,7 +13,9 @@ Step 3  python collect/14_kol.py posts
         90 days before T and finds the subnets they name (snprice/textmatch.py, the rules
         used for podcast titles). The X client refuses any account that is not approved, and
         the step refuses to start if the posts counted at screening would cost more than
-        the budget has left. The number of posts read is checked against that count.
+        the budget has left. The search pages to the end of the window; the number of posts
+        it delivers is recorded next to the count taken at screening, which also includes
+        posts that X no longer delivers (deleted or withheld).
 
 Step 4  Two coders label every post-subnet pair (config/polarity_criteria.md), then
         python build/kol_polarity.py
@@ -37,7 +39,7 @@ from snprice.timeutil import epoch, iso  # noqa: E402
 from snprice.xapi import COST_POST, XClient, XError, load_approved  # noqa: E402
 
 DAY = 86400
-COUNT_TOLERANCE = 0.03          # posts read may differ from posts counted by 3% (deleted posts, day edges)
+MIN_DELIVERED = 0.8             # stop if fewer than 80% of the posts counted at screening are delivered
 TERMS = "(bittensor OR tao OR dtao OR subnet OR subnets OR opentensor)"
 WINDOWS = (30, 61, 90)
 
@@ -155,9 +157,12 @@ def posts():
             stopped = (name, str(exc))
             break
         got = merge_posts(earlier[a] or [], new, start, t_end)
-        if abs(len(got) - counted[a]) > max(3, COUNT_TOLERANCE * counted[a]):
-            raise SystemExit(f"@{name}: {len(got)} posts read, {counted[a]} counted at screening; the window is not "
-                             f"complete, nothing was written")
+        # The search pages to the end of the window, so what it returns is complete. X's count is higher
+        # by the posts it no longer delivers (deleted or withheld): reading single days again brought
+        # none of them back in wave 1. Only a large gap is treated as a failure.
+        if len(got) < MIN_DELIVERED * counted[a]:
+            raise SystemExit(f"@{name}: {len(got)} posts read, {counted[a]} counted at screening; too few to be "
+                             f"explained by deleted posts, nothing was written")
         write_json(saved / f"{a}.json", got)        # with text: stays in data/raw, the next wave reuses it
         naming = 0
         for post in got:
@@ -172,7 +177,8 @@ def posts():
                                        for r in rows]})
         accounts.append({"username": name, "posts_counted": counted[a], "posts_read": len(got),
                          "posts_naming_a_subnet": naming})
-        print(f"  @{name}: {len(got)} posts read, {naming} name a subnet; X spend ${book.used('x_usd'):.2f}", flush=True)
+        print(f"  @{name}: {len(got)} posts read of {counted[a]} counted, {naming} name a subnet; "
+              f"X spend ${book.used('x_usd'):.2f}", flush=True)
 
     # the coders' input is written for the accounts read so far: labels are per post and stay valid
     write_json(paths.raw_dir("kol") / "coding_input.json", coding)

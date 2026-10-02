@@ -98,6 +98,47 @@ class XClientTest(unittest.TestCase):
         self.assertIn("next_token=n1", self.transport.urls[1])
         self.assertAlmostEqual(self.ledger.used("x_usd"), 130 * 0.005)
 
+    def test_too_many_requests_is_retried_after_a_pause_and_not_charged(self):
+        busy = (429, json.dumps({"title": "Too Many Requests", "status": 429}))
+        slept = []
+        c = self.client([busy, busy, posts(range(40))], approved=["kol_one"])
+        c.sleep = slept.append
+        out = c.original_posts("kol_one", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(len(out), 40)
+        self.assertEqual(len(self.transport.urls), 3)
+        self.assertGreaterEqual(sum(slept), 10)                     # it waited before asking again
+        self.assertAlmostEqual(self.ledger.used("x_usd"), 40 * 0.005)
+
+    def test_server_error_of_the_moment_is_retried_like_a_rate_limit(self):
+        down = (503, json.dumps({"title": "Service Unavailable", "status": 503}))
+        c = self.client([down, posts(range(7))], approved=["kol_one"])
+        out = c.original_posts("kol_one", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(len(out), 7)
+        self.assertAlmostEqual(self.ledger.used("x_usd"), 7 * 0.005)
+
+    def test_refusal_for_lack_of_credits_is_not_retried(self):
+        empty = (402, json.dumps({"title": "Payment Required", "detail": "credits depleted"}))
+        c = self.client([empty, posts(range(7))], approved=["kol_one"])
+        with self.assertRaises(XError):
+            c.original_posts("kol_one", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(len(self.transport.urls), 1)
+        self.assertEqual(self.ledger.used("x_usd"), 0)
+
+    def test_rate_limit_that_does_not_lift_raises_and_charges_nothing(self):
+        busy = (429, json.dumps({"title": "Too Many Requests", "status": 429}))
+        c = self.client([busy] * 10, approved=["kol_one"])
+        with self.assertRaises(XError):
+            c.original_posts("kol_one", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(self.ledger.used("x_usd"), 0)
+
+    def test_archive_search_pauses_before_every_request(self):
+        slept = []
+        c = self.client([posts(range(100), next_token="n1"), posts(range(100, 130))], approved=["kol_one"])
+        c.sleep = slept.append
+        c.original_posts("kol_one", "2026-07-03T00:00:00Z", "2026-10-01T00:00:00Z")
+        self.assertEqual(len(slept), 2)                             # one pause per request, the first included
+        self.assertTrue(all(s >= 1 for s in slept))
+
     def test_archive_search_refuses_a_handle_that_could_change_the_query(self):
         c = self.client([posts([1])], approved=["kol_one OR from:other"])
         with self.assertRaises(ValueError):

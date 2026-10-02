@@ -4868,13 +4868,13 @@
   "category": {
    "value": "AI Training & Model Improvement",
    "url": "README",
-   "quote": "Synchronous inference-verification training loop for Bittensor subnet120: publish"
+   "quote": "Synchronous inference-verification training loop for Bittensor subnet120"
   },
   "searched": [
-   "https://www.affine.io",
+   "https://affine.io/",
    "README"
   ],
-  "notes": "Website returned a Cloudflare 502 error; README only, covering a miner pilot and a training loop. PDFs in the repository are vendored third-party research assets."
+  "notes": "On-chain description only says Reason Mining. Home page is a pilot evaluation dashboard (environments, batches, epochs); README describes a training loop (publish checkpoint, private miner batches, audit, score, train, next checkpoint) and links only miner and operator docs. No white paper, public API, MCP server or named person on either page; the two PDFs in the repo sit in a vendored benchmark folder (pinchbench_v1 assets), not an own white paper. Published checkpoints are not shown as a model outsiders can download, so product_live 0."
  },
  {
   "netuid": 121,

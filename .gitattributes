@@ -1,0 +1,4 @@
+# Text files keep LF line ends on every platform, so that the file hashes recorded in PLAN.md
+# and in the wave tags match the files after a checkout.
+* text=auto eol=lf
+*.rds binary

@@ -49,30 +49,44 @@ def read_table(path):
         return [{k: (v if v != "" else None) for k, v in row.items()} for row in csv.DictReader(fh)]
 
 
-def polarity_labels(cfg, coder):
-    """One coder's labels that apply to a wave: {(post_id, netuid): label}.
-
-    A wave's own file data/manual/kol_polarity_wave<N>_coder_<X>.json holds what was labelled
-    in that wave. The 90-day window of a follow-up wave overlaps earlier waves, so their labels
-    are carried over where the netuid still belongs to the same subnet (snprice.kol.carry_labels).
-    """
+def _answers_over_waves(cfg, stem, field):
+    """{(post_id, netuid): answer} of one coder for a wave: the wave's own file
+    data/manual/<stem with the wave number>.json, and the files of earlier waves for pairs
+    whose netuid still belongs to the same subnet (snprice.kol.carry_labels)."""
     from .kol import carry_labels
 
     def uids(wave):
         return {int(r["netuid"]): r["subnet_uid"] for r in read_table(paths.CHAIN / f"roster_wave{wave}.csv")}
 
     def own(wave):
-        return read_json(paths.MANUAL / f"kol_polarity_wave{wave}_coder_{coder}.json", default=[])
+        return read_json(paths.MANUAL / stem.format(wave=wave), default=[])
 
     chain, earlier = [], paths.snapshot_before(cfg)
     while earlier:
         chain.append(earlier)
         earlier = paths.snapshot_before(earlier)
-    labels, current = {}, uids(cfg["wave"])
+    answers, current = {}, uids(cfg["wave"])
     for old in reversed(chain):
-        labels.update(carry_labels(own(old["wave"]), uids(old["wave"]), current))
-    labels.update({(str(r["post_id"]), int(r["netuid"])): r["label"] for r in own(cfg["wave"])})
-    return labels
+        answers.update(carry_labels(own(old["wave"]), uids(old["wave"]), current, field=field))
+    answers.update({(str(r["post_id"]), int(r["netuid"])): r[field] for r in own(cfg["wave"])})
+    return answers
+
+
+def polarity_labels(cfg, coder):
+    """One coder's labels that apply to a wave: {(post_id, netuid): label}.
+
+    A wave's own file data/manual/kol_polarity_wave<N>_coder_<X>.json holds what was labelled
+    in that wave. The 90-day window of a follow-up wave overlaps earlier waves, so their labels
+    are carried over where the netuid still belongs to the same subnet.
+    """
+    return _answers_over_waves(cfg, "kol_polarity_wave{wave}_coder_" + coder + ".json", "label")
+
+
+def attribution_readings(cfg, reader):
+    """One reader's answers that apply to a wave: {(post_id, netuid): "yes" | "no"}, for the
+    posts that name a subnet by number alone (config/kol_attribution.md). Files:
+    data/manual/kol_attribution_wave<N>_reader_<X>.json; earlier waves are carried over like labels."""
+    return _answers_over_waves(cfg, "kol_attribution_wave{wave}_reader_" + reader + ".json", "refers_to_current")
 
 
 def write_json(path, obj):

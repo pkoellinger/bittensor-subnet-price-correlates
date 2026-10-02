@@ -5,6 +5,7 @@ from snprice.events import (
     contact_domain,
     contact_without_mailbox,
     last_real_identity_change,
+    names_carried,
     net_owner_trades,
     observed_window,
     owner_tenures,
@@ -262,6 +263,27 @@ class ProjectStartTest(unittest.TestCase):
 
     def test_no_events(self):
         self.assertIsNone(project_start([], registered_block=100))
+
+
+class NamesCarriedTest(unittest.TestCase):
+    """Every name that was set on a netuid, earlier registrations included."""
+
+    def test_each_new_name_with_the_block_and_time_at_which_it_was_set(self):
+        rows = [dict(ident(300, "Djinn"), timestamp="2026-01-22T10:00:00Z"), ident(100, "HappyAI"), ident(900, "Capcomp")]
+        self.assertEqual(names_carried(rows), [{"block": 100, "utc": None, "name": "HappyAI"},
+                                               {"block": 300, "utc": "2026-01-22T10:00:00Z", "name": "Djinn"},
+                                               {"block": 900, "utc": None, "name": "Capcomp"}])
+
+    def test_event_that_repeats_the_name_or_leaves_it_blank_adds_nothing(self):
+        rows = [ident(100, "Djinn"), ident(200, " Djinn ", repo="https://github.com/a/b"), ident(300, ""), ident(400, None)]
+        self.assertEqual(names_carried(rows), [{"block": 100, "utc": None, "name": "Djinn"}])
+
+    def test_name_that_comes_back_is_listed_again(self):
+        rows = [ident(100, "Djinn"), ident(200, "deprecated"), ident(300, "Djinn")]
+        self.assertEqual([r["name"] for r in names_carried(rows)], ["Djinn", "deprecated", "Djinn"])
+
+    def test_no_events(self):
+        self.assertEqual(names_carried([]), [])
 
 
 class ContactTest(unittest.TestCase):

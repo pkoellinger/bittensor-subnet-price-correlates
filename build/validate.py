@@ -94,6 +94,13 @@ def main():
                           ("exploit26_presented", "exploit26_sessions_n")):
             if g(low) is not None and g(high) is not None:
                 check(g(low) <= g(high) + 1e-9, f"{low}[{n}] = {r[low]} exceeds {high} = {r[high]}")
+        if g("kol_posts_90d") is not None:      # commentator posts: parts never exceed the whole
+            check(g("kol_pos_posts_90d") + g("kol_neg_posts_90d") <= g("kol_posts_90d"), f"kol polarity counts[{n}]")
+            check(g("kol_posts_30d") + g("kol_posts_lag30") <= g("kol_posts_90d"), f"kol monthly counts[{n}]")
+            check(g("kol_pos_posts_30d") + g("kol_neg_posts_30d") <= g("kol_posts_30d"), f"kol polarity 30d[{n}]")
+            check(g("kol_pos_posts_lag30") + g("kol_neg_posts_lag30") <= g("kol_posts_lag30"), f"kol polarity lag30[{n}]")
+            check(g("kol_accounts_90d") <= min(g("kol_posts_90d"), 9), f"kol_accounts_90d[{n}]")
+            check((g("kol_accounts_90d") > 0) == (g("kol_posts_90d") > 0), f"kol accounts without posts[{n}]")
         check(g("podcast_shows_12m") <= 6, f"podcast_shows_12m[{n}]")
         check(g("window_days_observed_30d") <= 31, f"window_days_observed_30d[{n}]")
         shows = sum(g(k) for k in show_columns)

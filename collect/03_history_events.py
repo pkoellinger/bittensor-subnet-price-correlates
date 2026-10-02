@@ -6,6 +6,9 @@ Sources
   Taostats /api/subnet/identity_set/v1  identity-set events with the identity fields
 
 Writes  data/intermediate/history_wave<N>.csv   one row per subnet
+        data/intermediate/names_wave<N>.csv     every name that was set on a netuid, earlier
+                                                registrations included (for the readers of
+                                                config/kol_attribution.md)
 
 project_age_days counts from the most recent of registration and the start of the current
 project (snprice.events.project_start): the latest rename that came with another team,
@@ -22,7 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import chain, paths  # noqa: E402
-from snprice.events import last_real_identity_change, project_start  # noqa: E402
+from snprice.events import last_real_identity_change, names_carried, project_start  # noqa: E402
 from snprice.io import archive, read_table, taostats, write_table  # noqa: E402
 from snprice.timeutil import epoch  # noqa: E402
 from snprice.windows import bounds  # noqa: E402
@@ -42,7 +45,7 @@ def main():
     ident_rows = tao.get_all("/api/subnet/identity_set/v1", per_page=200, block_end=T)
     print(f"{len(owner_rows)} owner-history rows, {len(ident_rows)} identity-set events up to T", flush=True)
 
-    out, checked, mismatches = [], 0, 0
+    out, names, checked, mismatches = [], [], 0, 0
     for r in roster:
         n, reg_block = int(r["netuid"]), int(r["registered_block"])
 
@@ -63,6 +66,7 @@ def main():
                 owner_change_block = None
 
         events = [i for i in ident_rows if int(i["netuid"]) == n]
+        names += [{"netuid": n, **row} for row in names_carried(events)]
         ident = last_real_identity_change(events, reg_block)
         ident_block = ident["block"] if ident else None
         name_block = project_start(events, reg_block)
@@ -91,6 +95,7 @@ def main():
         })
 
     write_table(paths.INTERMEDIATE / f"history_wave{wave}.csv", out)
+    write_table(paths.INTERMEDIATE / f"names_wave{wave}.csv", names, columns=["netuid", "block", "utc", "name"])
     print(f"wrote history for {len(out)} subnets; owner changes checked on chain: {checked}, "
           f"not confirmed: {mismatches}; with an owner change: {sum(1 for o in out if o['owner_change_block'])}; "
           f"with a real identity change: {sum(1 for o in out if o['identity_change_block'])}")

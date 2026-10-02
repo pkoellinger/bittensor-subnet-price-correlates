@@ -6,8 +6,8 @@
     python collect/run_all.py --list                show the steps
 
 Every step is a script of its own and can be run alone. Steps read the saved answers of
-earlier runs, so repeating a step costs no API calls. The run stops at the three places
-where a person has to act (marked HAND below) and says what is needed.
+earlier runs, so repeating a step costs no API calls. The run stops at the places where a
+person has to act (marked HAND below) and says what is needed.
 
 Keys: TAOSTATS_API_KEY for the Taostats steps, X_BEARER_TOKEN for the X steps, a GitHub token
 (GITHUB_TOKEN or a logged-in `gh`) for the GitHub steps. Chain steps need no key.
@@ -54,7 +54,10 @@ STEPS = [
     ("14_kol_posts", "collect/14_kol.py posts", "X (reads posts of the approved accounts)"),
     ("HAND_polarity_coding", None,
      "two coders label the posts: build/coding_material.py kol prepare, the brief in config/coder_briefs.md, then kol merge"),
-    ("kol_polarity", "build/kol_polarity.py", "stops while pairs lack a label"),
+    ("HAND_number_reading", None,
+     "two readers say which project a subnet number stands for: build/coding_material.py attribution prepare, "
+     "the brief in config/coder_briefs.md, then attribution merge"),
+    ("kol_polarity", "build/kol_polarity.py", "stops while pairs lack a label or a reading"),
     ("build_dataset", "build/build_dataset.py", ""),
     ("validate", "build/validate.py --final", ""),
     ("build_rds", None, "Rscript build/build_rds.R data/final/<dataset>.csv codebook.csv"),
