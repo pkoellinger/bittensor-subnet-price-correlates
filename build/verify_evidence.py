@@ -1,7 +1,7 @@
 """Check, compare and settle the double coding of website facts (config/coding_protocol.md).
 
-Reads   data/manual/web_coding_coder_A.json, data/manual/web_coding_coder_B.json
-        data/manual/web_coding_third_reading.csv      (optional: netuid, item, value, reason)
+Reads   data/manual/web_coding_wave<N>_coder_A.json, ..._coder_B.json
+        data/manual/web_coding_wave<N>_third_reading.csv (optional: netuid, item, value, reason)
         data/manual/catalog_categories_2026-08-20.csv
         data/raw/wave<N>/dossiers/<netuid>.sources.json   the saved texts the quotes must appear in
 Writes  data/evidence/web_coding_wave<N>.csv          every item: both answers, evidence check, final value
@@ -75,10 +75,10 @@ def main():
     wave = cfg["wave"]
     roster = {int(r["netuid"]): r for r in read_table(paths.CHAIN / f"roster_wave{wave}.csv")}
     for c in "AB":
-        drop_mailbox_names(paths.MANUAL / f"web_coding_coder_{c}.json")
-    coder = {c: {int(x["netuid"]): x for x in read_json(paths.MANUAL / f"web_coding_coder_{c}.json")} for c in "AB"}
+        drop_mailbox_names(paths.MANUAL / f"web_coding_wave{wave}_coder_{c}.json")
+    coder = {c: {int(x["netuid"]): x for x in read_json(paths.MANUAL / f"web_coding_wave{wave}_coder_{c}.json")} for c in "AB"}
     catalog = {int(r["netuid"]): r for r in read_table(paths.MANUAL / "catalog_categories_2026-08-20.csv")}
-    third_path = paths.MANUAL / "web_coding_third_reading.csv"
+    third_path = paths.MANUAL / f"web_coding_wave{wave}_third_reading.csv"
     third = {(int(t["netuid"]), t["item"]): t["value"] for t in (read_table(third_path) if third_path.exists() else [])}
     dossiers = paths.raw_dir("dossiers")
     web = {int(w["netuid"]): w for w in read_table(paths.INTERMEDIATE / f"web_wave{wave}.csv")}

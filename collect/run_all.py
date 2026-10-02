@@ -43,17 +43,17 @@ STEPS = [
     ("16_exploit", "collect/16_exploit.py", "stream.vidaio.io"),
     ("12b_dossiers", "collect/12b_dossiers.py", ""),
     ("HAND_website_coding", None,
-     "two coders fill data/manual/web_coding_coder_A.json and _B.json from the dossiers (config/coding_protocol.md)"),
-    ("verify_evidence", "build/verify_evidence.py", "stops while items are open: add data/manual/web_coding_third_reading.csv"),
+     "two coders code the website facts: build/coding_material.py web prepare, the brief in config/coder_briefs.md, then web merge"),
+    ("verify_evidence", "build/verify_evidence.py", "stops while items are open: add data/manual/web_coding_wave<N>_third_reading.csv"),
     ("12e_whitepapers", "collect/12e_whitepapers.py", "Chrome"),
     ("HAND_whitepaper_coding", None,
-     "two coders fill data/manual/whitepaper_coding_coder_A.json and _B.json from the excerpts"),
+     "two coders code the white papers: build/coding_material.py whitepaper prepare, the brief in config/coder_briefs.md, then whitepaper merge"),
     ("whitepaper_features", "build/whitepaper_features.py", "stops while items are open"),
     ("14_kol_candidates", "collect/14_kol.py candidates", "X (profile lookups and counts)"),
-    ("HAND_account_approval", None, "the project owner approves accounts in config/kol_accounts.csv; no post is read before"),
+    ("HAND_account_approval", None, "the project owner approves accounts in config/kol_accounts.csv (approved = yes with a date); no post is read before"),
     ("14_kol_posts", "collect/14_kol.py posts", "X (reads posts of the approved accounts)"),
     ("HAND_polarity_coding", None,
-     "two coders fill data/manual/kol_polarity_coder_A.json and _B.json (config/polarity_criteria.md)"),
+     "two coders label the posts: build/coding_material.py kol prepare, the brief in config/coder_briefs.md, then kol merge"),
     ("kol_polarity", "build/kol_polarity.py", "stops while pairs lack a label"),
     ("build_dataset", "build/build_dataset.py", ""),
     ("validate", "build/validate.py --final", ""),
@@ -74,10 +74,13 @@ def main():
     names = [s[0] for s in STEPS]
     if start not in names:
         raise SystemExit(f"unknown step {start}; see --list")
+    config = f" --config {env['SNPRICE_SNAPSHOT']}" if "--config" in args else ""
     for name, command, needs in STEPS[names.index(start):]:
         if command is None:
-            print(f"\nSTOP at {name}: {needs}\nWhen that is done, continue with: "
-                  f"python collect/run_all.py --from {names[names.index(name) + 1]}")
+            following = names[names.index(name) + 1] if names.index(name) + 1 < len(names) else None
+            print(f"\nSTOP at {name}: {needs}")
+            if following:
+                print(f"When that is done, continue with: python collect/run_all.py{config} --from {following}")
             return
         print(f"\n=== {name} ({needs})" if needs else f"\n=== {name}", flush=True)
         result = subprocess.run([sys.executable, "-u"] + command.split(), cwd=ROOT, env=env)

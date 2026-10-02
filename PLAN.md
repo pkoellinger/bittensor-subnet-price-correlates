@@ -36,7 +36,7 @@ Because only 128 subnets exist, the design adds time: features for September, la
 
 ### Phase 0: Core library, test-first — DONE
 
-- [x] Repository scaffold; shared library `snprice/` with 460 unit tests (`python -m unittest discover -s tests`)
+- [x] Repository scaffold; shared library `snprice/` with 485 unit tests (`python -m unittest discover -s tests`)
 - [x] Measurement: miner incentive and the wallet behind every paid UID can be read from the chain at 900-block resolution in about one hour
 
 ### Phase 1: Chain and Taostats data — DONE
@@ -57,7 +57,8 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [x] `15_podcasts` (219 episodes of six shows), `16_exploit` (51 sessions)
 - [x] `14_kol.py candidates`: 15 candidate accounts screened without reading any post
 - [x] Written and tested without reading a post: `14_kol.py posts`, `config/polarity_criteria.md`, `build/kol_polarity.py`
-- [ ] **Waiting for Philipp:** approval of the account list in `config/kol_accounts.csv` (all 15 candidates are listed with a recommendation; `approved` is empty). Then: run `14_kol.py posts`, two coders label the pairs, run `build/kol_polarity.py`, add the ten `kol_*` columns to the codebook
+- [x] Account list approved by Philipp on 2 Oct 2026: nine accounts (`config/kol_accounts.csv`)
+- [ ] `14_kol.py posts`: two of nine accounts read (652 posts, 109 post-subnet pairs, labelled by both coders: 95% agreement, kappa 0.92). **Stopped: the prepaid credits of the X account are used up (HTTP 402).** About $14 are needed for the other seven accounts. Then: run the step again, two coders label the new pairs, `build/kol_polarity.py`, add the ten `kol_*` columns to the codebook
 
 ### Phase 4: Build, validate, freeze, document — IN PROGRESS
 
@@ -66,12 +67,13 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [x] Build with lineage columns
 - [ ] Final build with commentator columns; tag and hash wave 1
 
-### Phase 5: Wave 2 — NOT STARTED
+### Phase 5: Wave 2 — PREPARED, scheduled for 31 Oct 2026
 
-**Depends on:** Phase 4, date ≥ 31 Oct 2026
+**Depends on:** Phase 4; snapshot block 9,400,186 (wave 1 plus 216,000 blocks), expected early on 31 Oct 2026 UTC
 
-- [ ] `python collect/find_block.py 2026-10-30`, write `config/snapshot_wave2.json`, `python collect/run_all.py --config snapshot_wave2.json`
-- [ ] `build/build_panel.py`: long format keyed by `subnet_uid` and wave, forward outcomes (`logret_fwd30`, `evicted_fwd30`), check that wave 2's lagged columns equal wave 1's values
+- [x] Runbook `WAVE2.md`; `collect/make_wave_config.py`; coder briefs (`config/coder_briefs.md`) and `build/coding_material.py`; `build/build_panel.py` tested on a fabricated second wave
+- [x] One-time scheduled task on the collecting laptop: 31 Oct 2026, 09:30 local time
+- [ ] Run: `python collect/make_wave_config.py 2`, `python collect/run_all.py --config snapshot_wave2.json`, the three coding steps, `build/build_panel.py`
 
 ## Risks
 
@@ -135,12 +137,18 @@ Because only 128 subnets exist, the design adds time: features for September, la
 | 2026-10-02 | X handles: Taostats identity, contact field, GitHub owner profile, the only X profile linked on the subnet's home page, then guessed handles accepted only if the profile links the subnet's site or names it with its number | On-chain identity has no handle field; 95 of 114 named subnets now have a handle |
 | 2026-10-02 | Commentator accounts are screened by a written rule from profile and count requests only; reading all original posts of all 14 existing candidates for 90 days would cost about $21 | Fits the $50 budget, so the 90-day window can be used |
 | 2026-10-02 | Documentation checklist: rules corrected once after the first hand check (15 repositories), then left as they are. A second sample of 15 repositories, drawn afterwards, agrees on 90% of answers: all 15 on README, licence, contributing guide and docs site, 14 on the miner guide, 12 on the validator guide, 11 each on incentive description and hardware requirements | Tuning the rules on the second sample would leave no out-of-sample check. Ten of the twelve disagreements are a "no" of the rule where the reader said yes, mostly for information given in running text: the two weak items are conservative |
+| 2026-10-02 | **Account list: nine accounts, approved by Philipp** (TaoOutsider, TAOTemplar, gordonfrayne, KeithSingery, ShizzyUnchained, tylerdurdeth, JesusMartinez, markjeffrey, SiamKidd). The screening rule asks for volume (at least 30 posts with a Bittensor term in 90 days) instead of focus (at least half of the posts), and excludes institutions and shows (`config/kol_rule.md`) | The focus test excluded three accounts of the brief and the two largest audiences, although only posts that name a subnet are counted. Decided before any post was read and without reference to prices; both rules' results stay in the screening table |
+| 2026-10-02 | Posts are read through the archive search with the query of the screening counts, deduplicated by post ID, and links are removed before subnets are matched | The search returned a few posts twice (519 for 513), and a shortened link ("t.co/Sn3Zj...") matched subnet 3. Both coders had labelled that pair as not about the subnet |
+| 2026-10-02 | **A follow-up wave's snapshot block is the earlier one plus 216,000 blocks** (wave 2: block 9,400,186, about 31 Oct 2026 01:30 UTC), not the last block of a calendar day | The windows of consecutive waves then join exactly: wave 2's lagged window is wave 1's feature window, and `build/build_panel.py` can check that the values agree. With September's block time the block falls about 1.6 hours after midnight |
+| 2026-10-02 | A follow-up wave reads only the new days from X and reuses the earlier wave's posts and labels for the overlapping days, as long as the netuid still belongs to the same subnet | Reading 90 days again would cost about $18 and break the $25 budget of a follow-up wave |
+| 2026-10-02 | Coder files in `data/manual` carry the wave in their name; the coders' briefs are kept in `config/coder_briefs.md` | Wave 2 codes its own page snapshots under the same instructions |
+| 2026-10-02 | Evicted subnets keep an outcome in the panel: the last price observed before they lost the netuid (`price_tao_last`, `logret_to_last`) | Dropping them would leave only survivors |
 
 ## Open Questions
 
-- [ ] **Account list for Y19 and Y20** (`config/kol_accounts.csv`): which of the screened accounts to read. No post is read before this is approved.
-- [ ] Monthly call allowance of the Taostats plan (wave 1 used 5,623 calls; the plan page lists 20,000 credits a month).
-- [ ] Wave 2: scheduled run or manual trigger on or after 31 Oct 2026.
+- [ ] **X API credits are used up** (HTTP 402 on 2 Oct 2026). The prepaid balance of the X developer account has to be topped up by the account owner: about $14 for the rest of wave 1 and about $15 for wave 2. The daily signals digest uses the same account.
+- [x] Taostats plan: 20,000 credits a month, 20 a minute (Philipp, 2 Oct 2026). Wave 1 used 5,623 calls; wave 2 will need about as many, both in October.
+- [x] Wave 2 is scheduled (one-time task, 31 Oct 2026, 09:30 local time).
 - [ ] Terms of Taostats and X on publishing derived data, before the repository goes public.
 - [ ] Before the repository goes public: Christian Roessler's consent to naming his subnet catalog and to publishing the category table taken from it (`data/manual/catalog_categories_2026-08-20.csv`).
 - [ ] Subnet 120 (Affine): the site answered HTTP 502 on three visits on 2 Oct 2026 (06:19 to 07:36 UTC). Visit again at the final build; if it answers, read it and code its five website facts.

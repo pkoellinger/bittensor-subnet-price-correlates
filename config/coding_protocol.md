@@ -106,7 +106,7 @@ The rule applies to later waves as written here.
   even if its content is a benchmark report (subnet 18); a white paper that is cited but not
   offered does not (subnet 99).
 
-All third readings with their reasons are in `data/manual/web_coding_third_reading.csv`.
+All third readings with their reasons are in `data/manual/web_coding_wave1_third_reading.csv`.
 
 ## Result of wave 1
 

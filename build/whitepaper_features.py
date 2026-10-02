@@ -1,6 +1,6 @@
 """Settle the two coded white paper features: named authors, formula for the mechanism (Y9).
 
-Reads   data/manual/whitepaper_coding_coder_A.json, data/manual/whitepaper_coding_coder_B.json
+Reads   data/manual/whitepaper_coding_wave<N>_coder_A.json, ..._coder_B.json
         data/manual/whitepaper_coding_third_reading.csv   (optional: netuid, item, value, reason)
         data/raw/wave<N>/whitepapers/excerpts.txt         the excerpts the coders read
 Writes  data/evidence/whitepaper_coding_wave<N>.csv       both answers, quote check, final value
@@ -35,7 +35,7 @@ def main():
     cfg = paths.snapshot()
     wave = cfg["wave"]
     blocks = excerpt_blocks((paths.raw_dir("whitepapers") / "excerpts.txt").read_text(encoding="utf-8"))
-    coder = {c: {int(x["netuid"]): x for x in read_json(paths.MANUAL / f"whitepaper_coding_coder_{c}.json")} for c in "AB"}
+    coder = {c: {int(x["netuid"]): x for x in read_json(paths.MANUAL / f"whitepaper_coding_wave{wave}_coder_{c}.json")} for c in "AB"}
     third_path = paths.MANUAL / "whitepaper_coding_third_reading.csv"
     third = {(int(t["netuid"]), t["item"]): t["value"] for t in (read_table(third_path) if third_path.exists() else [])}
 

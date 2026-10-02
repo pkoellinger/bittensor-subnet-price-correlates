@@ -32,7 +32,7 @@ The examples use an invented subnet, Acme (SN900).
 ## Output
 
 One line per post and subnet: `{"post_id": "...", "netuid": 900, "label": "positive"}`,
-collected in `data/manual/kol_polarity_coder_A.json` and `..._coder_B.json`. The files hold
+collected in `data/manual/kol_polarity_wave<N>_coder_A.json` and `..._coder_B.json`. The files hold
 post IDs and labels only. Post text is not stored in the repository.
 
 ## How the labels are used (`build/kol_polarity.py`, `snprice.kol.mention_decision`)

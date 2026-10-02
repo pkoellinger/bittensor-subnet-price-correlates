@@ -1,16 +1,16 @@
 username,approved,approved_on,recommended,note
-TaoOutsider,,,yes,seed; passes the rule as written
-TAOTemplar,,,yes,seed; passes the rule as written
-gordonfrayne,,,yes,seed; passes the rule as written
-KeithSingery,,,yes,seed (host of Bittensor Guru); passes the rule as written; spoke at Exploit 26 for Tao.com which is not a subnet
-ShizzyUnchained,,,yes,seed; passes the rule as written
-tylerdurdeth,,,yes,seed; fails only the share test (41% of posts name a Bittensor term) but wrote 293 such posts in 90 days
-JesusMartinez,,,yes,seed; fails only the share test (34%) but wrote 177 such posts in 90 days and has the largest audience on the list
-markjeffrey,,,yes,host of Hash Rate; fails only the share test (31%) but wrote 311 such posts in 90 days
-SiamKidd,,,yes,host of Revenue Search; fails only the share test (46%); 33 such posts in 90 days
-VenturaLabs,,,no,seed; account of a podcast whose episodes the podcast columns already count; 29 original posts in 90 days (the rule asks for 30)
-opentensor,,,no,account of the Opentensor Foundation: passes the rule as written but is an institution and not a commentator; its Novelty Search episodes are already counted by the podcast columns
-BittensorGuru,,,no,seed named without a handle; this handle is an empty account (1 follower); the host of Bittensor Guru is KeithSingery
-MarkCreaser,,,no,host of Revenue Search; 6 original posts in 90 days
-jaltucher,,,no,host of The TAO Pod; 6 posts with a Bittensor term in 90 days
-JosephJacks_,,,no,host of The TAO Pod; no post with a Bittensor term in 90 days
+TaoOutsider,yes,2026-10-02,yes,seed; passes the rule as first written
+TAOTemplar,yes,2026-10-02,yes,seed; passes the rule as first written
+gordonfrayne,yes,2026-10-02,yes,seed; passes the rule as first written
+KeithSingery,yes,2026-10-02,yes,seed (host of Bittensor Guru); passes the rule as first written; spoke at Exploit 26 for Tao.com which is not a subnet
+ShizzyUnchained,yes,2026-10-02,yes,seed; passes the rule as first written
+tylerdurdeth,yes,2026-10-02,yes,seed; 41% of its posts name a Bittensor term and it wrote 293 such posts in 90 days
+JesusMartinez,yes,2026-10-02,yes,seed; 34% of its posts name a Bittensor term and it wrote 177 such posts in 90 days; the largest audience on the list
+markjeffrey,yes,2026-10-02,yes,host of Hash Rate; 31% of its posts name a Bittensor term and it wrote 311 such posts in 90 days
+SiamKidd,yes,2026-10-02,yes,host of Revenue Search; 46% of its posts name a Bittensor term and it wrote 33 such posts in 90 days
+VenturaLabs,no,,no,seed; account of a podcast whose episodes the podcast columns already count; 29 original posts in 90 days
+opentensor,no,,no,account of the Opentensor Foundation: an institution and not a commentator; its Novelty Search episodes are already counted by the podcast columns
+BittensorGuru,no,,no,seed named without a handle; this handle is an empty account (1 follower); the host of Bittensor Guru is KeithSingery
+MarkCreaser,no,,no,host of Revenue Search; 6 original posts in 90 days
+jaltucher,no,,no,host of The TAO Pod; 6 posts with a Bittensor term in 90 days
+JosephJacks_,no,,no,host of The TAO Pod; no post with a Bittensor term in 90 days

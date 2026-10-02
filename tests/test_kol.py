@@ -1,7 +1,9 @@
 import unittest
 
-from snprice.kol import agreed_polarity, mention_counts, mention_decision, post_mentions, post_text, screen
+from snprice.kol import (agreed_polarity, carry_labels, mention_counts, mention_decision, merge_posts, post_mentions,
+                         post_text, screen)
 from snprice.textmatch import Matcher
+from snprice.timeutil import epoch
 
 PROFILE = {"username": "TaoOutsider", "public_metrics": {"followers_count": 12000}}
 
@@ -9,8 +11,22 @@ PROFILE = {"username": "TaoOutsider", "public_metrics": {"followers_count": 1200
 class ScreenTest(unittest.TestCase):
     def test_account_that_meets_every_rule(self):
         out = screen("TaoOutsider", PROFILE, original=300, bittensor=240, subnet_handles={"chutes_ai"})
-        self.assertEqual(out, {"exists": 1, "independent": 1, "focus": 1, "activity": 1, "reach": 1,
-                               "bittensor_share": 0.8, "passes": 1})
+        self.assertEqual(out, {"exists": 1, "independent": 1, "focus": 1, "activity": 1, "reach": 1, "volume": 1,
+                               "bittensor_share": 0.8, "passes_first_rule": 1, "passes": 1})
+
+    # the rule in force since 2 Oct 2026 asks for volume, not for focus (config/kol_rule.md)
+    def test_volume_needs_thirty_posts_with_a_bittensor_term(self):
+        self.assertEqual(screen("a", PROFILE, 500, 30, set())["volume"], 1)
+        self.assertEqual(screen("a", PROFILE, 500, 29, set())["volume"], 0)
+
+    def test_account_that_writes_much_about_bittensor_and_more_about_other_things_passes(self):
+        out = screen("a", PROFILE, original=518, bittensor=177, subnet_handles=set())
+        self.assertEqual((out["focus"], out["passes_first_rule"]), (0, 0))
+        self.assertEqual((out["volume"], out["passes"]), (1, 1))
+
+    def test_account_with_few_posts_fails_even_if_all_are_about_bittensor(self):
+        out = screen("a", PROFILE, original=29, bittensor=21, subnet_handles=set())
+        self.assertEqual((out["focus"], out["volume"], out["passes"]), (1, 0, 0))
 
     def test_unknown_handle(self):
         out = screen("nobody", None, original=None, bittensor=None, subnet_handles=set())
@@ -100,9 +116,58 @@ class PostMentionsTest(unittest.TestCase):
         self.assertEqual([(m["netuid"], m["strength"]) for m in out], [(111, "weak")])
         self.assertEqual(self.mentions("Claims of a rally were wrong"), [])
 
+    def test_letters_inside_a_link_are_not_a_mention(self):
+        # shortened links are random strings: "sn64" or a name can appear in them by chance
+        self.assertEqual(self.mentions("AI crypto is heating up https://t.co/Sn64ZkQ1ab and http://t.co/chutes"), [])
+        out = self.mentions("Chutes ships again https://t.co/Sn111ZkQ1ab")
+        self.assertEqual([m["netuid"] for m in out], [64])
+
     def test_long_post_is_matched_on_its_full_text(self):
         out = self.mentions("A thread on… https://t.co/x", note_tweet={"text": "A thread on DeSci Claims and why it matters"})
         self.assertEqual([m["netuid"] for m in out], [111])
+
+
+def read_post(post_id, created):
+    return {"id": post_id, "text": "t", "created_at": created}
+
+
+class MergePostsTest(unittest.TestCase):
+    """A follow-up wave reads only the new days and reuses the posts read for the wave before."""
+
+    START, END = epoch("2026-08-02T00:00:00Z"), epoch("2026-10-31T00:00:00Z")
+
+    def test_earlier_posts_inside_the_window_are_kept_and_older_ones_dropped(self):
+        earlier = [read_post("1", "2026-08-01T10:00:00.000Z"), read_post("2", "2026-09-15T10:00:00.000Z")]
+        new = [read_post("3", "2026-10-15T10:00:00.000Z")]
+        out = merge_posts(earlier, new, self.START, self.END)
+        self.assertEqual([p["id"] for p in out], ["2", "3"])
+
+    def test_post_read_in_both_waves_appears_once(self):
+        earlier = [read_post("2", "2026-09-15T10:00:00.000Z")]
+        new = [read_post("2", "2026-09-15T10:00:00.000Z"), read_post("3", "2026-10-15T10:00:00.000Z")]
+        self.assertEqual([p["id"] for p in merge_posts(earlier, new, self.START, self.END)], ["2", "3"])
+
+    def test_posts_after_the_window_are_dropped(self):
+        new = [read_post("4", "2026-10-31T00:00:01.000Z")]
+        self.assertEqual(merge_posts([], new, self.START, self.END), [])
+
+    def test_result_is_ordered_by_time(self):
+        new = [read_post("9", "2026-10-20T10:00:00.000Z"), read_post("8", "2026-10-10T10:00:00.000Z")]
+        self.assertEqual([p["id"] for p in merge_posts([], new, self.START, self.END)], ["8", "9"])
+
+
+class CarryLabelsTest(unittest.TestCase):
+    """Labels given in an earlier wave stay valid while the netuid belongs to the same subnet."""
+
+    EARLIER = [{"post_id": "1", "netuid": 64, "label": "positive"}, {"post_id": "1", "netuid": 82, "label": "neutral"}]
+
+    def test_label_is_carried_for_a_subnet_that_is_still_the_same(self):
+        out = carry_labels(self.EARLIER, {64: "64-100", 82: "82-200"}, {64: "64-100", 82: "82-200"})
+        self.assertEqual(out, {("1", 64): "positive", ("1", 82): "neutral"})
+
+    def test_label_is_not_carried_when_the_netuid_went_to_another_subnet(self):
+        out = carry_labels(self.EARLIER, {64: "64-100", 82: "82-200"}, {64: "64-100", 82: "82-900"})
+        self.assertEqual(out, {("1", 64): "positive"})
 
 
 class MentionDecisionTest(unittest.TestCase):

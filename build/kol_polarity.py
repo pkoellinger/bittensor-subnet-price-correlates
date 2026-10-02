@@ -1,13 +1,15 @@
 """Posts by approved commentators that name a subnet: settle the two codings and count (Y19, Y20).
 
 Reads   data/evidence/kol_mentions_wave<N>.csv      post-subnet pairs found by collect/14_kol.py posts
-        data/manual/kol_polarity_coder_A.json, data/manual/kol_polarity_coder_B.json
+        data/manual/kol_polarity_wave<N>_coder_A.json, ..._coder_B.json
                                                     [{"post_id": ..., "netuid": ..., "label": ...}]
 Writes  data/evidence/kol_coding_wave<N>.csv        every pair: both labels, whether it counts, polarity
         data/intermediate/kol_wave<N>.csv           one row per subnet; 0 where no counted post names it
 
 Labels and their use: config/polarity_criteria.md, snprice.kol.mention_decision. The files
-hold post IDs and labels, never post text.
+hold post IDs and labels, never post text. A follow-up wave reuses the labels of earlier waves
+for posts in the overlapping days, as long as the netuid still belongs to the same subnet
+(snprice.io.polarity_labels).
 
 Exit status 1 while a pair lacks a label from either coder.
 """
@@ -18,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import paths  # noqa: E402
 from snprice.coding import cohen_kappa  # noqa: E402
-from snprice.io import archive, read_json, read_table, write_table  # noqa: E402
+from snprice.io import archive, polarity_labels, read_table, write_table  # noqa: E402
 from snprice.kol import mention_counts, mention_decision  # noqa: E402
 from snprice.timeutil import epoch  # noqa: E402
 
@@ -28,12 +30,7 @@ def main():
     wave = cfg["wave"]
     days, month = cfg["long_window_days"], cfg["window_days"]
     mentions = read_table(paths.EVIDENCE / f"kol_mentions_wave{wave}.csv")
-    labels = {}
-    for coder in "AB":
-        rows = read_json(paths.MANUAL / f"kol_polarity_coder_{coder}.json")
-        if rows is None:
-            raise SystemExit(f"data/manual/kol_polarity_coder_{coder}.json is missing")
-        labels[coder] = {(str(r["post_id"]), int(r["netuid"])): r["label"] for r in rows}
+    labels = {coder: polarity_labels(cfg, coder) for coder in "AB"}     # this wave's labels and those carried over
 
     coded, counted, open_pairs = [], [], []
     for m in mentions:

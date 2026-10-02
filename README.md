@@ -6,8 +6,9 @@ for tests of out-of-sample prediction. This repository holds the dataset, a code
 code that collected every variable.
 
 **Status (2 Oct 2026):** wave 1 is collected and validated except one block of columns. The
-columns on posts by independent commentators wait for the project owner's approval of the
-account list; no post has been read. `PLAN.md` has the details.
+columns on posts by independent commentators are half done: the account list is approved, two
+of nine accounts are read and labelled, and the rest waits for a top-up of the prepaid X API
+credits. Wave 2 is scheduled for 31 Oct 2026 (`WAVE2.md`). `PLAN.md` has the details.
 
 ## Files
 
@@ -19,12 +20,13 @@ account list; no post has been read. `PLAN.md` has the details.
 | `collect/` | One script per block of variables; `collect/run_all.py --list` shows the order |
 | `build/` | Joins the collected tables, validates the result, writes the `.rds`, runs the cross-checks |
 | `snprice/` | Shared library (chain decoding, API clients with budgets, text matching, clustering) |
-| `tests/` | 460 unit tests of the library |
-| `config/` | Snapshot definition, alias table, podcast list, coding protocol, screening rule |
+| `tests/` | 485 unit tests of the library |
+| `config/` | Snapshot definition, alias table, podcast list, coding protocol, coder briefs, screening rule |
 | `data/chain/` | Tables read from the chain: reproducible without any API key |
 | `data/evidence/` | What each coded or matched value rests on: page addresses, episode lists, session lists, coder answers |
 | `data/manual/` | Everything decided by a person or a coder, with the reason |
 | `PLAN.md` | Plan, status and the log of every design decision |
+| `WAVE2.md` | Runbook for a follow-up wave and the panel that joins the waves |
 
 Raw API answers and wallet-level tables are not in the repository (`data/raw`, `data/intermediate`).
 Every script rebuilds them.
@@ -81,7 +83,7 @@ Four subnets were registered inside September. Their windows start at registrati
 Requirements: Python 3 (run with 3.12; standard library only), `curl`, Chrome, and R (run with 4.6.1) for the `.rds`.
 
 ```bash
-python -m unittest discover -s tests          # 460 tests, under a second
+python -m unittest discover -s tests          # 485 tests, under a second
 python collect/run_all.py --list              # the steps in order
 python collect/run_all.py                     # runs them; stops where a person has to act
 python build/build_dataset.py && python build/validate.py --final
@@ -103,9 +105,11 @@ batched requests to the archive node, and $7 on X before any post is read. Every
 so a repeated run makes no call twice. Call counts and spending are kept in a ledger with hard
 ceilings (`config/snapshot.json`).
 
-Three steps need a person: the double coding of website facts, the double coding of two white
-paper features, and the approval of the X accounts whose posts are read. `config/coding_protocol.md`
-and `config/kol_rule.md` say how.
+Four steps need a person or two independent coders: the double coding of website facts, of two
+white paper features and of the commentator posts, and the approval of the X accounts whose
+posts are read. `config/coding_protocol.md`, `config/polarity_criteria.md` and
+`config/kol_rule.md` give the rules; `config/coder_briefs.md` holds the instructions the
+coders of wave 1 received, and `build/coding_material.py` hands out their material.
 
 ## Choices that shape the data
 

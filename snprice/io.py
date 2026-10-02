@@ -49,6 +49,32 @@ def read_table(path):
         return [{k: (v if v != "" else None) for k, v in row.items()} for row in csv.DictReader(fh)]
 
 
+def polarity_labels(cfg, coder):
+    """One coder's labels that apply to a wave: {(post_id, netuid): label}.
+
+    A wave's own file data/manual/kol_polarity_wave<N>_coder_<X>.json holds what was labelled
+    in that wave. The 90-day window of a follow-up wave overlaps earlier waves, so their labels
+    are carried over where the netuid still belongs to the same subnet (snprice.kol.carry_labels).
+    """
+    from .kol import carry_labels
+
+    def uids(wave):
+        return {int(r["netuid"]): r["subnet_uid"] for r in read_table(paths.CHAIN / f"roster_wave{wave}.csv")}
+
+    def own(wave):
+        return read_json(paths.MANUAL / f"kol_polarity_wave{wave}_coder_{coder}.json", default=[])
+
+    chain, earlier = [], paths.snapshot_before(cfg)
+    while earlier:
+        chain.append(earlier)
+        earlier = paths.snapshot_before(earlier)
+    labels, current = {}, uids(cfg["wave"])
+    for old in reversed(chain):
+        labels.update(carry_labels(own(old["wave"]), uids(old["wave"]), current))
+    labels.update({(str(r["post_id"]), int(r["netuid"])): r["label"] for r in own(cfg["wave"])})
+    return labels
+
+
 def write_json(path, obj):
     atomic_write(path, json.dumps(obj, indent=1, sort_keys=True) + "\n")
 

@@ -30,11 +30,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import paths  # noqa: E402
-from snprice.io import archive, ledger, read_table, write_json, write_table  # noqa: E402
-from snprice.kol import post_mentions, post_text, screen  # noqa: E402
+from snprice.io import archive, ledger, read_json, read_table, write_json, write_table  # noqa: E402
+from snprice.kol import merge_posts, post_mentions, post_text, screen  # noqa: E402
 from snprice.textmatch import Matcher, subnet_entries  # noqa: E402
 from snprice.timeutil import epoch, iso  # noqa: E402
-from snprice.xapi import COST_POST, XClient, load_approved  # noqa: E402
+from snprice.xapi import COST_POST, XClient, XError, load_approved  # noqa: E402
 
 DAY = 86400
 COUNT_TOLERANCE = 0.03          # posts read may differ from posts counted by 3% (deleted posts, day edges)
@@ -77,8 +77,12 @@ def candidates():
             **{f"posts_original_{d}d": total("original", d) for d in WINDOWS},
             **{f"posts_bittensor_{d}d": total("bittensor", d) for d in WINDOWS},
             "bittensor_share_90d": result["bittensor_share"],
-            **{f"rule_{k}": result[k] for k in ("exists", "independent", "focus", "activity", "reach")},
+            **{f"rule_{k}": result[k] for k in ("exists", "independent", "reach", "volume")},
             "passes_rule": result["passes"],
+            # the rule as first written (focus instead of volume), kept for comparison
+            "rule_focus": result["focus"],
+            "rule_activity": result["activity"],
+            "passes_first_rule": result["passes_first_rule"],
         })
         print(f"  {name}: {'found' if p else 'not found'}; X spend ${book.used('x_usd'):.2f}", flush=True)
 
@@ -106,16 +110,31 @@ def posts():
         raise SystemExit(f"approved but not screened by `14_kol.py candidates`: {unknown}")
 
     days = cfg["long_window_days"]
-    t_end = int(archive().timestamp(cfg["t_block"]))
+    arch = archive()
+    t_end = int(arch.timestamp(cfg["t_block"]))
     start = t_end - days * DAY
     counted = {a: int(screened[a][f"posts_original_{days}d"]) for a in approved}
+
+    # A follow-up wave reads only the days since the wave before it and reuses the posts read then.
+    before = paths.snapshot_before(cfg)
+    earlier_end = int(arch.timestamp(before["t_block"])) if before else None
+    earlier, to_read = {}, {}
+    for a in approved:
+        old = read_json(paths.raw_dir("kol", wave=before["wave"]) / "posts" / f"{a}.json") if before else None
+        if old is not None and earlier_end > start:
+            earlier[a], to_read[a] = old, int(screened[a][f"posts_original_{cfg['window_days']}d"])
+        else:
+            earlier[a], to_read[a] = None, counted[a]
     book = ledger()
     room = cfg["x_usd_ceiling"] - book.used("x_usd")
-    cost = sum(counted.values()) * COST_POST
+    cost = sum(to_read.values()) * COST_POST
     print(f"{len(approved)} approved accounts with {sum(counted.values())} original posts counted in the {days} days "
-          f"before T: about ${cost:.2f} to read; ${room:.2f} of the wave's X budget is left", flush=True)
+          f"before T; {sum(to_read.values())} of them still to read: about ${cost:.2f}; ${room:.2f} of the wave's X "
+          f"budget is left", flush=True)
     if cost > room:
         raise SystemExit("that is more than the budget has left; nothing was read")
+    saved = paths.raw_dir("kol") / "posts"
+    saved.mkdir(exist_ok=True)
 
     roster = read_table(paths.CHAIN / f"roster_wave{wave}.csv")
     entries = subnet_entries(roster, read_table(paths.EVIDENCE / f"links_wave{wave}.csv"),
@@ -126,13 +145,20 @@ def posts():
                      for h in read_table(paths.INTERMEDIATE / f"history_wave{wave}.csv")}
 
     x = XClient(paths.secret("X_BEARER_TOKEN"), ledger=book, cache_dir=str(paths.raw_dir("x")), approved=approved)
-    mentions, coding, accounts = [], [], []
+    mentions, coding, accounts, stopped = [], [], [], None
     for a in sorted(approved):
         name = screened[a]["username"]
-        got = x.original_posts(name, iso(start), iso(t_end + 1))
+        read_from = start if earlier[a] is None else earlier_end + 1
+        try:
+            new = x.original_posts(name, iso(read_from), iso(t_end + 1))
+        except XError as exc:           # for example HTTP 402: the prepaid credits of the X account are used up
+            stopped = (name, str(exc))
+            break
+        got = merge_posts(earlier[a] or [], new, start, t_end)
         if abs(len(got) - counted[a]) > max(3, COUNT_TOLERANCE * counted[a]):
             raise SystemExit(f"@{name}: {len(got)} posts read, {counted[a]} counted at screening; the window is not "
                              f"complete, nothing was written")
+        write_json(saved / f"{a}.json", got)        # with text: stays in data/raw, the next wave reuses it
         naming = 0
         for post in got:
             rows = post_mentions(post, name, matcher, project_start)
@@ -148,10 +174,21 @@ def posts():
                          "posts_naming_a_subnet": naming})
         print(f"  @{name}: {len(got)} posts read, {naming} name a subnet; X spend ${book.used('x_usd'):.2f}", flush=True)
 
+    # the coders' input is written for the accounts read so far: labels are per post and stay valid
+    write_json(paths.raw_dir("kol") / "coding_input.json", coding)
+    if stopped:
+        done = {r["username"].lower() for r in accounts}
+        left = sorted(a for a in approved if a not in done)
+        print(f"STOPPED at @{stopped[0]}: {stopped[1]}")
+        print(f"read completely: {len(accounts)} of {len(approved)} accounts; still to read: {left}, about "
+              f"{sum(counted[a] for a in left)} posts (${sum(counted[a] for a in left) * COST_POST:.2f} less what is "
+              f"already cached). Nothing is lost: run the step again and it continues from the cache.")
+        print("The tables of mentions are written only when every approved account has been read.")
+        sys.exit(2)
+
     write_table(paths.EVIDENCE / f"kol_mentions_wave{wave}.csv", mentions,
                 columns=["post_id", "username", "created", "netuid", "strength", "rules"])
     write_table(paths.EVIDENCE / f"kol_accounts_wave{wave}.csv", accounts)
-    write_json(paths.raw_dir("kol") / "coding_input.json", coding)
     weak = sum(1 for m in mentions if m["strength"] == "weak")
     print(f"{len(mentions)} post-subnet pairs in {len(coding)} posts ({weak} weak matches for the coders to confirm); "
           f"{len({m['netuid'] for m in mentions})} subnets named; X spend ${book.used('x_usd'):.2f} "

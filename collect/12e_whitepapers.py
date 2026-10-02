@@ -151,7 +151,7 @@ def main():
     cfg = paths.snapshot()
     wave = cfg["wave"]
     coded = [r for r in read_table(paths.INTERMEDIATE / f"web_coding_wave{wave}.csv") if r["whitepaper_available"] == "1"]
-    coder = {c: {int(x["netuid"]): x for x in read_json(paths.MANUAL / f"web_coding_coder_{c}.json")} for c in "AB"}
+    coder = {c: {int(x["netuid"]): x for x in read_json(paths.MANUAL / f"web_coding_wave{wave}_coder_{c}.json")} for c in "AB"}
     site_docs = {}
     for d in read_table(paths.EVIDENCE / f"doc_links_wave{wave}.csv"):
         site_docs.setdefault(int(d["netuid"]), []).append((d["url"], d["label"] or ""))

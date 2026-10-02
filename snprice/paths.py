@@ -24,8 +24,21 @@ def snapshot():
         return json.load(fh)
 
 
-def raw_dir(name):
-    d = RAW / f"wave{snapshot()['wave']}" / name
+def snapshot_before(cfg):
+    """The definition of the wave before the one given, or None for the first wave."""
+    if cfg["wave"] <= 1:
+        return None
+    name = "snapshot.json" if cfg["wave"] == 2 else f"snapshot_wave{cfg['wave'] - 1}.json"
+    with open(CONFIG / name, encoding="utf-8") as fh:
+        before = json.load(fh)
+    if before["wave"] != cfg["wave"] - 1:
+        raise ValueError(f"config/{name} defines wave {before['wave']}, not wave {cfg['wave'] - 1}")
+    return before
+
+
+def raw_dir(name, wave=None):
+    """Folder of saved raw answers of the current wave (or of the wave given)."""
+    d = RAW / f"wave{wave or snapshot()['wave']}" / name
     d.mkdir(parents=True, exist_ok=True)
     return d
 
