@@ -1,8 +1,11 @@
 """Owner buying and selling of its own subnet's alpha (Y14).
 
-Source: Taostats /api/delegation/v1 for the owner coldkey (as of T) on its own subnet,
-over the 90 days before T. Transfers are dropped and moves between validators are netted
-out (snprice.events.net_owner_trades). The owner cut received in a window is 18% of the
+Source: Taostats /api/delegation/v1 for the owner coldkey on its own subnet, over the 90
+days before T. A trade counts for the wallet that owned the subnet at the time: where the
+owner key changed inside the 90 days (Taostats /api/subnet/owner/v1, each change checked
+on chain), the earlier key's trades count up to the change and the later key's from then
+on (snprice.events.owner_tenures). Transfers are dropped and moves between validators are
+netted out (snprice.events.net_owner_trades). The owner cut received in a window is 18% of the
 subnet's alpha emission, read from the chain, over the blocks at which the subnet emitted
 (from its first emission block on). The ratio of alpha sold to owner cut is missing when
 no owner cut was received.
@@ -19,7 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import chain, paths  # noqa: E402
-from snprice.events import net_owner_trades  # noqa: E402
+from snprice.events import net_owner_trades, owner_tenures  # noqa: E402
 from snprice.io import archive, read_table, taostats, write_table  # noqa: E402
 from snprice.windows import bounds, emitting_blocks  # noqa: E402
 
@@ -44,14 +47,32 @@ def main():
     cut = chain.decode_uint(cut_raw, default=11796) / 65535.0
     emission = {b: arch.read_map(P, "SubnetAlphaOutEmission", netuids, b) for b in (T, w_lo, l_lo)}
     print(f"owner cut {cut:.4f}", flush=True)
+    owner_rows = tao.get_all("/api/subnet/owner/v1", per_page=200, block_end=T)
 
-    rows = []
+    def on_chain(netuid, block):
+        k = chain.key(P, "SubnetOwner", chain.u16(netuid))
+        return chain.decode_account(arch.read([k], block)[k])
+
+    rows, earlier_owners = [], 0
     for i, r in enumerate(roster, 1):
         n, owner, reg_block = int(r["netuid"]), r["owner_coldkey"], int(r["registered_block"])
         first_emission = int(r["first_emission_block"]) if r["first_emission_block"] else None
         start = max(long_lo, reg_block)
-        events = tao.get_all("/api/delegation/v1", per_page=200, nominator=owner, netuid=n,
-                             block_start=start + 1, block_end=T) if owner else []
+        changes = [{"block": int(o["block_number"]), "owner": o["owner"]["ss58"],
+                    "previous_owner": o["previous_owner"]["ss58"]}
+                   for o in owner_rows
+                   if int(o["netuid"]) == n and start < int(o["block_number"]) <= T
+                   and (o.get("previous_owner") or {}).get("ss58")
+                   and o["owner"]["ss58"] != o["previous_owner"]["ss58"]]
+        for c in changes:               # the indexer's owner history is checked against the chain
+            if on_chain(n, c["block"]) != c["owner"] or on_chain(n, c["block"] - 1) != c["previous_owner"]:
+                raise SystemExit(f"netuid {n}: owner change at block {c['block']} is not what the chain shows")
+        tenures = owner_tenures(changes, owner, start, T) if owner else []
+        earlier_owners += max(0, len(tenures) - 1)
+        events = []
+        for key, lo, hi in tenures:     # each key's trades while it owned the subnet
+            events += tao.get_all("/api/delegation/v1", per_page=200, nominator=key, netuid=n,
+                                  block_start=lo + 1, block_end=hi)
 
         def trades(lo, hi):
             lo = max(lo, reg_block)
@@ -93,6 +114,7 @@ def main():
     write_table(paths.INTERMEDIATE / f"owner_trades_wave{wave}.csv", rows)
     buyers = [r["netuid"] for r in rows if r["owner_bought_any_90d"]]
     print(f"wrote owner trades; owners that bought in 90 days: {len(buyers)} {buyers}")
+    print(f"  earlier owner keys whose trades were read for the part of the 90 days they held the subnet: {earlier_owners}")
 
 
 if __name__ == "__main__":

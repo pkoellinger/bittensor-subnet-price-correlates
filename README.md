@@ -19,7 +19,7 @@ commentators wait for the project owner's approval of the account list. `PLAN.md
 | `collect/` | One script per block of variables; `collect/run_all.py --list` shows the order |
 | `build/` | Joins the collected tables, validates the result, writes the `.rds`, runs the cross-checks |
 | `snprice/` | Shared library (chain decoding, API clients with budgets, text matching, clustering) |
-| `tests/` | 448 unit tests of the library |
+| `tests/` | 458 unit tests of the library |
 | `config/` | Snapshot definition, alias table, podcast list, coding protocol, screening rule |
 | `data/chain/` | Tables read from the chain: reproducible without any API key |
 | `data/evidence/` | What each coded or matched value rests on: page addresses, episode lists, session lists, coder answers |
@@ -81,7 +81,7 @@ Four subnets were registered inside September. Their windows start at registrati
 Requirements: Python 3 (run with 3.12; standard library only), `curl`, Chrome, and R (run with 4.6.1) for the `.rds`.
 
 ```bash
-python -m unittest discover -s tests          # 448 tests, under a second
+python -m unittest discover -s tests          # 458 tests, under a second
 python collect/run_all.py --list              # the steps in order
 python collect/run_all.py                     # runs them; stops where a person has to act
 python build/build_dataset.py && python build/validate.py --final
@@ -121,6 +121,10 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   (`startup_mode`); their burn, owner-cut and dividend columns are missing, and no miner counts as paid.
 - **Project age** counts from the latest rename that came with another GitHub owner, else from
   registration. A rename by the same team is a rebrand; a wallet or repository move alone is not a new project.
+- **Owner trades count for the owner of the day.** 30 subnets changed their owner key in the 90
+  days before T. A trade counts for the key that owned the subnet when it was made. For the
+  miner columns, every key that owned the subnet since the current project started counts as
+  the owner.
 - **Miner concentration** pools incentive over the window by wallet. The lineage columns go one
   step further and merge wallets funded from the same address.
 - **Holder concentration** is a lower and an upper bound. The largest positions are traced and
@@ -139,6 +143,12 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   largest 0.024.
 - Stake positions valued by this code equal Taostats' stake history at block T to twelve digits
   (three positions).
+- Protocol settings at T (commit-reveal, Yuma 3, liquid alpha, mechanisms, maximum UIDs,
+  registration block) equal Taostats' subnet history at the same block: 72 of 72 values for
+  twelve subnets (`build/check_sources.py`). Against Taostats' latest values, taken 1.3 days
+  after T, the five settings agree for all 128 subnets.
+- Replication: the chain state at T, read again from the archive node into an empty cache,
+  reproduces all 4,096 cells of the state table.
 - Double coding of website facts: the coders agreed on 92% to 100% of answers per item
   (Cohen's kappa 0.84 to 1.00) and on 86% of categories (kappa 0.85). Every quote was found on
   the page it cites.

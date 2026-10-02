@@ -100,6 +100,40 @@ def net_owner_trades(events):
     return out
 
 
+def owner_tenures(changes, owner_now, lo, hi):
+    """Who owned a subnet in which blocks of the range (lo, hi].
+
+    changes    owner changes of the subnet: dicts with `block`, `previous_owner` and `owner`
+               (the new one, who holds the subnet from that block on), in any order
+    owner_now  the owner at block `hi`
+
+    Returns [(owner, start, end)] with block ranges (start, end], oldest first. A trade counts
+    as an owner trade only if the wallet owned the subnet at the time: the key that held the
+    subnet before a change is its owner until then, and the new key is not yet.
+    """
+    out, owner, end = [], owner_now, hi
+    for c in sorted((c for c in changes if lo < c["block"] <= hi), key=lambda c: -c["block"]):
+        if c["owner"] != owner:
+            raise ValueError(f"owner history does not lead to the known owner at block {c['block']}")
+        out.append((owner, c["block"] - 1, end))
+        owner, end = c["previous_owner"], c["block"] - 1
+    if end > lo:
+        out.append((owner, lo, end))
+    return out[::-1]
+
+
+def project_owner_keys(changes, owner_now, project_start):
+    """Wallets that owned the subnet at some time since the current project started.
+
+    changes        owner changes as for owner_tenures
+    project_start  block at which the current project took over the netuid
+
+    A key replaced after the project started was the project's own key until then (a wallet
+    migration). A key replaced before that belonged to whoever ran the netuid earlier.
+    """
+    return {owner_now} | {c["previous_owner"] for c in changes if c["block"] > project_start}
+
+
 # ------------------------------------------------------------------ basket swaps
 
 def basket_flows(events):

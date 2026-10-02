@@ -7,6 +7,8 @@ from snprice.events import (
     last_real_identity_change,
     net_owner_trades,
     observed_window,
+    owner_tenures,
+    project_owner_keys,
     project_start,
 )
 
@@ -62,6 +64,54 @@ class OwnerTradesTest(unittest.TestCase):
     def test_no_events(self):
         out = net_owner_trades([])
         self.assertEqual(out["net_buy_tao"], 0)
+
+
+def change(block, old, new):
+    return {"block": block, "previous_owner": old, "owner": new}
+
+
+class OwnerTenuresTest(unittest.TestCase):
+    """Who owned the subnet in which blocks of a window (lo, hi]: trades count for the owner of the day."""
+
+    def test_owner_that_never_changed_holds_the_whole_window(self):
+        self.assertEqual(owner_tenures([], "NOW", 1000, 2000), [("NOW", 1000, 2000)])
+
+    def test_new_owner_holds_the_subnet_from_the_block_of_the_change(self):
+        out = owner_tenures([change(1500, "OLD", "NOW")], "NOW", 1000, 2000)
+        self.assertEqual(out, [("OLD", 1000, 1499), ("NOW", 1499, 2000)])
+
+    def test_two_changes_in_the_window(self):
+        out = owner_tenures([change(1800, "MID", "NOW"), change(1200, "OLD", "MID")], "NOW", 1000, 2000)
+        self.assertEqual(out, [("OLD", 1000, 1199), ("MID", 1199, 1799), ("NOW", 1799, 2000)])
+
+    def test_changes_outside_the_window_are_ignored(self):
+        out = owner_tenures([change(900, "OLD", "NOW"), change(2500, "NOW", "LATER")], "NOW", 1000, 2000)
+        self.assertEqual(out, [("NOW", 1000, 2000)])
+
+    def test_change_in_the_first_block_of_the_window_leaves_the_old_owner_nothing(self):
+        self.assertEqual(owner_tenures([change(1001, "OLD", "NOW")], "NOW", 1000, 2000), [("NOW", 1000, 2000)])
+
+    def test_history_that_does_not_end_at_the_known_owner_is_an_error(self):
+        with self.assertRaises(ValueError):
+            owner_tenures([change(1500, "OLD", "SOMEONE")], "NOW", 1000, 2000)
+
+
+class ProjectOwnerKeysTest(unittest.TestCase):
+    """Keys that owned the subnet while the current project ran: a team that moved to a new
+    wallet is still the same team."""
+
+    def test_owner_that_never_changed(self):
+        self.assertEqual(project_owner_keys([], "NOW", project_start=1000), {"NOW"})
+
+    def test_key_replaced_after_the_project_started_belongs_to_the_project(self):
+        self.assertEqual(project_owner_keys([change(1500, "OLD", "NOW")], "NOW", project_start=1000), {"NOW", "OLD"})
+
+    def test_key_replaced_before_the_project_started_is_somebody_else(self):
+        self.assertEqual(project_owner_keys([change(900, "SELLER", "NOW")], "NOW", project_start=1000), {"NOW"})
+
+    def test_several_changes(self):
+        changes = [change(900, "SELLER", "FIRST"), change(1200, "FIRST", "SECOND"), change(1800, "SECOND", "NOW")]
+        self.assertEqual(project_owner_keys(changes, "NOW", project_start=1000), {"NOW", "SECOND", "FIRST"})
 
 
 def swap(hotkey, origin, dest, tao):

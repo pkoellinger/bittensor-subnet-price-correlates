@@ -8,7 +8,9 @@ Taostats calls
   C  for wallets with at least 0.5% share: inbound transfers of their three largest funders
   B  lifetime transfer count (up to T) of every address that links two or more wallets, and of the
      funders of wallets with at least 0.5% share  (more than 1,500 = exchange-like)
-  D  transfers out of and into the subnet owner's coldkey (owner-linked wallets)
+  D  transfers out of and into the subnet owner's coldkeys (owner-linked wallets): the current
+     key and every key that owned the subnet since the current project started
+     (snprice.events.project_owner_keys), the newest 600 transfers of each in either direction
 
 Traced wallets: share of paid incentive at or above the floor (0.1%), at most 90 per subnet,
 largest first. If the planned calls exceed the cap, the floor is raised for all subnets alike.
@@ -28,6 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import paths  # noqa: E402
+from snprice.events import project_owner_keys  # noqa: E402
 from snprice.io import read_table, taostats, write_table  # noqa: E402
 from snprice.lineage import LEVEL2_ROWS, lineage_summary  # noqa: E402
 from snprice.windows import sample_blocks  # noqa: E402
@@ -92,6 +95,19 @@ def main():
     else:
         raise SystemExit("lineage does not fit under the call cap even at the highest floor")
 
+    # owner keys of the current project (Taostats owner history; the last change of every subnet was
+    # checked on chain by 03_history_events)
+    project_start = {int(h["netuid"]): int(h["project_start_block"])
+                     for h in read_table(paths.INTERMEDIATE / f"history_wave{wave}.csv")}
+    owner_changes = defaultdict(list)
+    for o in tao.get_all("/api/subnet/owner/v1", per_page=200, block_end=T):
+        n = int(o["netuid"])
+        previous = (o.get("previous_owner") or {}).get("ss58")
+        if n in roster and int(o["block_number"]) > int(roster[n]["registered_block"]) and previous \
+                and o["owner"]["ss58"] != previous:
+            owner_changes[n].append({"block": int(o["block_number"]), "owner": o["owner"]["ss58"],
+                                     "previous_owner": previous})
+
     out, wallet_rows = [], []
     profiles = {}
 
@@ -151,19 +167,22 @@ def main():
         need |= {r["frm"] for c in traced if sh[c] >= cfg["lineage_level2_share_floor"] for r in funding[c][:1]}
         local_profiles = {a: profile(a) for a in sorted(need)}
 
-        # pass D: wallets that exchanged TAO with the owner
+        # pass D: wallets that exchanged TAO with the owner. The owner is every key that owned the
+        # subnet since the current project started: a team that moved to a new wallet is the same team.
+        owner_keys = project_owner_keys(owner_changes[n], owner, project_start[n]) if owner else set()
         owner_side = set()
-        if owner:
+        for key in sorted(owner_keys, key=lambda k: k != owner):       # the current owner first
             for direction in ("from", "to"):
                 rows = tao.get_all("/api/transfer/v1", per_page=200, max_pages=OWNER_PAGES, partial_ok=True,
-                                   block_end=T, order="block_number_desc", **{direction: owner})
+                                   block_end=T, order="block_number_desc", **{direction: key})
                 for r in slim(rows):
                     other = r["to"] if direction == "from" else r["frm"]
                     if other in sh:
                         owner_side.add(other)
 
         summary = lineage_summary(sh, traced, funding, level2, local_profiles,
-                                  {c: ips.get((n, c), set()) for c in traced}, {owner, owner_hk} - {None}, owner_side)
+                                  {c: ips.get((n, c), set()) for c in traced}, (owner_keys | {owner_hk}) - {None},
+                                  owner_side)
         out.append({
             "netuid": n,
             "lineage_share_floor": floor,
