@@ -161,6 +161,8 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   14 subnets carry a placeholder identity on chain (`flag_placeholder_identity`).
 - `doc_incentive_desc` and `doc_requirements` are conservative: the rule wants a heading or a
   file of its own, and misses what a README states in running text. `doc_score` inherits this.
+- Holder concentration is by wallet. A holder who splits a stake across wallets looks
+  dispersed, so `holders_top10_share` and `holders_hhi` understate concentration by holder.
 - Summit mentions come from speech-recognition transcripts and are a lower bound.
 - Lineage clustering cannot attribute wallets funded only from exchanges; the share is reported.
 - Three sites could not be read: the security software on the collecting computer blocked two
