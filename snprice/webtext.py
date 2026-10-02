@@ -238,8 +238,10 @@ def is_blocked(text):
 _SECURITY_WARNING = re.compile(r"web protection by bitdefender|blocked for your protection|"
                                r"your connection is not private|net::err_cert", re.I)
 MIN_TEXT = 200                                   # characters of text that make a page a real page
-_DEAD_CODES = {402, 404, 410}                    # paused, gone; server errors (500 and up) are dead as well
+_DEAD_CODES = {402, 404, 410}                    # hosting paused, page gone
 _BOT_CODES = {401, 403, 429}                     # scripts are refused, a browser may still get the site
+# statuses that say the site could not be read on the day: nothing follows about what it offers
+UNREAD = ("blocked", "replaced_by_security_software", "server_error")
 
 
 def is_security_warning(text):
@@ -256,7 +258,8 @@ def site_status(text, http_code):
     parked                          domain-parking page
     blocked                         the site asks visitors to prove they are human
     replaced_by_security_software   a certificate or phishing warning was shown instead of the site
-    dead                            no answer, an error status, or an error page
+    server_error                    the server failed on the day (HTTP 500 and up); the site may work on other days
+    dead                            no answer, hosting paused, page gone, or an error page
     """
     text = text or ""
     if is_security_warning(text):
@@ -265,7 +268,9 @@ def site_status(text, http_code):
         return "parked"
     if is_blocked(text):
         return "blocked"
-    if http_code is not None and (http_code >= 500 or http_code in _DEAD_CODES):
+    if http_code is not None and http_code >= 500:
+        return "server_error"
+    if http_code in _DEAD_CODES:
         return "dead"
     if len(text) >= MIN_TEXT:
         return "live"

@@ -36,7 +36,7 @@ Because only 128 subnets exist, the design adds time: features for September, la
 
 ### Phase 0: Core library, test-first — DONE
 
-- [x] Repository scaffold; shared library `snprice/` with 425 unit tests (`python -m unittest discover -s tests`)
+- [x] Repository scaffold; shared library `snprice/` with 431 unit tests (`python -m unittest discover -s tests`)
 - [x] Measurement: miner incentive and the wallet behind every paid UID can be read from the chain at 900-block resolution in about one hour
 
 ### Phase 1: Chain and Taostats data — DONE except lineage (running)
@@ -117,7 +117,9 @@ Because only 128 subnets exist, the design adds time: features for September, la
 | 2026-10-02 | Transcript matching reads subnet numbers written as words ("subnet forty-four") and treats ordinary-word names as mentions only with the number or next to the word "subnet" in the name's own capitalisation | Speech recognition spells numbers out; "the actual subnet" is not subnet 95 |
 | 2026-10-02 | Podcasts: an episode counts when its **title** names the subnet; descriptions are not used. Sources: three audio feeds and three YouTube channels read without a key. Within a show, episodes on the same subnet less than 14 days apart count once | Descriptions carry sponsor lines and passing mentions; a stream and its edited re-upload are one appearance. No YouTube API key was needed |
 | 2026-10-02 | Novelty Search = the whole Opentensor Foundation channel | Its episodes are streamed there and re-uploaded as edited videos, often without the show's name |
-| 2026-10-02 | Website facts: where a site could not be read (bot check, or a warning of the security software on the collecting computer) a "no" is recorded as missing | A "no" means nothing if the page was never shown |
+| 2026-10-02 | Website facts: where a site could not be read (bot check, a warning of the security software on the collecting computer, or a server error on the day) a "no" is recorded as missing | A "no" means nothing if the page was never shown |
+| 2026-10-02 | A server error (HTTP 500 and up) is its own status, `server_error`, with `website_live` missing; `dead` is kept for no answer, paused hosting and pages that are gone | A server error is a failure of the day. Subnet 120 (Affine) answered 502 on three visits; counting it as dead put five false zeros on one of the largest subnets |
+| 2026-10-02 | Mailbox names are removed from stored evidence quotes (`@domain` only) and quotes are compared with the pages on that basis | Same rule as for on-chain contact fields: e-mail addresses of persons are not republished |
 | 2026-10-02 | `product_live`: a released model, dataset, design or open-source tool that anyone can download counts; invitation-only access does not | Clarification made in the third reading, where the two coders split (see config/coding_protocol.md) |
 | 2026-10-02 | A white paper whose link is dead (HTTP 404) counts as not available; one that cannot be read (login gate, encrypted viewer) counts as available with missing features | A visitor cannot open the first, and can open the second |
 | 2026-10-02 | White paper PDFs are read inside a headless browser with pdf.js; only the extracted text is saved | No files from subnet sites are downloaded to disk |
@@ -133,4 +135,4 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [ ] Wave 2: scheduled run or manual trigger on or after 31 Oct 2026.
 - [ ] Terms of Taostats and X on publishing derived data, before the repository goes public.
 - [ ] Before the repository goes public: Christian Roessler's consent to naming his subnet catalog and to publishing the category table taken from it (`data/manual/catalog_categories_2026-08-20.csv`).
-- [ ] Subnet 120 (Affine): the site answered with a server error on both visits; one more visit before the final build.
+- [ ] Subnet 120 (Affine): the site answered HTTP 502 on three visits on 2 Oct 2026 (06:19 to 07:36 UTC). Visit again at the final build; if it answers, read it and code its five website facts.

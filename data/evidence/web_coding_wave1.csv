@@ -713,11 +713,11 @@ netuid,item,value_a,check_a,url_a,quote_a,value_b,check_b,url_b,quote_b,final,ho
 119,team_named,0,verified,,,0,verified,,,0,both coders
 119,product_live,0,verified,,,0,verified,,,0,both coders
 119,category,Data & Database Construction,verified,README,"an incentive network for discovering training-data improvements that make learning-oriented AI more accurate, clear, age-appropriate, and safe.",Data & Database Construction,verified,README,"an incentive network for discovering training-data improvements that make learning-oriented AI more accurate, clear, age-appropriate, and safe.",Data & Database Construction,both coders
-120,whitepaper_available,0,verified,,,0,verified,,,0,both coders
-120,api_public,0,verified,,,0,verified,,,0,both coders
-120,mcp_server,0,verified,,,0,verified,,,0,both coders
-120,team_named,0,verified,,,0,verified,,,0,both coders
-120,product_live,0,verified,,,0,verified,,,0,both coders
+120,whitepaper_available,0,verified,,,0,verified,,,,site could not be read
+120,api_public,0,verified,,,0,verified,,,,site could not be read
+120,mcp_server,0,verified,,,0,verified,,,,site could not be read
+120,team_named,0,verified,,,0,verified,,,,site could not be read
+120,product_live,0,verified,,,0,verified,,,,site could not be read
 120,category,AI Training & Model Improvement,verified,README,Synchronous inference-verification training loop for Bittensor subnet120,AI Training & Model Improvement,verified,README,Synchronous inference-verification training loop for Bittensor subnet120: publish,AI Training & Model Improvement,both coders
 121,whitepaper_available,0,verified,,,0,verified,,,0,both coders
 121,api_public,0,verified,,,0,verified,,,0,both coders

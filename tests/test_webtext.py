@@ -1,6 +1,6 @@
 import unittest
 
-from snprice.webtext import (doc_links, is_blocked, is_parked, is_security_warning, page_links, pick_pages,
+from snprice.webtext import (UNREAD, doc_links, is_blocked, is_parked, is_security_warning, page_links, pick_pages,
                              safe_url, same_site, site_status, visible_text, windows, x_profiles)
 
 HTML = """<!DOCTYPE html><html><head><title>Acme  Subnet</title><style>p{color:red}</style>
@@ -199,11 +199,18 @@ class SiteStatusTest(unittest.TestCase):
         self.assertEqual(site_status(self.LONG, 429), "live")
         self.assertEqual(site_status(self.LONG, None), "live")
 
-    def test_server_error_page_is_not_a_live_site_however_long_its_text(self):
-        error_page = "affine.io | 502: Bad gateway\nError code 502\n" + "Cloudflare " * 40
-        self.assertEqual(site_status(error_page, 502), "dead")
+    def test_error_page_is_not_a_live_site_however_long_its_text(self):
         self.assertEqual(site_status("Deployment Paused " * 20, 402), "dead")
         self.assertEqual(site_status("Not found " * 40, 404), "dead")
+
+    def test_server_error_is_a_failure_of_the_day_not_a_dead_site(self):
+        error_page = "acme.ai | 502: Bad gateway\nError code 502\n" + "Cloudflare " * 40
+        for code in (500, 502, 503, 504):
+            self.assertEqual(site_status(error_page, code), "server_error", code)
+        self.assertEqual(site_status("", 502), "server_error")
+
+    def test_sites_that_could_not_be_read_are_listed_in_one_place(self):
+        self.assertEqual(set(UNREAD), {"blocked", "replaced_by_security_software", "server_error"})
 
     def test_parked_blocked_and_replaced_pages(self):
         self.assertEqual(site_status("acme.ai is for sale! Buy this domain today", 200), "parked")

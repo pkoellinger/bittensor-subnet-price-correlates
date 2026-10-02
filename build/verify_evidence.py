@@ -13,9 +13,10 @@ reading. For the category, the first coder is the August catalog where the subne
 the name it had in the catalog, and the dossier coder that is then left over serves as the
 third reading when it sides with one of the two.
 
-Where the site could not be read (a bot check, or a warning of the security software on the
-collecting computer), a "no" is recorded as missing: the pages that would show a white paper,
-an API or a product were never seen. A "yes" backed by the README stands.
+Where the site could not be read (a bot check, a warning of the security software on the
+collecting computer, or a server error on the day), a "no" is recorded as missing: the pages
+that would show a white paper, an API or a product were never seen. A "yes" backed by the
+README stands.
 
 Mailbox names are not republished: e-mail addresses in the coders' files are reduced to
 "@domain" before anything is written, and quotes are compared with the pages on that basis.
@@ -32,6 +33,7 @@ from snprice import paths  # noqa: E402
 from snprice.coding import ITEMS, check_answer, cohen_kappa, settle, without_mailboxes  # noqa: E402
 from snprice.events import norm_name  # noqa: E402
 from snprice.files import atomic_write  # noqa: E402
+from snprice.webtext import UNREAD  # noqa: E402
 from snprice.io import read_json, read_table, write_table  # noqa: E402
 
 CATEGORY8 = {
@@ -87,7 +89,7 @@ def main():
         if n not in coder["A"] or n not in coder["B"]:
             raise SystemExit(f"subnet {n} is missing from a coder's file")
         sources = read_json(dossiers / f"{n}.sources.json") or {}
-        site_unread = web[n]["website_status"] in ("blocked", "replaced_by_security_software")
+        site_unread = web[n]["website_status"] in UNREAD
         final = {}
         for item in ITEMS:
             a, b = coder["A"][n][item], coder["B"][n][item]

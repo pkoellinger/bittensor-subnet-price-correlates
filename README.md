@@ -19,7 +19,7 @@ commentators wait for the project owner's approval of the account list. `PLAN.md
 | `collect/` | One script per block of variables; `collect/run_all.py --list` shows the order |
 | `build/` | Joins the collected tables, validates the result, writes the `.rds`, runs the cross-checks |
 | `snprice/` | Shared library (chain decoding, API clients with budgets, text matching, clustering) |
-| `tests/` | 425 unit tests of the library |
+| `tests/` | 431 unit tests of the library |
 | `config/` | Snapshot definition, alias table, podcast list, coding protocol, screening rule |
 | `data/chain/` | Tables read from the chain: reproducible without any API key |
 | `data/evidence/` | What each coded or matched value rests on: page addresses, episode lists, session lists, coder answers |
@@ -45,7 +45,8 @@ Every script rebuilds them.
    for the emission columns, `likely two-way` for attention measures.
 6. **No invented values.** A value comes from a script reading an API answer, or from two
    independent coders who must quote the page they rely on. Missing stays missing: a status
-   column says why (`not_listed`, `dead`, `replaced_by_security_software`), and nothing is imputed.
+   column says why (`not_listed`, `dead`, `server_error`, `replaced_by_security_software`), and
+   nothing is imputed.
 
 Four subnets were registered inside September. Their windows start at registration
 (`window_days_observed_30d`), and their lagged chain columns are missing.
@@ -80,7 +81,7 @@ Four subnets were registered inside September. Their windows start at registrati
 Requirements: Python 3 (run with 3.12; standard library only), `curl`, Chrome, and R (run with 4.6.1) for the `.rds`.
 
 ```bash
-python -m unittest discover -s tests          # 425 tests, under a second
+python -m unittest discover -s tests          # 431 tests, under a second
 python collect/run_all.py --list              # the steps in order
 python collect/run_all.py                     # runs them; stops where a person has to act
 python build/build_dataset.py && python build/validate.py --final
@@ -162,8 +163,9 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
   file of its own, and misses what a README states in running text. `doc_score` inherits this.
 - Summit mentions come from speech-recognition transcripts and are a lower bound.
 - Lineage clustering cannot attribute wallets funded only from exchanges; the share is reported.
-- Two sites could not be read because the security software on the collecting computer
-  blocked them (subnets 89 and 103).
+- Three sites could not be read: the security software on the collecting computer blocked two
+  (subnets 89 and 103), and one answered with a server error on three visits (subnet 120).
+  Their website facts are missing, not 0.
 
 ## Who made this
 

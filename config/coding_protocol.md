@@ -87,8 +87,10 @@ and has missing features. A white paper whose link is dead (HTTP 404) counts as 
 3. Where they disagree, a third reading with both answers and the evidence decides. If the
    evidence does not settle it, the value is missing.
 4. Agreement between the two coders is reported per item (share agreeing and Cohen's kappa).
-5. Where the site could not be read (a bot check, or a warning shown by the security software
-   on the collecting computer), a "no" is recorded as missing. A "yes" backed by the README stands.
+5. Where the site could not be read (a bot check, a warning shown by the security software
+   on the collecting computer, or a server error on the day of collection), a "no" is recorded
+   as missing. A "yes" backed by the README stands.
+6. Mailbox names are not kept: e-mail addresses in the coders' quotes are reduced to "@domain".
 
 ## Clarifications made in the third reading (wave 1)
 
@@ -117,5 +119,6 @@ All third readings with their reasons are in `data/manual/web_coding_third_readi
 | `product_live` | 92% | 0.84 | 58 |
 | `category` (16 categories) | 86% | 0.85 | |
 
-Every one of the quotes given for a "yes" was found on the page it cites. Two subnets (89, 103)
-have missing values because their sites could not be read.
+Every one of the quotes given for a "yes" was found on the page it cites. Three subnets have
+missing values because their sites could not be read: 89 and 103 (replaced by a warning of the
+security software) and 120 (HTTP 502 on three visits on 2 Oct 2026).
