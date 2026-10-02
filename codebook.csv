@@ -93,7 +93,7 @@ x_posts_30d,Posts by the subnet's X account (reposts excluded),integer,posts,30d
 x_posts_original_30d,Original posts by the subnet's X account (reposts and replies excluded),integer,posts,30d,feature,T,X,collect/13_x_accounts.py,likely two-way,
 x_posts_lag30,"Posts by the subnet's X account, lagged window",integer,posts,lag30,feature_lag,T-30d,X,collect/13_x_accounts.py,none known,
 x_posts_original_lag30,"Original posts by the subnet's X account, lagged window",integer,posts,lag30,feature_lag,T-30d,X,collect/13_x_accounts.py,none known,
-days_since_registration,Days since the subnet was registered,number,days,,feature,T,chain,collect/03_history_events.py,none known,
+days_since_registration,Days since the subnet was registered,number,days,,feature,T,chain,collect/03_history_events.py,none known,"Chain value NetworkRegisteredAt of the current registration. It equals Taostats' registration block for 127 subnets; for subnet 1 the chain gives block 1,497,824 (15 Oct 2023) and Taostats block 172,898."
 days_since_first_emission,Days since the subnet first received emissions,number,days,,feature,T,chain,collect/00_snapshot.py; collect/03_history_events.py,none known,Missing in startup mode.
 days_since_owner_change,Days since the owner key last changed,number,days,,feature,T,"Taostats owner history, checked on chain",collect/03_history_events.py,none known,Missing if the owner key never changed. A change can be a wallet migration by the same team.
 days_since_identity_change,"Days since the name, GitHub owner or website last changed",number,days,,feature,T,Taostats identity history,collect/03_history_events.py,none known,Missing if none changed. Extensions of a name and moves within a domain do not count.
