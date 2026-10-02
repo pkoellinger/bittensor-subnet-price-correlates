@@ -28,7 +28,7 @@ class WindowSummaryTest(unittest.TestCase):
         self.assertAlmostEqual(out["price_tao_avg"], 0.02)
         self.assertAlmostEqual(out["burn_mean"], 0.25)
         self.assertAlmostEqual(out["burn_time_share_ge50"], 0.5)
-        self.assertAlmostEqual(out["emission_enabled_days_share"], 0.5)
+        self.assertAlmostEqual(out["emission_flag_on_share"], 0.5)
         self.assertAlmostEqual(out["tao_emission_on_share"], 0.5)
         self.assertAlmostEqual(out["reg_cost_tao_mean"], 0.2)
         self.assertEqual(out["flag_full_burn"], 0)

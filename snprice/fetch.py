@@ -24,29 +24,69 @@ class BudgetExceeded(RuntimeError):
 
 
 class Ledger:
-    """Persistent counters with hard ceilings (API calls, US dollars)."""
+    """Persistent counters with hard ceilings (API calls, US dollars).
 
-    def __init__(self, path, ceilings):
+    Several collectors run at the same time and share the file, so a booking (read,
+    add, write) is done under a lock file. A lock older than STALE_LOCK seconds was
+    left behind by a crashed process and is removed.
+    """
+
+    STALE_LOCK = 60
+
+    def __init__(self, path, ceilings, sleep=time.sleep, tries=400, opener=open):
         self.path = path
         self.ceilings = dict(ceilings)
+        self.sleep = sleep
+        self.tries = tries
+        self.opener = opener
 
     def _load(self):
-        if os.path.exists(self.path):
-            with open(self.path, encoding="utf-8") as fh:
-                return json.load(fh)
-        return {}
+        if not os.path.exists(self.path):
+            return {}
+        for attempt in range(self.tries):
+            try:
+                with self.opener(self.path, encoding="utf-8") as fh:
+                    return json.load(fh)
+            except PermissionError:          # Windows: another process is replacing the file right now
+                if attempt == self.tries - 1:
+                    raise
+                self.sleep(0.05)
+
+    def _acquire(self):
+        lock = self.path + ".lock"
+        for _ in range(self.tries):
+            try:
+                os.close(os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+                return lock
+            except (FileExistsError, PermissionError):
+                try:
+                    if time.time() - os.path.getmtime(lock) > self.STALE_LOCK:
+                        os.remove(lock)
+                        continue
+                except OSError:
+                    pass                     # the holder released it in the meantime
+                self.sleep(0.05)
+        raise FetchError(f"ledger {self.path} is locked by another process")
 
     def used(self, bucket):
         return self._load().get(bucket, 0)
 
     def book(self, bucket, amount=1):
         ceiling = self.ceilings[bucket]
-        state = self._load()
-        new = state.get(bucket, 0) + amount
-        if new > ceiling + 1e-9:
-            raise BudgetExceeded(f"{bucket}: {state.get(bucket, 0)} used, {amount} more would pass the ceiling {ceiling}")
-        state[bucket] = round(new, 6)
-        atomic_write(self.path, json.dumps(state))
+        lock = self._acquire()
+        try:
+            state = self._load()
+            new = state.get(bucket, 0) + amount
+            if new > ceiling + 1e-9:
+                raise BudgetExceeded(
+                    f"{bucket}: {state.get(bucket, 0)} used, {amount} more would pass the ceiling {ceiling}")
+            state[bucket] = round(new, 6)
+            atomic_write(self.path, json.dumps(state))
+        finally:
+            try:
+                os.remove(lock)
+            except OSError:
+                pass
 
 
 def curl_transport(url, headers):

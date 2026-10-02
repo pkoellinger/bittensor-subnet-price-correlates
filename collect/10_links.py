@@ -6,7 +6,11 @@ is recorded:
 
   GitHub   on-chain identity -> Taostats identity -> manual
   website  on-chain identity -> Taostats identity -> repository homepage -> GitHub owner profile -> manual
-  X handle Taostats identity -> GitHub owner profile -> manual
+  X handle Taostats identity -> contact field on chain -> GitHub owner profile
+           -> the only X profile linked on the subnet's home page (collect/12c_site_handles.py,
+              which needs this script and collect/12_web.py to have run once)
+           -> a guessed handle whose profile points back to the subnet (collect/12d_x_handle_guess.py)
+           -> manual
 
 Manual entries live in data/manual/links_manual.csv (netuid, field, value, evidence_url)
 and always carry an evidence URL. They are applied last and override nothing that the
@@ -65,6 +69,13 @@ def main():
         for m in read_table(MANUAL):
             manual.setdefault(int(m["netuid"]), {})[m["field"]] = m
 
+    site_file = paths.EVIDENCE / f"site_x_links_wave{wave}.csv"       # written by collect/12c_site_handles.py
+    site_handles = {int(x["netuid"]): (x["x_handles"] or "").split("|") for x in read_table(site_file)
+                    if x["x_handles"]} if site_file.exists() else {}
+
+    guess_file = paths.EVIDENCE / f"x_handle_guess_wave{wave}.csv"    # written by collect/12d_x_handle_guess.py
+    guessed = {int(x["netuid"]): x["x_handle"] for x in read_table(guess_file) if x["x_handle"]}         if guess_file.exists() else {}
+
     rows = []
     for r in roster:
         n = int(r["netuid"])
@@ -120,6 +131,10 @@ def main():
             handle, handle_source = (clean_handle(m.group(1)) if m else ""), "chain_identity_contact"
         if not handle and owner_profile:
             handle, handle_source = clean_handle(owner_profile.get("twitter_username")), "github_owner_profile"
+        if not handle and len(site_handles.get(n, [])) == 1:
+            handle, handle_source = clean_handle(site_handles[n][0]), "website"
+        if not handle and guessed.get(n):
+            handle, handle_source = clean_handle(guessed[n]), "x_profile_match"
         if ("x_handle" in man) and (not handle or man["x_handle"].get("override") == "yes"):
             handle, handle_source = clean_handle(man["x_handle"]["value"]), "manual"
 
@@ -148,7 +163,7 @@ def main():
     print("  website listed:", count(lambda x: x["website_url"]), "| X handle listed:", count(lambda x: x["x_handle"]))
     print("  X handle sources:", {s: count(lambda x, s=s: x["x_source"] == s)
                                   for s in ("taostats_identity", "chain_identity_contact", "github_owner_profile",
-                                            "manual")})
+                                            "website", "x_profile_match", "manual")})
     missing = [x["netuid"] for x in rows if not x["x_handle"] and x["subnet_name"]]
     print(f"  named subnets without an X handle ({len(missing)}):", missing)
 

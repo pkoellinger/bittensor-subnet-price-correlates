@@ -155,6 +155,71 @@ class LedgerTest(unittest.TestCase):
             with self.assertRaises(KeyError):
                 ledger.book("something_else", 1)
 
+    # --- several collectors run at the same time and share one ledger file
+    def test_lock_is_released_after_a_booking(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ledger.json")
+            Ledger(path, {"x_usd": 50}).book("x_usd", 1)
+            self.assertFalse(os.path.exists(path + ".lock"))
+
+    def test_lock_is_released_when_the_ceiling_refuses_a_booking(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ledger.json")
+            with self.assertRaises(BudgetExceeded):
+                Ledger(path, {"x_usd": 50}).book("x_usd", 51)
+            self.assertFalse(os.path.exists(path + ".lock"))
+
+    def test_booking_waits_while_another_process_holds_the_lock(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ledger.json")
+            open(path + ".lock", "w").close()
+            waits = []
+
+            def other_process_finishes(seconds):
+                waits.append(seconds)
+                if os.path.exists(path + ".lock"):
+                    os.remove(path + ".lock")
+
+            ledger = Ledger(path, {"x_usd": 50}, sleep=other_process_finishes)
+            ledger.book("x_usd", 2)
+            self.assertEqual(len(waits), 1)
+            self.assertEqual(ledger.used("x_usd"), 2)
+
+    def test_booking_gives_up_when_the_lock_never_clears(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ledger.json")
+            open(path + ".lock", "w").close()
+            ledger = Ledger(path, {"x_usd": 50}, sleep=lambda s: None, tries=5)
+            with self.assertRaises(FetchError):
+                ledger.book("x_usd", 2)
+            self.assertEqual(ledger.used("x_usd"), 0)
+            self.assertTrue(os.path.exists(path + ".lock"))      # somebody else's lock is left alone
+
+    def test_lock_left_behind_by_a_crashed_process_is_broken(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ledger.json")
+            open(path + ".lock", "w").close()
+            long_ago = os.path.getmtime(path + ".lock") - 600
+            os.utime(path + ".lock", (long_ago, long_ago))
+            ledger = Ledger(path, {"x_usd": 50}, sleep=lambda s: None, tries=5)
+            ledger.book("x_usd", 2)
+            self.assertEqual(ledger.used("x_usd"), 2)
+
+    def test_reading_retries_while_the_file_is_being_replaced(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ledger.json")
+            Ledger(path, {"x_usd": 50}).book("x_usd", 3)
+            failures = [PermissionError("being replaced"), PermissionError("being replaced")]
+
+            def flaky_open(*args, **kwargs):
+                if failures:
+                    raise failures.pop(0)
+                return open(*args, **kwargs)
+
+            ledger = Ledger(path, {"x_usd": 50}, sleep=lambda s: None, opener=flaky_open)
+            self.assertEqual(ledger.used("x_usd"), 3)
+            self.assertEqual(failures, [])
+
 
 if __name__ == "__main__":
     unittest.main()

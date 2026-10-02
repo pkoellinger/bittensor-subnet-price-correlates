@@ -269,6 +269,44 @@ def decode_decimal(raw):
     return float(mantissa) * (10.0 ** exponent)
 
 
+def position_keys(hotkey, coldkey, netuid, pallet="SubtensorModule"):
+    """Storage keys needed to value the stake position (hotkey, coldkey) on a subnet."""
+    h, c, n = blake2_128_concat(ss58_decode(hotkey)), blake2_128_concat(ss58_decode(coldkey)), u16(netuid)
+    return {
+        "alpha_v1": key(pallet, "Alpha", h, c, n),                  # shares, old map (U64F64)
+        "alpha_v2": key(pallet, "AlphaV2", h, c, n),                # shares, new map (decimal)
+        "row_epoch": key(pallet, "AlphaShareEpoch", h, c, n),
+        "shares_v1": key(pallet, "TotalHotkeyShares", h, n),
+        "shares_v2": key(pallet, "TotalHotkeySharesV2", h, n),
+        "hotkey_alpha": key(pallet, "TotalHotkeyAlpha", h, n),
+        "pool_epoch": key(pallet, "AlphaSharePoolEpoch", h, n),
+    }
+
+
+def position_alpha(raw):
+    """Alpha held by a stake position: its shares / the hotkey's shares x the hotkey's alpha.
+
+    `raw` maps the names of position_keys() to raw storage values. Follows the runtime
+    (pallets/subtensor/src/staking/stake_utils.rs): positions are moved from the old share
+    map to the new one only when they are next touched, so the old maps are read first; a
+    row stamped with an earlier pool epoch belongs to a closed pool and is worth nothing.
+    """
+    if raw.get("alpha_v1") is not None:
+        share = decode_fixed(raw["alpha_v1"], 64)
+    else:
+        share = decode_decimal(raw.get("alpha_v2")) or 0.0
+    pool_epoch = decode_uint(raw.get("pool_epoch"), 0)
+    if pool_epoch != 0 and decode_uint(raw.get("row_epoch"), 0) != pool_epoch:
+        return 0.0
+    if raw.get("shares_v1") is not None:
+        total = decode_fixed(raw["shares_v1"], 64)
+    else:
+        total = decode_decimal(raw.get("shares_v2")) or 0.0
+    if not share or not total:
+        return 0.0
+    return share / total * decode_uint(raw.get("hotkey_alpha"), 0) / 10 ** 9
+
+
 def decode_axon(raw):
     """AxonInfo {block u64, version u32, ip u128, port u16, ip_type u8, protocol u8, 2 placeholders}."""
     if raw is None:

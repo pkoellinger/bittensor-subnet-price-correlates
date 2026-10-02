@@ -3,7 +3,7 @@ from .metrics import hhi_from_amounts, pooled_shares
 
 IP_MIN_COVERAGE = 0.5      # the IP count is reported only if at least half of the paid hotkeys publish an IP
 
-VALUE_KEYS = ("price_tao_avg", "burn_mean", "burn_time_share_ge50", "emission_enabled_days_share",
+VALUE_KEYS = ("price_tao_avg", "burn_mean", "burn_time_share_ge50", "emission_flag_on_share",
               "tao_emission_on_share", "reg_cost_tao_mean", "miners_paid_hotkeys", "miners_paid_coldkeys",
               "miner_paid_days", "miner_hhi_coldkey", "miner_top1_share", "miners_ip_coverage",
               "miners_distinct_ips", "owner_incentive_share", "flag_no_miner_paid", "flag_full_burn")
@@ -41,7 +41,7 @@ def window_summary(samples, rows, day_of):
     out["price_tao_avg"] = _mean([_num(s["price_tao"]) for s in samples])
     out["burn_mean"] = _mean(burns)
     out["burn_time_share_ge50"] = _mean([float(b >= 0.5) for b in burns if b is not None])
-    out["emission_enabled_days_share"] = _mean([_num(s["emission_enabled"]) for s in samples])
+    out["emission_flag_on_share"] = _mean([_num(s["emission_enabled"]) for s in samples])
     emitted = [_num(s.get("tao_in_emission")) for s in samples]
     out["tao_emission_on_share"] = _mean([float(e > 0) for e in emitted if e is not None])
     out["reg_cost_tao_mean"] = _mean([_num(s["reg_cost_tao"]) for s in samples])

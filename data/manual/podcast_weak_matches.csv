@@ -1,0 +1,10 @@
+episode_id,netuid,counts,reason,decided_by,decided_on
+780380f2-92a1-47c0-ad10-6601b3b55183,62,yes,"Title ""Talking Tao: with Shak from Ridges"" names the Ridges project as the guest's affiliation",Claude (reviewed list),2026-10-02
+CVKbtayn0D0,61,yes,"Title ""RedTeam built a 24/7 Swarm of Ethical Hackers"" has RedTeam as its subject; edited re-upload of the SN61 stream of 11 Sep 2026",Claude (reviewed list),2026-10-02
+CVKbtayn0D0,124,no,"""Swarm"" is an ordinary word in this title",Claude (reviewed list),2026-10-02
+Rhi09eyriyg,94,yes,"Title lists ""Cathedral 39"": the Cathedral project, which ran on netuid 39 then and is subnet 94's project at T",Claude (reviewed list),2026-10-02
+-PqpWpiQxnk,88,no,"""dTAO Investing"" is an ordinary phrase",Claude (reviewed list),2026-10-02
+CBEnjWeVx8U,77,no,"""DeFi Liquidity"" is an ordinary phrase",Claude (reviewed list),2026-10-02
+m_hSum4-2Wk,77,no,"""Liquidity Cycles"" is an ordinary phrase",Claude (reviewed list),2026-10-02
+jips-8kU-iA,77,no,"""Multi-Chain Liquidity Provider"" is an ordinary phrase",Claude (reviewed list),2026-10-02
+Yr721QYeOvE,77,no,"""ForEx Liquidity Engine"" is an ordinary phrase",Claude (reviewed list),2026-10-02

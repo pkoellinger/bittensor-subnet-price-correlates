@@ -7,10 +7,13 @@ Sources
 
 Writes  data/intermediate/history_wave<N>.csv   one row per subnet
 
-project_age_days counts from the most recent of registration and a real identity
-change (different name, GitHub owner or website host). Owner-key changes are reported
-in their own column but do not reset the project age: a key swap can be a wallet
-migration by the same team.
+project_age_days counts from the most recent of registration and the start of the current
+project (snprice.events.project_start): the latest rename that came with another team,
+that is, with a GitHub owner other than today's. A rename by the same team is a rebrand
+and does not reset the age. Changes of the owner key, of the GitHub owner and of the
+website are reported in their own columns: a key swap can be a wallet migration, and
+projects move their code or site without becoming another project (Chutes moved GitHub
+organisation and stayed Chutes).
 """
 import sys
 import time
@@ -19,15 +22,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import chain, paths  # noqa: E402
-from snprice.events import last_real_identity_change  # noqa: E402
+from snprice.events import last_real_identity_change, project_start  # noqa: E402
 from snprice.io import archive, read_table, taostats, write_table  # noqa: E402
+from snprice.timeutil import epoch  # noqa: E402
 from snprice.windows import bounds  # noqa: E402
 
 P = "SubtensorModule"
-
-
-def epoch(text):
-    return time.mktime(time.strptime(text, "%Y-%m-%d %H:%M:%S")) - time.timezone
 
 
 def main():
@@ -62,13 +62,15 @@ def main():
                       flush=True)
                 owner_change_block = None
 
-        ident = last_real_identity_change([i for i in ident_rows if int(i["netuid"]) == n], reg_block)
+        events = [i for i in ident_rows if int(i["netuid"]) == n]
+        ident = last_real_identity_change(events, reg_block)
         ident_block = ident["block"] if ident else None
+        name_block = project_start(events, reg_block)
 
         def days_since(block):
             return (t_time - arch.timestamp(block)) / 86400.0 if block else None
 
-        start_block = max(reg_block, ident_block or 0)
+        start_block = max(reg_block, name_block or 0)
         out.append({
             "netuid": n,
             "days_since_registration": (t_time - epoch(r["registered_utc"])) / 86400.0,
@@ -82,6 +84,7 @@ def main():
             "identity_change_before": ident["before"] if ident else None,
             "identity_change_after": ident["after"] if ident else None,
             "days_since_identity_change": days_since(ident_block),
+            "project_start_rename_block": name_block,
             "project_start_block": start_block,
             "project_start_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(arch.timestamp(start_block))),
             "project_age_days": days_since(start_block),

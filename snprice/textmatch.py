@@ -242,6 +242,6 @@ def valid_for_project(hit, when, project_start):
     project started, refers to the previous occupant and does not count."""
     if not project_start:
         return True
-    if set(hit["rules"]) <= {"id"} and str(when)[:10] < str(project_start)[:10]:
+    if set(hit["rules"]) <= {"id", "id_spoken"} and str(when)[:10] < str(project_start)[:10]:
         return False
     return True

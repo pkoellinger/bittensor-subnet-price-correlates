@@ -1,0 +1,172 @@
+netuid,found_on,label,url
+3,https://teutonic.ai/paper.html,Download PDF,https://teutonic.ai/teutonic-i-10b.pdf
+3,https://teutonic.ai/paper.html,https://www.bittensor.com/whitepaper,https://www.bittensor.com/whitepaper
+4,https://targon.com,"Confidential Compute Backed by IntelTargon partnered with Intel to write a whitepaper, Intel TDX and encrypted CVMs.",https://targon.com/releases/intel-whitepaper
+4,https://targon.com/releases/intel-whitepaper,https://www.intel.com/content/dam/develop/external/us/en/documents/tdx-whitepaper-final9-17.pdf,https://www.intel.com/content/dam/develop/external/us/en/documents/tdx-whitepaper-final9-17.pdf
+4,https://targon.com/releases/intel-whitepaper,Open in a new tab,https://targon.com/assets/releases/intel-whitepaper/Decentralized%20Compute%20on%20Untrusted%20Hardware%20Using%20Intel%C2%AE%20TDX%20and%20Encrypted%20CVMs.pdf
+9,https://iota.macrocosmos.ai/docs,INCENTIVISED ORCHESTRATED TRAINING ARCHITECTURE (IOTA),https://www.macrocosmos.ai/research/iota_primer.pdf
+15,https://oroagents.com,White Paper,https://oroagents.com/whitepaper
+15,https://oroagents.com/whitepaper,Download Paper (PDF),https://oroagents.com/papers/oro-trajectory-paper.pdf
+15,https://oroagents.com/whitepaper,Read the paper,https://arxiv.org/abs/2606.10064
+18,https://www.zeussubnet.com/,Zeus V2 benchmark report,https://www.zeussubnet.com/news-and-updates/ZEUS_V2_Benchmark.pdf
+19,https://blockmachine.io,Whitepaper,https://blockmachine.io/whitepaper
+19,https://blockmachine.io/whitepaper,Download PDF,https://blockmachine.io/blockmachine-whitepaper.pdf
+22,https://www.desearch.ai/,Explore the Desearch 2.0 architecture,https://www.desearch.ai/whitepaper
+22,https://www.desearch.ai/whitepaper,Download PDF,https://www.desearch.ai/whitepapers/desearch-v0.1.pdf
+22,https://www.desearch.ai/whitepaper,Source,https://www.bittensor.com/whitepaper
+22,https://www.desearch.ai/whitepaper,Source,https://research.google.com/pubs/archive/334.pdf
+22,https://www.desearch.ai/whitepaper,Source,https://bitcoin.org/bitcoin.pdf
+22,https://www.desearch.ai/whitepaper,Source,https://arxiv.org/abs/1407.3561
+22,https://www.desearch.ai/whitepaper,Source,https://www.filecoin.io/assets/documents/filecoin.pdf
+22,https://www.desearch.ai/whitepaper,Source,https://arxiv.org/abs/2104.08663
+22,https://www.desearch.ai/whitepaper,Markdown,https://www.desearch.ai/whitepaper/source
+22,https://www.desearch.ai/whitepaper,Read archive,https://www.desearch.ai/whitepaper/legacy
+22,https://www.desearch.ai/blog/integrate-search-apis-langchain,Arxiv,https://arxiv.org/
+23,https://trishool.ai,LITEPAPER,https://litepaper.trishool.ai
+25,https://ur.xyz/,"For more detail, read the litepaper →",https://ur.xyz/docs/litepaper
+25,https://ur.xyz/research,WHITEPAPER.md §7–§10,https://github.com/urfoundation/sn/blob/main/WHITEPAPER.md
+25,https://ur.xyz/research,MASA L2 2025,https://ur.xyz/audits/masa-l2-2025.pdf
+26,https://www.perturbai.io/,Whitepaper,https://www.perturbai.io/whitepaper
+26,https://www.perturbai.io/whitepaper,Download Whitepaper ↓,https://www.perturbai.io/downloads/whitepaper_v2.html
+30,https://endure.network,Read the litepaper→,https://docs.endure.network
+30,https://docs.endure.network,Litepaper,https://docs.endure.network/build/resources/litepaper
+36,https://epago.ai/,whitepaper,https://epago.ai/whitepaper
+36,https://epago.ai/,litepaper,https://epago.ai/litepaper
+37,https://aureliusaligned.ai,Whitepaper,https://aureliusaligned.ai/assets/pdf/Aurelius__A_Peer-to-Peer_Alignment_Protocol.pdf
+38,https://chronollm.com/,Read the methodology,https://arxiv.org/pdf/2510.11677
+38,https://chronollm.com/,Chronologically Consistent Large Language Models (arXiv:2502.21206),https://arxiv.org/abs/2502.21206
+38,https://chronollm.com/,Instruction Tuning Chronologically Consistent Language Models (arXiv:2510.11677),https://arxiv.org/abs/2510.11677
+49,https://docs.nepher.ai,White Paper,https://docs.nepher.ai/whitepaper
+50,https://synthdata.co,Whitepaper,https://synthdataco.github.io/synth-subnet/Synth%20Whitepaper%20v1.pdf
+50,https://synthdata.co/research/adapting-timesfm-to-synth,From Point Forecasts to Distributions: Adapting TimesFM to Synth,https://synthdataco.github.io/synth-subnet/research/timesfm_report.pdf
+50,https://synthdata.co/research/adapting-timesfm-to-synth,From Point Forecasts to Distributions: Adapting TimesFM to Synth,https://github.com/synthdataco/synth-subnet/blob/main/research/timesfm_report_short.pdf
+50,https://synthdata.co/research/chronos2-fine-tuned-foundation-model,Chronos-2 on Synth: Drift-Corrected Price Paths and Live Benchmark Performance of a Fine-Tuned Foundation Model,https://synthdataco.github.io/synth-subnet/research/chronos2_miner_report.pdf
+52,https://www.tensorplex.ai,PaperParameter-Efficient Checkpoint Merging via Metrics-Weighted AveragingExploring checkpoint merging in the context of parameter-efficient fine-tuning (PEFT).Explore,https://arxiv.org/abs/2504.18580
+55,https://niome.genomes.io,Whitepaper,https://niome.genomes.io/NIOME_Whitepaper_v1.1.pdf
+55,https://niome.genomes.io,Review the Release Plan,https://niome.genomes.io/NIOME_Release_Plan.pdf
+56,https://www.gradients.io/app/research,Papers,https://www.gradients.io/app/whitepapers
+61,https://www.theredteam.io/,Whitepaper,https://cdn.prod.website-files.com/67531c85b03434359fffb2ab/6759b1263189b1af2416a6a8_RedTeam%20Whitepaper.pdf
+65,https://www.trueperformancenetwork.com/,Litepaper,https://docsend.com/view/irz5wkbx5y4quarm
+67,https://harnyx.ai/,arXiv 2602.11685 (Feb 2026),https://arxiv.org/abs/2602.11685
+67,https://harnyx.ai/,DeepSearchQA paper (Dec 2025),https://storage.googleapis.com/deepmind-media/DeepSearchQA/DeepSearchQA_benchmark_paper.pdf
+72,https://www.natix.network/?utm_source=bittensor,WhitepaperEverything you want to know about NATIX.,https://docs.natix.network/whitepaper/
+72,https://www.natix.network/?utm_source=bittensor,Enabled by NATIX’s Internet of CamerasWe seek to create the largest crowd-sourced camera network ever. Our technology enables any camera to become an AI-powered super-sensor.Learn more,https://docs.natix.network/whitepaper/market-entry-products
+72,https://www.natix.network/?utm_source=bittensor,Privacy by DesignNATIX employs advanced AI-based anonymization technology to ensure that all data contributed to the network is free of any Personally Identifiable Information.Learn more,https://docs.natix.network/whitepaper/natix-network-ecosystem/privacy-compliant-metadata-mining
+72,https://docs.natix.network/whitepaper/,NATIX Network Whitepaper,https://docs.natix.network/whitepaper
+72,https://docs.natix.network/whitepaper/,llms.txt,https://docs.natix.network/whitepaper/llms.txt
+72,https://docs.natix.network/whitepaper/,Markdown,https://docs.natix.network/whitepaper/executive-summary.md
+72,https://docs.natix.network/whitepaper/,NextIntroduction,https://docs.natix.network/whitepaper/introduction
+72,https://docs.natix.network/whitepaper/,Problem,https://docs.natix.network/whitepaper/problem
+72,https://docs.natix.network/whitepaper/,The Solution: NATIX Network,https://docs.natix.network/whitepaper/the-solution-natix-network
+72,https://docs.natix.network/whitepaper/,NATIX Data Products,https://docs.natix.network/whitepaper/natix-data-products
+72,https://docs.natix.network/whitepaper/,NATIX Economy,https://docs.natix.network/whitepaper/natix-economy
+72,https://docs.natix.network/whitepaper/,NATIX Network Ecosystem,https://docs.natix.network/whitepaper/natix-network-ecosystem
+72,https://docs.natix.network/whitepaper/,About NATIX,https://docs.natix.network/whitepaper/about-natix
+72,https://docs.natix.network/whitepaper/,LEGAL DISCLAIMER,https://docs.natix.network/whitepaper/legal-disclaimer
+72,https://docs.natix.network/whitepaper/market-entry-products,Markdown,https://docs.natix.network/whitepaper/market-entry-products.md
+72,https://docs.natix.network/whitepaper/market-entry-products,NATIX VX360,https://docs.natix.network/whitepaper/market-entry-products/natix-vx360
+72,https://docs.natix.network/whitepaper/market-entry-products,Early Network Implementations (Drive& and Other Devices),https://docs.natix.network/whitepaper/market-entry-products/early-network-implementations-drive-and-and-other-devices
+72,https://docs.natix.network/whitepaper/natix-network-ecosystem/privacy-compliant-metadata-mining,Network Infrastructure,https://docs.natix.network/whitepaper/natix-network-ecosystem/network-infrastructure
+72,https://docs.natix.network/whitepaper/natix-network-ecosystem/privacy-compliant-metadata-mining,System Overview,https://docs.natix.network/whitepaper/natix-network-ecosystem/system-overview
+72,https://docs.natix.network/whitepaper/natix-network-ecosystem/privacy-compliant-metadata-mining,4D Scenario Generation,https://docs.natix.network/whitepaper/natix-data-products/4d-scenario-generation
+72,https://docs.natix.network/whitepaper/natix-network-ecosystem/privacy-compliant-metadata-mining,Rewards for NATIX Network Participants,https://docs.natix.network/whitepaper/natix-economy/rewards-for-natix-network-participants
+72,https://www.natix.network/vx360-depin-dashcam,Whitepaper,https://docs.natix.network/
+72,https://www.natix.network/vx360-depin-dashcam,Token,https://docs.natix.network/whitepaper/natix-tokens
+79,https://taos.im,WHITE PAPER,https://simulate.trading/taos-im-paper
+87,https://provenonce.ai,Read the whitepaper,https://provenonce.ai/sn87/whitepaper
+87,https://provenonce.ai/sn87/whitepaper,PDF,https://provenonce.ai/sn87/whitepaper/files/Proof_of_Assurance_v0.7.2_FINAL_CANDIDATE.pdf
+87,https://provenonce.ai/sn87/whitepaper,EPUB,https://provenonce.ai/sn87/whitepaper/files/Proof_of_Assurance_v0.7.2_FINAL_CANDIDATE.epub
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-1-assurance-gap-conceptual.svg
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-2-ontology-grammar.svg
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-3-differential-v062.svg
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-4-market-v062.svg
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-5-privacy-v062.svg
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-6-oracles-v062.svg
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-7-weights-v062.svg
+87,https://provenonce.ai/sn87/whitepaper,,https://provenonce.ai/sn87/whitepaper/assets/figure-8-integration-v062.svg
+87,https://provenonce.ai/sn87/whitepaper,https://ethereum.org/whitepaper/,https://ethereum.org/whitepaper/
+87,https://provenonce.ai/sn87/whitepaper,https://bitcoin.org/bitcoin.pdf,https://bitcoin.org/bitcoin.pdf
+87,https://provenonce.ai/sn87/whitepaper,https://www.bittensor.com/whitepaper,https://www.bittensor.com/whitepaper
+100,https://network.cortex.foundation,WHITEPAPER,https://network.cortex.foundation/whitepaper
+100,https://network.cortex.foundation,Whitepaper comparison,https://github.com/CortexLM/cortex/blob/main/docs/WHITEPAPER.md
+100,https://network.cortex.foundation/whitepaper,READ PDF,https://github.com/CortexLM/cortex/blob/main/whitepaper.pdf
+102,https://connito.ai/,Whitepaper,https://connito.ai/whitepaper
+102,https://connito.ai/whitepaper,↓ Download PDF,https://connito.ai/Connito-Whitepaper-v1.pdf
+102,https://connito.ai/whitepaper,2206.00277,https://arxiv.org/abs/2206.00277
+102,https://connito.ai/whitepaper,2401.06066,https://arxiv.org/abs/2401.06066
+102,https://connito.ai/whitepaper,2311.08105,https://arxiv.org/abs/2311.08105
+102,https://connito.ai/whitepaper,2101.03961,https://arxiv.org/abs/2101.03961
+102,https://connito.ai/whitepaper,bittensor.com/whitepaper,https://bittensor.com/whitepaper
+102,https://connito.ai/whitepaper,2106.09685,https://arxiv.org/abs/2106.09685
+102,https://connito.ai/whitepaper,2508.18663,https://arxiv.org/abs/2508.18663
+102,https://connito.ai/whitepaper,2601.10159,https://arxiv.org/abs/2601.10159
+102,https://connito.ai/whitepaper,2509.16882,https://arxiv.org/abs/2509.16882
+102,https://connito.ai/whitepaper,2208.03306,https://arxiv.org/abs/2208.03306
+102,https://connito.ai/whitepaper,2201.05596,https://arxiv.org/abs/2201.05596
+102,https://connito.ai/whitepaper,1701.06538,https://arxiv.org/abs/1701.06538
+102,https://connito.ai/whitepaper,2507.07024,https://arxiv.org/abs/2507.07024
+102,https://connito.ai/whitepaper,2403.07816,https://arxiv.org/abs/2403.07816
+102,https://connito.ai/whitepaper,2407.01906,https://arxiv.org/abs/2407.01906
+102,https://connito.ai/whitepaper,2403.10504,https://arxiv.org/abs/2403.10504
+102,https://connito.ai/whitepaper,2410.12013,https://arxiv.org/abs/2410.12013
+102,https://connito.ai/whitepaper,2504.09345,https://arxiv.org/abs/2504.09345
+102,https://connito.ai/whitepaper,2502.00075,https://arxiv.org/abs/2502.00075
+102,https://connito.ai/whitepaper,2408.08274,https://arxiv.org/abs/2408.08274
+102,https://connito.ai/whitepaper,2202.09368,https://arxiv.org/abs/2202.09368
+102,https://doc.connito.ai,Whitepaper,https://preview.connito.ai/whitepaper
+105,https://b1m.ai,Whitepaper,https://b1m.ai/docs/BEAM_Whitepaper.pdf
+106,https://nodexo.ai,Whitepaper,https://nodexo.ai/whitepaper
+106,https://nodexo.ai/whitepaper,Open PDF,https://nodexo.ai/whitepaper/nodexo-whitepaper.pdf
+107,https://theminos.ai,WHITEPAPER,https://theminos.ai/whitepaper
+107,https://theminos.ai/whitepaper,"Minos OverviewDecentralized Infrastructure for DNA Mutation Inference & Benchmarking: architecture, incentive mechanism, scoring, security properties, and the road ahead.20 pages · V1.1 · FEBRUARY 2026↗",https://theminos.ai/Minos_overview_v1.1.pdf
+108,https://docs.chipforge.io/,White Paper,https://docs.chipforge.io/
+108,https://docs.chipforge.io/,Introduction,https://docs.chipforge.io/whitepaper/intro
+108,https://docs.chipforge.io/,Silicon's Centralization Crisis,https://docs.chipforge.io/whitepaper/problem
+108,https://docs.chipforge.io/,The Monopolization of Innovation,https://docs.chipforge.io/whitepaper/problem/monoply
+108,https://docs.chipforge.io/,The Edge Computing Paradox,https://docs.chipforge.io/whitepaper/problem/edge
+108,https://docs.chipforge.io/,The Verification Bottleneck,https://docs.chipforge.io/whitepaper/problem/verification
+108,https://docs.chipforge.io/,Decentralized Hardware Design,https://docs.chipforge.io/whitepaper/solution
+108,https://docs.chipforge.io/,Architectural Philosophy,https://docs.chipforge.io/whitepaper/solution/arch
+108,https://docs.chipforge.io/,Challenge-Driven Development,https://docs.chipforge.io/whitepaper/solution/challenge
+108,https://docs.chipforge.io/,Core Metrics,https://docs.chipforge.io/whitepaper/solution/metrics
+108,https://docs.chipforge.io/,Technical Architecture,https://docs.chipforge.io/whitepaper/technical
+108,https://docs.chipforge.io/,Challenge Server Architecture,https://docs.chipforge.io/whitepaper/technical/challenge
+108,https://docs.chipforge.io/,Miner Workflow,https://docs.chipforge.io/whitepaper/technical/miner
+108,https://docs.chipforge.io/,Validator Operations,https://docs.chipforge.io/whitepaper/technical/validator
+108,https://docs.chipforge.io/,The Iterative,https://docs.chipforge.io/whitepaper/framework
+108,https://docs.chipforge.io/,Introduction,https://docs.chipforge.io/whitepaper/methodology
+108,https://docs.chipforge.io/,Score Normalization,https://docs.chipforge.io/whitepaper/methodology/normal
+108,https://docs.chipforge.io/,Dynamic Scoring Formula,https://docs.chipforge.io/whitepaper/methodology/dynamic
+108,https://docs.chipforge.io/,Detailed Metric Evaluation,https://docs.chipforge.io/whitepaper/methodology/detailed
+108,https://docs.chipforge.io/,Introduction,https://docs.chipforge.io/whitepaper/incentive
+108,https://docs.chipforge.io/,Optimization Loop,https://docs.chipforge.io/whitepaper/incentive/loop
+108,https://docs.chipforge.io/,Alignment and Integrity,https://docs.chipforge.io/whitepaper/incentive/game
+108,https://docs.chipforge.io/,Introduction,https://docs.chipforge.io/whitepaper/progress
+108,https://docs.chipforge.io/,Foundational Infrastructure Achievements,https://docs.chipforge.io/whitepaper/progress/infra
+108,https://docs.chipforge.io/,RISC-V Architectural IP Secured,https://docs.chipforge.io/whitepaper/progress/risc
+108,https://docs.chipforge.io/,Processors to AI Accelerators,https://docs.chipforge.io/whitepaper/roadmap
+108,https://docs.chipforge.io/,Phase 1,https://docs.chipforge.io/whitepaper/roadmap/ph1
+108,https://docs.chipforge.io/,Phase 2,https://docs.chipforge.io/whitepaper/roadmap/ph2
+108,https://docs.chipforge.io/,Phase 3,https://docs.chipforge.io/whitepaper/roadmap/ph3
+108,https://docs.chipforge.io/,Phase 4,https://docs.chipforge.io/whitepaper/roadmap/ph4
+108,https://docs.chipforge.io/,Phase 5,https://docs.chipforge.io/whitepaper/roadmap/ph5
+108,https://docs.chipforge.io/,Introduction,https://docs.chipforge.io/whitepaper/economic
+108,https://docs.chipforge.io/,Total Addressable Market,https://docs.chipforge.io/whitepaper/economic/market
+108,https://docs.chipforge.io/,Cost Structure Analysis,https://docs.chipforge.io/whitepaper/economic/analysis
+108,https://docs.chipforge.io/,Network Effects & Value Creation,https://docs.chipforge.io/whitepaper/economic/creation
+108,https://docs.chipforge.io/,To Conclude,https://docs.chipforge.io/whitepaper/conclusion
+111,https://claims111.ai,White paper,https://claims111.ai/whitepaper
+111,https://claims111.ai/papers,Read,https://claims111.ai/papers/claims-sn111-white-paper.pdf
+111,https://claims111.ai/papers,Read,https://claims111.ai/papers/roessler-2026-verification-without-known-answers.pdf
+111,https://claims111.ai/papers,Read,https://claims111.ai/papers/claims-sn111-bittensor-ecosystem.pdf
+111,https://claims111.ai/papers,Read,https://claims111.ai/papers/claims-sn111-v0-operations-guide.pdf
+124,https://swarm124.com/,Partner deck ↗,https://github.com/swarm-subnet/swarm/blob/main/docs/pitches/SWARM_Partner_Pitch_for_Drone_Companies.pdf
+125,https://refinery125.com/research.html,AlphaEvolve: A coding agent for scientific and algorithmic discovery,https://arxiv.org/abs/2506.13131
+125,https://refinery125.com/research.html,FlashAttention,https://arxiv.org/abs/2205.14135
+125,https://refinery125.com/research.html,Muon is Scalable for LLM Training,https://arxiv.org/abs/2502.16982
+125,https://refinery125.com/research.html,Reasoning with Latent Thoughts: On the Power of Looped Transformers,https://arxiv.org/abs/2502.17416
+125,https://refinery125.com/research.html,"The original Transformer, §5.3",https://arxiv.org/html/1706.03762v7
+125,https://refinery125.com/research.html,Gradient-based learning methods,https://www.cs.toronto.edu/~hinton/coursera/lecture6/lec6.pdf
+125,https://refinery125.com/research.html,Adam · 2014 preprint / ICLR 2015,https://arxiv.org/abs/1412.6980
+125,https://refinery125.com/research.html,Decoupled Weight Decay · 2017 preprint / ICLR 2019,https://arxiv.org/abs/1711.05101
+126,https://attelier.ai,Read the whitepaper,https://attelier.ai/landing/assets/lab/attelier-whitepaper-20260912-bb0a0fa3.pdf

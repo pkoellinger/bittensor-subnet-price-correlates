@@ -317,5 +317,66 @@ class ArchiveTest(unittest.TestCase):
                 arch.read(["0x01"], block=10 ** 12)
 
 
+class PositionAlphaTest(unittest.TestCase):
+    """Alpha of a (hotkey, coldkey) stake position. Raw values are from block 9,184,186,
+    subnet 43; expected balances are Taostats' stake history at that block."""
+
+    HOTKEY_ALPHA = "0x17967311474d0600"                                   # 1,773,817.49 alpha
+    SHARES_V2 = "0x0eecbdef6e175ccc2b00000000000000faffffffffffffff"
+
+    def raw(self, **kw):
+        base = {"alpha_v1": None, "alpha_v2": None, "row_epoch": None, "shares_v1": None,
+                "shares_v2": self.SHARES_V2, "hotkey_alpha": self.HOTKEY_ALPHA, "pool_epoch": None}
+        base.update(kw)
+        return base
+
+    def test_position_still_in_the_old_share_map(self):
+        raw = self.raw(alpha_v1="0xb80ee1f0e8d133f56b712a7c75710100")
+        self.assertAlmostEqual(chain.position_alpha(raw), 891862.990906276, places=5)
+
+    def test_position_in_the_new_share_map(self):
+        raw = self.raw(alpha_v2="0x4b1ff3f646ce42361000000000000000faffffffffffffff")
+        self.assertAlmostEqual(chain.position_alpha(raw), 656579.494326866, places=5)
+
+    def test_old_map_position_on_another_hotkey(self):
+        raw = {"alpha_v1": "0xee04d183e92961eb405995c800000000", "alpha_v2": None, "row_epoch": None,
+               "shares_v1": None, "shares_v2": "0x667d1b7645afe5361300000000000000f6ffffffffffffff",
+               "hotkey_alpha": "0x7c3234f0e4680000", "pool_epoch": None}
+        self.assertAlmostEqual(chain.position_alpha(raw), 10950.124091598, places=5)
+
+    def test_no_share_row_is_no_position(self):
+        self.assertEqual(chain.position_alpha(self.raw()), 0.0)
+
+    def test_empty_pool_is_worth_nothing(self):
+        raw = self.raw(alpha_v2="0x4b1ff3f646ce42361000000000000000faffffffffffffff", shares_v2=None)
+        self.assertEqual(chain.position_alpha(raw), 0.0)
+
+    def test_old_maps_are_read_first_like_the_runtime_does(self):
+        one, four = "0x" + (1 << 64).to_bytes(16, "little").hex(), "0x" + (4 << 64).to_bytes(16, "little").hex()
+        eight_alpha = "0x" + (8 * 10 ** 9).to_bytes(8, "little").hex()
+        raw = {"alpha_v1": one, "alpha_v2": "0x4b1ff3f646ce42361000000000000000faffffffffffffff", "row_epoch": None,
+               "shares_v1": four, "shares_v2": self.SHARES_V2, "hotkey_alpha": eight_alpha, "pool_epoch": None}
+        self.assertAlmostEqual(chain.position_alpha(raw), 2.0)
+
+    def test_row_left_over_from_a_closed_pool_is_worth_nothing(self):
+        epoch = lambda n: "0x" + n.to_bytes(8, "little").hex()  # noqa: E731
+        share = "0x4b1ff3f646ce42361000000000000000faffffffffffffff"
+        self.assertEqual(chain.position_alpha(self.raw(alpha_v2=share, pool_epoch=epoch(2), row_epoch=epoch(1))), 0.0)
+        self.assertEqual(chain.position_alpha(self.raw(alpha_v2=share, pool_epoch=epoch(2))), 0.0)
+        self.assertGreater(chain.position_alpha(self.raw(alpha_v2=share, pool_epoch=epoch(2), row_epoch=epoch(2))), 0)
+        self.assertGreater(chain.position_alpha(self.raw(alpha_v2=share, pool_epoch=epoch(0), row_epoch=None)), 0)
+
+    def test_storage_keys_of_a_position(self):
+        keys = chain.position_keys("5HjMs5JDrLH3Hknmfm1gDq7nFYAv6M7t9v3EWMctSRXJS9HC",
+                                   "5DndzoBo7wnQYHDFmpTMo78Gxc8wnX6kFjKoHRy2jMCWpJYK", 43)
+        self.assertEqual(set(keys), {"alpha_v1", "alpha_v2", "row_epoch", "shares_v1", "shares_v2", "hotkey_alpha",
+                                     "pool_epoch"})
+        h = chain.blake2_128_concat(chain.ss58_decode("5HjMs5JDrLH3Hknmfm1gDq7nFYAv6M7t9v3EWMctSRXJS9HC"))
+        c = chain.blake2_128_concat(chain.ss58_decode("5DndzoBo7wnQYHDFmpTMo78Gxc8wnX6kFjKoHRy2jMCWpJYK"))
+        self.assertEqual(keys["alpha_v1"], chain.key("SubtensorModule", "Alpha", h, c, chain.u16(43)))
+        self.assertEqual(keys["shares_v2"], chain.key("SubtensorModule", "TotalHotkeySharesV2", h, chain.u16(43)))
+        self.assertEqual(len(set(keys.values())), 7)
+
+
 if __name__ == "__main__":
     unittest.main()

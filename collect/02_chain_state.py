@@ -66,6 +66,7 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
             ("mech_count", n): tkey(P, "MechanismCountCurrent", n),
             ("immunity", n): nkey("ImmunityPeriod", n),
             ("rao_recycled", n): nkey("RAORecycledForRegistration", n),
+            ("total_staked", n): nkey("TotalAlphaStaked", n),
         })
     simple[("unlock_rate",)] = chain.key(P, "UnlockRate")
     v = arch.read(list(simple.values()), block)
@@ -94,10 +95,8 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
         if not owner[n]:
             continue
         for hk in chain.decode_vec_account(g2("staking_hotkeys", n)) or []:
-            h = account(hk)
-            third[("shares", n, hk)] = chain.key(P, "AlphaV2", h, account(owner[n]), chain.u16(n))
-            third[("hk_alpha", n, hk)] = chain.key(P, "TotalHotkeyAlpha", h, chain.u16(n))
-            third[("hk_shares", n, hk)] = chain.key(P, "TotalHotkeySharesV2", h, chain.u16(n))
+            for name, k in chain.position_keys(hk, owner[n], n).items():
+                third[("position", n, hk, name)] = k
         prefix = chain.key(P, "Lock", account(owner[n]), chain.u16(n))
         lock_keys[n] = arch.keys(prefix, block)
         for k in lock_keys[n]:
@@ -143,11 +142,8 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
         # owner's alpha on its own subnet
         owner_alpha = 0.0
         for hk in (chain.decode_vec_account(g2("staking_hotkeys", n)) or []) if owner[n] else []:
-            shares = chain.decode_decimal(v3[third[("shares", n, hk)]]) or 0.0
-            hk_shares = chain.decode_decimal(v3[third[("hk_shares", n, hk)]]) or 0.0
-            hk_alpha = chain.decode_uint(v3[third[("hk_alpha", n, hk)]], 0) / RAO
-            if hk_shares > 0:
-                owner_alpha += shares * hk_alpha / hk_shares
+            owner_alpha += chain.position_alpha({name: v3[third[("position", n, hk, name)]]
+                                                 for name in chain.position_keys(hk, owner[n], n)})
 
         # locks
         perpetual_flag = chain.decode_bool(g2("decaying_flag", n))      # False = perpetual, None = decays
@@ -180,6 +176,8 @@ def state_at(arch, netuids, block, cfg, with_uid_ages):
             "alpha_issued": round(issued, 6),
             "alpha_in_pool": round(alpha_in, 6),
             "alpha_staked_by_wallets": round(staked, 6),
+            "alpha_staked_total": (round(chain.decode_uint(g("total_staked", n)) / RAO, 6)
+                                   if g("total_staked", n) is not None else None),
             "alpha_protocol_owned": round(protocol, 6),
             "alpha_burned": round(burned / RAO, 6) if burned is not None else None,
             "alpha_burned_share": (burned / RAO / issued) if burned is not None and issued > 0 else None,

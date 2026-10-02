@@ -1,0 +1,31 @@
+netuid,x_handle,basis,guesses_tried,guesses_existing
+3,teutonic_ai,site,6,2
+5,,,9,2
+12,ComputeHorde,name and number,6,2
+16,,,5,2
+20,,,8,4
+27,,,11,4
+31,,,5,1
+33,,,6,1
+36,epagofoundation,site,6,2
+40,RalphLabsAI,site,10,7
+41,almnc_ai,site,11,5
+45,alpharidge_ai,site,10,3
+53,engyai,site,6,3
+61,,,11,5
+66,conjectures_io,site,5,1
+76,OrmasAI,site,6,2
+83,,,10,0
+91,,,11,3
+95,,,5,3
+97,,,11,4
+99,,,5,1
+101,,,5,1
+103,CapCompAI,name and number,5,2
+109,,,5,3
+113,,,5,4
+115,,,6,1
+119,,,1,0
+120,affine_io,site,6,3
+123,,,11,5
+125,,,11,3

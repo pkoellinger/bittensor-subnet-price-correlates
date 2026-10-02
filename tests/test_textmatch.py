@@ -257,6 +257,11 @@ class ProjectDateRuleTest(unittest.TestCase):
     def test_id_only_mention_before_project_start_belongs_to_the_previous_occupant(self):
         self.assertFalse(valid_for_project({"rules": ["id"]}, when="2026-07-01", project_start="2026-08-03"))
 
+    def test_spoken_number_alone_before_project_start_does_not_count_either(self):
+        self.assertFalse(valid_for_project({"rules": ["id_spoken"]}, when="2026-07-01", project_start="2026-08-03"))
+        self.assertFalse(valid_for_project({"rules": ["id", "id_spoken"]}, when="2026-07-01",
+                                           project_start="2026-08-03 10:00:00"))
+
     def test_id_only_mention_after_project_start_counts(self):
         self.assertTrue(valid_for_project({"rules": ["id"]}, when="2026-08-10", project_start="2026-08-03"))
 

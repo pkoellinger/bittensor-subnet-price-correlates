@@ -6,6 +6,8 @@ import re
 from collections import defaultdict
 from urllib.parse import urlparse
 
+from .webtext import site_of
+
 RAO = 10 ** 9
 
 
@@ -138,35 +140,80 @@ def basket_flows(events):
 
 # ------------------------------------------------------------------ identity changes
 
+def _same_name(a, b):
+    """Equal, or one name extends the other at its start or end ("gm" and "saygm")."""
+    return a == b or a.startswith(b) or a.endswith(b) or b.startswith(a) or b.endswith(a)
+
+
+def _same_site(a, b):
+    return site_of(a) == site_of(b)
+
+
 _FIELDS = (
-    ("name", "subnet_name", norm_name),
-    ("github_owner", "github_repo", github_owner),
-    ("site_host", "subnet_url", site_host),
+    ("name", "subnet_name", norm_name, _same_name),
+    ("github_owner", "github_repo", github_owner, lambda a, b: a == b),
+    ("site_host", "subnet_url", site_host, _same_site),
 )
 
 
+def _events(rows, registered_block):
+    return sorted((r for r in rows if int(r["block_number"]) >= registered_block),
+                  key=lambda r: int(r["block_number"]))
+
+
 def last_real_identity_change(rows, registered_block):
-    """Most recent identity change that signals a different project, or None.
+    """Most recent change of the name, the GitHub owner or the website, or None.
 
     rows: identity-set events of one netuid (block_number, subnet_name,
     github_repo, subnet_url). Only events at or after the current registration
     count; earlier ones belong to a previous occupant of the netuid.
 
-    A change is real when the normalised name, the GitHub owner, or the website
-    host differs from the previous event. Not counted: the first identity after
-    registration, a blank field being filled or emptied, and edits that leave
-    all three unchanged (logo, description, contact, repo within the same owner).
+    Each field is compared with its last non-blank value. Not counted: the first
+    identity after registration, a field being filled or emptied, a name that only
+    extends the old one ("gm" to "SayGM"), a site moving within its own domain, and
+    edits that leave all three unchanged (logo, description, contact, another
+    repository of the same owner).
     """
-    seq = sorted((r for r in rows if int(r["block_number"]) >= registered_block),
-                 key=lambda r: int(r["block_number"]))
-    latest = None
-    for prev, cur in zip(seq, seq[1:]):
-        for what, field, norm in _FIELDS:
-            before, after = norm(prev.get(field)), norm(cur.get(field))
-            if before and after and before != after:
-                latest = {"block": int(cur["block_number"]), "what": what, "before": before, "after": after}
-                break
+    latest, last = None, {}
+    for event in _events(rows, registered_block):
+        changed = None
+        for what, field, norm, same in _FIELDS:
+            value = norm(event.get(field))
+            if not value:
+                continue
+            if what in last and not same(last[what], value) and changed is None:
+                changed = {"block": int(event["block_number"]), "what": what, "before": last[what], "after": value}
+            last[what] = value
+        latest = changed or latest
     return latest
+
+
+def project_start(rows, registered_block):
+    """Block at which the current project took over the netuid, or None if it has run it
+    since registration.
+
+    A project starts when the subnet gets a new name and the team behind it is another one:
+    the GitHub owner before the rename differs from the GitHub owner now (or one of the two
+    is unknown). A rename with the same GitHub owner is a rebrand by the same team, a
+    repository or website move alone is housekeeping, and a name that only extends the old
+    one is no rename at all. Identity-set events carry the whole identity each time.
+    """
+    events = _events(rows, registered_block)
+    if not events:
+        return None
+    owner_now = github_owner(events[-1].get("github_repo"))
+    renames, name, owner_before = [], None, ""
+    for event in events:
+        value = norm_name(event.get("subnet_name"))
+        if value:
+            if name is not None and not _same_name(name, value):
+                renames.append((int(event["block_number"]), owner_before))
+            name = value
+        owner_before = github_owner(event.get("github_repo"))
+    for block, owner in reversed(renames):
+        if not owner or not owner_now or owner != owner_now:
+            return block
+    return None
 
 
 # ------------------------------------------------------------------ windows

@@ -20,7 +20,6 @@ Needs  data/intermediate/history_wave<N>.csv (project start dates)
 Writes data/intermediate/podcasts_wave<N>.csv          one row per subnet
        data/evidence/podcast_episodes_wave<N>.csv      every episode considered, with its matches
 """
-import calendar
 import json
 import re
 import sys
@@ -37,6 +36,7 @@ from snprice.files import atomic_write  # noqa: E402
 from snprice.io import archive, read_json, read_table, write_json, write_table  # noqa: E402
 from snprice.metrics import spaced_count  # noqa: E402
 from snprice.textmatch import Matcher, subnet_entries, valid_for_project  # noqa: E402
+from snprice.timeutil import epoch  # noqa: E402
 
 DAY = 86400
 YEAR = 365 * DAY
@@ -45,10 +45,6 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
                          "Chrome/126.0 Safari/537.36", "Accept-Language": "en-US,en;q=0.9"}
 PAUSE = 1.5
 WATCH_NEEDS = (re.compile(r'"publishDate":"[^"]+"'), re.compile(r'"externalChannelId":"[^"]+"'))
-
-
-def epoch(iso):
-    return calendar.timegm(time.strptime(iso, "%Y-%m-%dT%H:%M:%SZ"))
 
 
 def get(url, cache):

@@ -22,19 +22,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from snprice import paths  # noqa: E402
 from snprice.github import DOC_ITEMS, GitHub, doc_checklist, token_from_environment  # noqa: E402
 from snprice.io import archive, read_table, write_table  # noqa: E402
+from snprice.timeutil import epoch, iso  # noqa: E402
 from snprice.windows import bounds  # noqa: E402
 
 SIBLING_PATTERN = ("miner", "validator", "subnet", "docs")
 MAX_SIBLINGS = 3
 SEARCH_GAP = 2.3          # the search API allows 30 requests a minute
-
-
-def iso(seconds):
-    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(seconds))
-
-
-def epoch(text):
-    return time.mktime(time.strptime(text[:19], "%Y-%m-%dT%H:%M:%S")) - time.timezone
 
 
 def author_id(commit):

@@ -10,23 +10,15 @@ pinned to the window by date.
 Writes  data/intermediate/x_accounts_wave<N>.csv   one row per subnet
 """
 import sys
-import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from snprice import paths  # noqa: E402
 from snprice.io import archive, ledger, read_table, write_table  # noqa: E402
+from snprice.timeutil import epoch, iso  # noqa: E402
 from snprice.windows import bounds  # noqa: E402
 from snprice.xapi import XClient, XError  # noqa: E402
-
-
-def iso(seconds):
-    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(seconds))
-
-
-def epoch(text):
-    return time.mktime(time.strptime(text[:19], "%Y-%m-%dT%H:%M:%S")) - time.timezone
 
 
 def main():

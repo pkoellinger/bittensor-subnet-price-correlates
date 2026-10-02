@@ -3,9 +3,10 @@
 Step 1 (Taostats): the largest stake positions of every subnet and the number of
 positions. Taostats only serves the current state, so this is run right after T.
 Step 2 (archive node): the alpha balance of each of those positions is re-read at
-block T, summed by wallet, and related to all alpha staked by wallets at T. The
-untraced remainder gives exact bounds (snprice.metrics.holder_bounds); more pages
-are pulled until the remainder is at most 1% or ten pages are used.
+block T, summed by wallet, and related to all alpha staked on the subnet at T (the
+custody wallet of validator baskets is left out of both). The untraced remainder
+gives exact bounds (snprice.metrics.holder_bounds); more pages are pulled until the
+remainder is at most 1% or ten pages are used.
 
 Writes
   data/intermediate/holders_wave<N>.csv          one row per subnet
@@ -36,35 +37,26 @@ def position_page(tao, netuid, page):
                    limit=PER_PAGE, page=page)
 
 
-def staked_by_wallets(arch, netuids, block):
-    """Alpha held as stake by wallets = AlphaOut - AlphaBurned - protocol-owned alpha."""
+def staked_total(arch, netuids, block):
+    """All alpha staked on hotkeys of a subnet (TotalAlphaStaked). Where the chain does not
+    keep that total, AlphaOut - AlphaBurned - protocol-owned alpha, which is within 1% of it."""
+    total = arch.read_map(P, "TotalAlphaStaked", netuids, block)
     out = arch.read_map(P, "SubnetAlphaOut", netuids, block)
     protocol = arch.read_map(P, "SubnetProtocolAlpha", netuids, block)
     burned = arch.read_map("AlphaAssets", "AlphaBurned", netuids, block,
                            part=lambda n: chain.twox64_concat(chain.u16(n)))
     return {
-        n: (chain.decode_uint(out[n], 0) - chain.decode_uint(burned[n], 0) - chain.decode_uint(protocol[n], 0)) / RAO
+        n: (chain.decode_uint(total[n]) if total[n] is not None else
+            chain.decode_uint(out[n], 0) - chain.decode_uint(burned[n], 0) - chain.decode_uint(protocol[n], 0)) / RAO
         for n in netuids
     }
 
 
 def balances_at(arch, netuid, positions, block):
-    """Alpha of each (hotkey, coldkey) position at `block`: shares x hotkey alpha / hotkey shares."""
-    n = chain.u16(netuid)
-    share_key, tot_alpha_key, tot_share_key = {}, {}, {}
-    for hk, ck in positions:
-        h, c = chain.blake2_128_concat(chain.ss58_decode(hk)), chain.blake2_128_concat(chain.ss58_decode(ck))
-        share_key[(hk, ck)] = chain.key(P, "AlphaV2", h, c, n)
-        tot_alpha_key[hk] = chain.key(P, "TotalHotkeyAlpha", h, n)
-        tot_share_key[hk] = chain.key(P, "TotalHotkeySharesV2", h, n)
-    vals = arch.read(list(share_key.values()) + list(tot_alpha_key.values()) + list(tot_share_key.values()), block)
-    out = {}
-    for (hk, ck), k in share_key.items():
-        shares = chain.decode_decimal(vals[k]) or 0.0
-        total_shares = chain.decode_decimal(vals[tot_share_key[hk]]) or 0.0
-        total_alpha = chain.decode_uint(vals[tot_alpha_key[hk]], 0) / RAO
-        out[(hk, ck)] = shares * total_alpha / total_shares if total_shares > 0 else 0.0
-    return out
+    """Alpha of each (hotkey, coldkey) position at `block` (snprice.chain.position_alpha)."""
+    keys = {pos: chain.position_keys(pos[0], pos[1], netuid) for pos in positions}
+    vals = arch.read(sorted({k for names in keys.values() for k in names.values()}), block)
+    return {pos: chain.position_alpha({name: vals[k] for name, k in names.items()}) for pos, names in keys.items()}
 
 
 def main():
@@ -83,7 +75,7 @@ def main():
         return
 
     arch = archive()
-    staked = staked_by_wallets(arch, netuids, T)
+    staked = staked_total(arch, netuids, T)
     rows, wallet_rows = [], []
     for n in netuids:
         body, page = first[n], 1

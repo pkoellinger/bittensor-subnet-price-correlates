@@ -7,6 +7,7 @@ from snprice.events import (
     last_real_identity_change,
     net_owner_trades,
     observed_window,
+    project_start,
 )
 
 RAO = 10 ** 9
@@ -139,6 +140,78 @@ class IdentityChangeTest(unittest.TestCase):
     def test_rows_may_arrive_in_any_order(self):
         rows = [ident(300, "Beta"), ident(200, "Alpha")]
         self.assertEqual(last_real_identity_change(rows, registered_block=100)["block"], 300)
+
+    def test_new_name_that_extends_the_old_one_is_the_same_name(self):
+        for old_name, new_name in (("gm", "SayGM"), ("AlphaRidge", "AlphaRidge.ai"), ("Bitsec.ai", "Bitsec"),
+                                   ("Score", "Score Vision")):
+            rows = [ident(200, old_name), ident(300, new_name)]
+            self.assertIsNone(last_real_identity_change(rows, registered_block=100), (old_name, new_name))
+
+    def test_short_name_inside_an_unrelated_longer_name_is_a_change(self):
+        rows = [ident(200, "UR"), ident(300, "Aurelius")]
+        self.assertEqual(last_real_identity_change(rows, registered_block=100)["what"], "name")
+
+    def test_moving_the_site_to_a_subdomain_is_not_a_change(self):
+        rows = [ident(200, "Cortex", "", "https://cortex.foundation"),
+                ident(300, "Cortex", "", "https://network.cortex.foundation/app")]
+        self.assertIsNone(last_real_identity_change(rows, registered_block=100))
+
+
+class ProjectStartTest(unittest.TestCase):
+    def test_sn111_project_starts_with_its_name_not_with_the_later_repo_move(self):
+        rows = [
+            ident(5760114, "oneoneone", "https://github.com/oneoneone-io/subnet-111"),
+            ident(8413360, "Claims", "https://github.com/oneoneone-io/subnet-111"),
+            ident(8476377, "Claims", "https://github.com/DeSciClaims/Claims"),
+        ]
+        self.assertEqual(project_start(rows, registered_block=5615562), 8413360)
+
+    def test_repository_or_site_moves_alone_do_not_start_a_project(self):
+        rows = [ident(200, "Chutes", "https://github.com/rayonlabs/chutes", "https://chutes.ai"),
+                ident(300, "Chutes", "https://github.com/chutesai/chutes", "https://chutes.io")]
+        self.assertIsNone(project_start(rows, registered_block=100))
+
+    def test_latest_of_several_renames(self):
+        rows = [ident(200, "Templar"), ident(300, "deprecated"), ident(400, "Teutonic"), ident(500, "Teutonic")]
+        self.assertEqual(project_start(rows, registered_block=100), 400)
+
+    def test_extended_name_does_not_start_a_project(self):
+        self.assertIsNone(project_start([ident(200, "gm"), ident(300, "SayGM")], registered_block=100))
+
+    def test_blank_name_between_two_names(self):
+        # the name is cleared and later set to something new: the project starts with the new name
+        rows = [ident(200, "Alpha"), ident(300, ""), ident(400, "Beta")]
+        self.assertEqual(project_start(rows, registered_block=100), 400)
+        rows = [ident(200, "Alpha"), ident(300, ""), ident(400, "Alpha")]
+        self.assertIsNone(project_start(rows, registered_block=100))
+
+    def test_events_of_a_previous_occupant_are_ignored(self):
+        rows = [ident(50, "Old"), ident(200, "New")]
+        self.assertIsNone(project_start(rows, registered_block=100))
+
+    def test_rename_by_the_same_team_is_a_rebrand_not_a_new_project(self):
+        rows = [ident(200, "Quantum Innovate", "https://github.com/qbittensor-labs/quantum"),
+                ident(300, "Enigma", "https://github.com/qbittensor-labs/enigma")]
+        self.assertIsNone(project_start(rows, registered_block=100))
+
+    def test_project_starts_at_the_latest_rename_that_came_with_another_team(self):
+        # x renames A to B (rebrand), then team y takes over and renames to C
+        rows = [ident(200, "A", "https://github.com/x/a"), ident(300, "B", "https://github.com/x/b"),
+                ident(400, "C", "https://github.com/y/c")]
+        self.assertEqual(project_start(rows, registered_block=100), 400)
+        # team y takes over with the rename to B, and later rebrands to C
+        rows = [ident(200, "A", "https://github.com/x/a"), ident(300, "B", "https://github.com/y/b"),
+                ident(400, "C", "https://github.com/y/c")]
+        self.assertEqual(project_start(rows, registered_block=100), 300)
+
+    def test_rename_without_a_known_repository_owner_counts_as_a_new_project(self):
+        rows = [ident(200, "Alpha", ""), ident(300, "Beta", "https://github.com/y/b")]
+        self.assertEqual(project_start(rows, registered_block=100), 300)
+        rows = [ident(200, "Alpha", "https://github.com/x/a"), ident(300, "Beta", "")]
+        self.assertEqual(project_start(rows, registered_block=100), 300)
+
+    def test_no_events(self):
+        self.assertIsNone(project_start([], registered_block=100))
 
 
 class ContactTest(unittest.TestCase):
