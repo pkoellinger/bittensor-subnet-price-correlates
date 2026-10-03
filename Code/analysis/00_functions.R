@@ -34,7 +34,11 @@ if (dir.exists(user_lib)) .libPaths(c(user_lib, .libPaths()))
 # ---- reading --------------------------------------------------------------------------------
 read_dataset  <- function() read.csv(DATASET, check.names = FALSE, na.strings = "", encoding = "UTF-8")
 read_codebook <- function() read.csv(CODEBOOK, check.names = FALSE, na.strings = character(0), encoding = "UTF-8")
-read_blocks   <- function() read.csv(BLOCKS, check.names = FALSE, na.strings = character(0), encoding = "UTF-8")
+read_blocks   <- function() {                      # every column as text ("" stays ""), block_order as integer
+  fb <- read.csv(BLOCKS, check.names = FALSE, na.strings = character(0), colClasses = "character", encoding = "UTF-8")
+  fb$block_order <- as.integer(fb$block_order)
+  fb
+}
 
 # ---- saving: a changed file moves the previous version to Output/OLD/<stem>_v<N>.<ext> ---------
 save_output <- function(write_fun, filename) {
@@ -59,11 +63,13 @@ save_output <- function(write_fun, filename) {
   file.rename(tmp, path)
   invisible(path)
 }
-save_csv <- function(df, filename) {
-  save_output(function(p) write.csv(df, p, row.names = FALSE, na = "", fileEncoding = "UTF-8"), paste0(PREFIX, filename))
+save_csv <- function(df, filename) {              # binary connection: LF line ends on every platform
+  save_output(function(p) { con <- file(p, open = "wb", encoding = "UTF-8"); on.exit(close(con))
+                            write.csv(df, con, row.names = FALSE, na = "") }, paste0(PREFIX, filename))
 }
 save_text <- function(lines, filename) {
-  save_output(function(p) writeLines(lines, p, useBytes = TRUE), paste0(PREFIX, filename))
+  save_output(function(p) { con <- file(p, open = "wb", encoding = "UTF-8"); on.exit(close(con))
+                            writeLines(lines, con, useBytes = TRUE) }, paste0(PREFIX, filename))
 }
 save_png <- function(filename, plot_fun, width = 2400, height = 2400, res = 150) {
   save_output(function(p) { png(p, width = width, height = height, res = res, type = "cairo"); on.exit(dev.off()); plot_fun() },
@@ -157,6 +163,122 @@ cluster_se <- function(fit, cluster) {
 vif <- function(fit) {
   X <- model.matrix(fit)[, -1, drop = FALSE]
   sapply(seq_len(ncol(X)), function(j) 1 / (1 - summary(lm(X[, j] ~ X[, -j]))$r.squared))
+}
+
+# ---- the analysis table ---------------------------------------------------------------------
+PRE_ANALYSIS_COMMIT <- "1d034af"       # the commit that froze ANALYSIS-PLAN.md and feature_blocks.csv
+
+# indicators of applicability (structural missingness) and the controls, as ANALYSIS-PLAN.md defines them
+derived_columns <- function(d) {
+  data.frame(
+    has_repo = as.integer(d$gh_status %in% c("found", "owner_only")),
+    has_x = as.integer(d$x_status == "found"),
+    miner_paid = as.integer(d$flag_no_miner_paid_30d == 0),
+    miner_paid_lag = as.integer(!is.na(d$miners_paid_coldkeys_lag30) & d$miners_paid_coldkeys_lag30 > 0),
+    has_holders = as.integer(d$holders_positions_n > 0),
+    started = as.integer(d$startup_mode == 0),
+    started_lag = as.integer(!is.na(d$days_since_first_emission) & d$days_since_first_emission > 30),
+    owner_changed_180d = as.integer(!is.na(d$days_since_owner_change) & d$days_since_owner_change <= 180),
+    identity_changed_180d = as.integer(!is.na(d$days_since_identity_change) & d$days_since_identity_change <= 180),
+    log_age = log1p(d$days_since_registration),
+    renamed_project = as.integer(d$project_age_days < d$days_since_registration - 1))
+}
+outcome_columns <- function(d) {
+  data.frame(log_price_spot = log(d$price_tao), log_price_avg30 = log(d$price_tao_avg30),
+             log_price_lag30 = log(d$price_tao_lag30), logret_30d = d$logret_30d, price_tao = d$price_tao,
+             full_window = as.integer(d$window_days_observed_30d >= 30))
+}
+applies_vector <- function(name, der) if (name == "all") rep(TRUE, nrow(der)) else der[[name]] == 1
+
+# Transformed, winsorised, zero-filled features, indicators and composites for every subnet.
+# Winsorising limits, z-score means and SDs and PC1 loadings come from the rows in `fit`
+# (all rows for the descriptive table, the training fold inside the cross-validation).
+# Returns list(table, members): the table and the composite definitions used.
+prepare_features <- function(d, fb, fit = seq_len(nrow(d))) {
+  rows <- fb[fb$role %in% c("feature", "feature_lag", "flag") & fb$type %in% c("number", "integer", "binary") &
+             fb$prediction_set != "none", ]
+  der <- derived_columns(d)
+  n <- nrow(d)
+  X <- matrix(NA_real_, n, nrow(rows), dimnames = list(NULL, rows$variable))
+  Z <- X                                            # z-scores on the applicable rows, 0 elsewhere, NA if missing
+  applies <- matrix(FALSE, n, nrow(rows), dimnames = list(NULL, rows$variable))
+  for (i in seq_len(nrow(rows))) {
+    x <- transform_values(as.numeric(d[[rows$variable[i]]]), rows$transform[i])
+    a <- applies_vector(rows$applies_to[i], der)
+    ok <- a & !is.na(x)
+    fit_ok <- intersect(fit, which(ok))
+    if (length(fit_ok) >= 10) {
+      q <- quantile(x[fit_ok], c(0.01, 0.99), names = FALSE)
+      x <- pmin(pmax(x, q[1]), q[2])
+    }
+    m <- if (length(fit_ok)) mean(x[fit_ok]) else 0
+    s <- if (length(fit_ok) > 1) sd(x[fit_ok]) else 0
+    z <- rep(0, n)
+    z[ok] <- if (is.finite(s) && s > 0) (x[ok] - m) / s else 0
+    z[a & is.na(x)] <- NA
+    x[!a] <- 0                                      # does not apply: the indicator carries it
+    x[a & is.na(x)] <- m                            # missing on an applicable row: the fit mean
+    X[, i] <- x; Z[, i] <- z; applies[, i] <- a
+  }
+  comps <- unique(rows$composite[rows$composite != "" & rows$direction != ""])
+  C <- matrix(0, n, 2 * length(comps), dimnames = list(NULL, c(comps, paste0(comps, "_pc1"))))
+  members <- list(); comp_applies <- list()
+  for (cname in comps) {
+    idx <- which(rows$composite == cname & rows$direction != "")
+    signs <- as.numeric(rows$direction[idx])
+    a <- applies[, idx[1]]
+    Zs <- sweep(Z[, idx, drop = FALSE], 2, signs, `*`)
+    unit <- rowMeans(Zs, na.rm = TRUE); unit[!a | is.nan(unit)] <- 0
+    pc1 <- unit
+    if (length(idx) > 1) {
+      Zf <- Zs; Zf[is.na(Zf)] <- 0
+      fit_a <- intersect(fit, which(a))
+      if (length(fit_a) > length(idx)) {
+        p <- prcomp(Zf[fit_a, , drop = FALSE], center = TRUE, scale. = FALSE)
+        score <- as.numeric(scale(Zf, center = p$center, scale = FALSE) %*% p$rotation[, 1])
+        if (cor(score[fit_a], unit[fit_a]) < 0) score <- -score
+        pc1 <- score; pc1[!a] <- 0
+      }
+    }
+    C[, cname] <- unit; C[, paste0(cname, "_pc1")] <- pc1
+    members[[cname]] <- paste0(ifelse(signs > 0, "+", "-"), rows$variable[idx], collapse = " ")
+    comp_applies[[cname]] <- rows$applies_to[idx[1]]
+  }
+  table <- data.frame(netuid = d$netuid, subnet_name = d$subnet_name, team_id = d$team_id, category8 = d$category8,
+                      outcome_columns(d), der, C, X, check.names = FALSE)
+  list(table = table, members = members, applies = comp_applies, rows = rows)
+}
+
+# the regressors of each specification (ANALYSIS-PLAN.md, section 6); composites by name
+CONTROLS <- c("log_age", "renamed_project", "flag_placeholder_identity", "startup_mode")
+SPECS <- list(
+  # startup_mode is not in specification 1: started_lag nests it (every startup subnet had not started in
+  # August either), and the one subnet that had started in September only would otherwise carry leverage 1
+  spec1 = c("development_lag", "miner_scale_lag", "miner_concentration_lag", "burn_mean_lag30", "validator_dispersion_lag",
+            "owner_commitment_lag", "attention_lag", "x_posts_original_lag30",
+            setdiff(CONTROLS, "startup_mode"), "has_repo", "has_x", "miner_paid_lag", "started_lag"),
+  spec2 = c("development", "presence", "miner_scale", "miner_concentration", "burn_mean_30d", "validator_dispersion",
+            "owner_commitment", "yuma3_on", "commit_reveal_on", "owner_changed_180d", "identity_changed_180d",
+            CONTROLS, "flag_full_burn_30d", "has_repo", "miner_paid", "started"))
+SPECS$spec3 <- c(SPECS$spec2, "attention", "x_reach", "has_x", "dev_popularity", "holder_dispersion", "has_holders",
+                 "owner_net_buy_tao_30d", "owner_cut_sold_ratio_30d", "owner_bought_any_90d",
+                 "baskets_net_buyers_n_30d", "basket_net_buy_tao_30d", "basket_alpha_share_issued",
+                 "tao_emission_on_share_30d", "emission_flag_on_share_30d", "registrations_30d", "reg_cost_tao_now")
+COMPOSITES <- c("development", "presence", "miner_scale", "miner_concentration", "validator_dispersion", "owner_commitment",
+                "attention", "x_reach", "dev_popularity", "holder_dispersion", "development_lag", "miner_scale_lag",
+                "miner_concentration_lag", "validator_dispersion_lag", "owner_commitment_lag", "attention_lag")
+
+# the variables of a prediction set (F1, F2 or F3) in the analysis table, category8 as dummies
+prediction_set <- function(fb, table, set) {
+  levels_in <- switch(set, F1 = "F1", F2 = c("F1", "F2"), F3 = c("F1", "F2", "F3"))
+  vars <- fb$variable[fb$prediction_set %in% levels_in & fb$variable %in% names(table) & fb$type != "category"]
+  M <- as.matrix(table[, vars, drop = FALSE])
+  if (set != "F1") {
+    dummies <- model.matrix(~ category8, data = transform(table, category8 = factor(category8)))[, -1, drop = FALSE]
+    colnames(dummies) <- paste0("category8_", gsub("[^A-Za-z0-9]+", "_", sub("^category8", "", colnames(dummies))))
+    M <- cbind(M, dummies)
+  }
+  M[, apply(M, 2, sd) > 0, drop = FALSE]
 }
 
 # ---- cross-validation -----------------------------------------------------------------------

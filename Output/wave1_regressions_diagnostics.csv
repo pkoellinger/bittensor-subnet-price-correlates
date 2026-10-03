@@ -1,0 +1,20 @@
+"model","outcome","n","r2","max_vif","p_breusch_pagan","five_most_influential_netuids","r2_without_five"
+"spec1_august_state","log 30-day average price",124,0.40676,11.166,0.032977,"36 95 90 71 120",
+"spec1_august_state","log spot price",124,0.40608,11.166,0.016416,"90 95 80 99 120",
+"spec2_all_128_subnets","log spot price",128,0.33441,6.7823,0.0024134,"95 15 120 16 22",
+"spec2_pc1_composites","log 30-day average price",124,0.3535,6.144,0.016569,"95 16 15 66 3",
+"spec2_pc1_composites","log spot price",124,0.36208,6.144,0.01256,"95 15 120 16 66",
+"spec2_raw_price","price in TAO (not logged)",124,0.24888,6.4425,0.31767,"51 64 120 4 95",
+"spec2_september_no_price_link","log 30-day average price",124,0.32908,6.4425,0.0051587,"95 16 15 120 3",0.37537
+"spec2_september_no_price_link","log spot price",124,0.33898,6.4425,0.0042512,"95 15 120 16 110",0.36274
+"spec2_without_5_most_influential","log 30-day average price",119,0.37537,6.5926,0.021933,"4 66 29 64 51",
+"spec2_without_5_most_influential","log spot price",119,0.36274,6.454,0.0041597,"4 3 66 51 22",
+"spec2plus_category8","log 30-day average price",124,0.43345,7.6693,0.0064937,"15 66 95 99 8",
+"spec2plus_category8","log spot price",124,0.43902,7.6693,0.0071384,"15 99 66 72 8",
+"spec3_pc1_composites","log 30-day average price",124,0.80213,11.308,0.1574,"51 29 46 95 11",
+"spec3_pc1_composites","log spot price",124,0.78394,11.308,0.22837,"51 46 90 29 38",
+"spec3_plus_two_way_and_mechanical","log 30-day average price",124,0.7953,11.39,0.15757,"51 29 46 95 107",0.85492
+"spec3_plus_two_way_and_mechanical","log spot price",124,0.77902,11.39,0.21559,"51 46 90 29 38",0.84291
+"spec3_without_5_most_influential","log 30-day average price",119,0.85492,11.917,0.58,"36 11 110 34 16",
+"spec3_without_5_most_influential","log spot price",119,0.84291,12.252,0.76604,"36 110 11 41 107",
+"specR_rehearsal_wave2_test","log return over September",124,0.35867,11.184,0.022968,"103 70 112 80 79",

@@ -1,15 +1,15 @@
 variable,role,type,block,block_order,composite,direction,transform,applies_to,spec,prediction_set,price_link,note
 team_n_subnets,feature,integer,age,1,,,log1p,all,pred,F2,none known,
-flag_placeholder_identity,flag,binary,flags,29,,,none,all,control,F2,,control in every specification
+flag_placeholder_identity,flag,binary,flags,29,,,none,all,control,F1,,control in every specification and prediction set
 flag_registered_in_window,flag,binary,flags,29,,,none,,none,none,,defines the regression sample (the 124 subnets with a full window are kept)
 window_days_observed_30d,flag,integer,flags,29,,,log1p,,none,none,,defines the regression sample
-startup_mode,flag,binary,flags,29,,,none,all,control,F2,,control in every specification
+startup_mode,flag,binary,flags,29,,,none,all,control,F1,,control in every specification and prediction set
 flag_full_burn_30d,flag,binary,flags,29,,,none,all,control,F2,,control in specifications 2 and 3 (a September state)
 flag_no_miner_paid_30d,flag,binary,flags,29,,,none,,none,none,,its complement is the indicator miner_paid
 burn_now,feature,number,burn,9,,,none,started,pred,F2,enters the emission gate together with the price,end-of-window value of burn_mean_30d
-burn_mean_30d,feature,number,burn,9,burn_mean_30d,+1,none,started,2,F2,enters the emission gate together with the price,"single variable; a validator choice that enters the emission gate, not a mechanical response to the price"
+burn_mean_30d,feature,number,burn,9,burn_mean_30d,,none,started,2,F2,enters the emission gate together with the price,"single variable; a validator choice that enters the emission gate, not a mechanical response to the price"
 burn_time_share_ge50_30d,feature,number,burn,9,,,none,started,pred,F2,enters the emission gate together with the price,threshold version of burn_mean_30d
-burn_mean_lag30,feature_lag,number,burn_lag,23,burn_mean_lag30,+1,none,started_lag,1,F1,none known,single
+burn_mean_lag30,feature_lag,number,burn_lag,23,burn_mean_lag30,,none,started_lag,1,F1,none known,single
 burn_time_share_ge50_lag30,feature_lag,number,burn_lag,23,,,none,started_lag,pred,F1,none known,
 miners_paid_hotkeys_30d,feature,integer,miner_scale,7,,,log1p,all,pred,F2,none known,near duplicate of miners_paid_coldkeys_30d
 miners_paid_coldkeys_30d,feature,integer,miner_scale,7,miner_scale,+1,log1p,all,2,F2,none known,

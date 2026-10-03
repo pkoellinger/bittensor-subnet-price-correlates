@@ -77,6 +77,14 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [x] One-time scheduled task on the collecting laptop: 31 Oct 2026, 09:30 local time
 - [ ] Run: `python collect/make_wave_config.py 2`, `python collect/run_all.py --config snapshot_wave2.json`, the four coding steps, `build/build_panel.py`
 
+### Phase 6: Wave 1 analyses — DONE (2 Oct 2026)
+
+Philipp's choices (2 Oct 2026): log price; indicator plus zero-fill for structural missingness; a priori block composites with unit weights for the explanatory regression, penalised models and a random forest in the predictive comparison; blinded grouping; log1p plus winsorising; three nested OLS specifications plus the `logret_30d` rehearsal; `glmnet` and `randomForest`; repeated team-grouped 10-fold CV; the wave 2 forward test pre-registered.
+
+- [x] `Code/analysis/ANALYSIS-PLAN.md` and `feature_blocks.csv` committed before any correlation with the price was computed (commit `1d034af`, the pre-analysis commit)
+- [x] Scripts `00` to `07` and `run_all.R` in `Code/analysis`; results in `Output/wave1_*`; the page of numbers is `Output/wave1_results_summary.md`; the reproduction guide is `Code/analysis/README.md`
+- [ ] After wave 2: the pre-registered forward test (plan, section 9)
+
 ## Risks
 
 | Risk | Impact | Likelihood | Mitigation |
@@ -155,6 +163,12 @@ Because only 128 subnets exist, the design adds time: features for September, la
 | 2026-10-02 | Subnet 120 (Affine): the site answered on a fourth visit at 14:27 UTC on 2 Oct and was read. Both coders code its five website facts 0; its status is `live`. `build/coding_material.py web prepare <folder> <netuid ...>` hands out single subnets, and `web merge` replaces a coder's earlier answer for them | The plan was to visit again at the final build. The failed visit stays beside the new one in the raw folder |
 | 2026-10-02 | The coder files hold 938 labels for 937 pairs | One pair of the first batch disappeared when links were removed before matching; its two labels stay in the files and are not used |
 | 2026-10-02 | `.gitattributes` fixes LF line ends for text files on every platform | The file hash recorded for a frozen wave must match the file after a checkout on Windows |
+| 2026-10-02 | **Analyses follow a pre-analysis plan committed before any feature was correlated with the price** (`Code/analysis/ANALYSIS-PLAN.md`, commit `1d034af`). Descriptives and the feature-only correlation matrix were the only inputs to the block table | With 124 rows and about 140 features, variables chosen after seeing their correlation with the price would make the R² and the importance ranking meaningless |
+| 2026-10-02 | Regression and cross-validation sample = the 124 subnets observed for the whole September window; the four registered inside it have no lagged values and a partial 30-day average | Same rows for every specification, so R² values compare |
+| 2026-10-02 | Composites are unit-weighted means of signed z-scores on the rows where the block applies; PC1 is a robustness column | PC1 and the mean agree at r 0.98 (development) and are indistinguishable in meaning; unit weights need no estimation inside the folds |
+| 2026-10-02 | Specification 1 (August state) carries `started_lag` but not `startup_mode` | `started_lag` nests it; one subnet (36) started emissions in September only and would otherwise have leverage 1 |
+| 2026-10-02 | Out-of-sample accuracy by 10-fold cross-validation with 20 repeats, teams kept together, every estimated quantity (winsorising limits, z-scores, PC loadings, λ) fitted on the training fold | Subnets of one team share organisation-level GitHub and X numbers; anything fitted on all rows leaks |
+| 2026-10-02 | `glmnet` 5.1 and `randomForest` 4.7.1.2 installed in the user library; everything else base R | The two standard benchmarks at this sample size; versions recorded in `Output/wave1_r_session_info.txt` |
 | 2026-10-02 | **The repository moved into Philipp's project folder `C:\Users\phili\Coding\Claims\Subnet price analyses\`** with his layout: `Input/` (the dataset and the codebook; a replaced file moves to `Input/OLD/` with a version number), `Code/collection/` (this pipeline, with `data/chain`, `data/evidence`, `data/manual`), `Code/analysis/` (the analyses, later), `Output/` (results; replaced results move to `Output/OLD/` numbered), `Temp/` (not synced: `collection-cache/` with the former `data/raw` and `data/intermediate`, `coding/` for the coders' working folders). Git history and the tag `wave1` are kept; the tag still points at the old layout. The GitHub repository keeps its name | Everything an outside party needs to check the data and the results is in one synced folder; the API caches stay out of git but survive for wave 2. `snprice/paths.py` is the one place that knows the layout |
 
 ## Open Questions
