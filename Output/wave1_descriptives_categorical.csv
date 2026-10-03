@@ -1,0 +1,37 @@
+"variable","label","type","value","n","share"
+"gh_status","GitHub repository: found, owner_only (owner page listed, main repository chosen by rule), not_listed, dead","category","found",100,0.78125
+"gh_status","GitHub repository: found, owner_only (owner page listed, main repository chosen by rule), not_listed, dead","category","not_listed",21,0.164062
+"gh_status","GitHub repository: found, owner_only (owner page listed, main repository chosen by rule), not_listed, dead","category","owner_only",4,0.03125
+"gh_status","GitHub repository: found, owner_only (owner page listed, main repository chosen by rule), not_listed, dead","category","dead",3,0.0234375
+"website_status","Website: live, live_no_text, parked, blocked, replaced_by_security_software, server_error, dead, not_listed","category","live",101,0.789062
+"website_status","Website: live, live_no_text, parked, blocked, replaced_by_security_software, server_error, dead, not_listed","category","not_listed",22,0.171875
+"website_status","Website: live, live_no_text, parked, blocked, replaced_by_security_software, server_error, dead, not_listed","category","dead",2,0.015625
+"website_status","Website: live, live_no_text, parked, blocked, replaced_by_security_software, server_error, dead, not_listed","category","replaced_by_security_software",2,0.015625
+"website_status","Website: live, live_no_text, parked, blocked, replaced_by_security_software, server_error, dead, not_listed","category","live_no_text",1,0.0078125
+"category","Product category (16 categories)","category","AI Training & Model Improvement",18,0.140625
+"category","Product category (16 categories)","category","Miscellaneous",15,0.117188
+"category","Product category (16 categories)","category","Compute, Storage & Network Infrastructure",13,0.101562
+"category","Product category (16 categories)","category","AI Inference & Model Serving",9,0.0703125
+"category","Product category (16 categories)","category","Cybersecurity, Authenticity & Verification",9,0.0703125
+"category","Product category (16 categories)","category","Financial Markets & Investing",9,0.0703125
+"category","Product category (16 categories)","category","AI Agents & Automation",8,0.0625
+"category","Product category (16 categories)","category","Data & Database Construction",7,0.0546875
+"category","Product category (16 categories)","category","Media & Voice AI",7,0.0546875
+"category","Product category (16 categories)","category","Scientific & Technical Problem Solving",7,0.0546875
+"category","Product category (16 categories)","category","AI Optimization & Compression",6,0.046875
+"category","Product category (16 categories)","category","DeFi & Crypto Infrastructure",6,0.046875
+"category","Product category (16 categories)","category","Marketing, Sales & Commerce",4,0.03125
+"category","Product category (16 categories)","category","Robotics & Physical AI",4,0.03125
+"category","Product category (16 categories)","category","Forecasting & Prediction",3,0.0234375
+"category","Product category (16 categories)","category","Search & Knowledge Retrieval",3,0.0234375
+"category8","Product category collapsed to 8 groups","category","Media, marketing & other",26,0.203125
+"category8","Product category collapsed to 8 groups","category","Training & optimisation",24,0.1875
+"category8","Product category collapsed to 8 groups","category","Compute & inference",22,0.171875
+"category8","Product category collapsed to 8 groups","category","Agents, data & search",18,0.140625
+"category8","Product category collapsed to 8 groups","category","Finance & forecasting",12,0.09375
+"category8","Product category collapsed to 8 groups","category","Science & robotics",11,0.0859375
+"category8","Product category collapsed to 8 groups","category","Security & verification",9,0.0703125
+"category8","Product category collapsed to 8 groups","category","DeFi & crypto infrastructure",6,0.046875
+"x_status","X account: found, dead (handle listed but account gone), not_listed","category","found",92,0.71875
+"x_status","X account: found, dead (handle listed but account gone), not_listed","category","not_listed",33,0.257812
+"x_status","X account: found, dead (handle listed but account gone), not_listed","category","dead",3,0.0234375
