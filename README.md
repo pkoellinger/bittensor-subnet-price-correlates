@@ -9,26 +9,40 @@ code that collected every variable.
 Wave 2 is scheduled for 31 Oct 2026 (`WAVE2.md`); it adds the price change over October and
 joins both waves into a panel. `PLAN.md` has the plan and the log of every design decision.
 
-## Files
+## Folder layout
 
 | Path | What it is |
 |---|---|
-| `data/final/subnets_wave1_2026-09-30.csv` | The dataset: 128 rows, 171 columns |
-| `data/final/subnets_wave1_2026-09-30.rds` | The same as an R data frame; every column carries its label, unit, role and source as attributes |
-| `codebook.csv` | One row per variable: label, type, unit, window, role, as-of time, source, script, link to price, notes |
+| `Input/subnets_wave1_2026-09-30.csv` | The dataset: 128 rows, 171 columns |
+| `Input/subnets_wave1_2026-09-30.rds` | The same as an R data frame; every column carries its label, unit, role and source as attributes |
+| `Input/codebook.csv` | One row per variable: label, type, unit, window, role, as-of time, source, script, link to price, notes |
+| `Code/collection/` | The pipeline that collected the dataset (below) |
+| `Code/analysis/` | The scripts of the analyses (empty until the pre-analysis plan is written) |
+| `Output/` | Results of the analyses: regressions, cross-validation, figures, with self-explanatory file names |
+| `PLAN.md` | Plan, status and the log of every design decision |
+| `WAVE2.md` | Runbook for a follow-up wave and the panel that joins the waves |
+| `CLAUDE.md` | Working note: conventions of the folders, commands, guardrails |
+
+`Input/` holds what the analyses read. When a file in `Input/` or `Output/` is replaced by a
+newer version, the file keeps its name and the previous version moves to `Input/OLD/` or
+`Output/OLD/` with a version number (`name_v1.csv`, `name_v2.csv`, ...). `Temp/` and every
+`OLD/` folder stay out of git: `Temp/collection-cache/` holds the raw API answers and the
+wallet-level tables (every script rebuilds them), `Temp/coding/` the working folders of the
+coders.
+
+Inside `Code/collection/` (paths in this file, in `PLAN.md` and in the codebook's `script`
+column are relative to it):
+
+| Path | What it is |
+|---|---|
 | `collect/` | One script per block of variables; `collect/run_all.py --list` shows the order |
 | `build/` | Joins the collected tables, validates the result, writes the `.rds`, runs the cross-checks |
 | `snprice/` | Shared library (chain decoding, API clients with budgets, text matching, clustering) |
-| `tests/` | 506 unit tests of the library |
+| `tests/` | 510 unit tests of the library |
 | `config/` | Snapshot definition, alias table, podcast list, coding protocol, coder briefs, screening and reading rules for commentator posts |
 | `data/chain/` | Tables read from the chain: reproducible without any API key |
 | `data/evidence/` | What each coded or matched value rests on: page addresses, episode lists, session lists, coder answers |
-| `data/manual/` | Everything decided by a person or a coder, with the reason |
-| `PLAN.md` | Plan, status and the log of every design decision |
-| `WAVE2.md` | Runbook for a follow-up wave and the panel that joins the waves |
-
-Raw API answers and wallet-level tables are not in the repository (`data/raw`, `data/intermediate`).
-Every script rebuilds them.
+| `data/manual/` | Everything decided by a person, a coder or a reader, with the reason |
 
 ## Design
 
@@ -76,18 +90,20 @@ Four subnets were registered inside September. Their windows start at registrati
 | Podcasts | `podcast_episodes_12m` | RSS feeds, YouTube | `15_podcasts` |
 | Exploit 26 summit | `exploit26_presented`, `exploit26_mentions_n` | stream.vidaio.io | `16_exploit` |
 
-`codebook.csv` defines every column.
+`Input/codebook.csv` defines every column.
 
 ## Replicate
 
 Requirements: Python 3 (run with 3.12; standard library only), `curl`, Chrome, and R (run with 4.6.1) for the `.rds`.
 
+All commands run from `Code/collection`:
+
 ```bash
-python -m unittest discover -s tests          # 506 tests, under a second
+python -m unittest discover -s tests          # 510 tests, under a second
 python collect/run_all.py --list              # the steps in order
 python collect/run_all.py                     # runs them; stops where a person has to act
-python build/build_dataset.py && python build/validate.py --final
-Rscript build/build_rds.R data/final/subnets_wave1_2026-09-30.csv codebook.csv
+python build/build_dataset.py && python build/validate.py --final      # writes Input/<dataset>.csv
+Rscript build/build_rds.R ../../Input/subnets_wave1_2026-09-30.csv ../../Input/codebook.csv
 python build/check_sources.py                 # chain prices against Taostats
 python build/check_doc_checklist.py           # documentation checklist against a reader
 ```

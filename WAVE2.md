@@ -23,16 +23,17 @@ and the decisions log in `PLAN.md` first.
 | Taostats | at most 15 calls a minute; never two collectors at once (the key allows 20 a minute and 20,000 a month and is shared with daily tasks and teammates); the ledger stops at 10,000 per wave |
 | X | 25 USD for a follow-up wave, enforced by the ledger; posts are read only for accounts with `approved = yes` in `config/kol_accounts.csv`; the list is the project owner's and is not changed |
 | Secrets | keys come from the environment or `.env`; never print, paste or commit them |
-| Repository | stays private; commits and pushes to `main` are fine; nothing in `data/raw` or `data/intermediate` is committed; post text and page text never enter the repository |
+| Repository | stays private; commits and pushes to `main` are fine; nothing in `Temp/` is committed; post text and page text never enter the repository |
 | Websites | addresses are validated before the browser sees them; warnings of security software and bot checks are not bypassed; documents are read in the sandboxed browser, not downloaded |
 | No invented values | a step that cannot get its data leaves the value missing and says why |
 
 ## Steps
 
-Run from the repository root. Python: `C:\dev\tools\python\Python312\python.exe` on the
+Run from `Code/collection`. Python: `C:\dev\tools\python\Python312\python.exe` on the
 collecting laptop (`/c/dev/tools/python/Python312/python.exe` in Git Bash); R:
 `C:\Program Files\R\R-4.6.1\bin\Rscript.exe`. Long steps belong in the background; every
-answer is saved, so a step that was interrupted continues where it stopped.
+answer is saved under `Temp/collection-cache/`, so a step that was interrupted continues
+where it stopped. Working folders for the coders go under `Temp/coding/`.
 
 1. `python -m unittest discover -s tests` must pass.
 2. `python collect/make_wave_config.py 2` writes `config/snapshot_wave2.json` (it refuses
@@ -54,10 +55,10 @@ answer is saved, so a step that was interrupted continues where it stopped.
      `config/coder_briefs.md`, rule in `config/kol_attribution.md`), `attribution merge`.
      Only pairs matched by the subnet's number alone are read, and only those not read in
      wave 1. `build/kol_polarity.py` stops until every such pair has both readings.
-4. `python build/build_dataset.py`, `python build/validate.py --final`,
-   `Rscript build/build_rds.R data/final/subnets_wave2_<date>.csv codebook.csv`.
+4. `python build/build_dataset.py` (writes `Input/subnets_wave2_<date>.csv`), `python build/validate.py --final`,
+   `Rscript build/build_rds.R ../../Input/subnets_wave2_<date>.csv ../../Input/codebook.csv`.
 5. `python build/build_panel.py`, then
-   `Rscript build/build_rds.R data/final/subnets_panel.csv data/final/subnets_panel_codebook.csv`.
+   `Rscript build/build_rds.R ../../Input/subnets_panel.csv ../../Input/subnets_panel_codebook.csv`.
 6. `python build/check_sources.py` (the settings check needs Taostats' daily record at the
    snapshot block; if Taostats keeps its record a block earlier or later, say so and move on).
 7. Commit, push, and add a line per decision to `PLAN.md`.
@@ -102,5 +103,5 @@ answer is saved, so a step that was interrupted continues where it stopped.
 ## Report at the end
 
 State what was collected and what was not, the Taostats calls and X dollars used (from
-`data/raw/wave2/ledger.json`), the agreement between coders, the number of subnets evicted
+`Temp/collection-cache/raw/wave2/ledger.json`), the agreement between coders, the number of subnets evicted
 since wave 1, every difference that `build_panel.py` listed, and every decision that was made.

@@ -1,6 +1,6 @@
 # PLAN: Bittensor subnet price-correlates dataset
 
-**Status:** WAVE 1 COMPLETE (128 × 171, validated, frozen under the tag `wave1`); wave 2 is scheduled for 31 Oct 2026
+**Status:** WAVE 1 COMPLETE (128 × 171, validated, frozen under the tag `wave1`); wave 2 is scheduled for 31 Oct 2026; the repository moved into the project folder `Subnet price analyses` (Input, Code, Output, Temp) on 2 Oct 2026
 **Created:** 2026-10-02
 **Last updated:** 2026-10-02
 **Owner:** Philipp Koellinger (decisions), Claude (build)
@@ -66,7 +66,7 @@ Because only 128 subnets exist, the design adds time: features for September, la
 - [x] `codebook.csv`, `build/build_dataset.py`, `build/validate.py`, `build/build_rds.R`, README
 - [x] Cross-checks: `build/check_sources.py` (chain prices against Taostats), `build/check_doc_checklist.py`
 - [x] Build with lineage columns
-- [x] Final build with commentator columns: 128 × 171, `validate.py --final` passes, 506 tests pass. Frozen under the tag `wave1`. sha256 of `data/final/subnets_wave1_2026-09-30.csv`: `9793e83facb8bfd7762f2559d70b2bcb8ced2b52ffa6ee753002d8e8c35cb32f`
+- [x] Final build with commentator columns: 128 × 171, `validate.py --final` passes, 506 tests pass. Frozen under the tag `wave1`. sha256 of `Input/subnets_wave1_2026-09-30.csv` (then `data/final/`): `9793e83facb8bfd7762f2559d70b2bcb8ced2b52ffa6ee753002d8e8c35cb32f`
 - [x] Spending of wave 1: 5,623 Taostats calls, $25.56 on X
 
 ### Phase 5: Wave 2 — PREPARED, scheduled for 31 Oct 2026
@@ -150,11 +150,12 @@ Because only 128 subnets exist, the design adds time: features for September, la
 | 2026-10-02 | Coders label posts in batches of at most 150 posts, one agent per coder and batch | One agent does not label 500 posts with the same care; the instructions stay identical across batches |
 | 2026-10-02 | **Posts that name a subnet by its number alone are read by two readers who get the netuid's name history. A pair is dropped only if both find that the number stands for another project or is no subnet number** (`config/kol_attribution.md`, `build/coding_material.py attribution`, `snprice.kol.stands_for_current`). Wave 1: 125 such pairs, the readers agree on all of them, 7 dropped (subnets 5, 53, 67, 90 twice, 98, 103) | The date rule cannot catch a post that looks back at an earlier holder of the number after the current project has started. Two of the 16 negative mentions were of this kind: they were about the subnet that held netuid 90 in 2025. The coders flagged the problem; they do not see a netuid's history, so the reading is a step of its own |
 | 2026-10-02 | A post that reports the new registration of a netuid but attaches the number to the project that was deregistered counts for neither | The columns count posts that name the subnet. Such a post names its predecessor |
-| 2026-10-02 | `collect/03_history_events.py` also writes every name that was ever set on a netuid (`data/intermediate/names_wave<N>.csv`) | Material for the two readers; taken from identity events that were already saved, no new API call |
+| 2026-10-02 | `collect/03_history_events.py` also writes every name that was ever set on a netuid (`names_wave<N>.csv` in the intermediate folder) | Material for the two readers; taken from identity events that were already saved, no new API call |
 | 2026-10-02 | Checked once, by one reader: the 17 podcast titles and the 7 summit transcripts that match a subnet by number alone all refer to the current project | Same risk as for posts; nothing had to change |
 | 2026-10-02 | Subnet 120 (Affine): the site answered on a fourth visit at 14:27 UTC on 2 Oct and was read. Both coders code its five website facts 0; its status is `live`. `build/coding_material.py web prepare <folder> <netuid ...>` hands out single subnets, and `web merge` replaces a coder's earlier answer for them | The plan was to visit again at the final build. The failed visit stays beside the new one in the raw folder |
 | 2026-10-02 | The coder files hold 938 labels for 937 pairs | One pair of the first batch disappeared when links were removed before matching; its two labels stay in the files and are not used |
 | 2026-10-02 | `.gitattributes` fixes LF line ends for text files on every platform | The file hash recorded for a frozen wave must match the file after a checkout on Windows |
+| 2026-10-02 | **The repository moved into Philipp's project folder `C:\Users\phili\Coding\Claims\Subnet price analyses\`** with his layout: `Input/` (the dataset and the codebook; a replaced file moves to `Input/OLD/` with a version number), `Code/collection/` (this pipeline, with `data/chain`, `data/evidence`, `data/manual`), `Code/analysis/` (the analyses, later), `Output/` (results; replaced results move to `Output/OLD/` numbered), `Temp/` (not synced: `collection-cache/` with the former `data/raw` and `data/intermediate`, `coding/` for the coders' working folders). Git history and the tag `wave1` are kept; the tag still points at the old layout. The GitHub repository keeps its name | Everything an outside party needs to check the data and the results is in one synced folder; the API caches stay out of git but survive for wave 2. `snprice/paths.py` is the one place that knows the layout |
 
 ## Open Questions
 

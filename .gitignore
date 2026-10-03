@@ -1,11 +1,11 @@
+# not synced: scratch space (API caches, wallet-level tables, coder working folders) and superseded versions
+Temp/
+OLD/
+
 # secrets
 .env
 *.env
 !.env.example
-
-# API caches and wallet-level intermediates (regenerable; see data/README.md)
-data/raw/
-data/intermediate/
 
 # python / R / OS
 __pycache__/
