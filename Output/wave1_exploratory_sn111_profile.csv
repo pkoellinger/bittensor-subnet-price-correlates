@@ -1,5 +1,5 @@
 "variable","sn111","median_all","percentile_of_sn111"
-"development",0.16268,0,70.161
+"development",0.16268,-0.2468,70.161
 "presence",0.44319,-0.065398,81.452
 "miner_scale",0.75463,0.13953,77.419
 "miner_concentration",-0.90996,-0.01182,9.6774
@@ -19,9 +19,9 @@
 "miner_paid",1,1,100
 "started",1,1,100
 "attention",0.56442,-0.21727,79.032
-"x_reach",0.26828,0,71.774
+"x_reach",0.26828,-0.31257,71.774
 "has_x",1,1,100
-"dev_popularity",-0.58111,0,25
+"dev_popularity",-0.58111,-0.26608,42.742
 "holder_dispersion",0.93361,0.11306,91.935
 "has_holders",1,1,100
 "owner_net_buy_tao_30d",0,0,95.161

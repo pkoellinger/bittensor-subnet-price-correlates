@@ -1,0 +1,6 @@
+"variable","label","members","percentile","shown"
+"presence","Public presence","website, product, API, MCP server, named team, white paper",81.452,81
+"registrations_30d","Miner registrations","miner registrations in September",79.032,79
+"attention","Commentator and summit attention","commentator posts, podcast episodes, Exploit 26 talk and mentions",79.032,79
+"x_reach","Activity on X","followers and original posts on X",71.774,72
+"development","Development activity","commits, authors, pull requests, contributors, releases, recency, documentation",70.161,70

@@ -1,6 +1,6 @@
 "model","outcome","term","estimate","se_hc3","p_hc3","se_cluster_team","beta_standardised","delta_r2_drop_one","vif"
-"spec1_august_state","log 30-day average price","(Intercept)",-4.8296,1.0293,7.9707e-06,0.83329,,,
-"spec1_august_state","log 30-day average price","development_lag",0.34697,0.09225,0.0002751,0.086034,0.32591,0.081621,1.3013
+"spec1_august_state","log 30-day average price","(Intercept)",-4.4053,1.0418,4.9397e-05,0.84628,,,
+"spec1_august_state","log 30-day average price","development_lag",0.34697,0.09225,0.0002751,0.086034,0.37712,0.081621,1.7424
 "spec1_august_state","log 30-day average price","miner_scale_lag",-0.098542,0.24591,0.68942,0.23419,-0.1044,0.000976,11.166
 "spec1_august_state","log 30-day average price","miner_concentration_lag",-0.015979,0.12214,0.89615,0.11298,-0.016561,0.0001053,2.6046
 "spec1_august_state","log 30-day average price","burn_mean_lag30",-0.55524,0.25636,0.03252,0.25519,-0.26508,0.029894,2.3506
@@ -11,12 +11,12 @@
 "spec1_august_state","log 30-day average price","log_age",0.048238,0.13148,0.71442,0.11509,0.043003,0.00098054,1.886
 "spec1_august_state","log 30-day average price","renamed_project",-0.38921,0.16432,0.019629,0.15736,-0.22322,0.039754,1.2534
 "spec1_august_state","log 30-day average price","flag_placeholder_identity",-0.049711,0.38702,0.89804,0.33516,-0.016878,0.00012611,2.2588
-"spec1_august_state","log 30-day average price","has_repo",0.18245,0.31597,0.56484,0.27752,0.080043,0.0021754,2.9451
+"spec1_august_state","log 30-day average price","has_repo",-0.2418,0.30704,0.4327,0.27086,-0.10608,0.0036598,3.0747
 "spec1_august_state","log 30-day average price","has_x",-0.0028102,0.22221,0.98993,0.18638,-0.0014397,7.7006e-07,2.6915
 "spec1_august_state","log 30-day average price","miner_paid_lag",-0.249,0.43934,0.57205,0.40449,-0.10924,0.0016925,7.0503
 "spec1_august_state","log 30-day average price","started_lag",0.0032379,0.66338,0.99611,0.48938,0.00057132,1.8483e-07,1.766
-"spec2_september_no_price_link","log 30-day average price","(Intercept)",-4.4553,0.84662,7.4707e-07,0.74643,,,
-"spec2_september_no_price_link","log 30-day average price","development",0.40669,0.14735,0.0068111,0.13995,0.28029,0.059668,1.3167
+"spec2_september_no_price_link","log 30-day average price","(Intercept)",-3.807,0.88494,3.7812e-05,0.77013,,,
+"spec2_september_no_price_link","log 30-day average price","development",0.40669,0.14735,0.0068111,0.13995,0.39961,0.059668,2.6762
 "spec2_september_no_price_link","log 30-day average price","presence",0.10846,0.16323,0.50783,0.14713,0.073759,0.0035269,1.5425
 "spec2_september_no_price_link","log 30-day average price","miner_scale",-0.3291,0.22085,0.13914,0.21384,-0.33412,0.017328,6.4425
 "spec2_september_no_price_link","log 30-day average price","miner_concentration",-0.063457,0.11712,0.58907,0.11252,-0.063181,0.0019443,2.0531
@@ -32,9 +32,9 @@
 "spec2_september_no_price_link","log 30-day average price","flag_placeholder_identity",0.039484,0.43933,0.92856,0.3847,0.013406,6.769e-05,2.6549
 "spec2_september_no_price_link","log 30-day average price","startup_mode",-0.73087,0.51246,0.15675,0.47127,-0.10573,0.0059919,1.8657
 "spec2_september_no_price_link","log 30-day average price","flag_full_burn_30d",0.0029377,0.35925,0.99349,0.34196,0.0012152,3.5548e-07,4.1538
-"spec2_september_no_price_link","log 30-day average price","has_repo",0.26976,0.40049,0.50204,0.35105,0.11835,0.0047679,2.9375
-"spec3_plus_two_way_and_mechanical","log 30-day average price","(Intercept)",-5.2615,1.1804,2.3611e-05,0.94422,,,
-"spec3_plus_two_way_and_mechanical","log 30-day average price","development",0.081547,0.12245,0.50713,0.10293,0.056203,0.0014451,2.1858
+"spec2_september_no_price_link","log 30-day average price","has_repo",-0.37856,0.43475,0.38586,0.39161,-0.16608,0.0074879,3.6834
+"spec3_plus_two_way_and_mechanical","log 30-day average price","(Intercept)",-5.5764,1.1557,5.605e-06,0.93214,,,
+"spec3_plus_two_way_and_mechanical","log 30-day average price","development",0.081547,0.12245,0.50713,0.10293,0.080127,0.0014451,4.4427
 "spec3_plus_two_way_and_mechanical","log 30-day average price","presence",-0.035679,0.10918,0.74458,0.091103,-0.024263,0.00031002,1.8989
 "spec3_plus_two_way_and_mechanical","log 30-day average price","miner_scale",0.1759,0.17184,0.30871,0.14923,0.17858,0.003391,9.4047
 "spec3_plus_two_way_and_mechanical","log 30-day average price","miner_concentration",-0.029053,0.085813,0.73572,0.072651,-0.028926,0.00030005,2.7886
@@ -50,11 +50,11 @@
 "spec3_plus_two_way_and_mechanical","log 30-day average price","flag_placeholder_identity",0.32,0.31246,0.30848,0.25546,0.10865,0.0038603,3.0578
 "spec3_plus_two_way_and_mechanical","log 30-day average price","startup_mode",0.64561,0.60291,0.28708,0.48797,0.093395,0.002536,3.4396
 "spec3_plus_two_way_and_mechanical","log 30-day average price","flag_full_burn_30d",0.37617,0.28304,0.18716,0.22928,0.1556,0.0044425,5.4501
-"spec3_plus_two_way_and_mechanical","log 30-day average price","has_repo",0.12086,0.262,0.64568,0.20991,0.053022,0.00064249,4.3757
+"spec3_plus_two_way_and_mechanical","log 30-day average price","has_repo",0.10527,0.29394,0.72106,0.23497,0.046184,0.00043185,4.939
 "spec3_plus_two_way_and_mechanical","log 30-day average price","attention",0.5678,0.13996,0.00010488,0.12051,0.49635,0.075351,3.2696
-"spec3_plus_two_way_and_mechanical","log 30-day average price","x_reach",-0.14632,0.10746,0.17669,0.089486,-0.11418,0.0068423,1.9054
-"spec3_plus_two_way_and_mechanical","log 30-day average price","has_x",-0.10006,0.15987,0.53296,0.12989,-0.051259,0.0010598,2.4792
-"spec3_plus_two_way_and_mechanical","log 30-day average price","dev_popularity",-0.080501,0.10621,0.45043,0.08843,-0.077036,0.0020733,2.8624
+"spec3_plus_two_way_and_mechanical","log 30-day average price","x_reach",-0.14632,0.10746,0.17669,0.089486,-0.20467,0.0068423,6.1221
+"spec3_plus_two_way_and_mechanical","log 30-day average price","has_x",0.23045,0.2624,0.38213,0.22344,0.11806,0.0023885,5.8354
+"spec3_plus_two_way_and_mechanical","log 30-day average price","dev_popularity",-0.080501,0.10621,0.45043,0.08843,-0.09221,0.0020733,4.1011
 "spec3_plus_two_way_and_mechanical","log 30-day average price","holder_dispersion",-0.11328,0.1375,0.41221,0.11438,-0.10078,0.002392,4.2462
 "spec3_plus_two_way_and_mechanical","log 30-day average price","owner_net_buy_tao_30d",0.057766,0.068062,0.39826,0.05392,0.14227,0.0069922,2.8947
 "spec3_plus_two_way_and_mechanical","log 30-day average price","owner_cut_sold_ratio_30d",-0.019067,0.25593,0.94077,0.20176,-0.009366,2.6116e-05,3.359
@@ -66,8 +66,8 @@
 "spec3_plus_two_way_and_mechanical","log 30-day average price","emission_flag_on_share_30d",-0.20427,0.82267,0.80447,0.61139,-0.040122,0.00037603,4.281
 "spec3_plus_two_way_and_mechanical","log 30-day average price","registrations_30d",-0.0096491,0.033528,0.77416,0.029228,-0.023621,0.00027097,2.0591
 "spec3_plus_two_way_and_mechanical","log 30-day average price","reg_cost_tao_now",0.050152,0.35798,0.88889,0.29949,0.012914,0.00010377,1.6072
-"spec2plus_category8","log 30-day average price","(Intercept)",-4.8936,0.92925,8.1233e-07,0.79321,,,
-"spec2plus_category8","log 30-day average price","development",0.33029,0.16314,0.0456,0.14572,0.22764,0.037947,1.3656
+"spec2plus_category8","log 30-day average price","(Intercept)",-4.3671,0.95027,1.2742e-05,0.80935,,,
+"spec2plus_category8","log 30-day average price","development",0.33029,0.16314,0.0456,0.14572,0.32454,0.037947,2.7756
 "spec2plus_category8","log 30-day average price","presence",0.10575,0.16016,0.51059,0.13841,0.071916,0.0031919,1.6204
 "spec2plus_category8","log 30-day average price","miner_scale",-0.11459,0.22615,0.61348,0.20977,-0.11634,0.0017648,7.6693
 "spec2plus_category8","log 30-day average price","miner_concentration",-0.10087,0.13377,0.45261,0.12176,-0.10043,0.0045954,2.195
@@ -83,7 +83,7 @@
 "spec2plus_category8","log 30-day average price","flag_placeholder_identity",0.0089945,0.50907,0.98594,0.43793,0.0030538,2.725e-06,3.4222
 "spec2plus_category8","log 30-day average price","startup_mode",-0.43552,0.5473,0.42808,0.49074,-0.063003,0.0020607,1.9262
 "spec2plus_category8","log 30-day average price","flag_full_burn_30d",0.14573,0.38745,0.70763,0.35269,0.060281,0.00079421,4.5754
-"spec2plus_category8","log 30-day average price","has_repo",-0.015203,0.43232,0.97202,0.3672,-0.0066697,1.273e-05,3.4945
+"spec2plus_category8","log 30-day average price","has_repo",-0.54173,0.46664,0.24847,0.40082,-0.23766,0.01352,4.1778
 "spec2plus_category8","log 30-day average price","category8Compute & inference",0.63145,0.31695,0.049091,0.28505,0.27702,0.10437,2.0783
 "spec2plus_category8","log 30-day average price","category8DeFi & crypto infrastructure",0.019335,0.30734,0.94997,0.24195,0.0047644,0.10437,1.4285
 "spec2plus_category8","log 30-day average price","category8Finance & forecasting",-0.32538,0.29555,0.2736,0.25705,-0.11047,0.10437,1.8099
@@ -91,8 +91,8 @@
 "spec2plus_category8","log 30-day average price","category8Science & robotics",0.48283,0.39923,0.22938,0.35511,0.15098,0.10437,1.5692
 "spec2plus_category8","log 30-day average price","category8Security & verification",0.0063658,0.27159,0.98135,0.24924,0.0018966,0.10437,1.5698
 "spec2plus_category8","log 30-day average price","category8Training & optimisation",0.61039,0.23607,0.011175,0.21934,0.27693,0.10437,2.251
-"spec2_pc1_composites","log 30-day average price","(Intercept)",-4.575,0.83016,2.5252e-07,0.73529,,,
-"spec2_pc1_composites","log 30-day average price","development_pc1",0.17078,0.051264,0.0011901,0.04862,0.32321,0.084806,1.2318
+"spec2_pc1_composites","log 30-day average price","(Intercept)",-3.9148,0.83997,9.2115e-06,0.7323,,,
+"spec2_pc1_composites","log 30-day average price","development_pc1",0.17078,0.051264,0.0011901,0.04862,0.43412,0.084806,2.2222
 "spec2_pc1_composites","log 30-day average price","presence_pc1",0.047143,0.064398,0.46575,0.058084,0.079482,0.0041556,1.5202
 "spec2_pc1_composites","log 30-day average price","miner_scale_pc1",-0.1686,0.12704,0.18732,0.12287,-0.29689,0.014346,6.144
 "spec2_pc1_composites","log 30-day average price","miner_concentration_pc1",-0.029722,0.083953,0.72402,0.080181,-0.040013,0.0007887,2.03
@@ -108,9 +108,9 @@
 "spec2_pc1_composites","log 30-day average price","flag_placeholder_identity",0.029217,0.42785,0.94569,0.37379,0.0099196,3.7179e-05,2.6466
 "spec2_pc1_composites","log 30-day average price","startup_mode",-0.62541,0.49608,0.21019,0.45571,-0.090473,0.0045047,1.8171
 "spec2_pc1_composites","log 30-day average price","flag_full_burn_30d",0.084443,0.34394,0.80653,0.32732,0.03493,0.00030945,3.9428
-"spec2_pc1_composites","log 30-day average price","has_repo",0.25028,0.38949,0.52189,0.34069,0.1098,0.0041453,2.9083
-"spec3_pc1_composites","log 30-day average price","(Intercept)",-5.3817,1.1683,1.3268e-05,0.92239,,,
-"spec3_pc1_composites","log 30-day average price","development_pc1",0.024059,0.0417,0.56539,0.035122,0.045532,0.0010151,2.0423
+"spec2_pc1_composites","log 30-day average price","has_repo",-0.4099,0.41939,0.33061,0.37471,-0.17982,0.0091922,3.5179
+"spec3_pc1_composites","log 30-day average price","(Intercept)",-5.7046,1.1389,2.6737e-06,0.90744,,,
+"spec3_pc1_composites","log 30-day average price","development_pc1",0.024059,0.0417,0.56539,0.035122,0.061156,0.0010151,3.6845
 "spec3_pc1_composites","log 30-day average price","presence_pc1",-0.0095477,0.044157,0.8293,0.036902,-0.016097,0.00013787,1.8795
 "spec3_pc1_composites","log 30-day average price","miner_scale_pc1",0.10481,0.096663,0.28111,0.083629,0.18455,0.0037423,9.1012
 "spec3_pc1_composites","log 30-day average price","miner_concentration_pc1",-0.024492,0.061008,0.68903,0.049862,-0.032972,0.0004185,2.5978
@@ -126,11 +126,11 @@
 "spec3_pc1_composites","log 30-day average price","flag_placeholder_identity",0.33662,0.30489,0.27247,0.24832,0.11429,0.0042771,3.0539
 "spec3_pc1_composites","log 30-day average price","startup_mode",0.70727,0.59576,0.23825,0.47662,0.10232,0.0030866,3.3915
 "spec3_pc1_composites","log 30-day average price","flag_full_burn_30d",0.37275,0.28224,0.18991,0.22348,0.15419,0.0046157,5.1506
-"spec3_pc1_composites","log 30-day average price","has_repo",0.12921,0.25647,0.61562,0.20419,0.056685,0.00073895,4.3484
+"spec3_pc1_composites","log 30-day average price","has_repo",0.13337,0.27955,0.63445,0.22223,0.058509,0.0007358,4.6525
 "spec3_pc1_composites","log 30-day average price","attention_pc1",0.29718,0.067583,2.9679e-05,0.05833,0.52077,0.083601,3.244
-"spec3_pc1_composites","log 30-day average price","x_reach_pc1",-0.099762,0.075272,0.18837,0.062512,-0.1101,0.0065143,1.8607
-"spec3_pc1_composites","log 30-day average price","has_x",-0.10789,0.16001,0.50185,0.12904,-0.05527,0.0012337,2.4761
-"spec3_pc1_composites","log 30-day average price","dev_popularity_pc1",-0.048341,0.072978,0.50938,0.060818,-0.065422,0.0015785,2.7114
+"spec3_pc1_composites","log 30-day average price","x_reach_pc1",-0.099762,0.075272,0.18837,0.062512,-0.19735,0.0065143,5.9785
+"spec3_pc1_composites","log 30-day average price","has_x",0.2108,0.26012,0.41984,0.22098,0.10799,0.0020307,5.7427
+"spec3_pc1_composites","log 30-day average price","dev_popularity_pc1",-0.048341,0.072978,0.50938,0.060818,-0.078308,0.0015785,3.8848
 "spec3_pc1_composites","log 30-day average price","holder_dispersion_pc1",-0.07895,0.071169,0.27021,0.059159,-0.12273,0.003899,3.8632
 "spec3_pc1_composites","log 30-day average price","owner_net_buy_tao_30d",0.058332,0.065212,0.37342,0.051778,0.14366,0.0072228,2.8575
 "spec3_pc1_composites","log 30-day average price","owner_cut_sold_ratio_30d",-0.019764,0.24682,0.93635,0.19329,-0.0097084,2.8187e-05,3.3438
@@ -142,8 +142,8 @@
 "spec3_pc1_composites","log 30-day average price","emission_flag_on_share_30d",-0.17512,0.82829,0.83303,0.5972,-0.034398,0.00028381,4.1692
 "spec3_pc1_composites","log 30-day average price","registrations_30d",-0.0094403,0.032662,0.77321,0.028563,-0.02311,0.00025511,2.0935
 "spec3_pc1_composites","log 30-day average price","reg_cost_tao_now",0.070654,0.35155,0.84116,0.29387,0.018194,0.00020677,1.6009
-"spec2_without_5_most_influential","log 30-day average price","(Intercept)",-4.1664,0.76591,3.7344e-07,0.70118,,,
-"spec2_without_5_most_influential","log 30-day average price","development",0.45287,0.14457,0.0022671,0.13973,0.33871,0.086746,1.3226
+"spec2_without_5_most_influential","log 30-day average price","(Intercept)",-3.4445,0.79614,3.5682e-05,0.72427,,,
+"spec2_without_5_most_influential","log 30-day average price","development",0.45287,0.14457,0.0022671,0.13973,0.47451,0.086746,2.5957
 "spec2_without_5_most_influential","log 30-day average price","presence",0.031523,0.16019,0.84439,0.14923,0.022975,0.00033618,1.5701
 "spec2_without_5_most_influential","log 30-day average price","miner_scale",-0.26033,0.21233,0.22301,0.19731,-0.28325,0.01217,6.5926
 "spec2_without_5_most_influential","log 30-day average price","miner_concentration",0.021701,0.11158,0.84618,0.10559,0.02291,0.00026252,1.9993
@@ -159,9 +159,9 @@
 "spec2_without_5_most_influential","log 30-day average price","flag_placeholder_identity",0.16954,0.31326,0.58956,0.27604,0.062821,0.0012504,3.1561
 "spec2_without_5_most_influential","log 30-day average price","startup_mode",-0.67285,0.51043,0.19041,0.45846,-0.10644,0.0060571,1.8703
 "spec2_without_5_most_influential","log 30-day average price","flag_full_burn_30d",0.00060121,0.32664,0.99854,0.30708,0.00026508,1.7339e-08,4.0525
-"spec2_without_5_most_influential","log 30-day average price","has_repo",0.44152,0.26284,0.096082,0.22483,0.20316,0.012649,3.2632
-"spec3_without_5_most_influential","log 30-day average price","(Intercept)",-5.98,1.0457,1.5225e-07,0.84926,,,
-"spec3_without_5_most_influential","log 30-day average price","development",0.015392,0.10023,0.87831,0.085014,0.011263,5.941e-05,2.1354
+"spec2_without_5_most_influential","log 30-day average price","has_repo",-0.28042,0.31836,0.38049,0.29022,-0.12903,0.0041637,3.9988
+"spec3_without_5_most_influential","log 30-day average price","(Intercept)",-6.2174,1.0201,3.0051e-08,0.83548,,,
+"spec3_without_5_most_influential","log 30-day average price","development",0.015392,0.10023,0.87831,0.085014,0.016144,5.941e-05,4.3868
 "spec3_without_5_most_influential","log 30-day average price","presence",-0.080727,0.10221,0.43181,0.083479,-0.059314,0.001862,1.8895
 "spec3_without_5_most_influential","log 30-day average price","miner_scale",0.15769,0.15594,0.31477,0.13501,0.17191,0.0032605,9.0642
 "spec3_without_5_most_influential","log 30-day average price","miner_concentration",-0.052216,0.074396,0.48466,0.063391,-0.055834,0.0011259,2.7688
@@ -177,11 +177,11 @@
 "spec3_without_5_most_influential","log 30-day average price","flag_placeholder_identity",0.35628,0.23743,0.13712,0.19036,0.13277,0.0054393,3.2406
 "spec3_without_5_most_influential","log 30-day average price","startup_mode",0.83634,0.45685,0.070615,0.38971,0.13305,0.0049574,3.5706
 "spec3_without_5_most_influential","log 30-day average price","flag_full_burn_30d",0.13911,0.24501,0.57165,0.2053,0.061684,0.00068347,5.567
-"spec3_without_5_most_influential","log 30-day average price","has_repo",0.18896,0.23231,0.41824,0.1844,0.089143,0.0017839,4.4545
+"spec3_without_5_most_influential","log 30-day average price","has_repo",0.25005,0.26075,0.34027,0.21003,0.11797,0.0028046,4.9618
 "spec3_without_5_most_influential","log 30-day average price","attention",0.56926,0.1017,2.5455e-07,0.088785,0.53358,0.078603,3.622
-"spec3_without_5_most_influential","log 30-day average price","x_reach",-0.07806,0.08544,0.36347,0.070955,-0.066903,0.0022778,1.965
-"spec3_without_5_most_influential","log 30-day average price","has_x",0.041957,0.14006,0.76523,0.11604,0.023244,0.00021418,2.5226
-"spec3_without_5_most_influential","log 30-day average price","dev_popularity",-0.060252,0.094244,0.52432,0.077506,-0.061935,0.0012607,3.0426
+"spec3_without_5_most_influential","log 30-day average price","x_reach",-0.07806,0.08544,0.36347,0.070955,-0.11889,0.0022778,6.2057
+"spec3_without_5_most_influential","log 30-day average price","has_x",0.21828,0.21912,0.32196,0.18641,0.12093,0.0025175,5.8087
+"spec3_without_5_most_influential","log 30-day average price","dev_popularity",-0.060252,0.094244,0.52432,0.077506,-0.074302,0.0012607,4.379
 "spec3_without_5_most_influential","log 30-day average price","holder_dispersion",-0.18329,0.11321,0.10911,0.095176,-0.17648,0.007352,4.2361
 "spec3_without_5_most_influential","log 30-day average price","owner_net_buy_tao_30d",0.0029278,0.040976,0.9432,0.029952,0.0076096,1.7333e-05,3.3407
 "spec3_without_5_most_influential","log 30-day average price","owner_cut_sold_ratio_30d",-0.21124,0.18601,0.25925,0.12958,-0.11391,0.0034399,3.7721
@@ -193,8 +193,8 @@
 "spec3_without_5_most_influential","log 30-day average price","emission_flag_on_share_30d",-0.55527,0.64054,0.38842,0.49929,-0.10541,0.0024459,4.5426
 "spec3_without_5_most_influential","log 30-day average price","registrations_30d",-0.0022076,0.026753,0.93443,0.022766,-0.0058013,1.6268e-05,2.0687
 "spec3_without_5_most_influential","log 30-day average price","reg_cost_tao_now",-0.19517,0.2546,0.44542,0.21526,-0.053453,0.0016236,1.7598
-"spec1_august_state","log spot price","(Intercept)",-5.8777,0.88796,1.4404e-09,0.79971,,,
-"spec1_august_state","log spot price","development_lag",0.35312,0.096851,0.00041143,0.091414,0.30929,0.073507,1.3013
+"spec1_august_state","log spot price","(Intercept)",-5.4459,0.91281,3.1282e-08,0.81861,,,
+"spec1_august_state","log spot price","development_lag",0.35312,0.096851,0.00041143,0.091414,0.35788,0.073507,1.7424
 "spec1_august_state","log spot price","miner_scale_lag",-0.052571,0.26327,0.8421,0.25033,-0.051931,0.00024152,11.166
 "spec1_august_state","log spot price","miner_concentration_lag",0.0068326,0.13562,0.95991,0.12585,0.006603,1.6739e-05,2.6046
 "spec1_august_state","log spot price","burn_mean_lag30",-0.61216,0.29388,0.039611,0.28975,-0.27252,0.031594,2.3506
@@ -205,12 +205,12 @@
 "spec1_august_state","log spot price","log_age",0.22184,0.15678,0.15996,0.13929,0.1844,0.01803,1.886
 "spec1_august_state","log spot price","renamed_project",-0.30125,0.17702,0.091665,0.17133,-0.1611,0.020706,1.2534
 "spec1_august_state","log spot price","flag_placeholder_identity",-0.041879,0.39838,0.91647,0.34949,-0.013258,7.7817e-05,2.2588
-"spec1_august_state","log spot price","has_repo",0.094485,0.33641,0.77935,0.2947,0.038651,0.00050723,2.9451
+"spec1_august_state","log spot price","has_repo",-0.3373,0.32851,0.30682,0.2909,-0.13798,0.0061917,3.0747
 "spec1_august_state","log spot price","has_x",-0.00078419,0.23536,0.99735,0.19987,-0.0003746,5.2135e-08,2.6915
 "spec1_august_state","log spot price","miner_paid_lag",-0.34109,0.46452,0.46437,0.42959,-0.13953,0.0027613,7.0503
 "spec1_august_state","log spot price","started_lag",-0.05299,0.38643,0.89119,0.36734,-0.0087183,4.304e-05,1.766
-"spec2_september_no_price_link","log spot price","(Intercept)",-5.5758,0.92285,2.297e-08,0.82477,,,
-"spec2_september_no_price_link","log spot price","development",0.39643,0.15424,0.011553,0.14693,0.25477,0.049295,1.3167
+"spec2_september_no_price_link","log spot price","(Intercept)",-4.9439,0.96042,1.2221e-06,0.84955,,,
+"spec2_september_no_price_link","log spot price","development",0.39643,0.15424,0.011553,0.14693,0.36321,0.049295,2.6762
 "spec2_september_no_price_link","log spot price","presence",0.10881,0.17428,0.53373,0.15735,0.068999,0.0030864,1.5425
 "spec2_september_no_price_link","log spot price","miner_scale",-0.32299,0.23463,0.17154,0.22532,-0.30576,0.014511,6.4425
 "spec2_september_no_price_link","log spot price","miner_concentration",-0.072184,0.12448,0.56321,0.11916,-0.067014,0.0021874,2.0531
@@ -226,9 +226,9 @@
 "spec2_september_no_price_link","log spot price","flag_placeholder_identity",-0.031623,0.44728,0.94377,0.39114,-0.010011,3.775e-05,2.6549
 "spec2_september_no_price_link","log spot price","startup_mode",-0.070353,0.54457,0.89745,0.50541,-0.0094899,4.8272e-05,1.8657
 "spec2_september_no_price_link","log spot price","flag_full_burn_30d",-0.093902,0.38668,0.8086,0.36538,-0.036218,0.00031579,4.1538
-"spec2_september_no_price_link","log spot price","has_repo",0.21101,0.40582,0.60418,0.35524,0.086316,0.0025363,2.9375
-"spec3_plus_two_way_and_mechanical","log spot price","(Intercept)",-4.9005,1.3195,0.00035162,1.0691,,,
-"spec3_plus_two_way_and_mechanical","log spot price","development",0.084862,0.13404,0.52824,0.1119,0.054536,0.0013607,2.1858
+"spec2_september_no_price_link","log spot price","has_repo",-0.42097,0.44627,0.34767,0.40236,-0.1722,0.0080506,3.6834
+"spec3_plus_two_way_and_mechanical","log spot price","(Intercept)",-5.2684,1.3186,0.00013097,1.0686,,,
+"spec3_plus_two_way_and_mechanical","log spot price","development",0.084862,0.13404,0.52824,0.1119,0.077751,0.0013607,4.4427
 "spec3_plus_two_way_and_mechanical","log spot price","presence",-0.054834,0.12378,0.65883,0.10357,-0.03477,0.00063667,1.8989
 "spec3_plus_two_way_and_mechanical","log spot price","miner_scale",0.19816,0.1865,0.29082,0.16142,0.18759,0.0037416,9.4047
 "spec3_plus_two_way_and_mechanical","log spot price","miner_concentration",-0.0060901,0.098143,0.95066,0.083983,-0.0056539,1.1463e-05,2.7886
@@ -244,11 +244,11 @@
 "spec3_plus_two_way_and_mechanical","log spot price","flag_placeholder_identity",0.33015,0.32709,0.31548,0.26813,0.10452,0.0035725,3.0578
 "spec3_plus_two_way_and_mechanical","log spot price","startup_mode",0.55213,0.64586,0.39487,0.52731,0.074476,0.0016126,3.4396
 "spec3_plus_two_way_and_mechanical","log spot price","flag_full_burn_30d",0.35342,0.32673,0.28224,0.26843,0.13631,0.0034094,5.4501
-"spec3_plus_two_way_and_mechanical","log spot price","has_repo",0.10177,0.27289,0.71007,0.21945,0.041629,0.00039605,4.3757
+"spec3_plus_two_way_and_mechanical","log spot price","has_repo",0.11936,0.31606,0.70658,0.25534,0.048826,0.00048267,4.939
 "spec3_plus_two_way_and_mechanical","log spot price","attention",0.57664,0.15039,0.00023176,0.1297,0.47003,0.06757,3.2696
-"spec3_plus_two_way_and_mechanical","log spot price","x_reach",-0.15507,0.11778,0.19128,0.098161,-0.11284,0.0066818,1.9054
-"spec3_plus_two_way_and_mechanical","log spot price","has_x",-0.051627,0.16755,0.75869,0.13867,-0.024662,0.00024532,2.4792
-"spec3_plus_two_way_and_mechanical","log spot price","dev_popularity",-0.10757,0.12404,0.38812,0.10095,-0.095982,0.0032185,2.8624
+"spec3_plus_two_way_and_mechanical","log spot price","x_reach",-0.15507,0.11778,0.19128,0.098161,-0.20225,0.0066818,6.1221
+"spec3_plus_two_way_and_mechanical","log spot price","has_x",0.29864,0.27702,0.28386,0.2361,0.14266,0.0034876,5.8354
+"spec3_plus_two_way_and_mechanical","log spot price","dev_popularity",-0.10757,0.12404,0.38812,0.10095,-0.11489,0.0032185,4.1011
 "spec3_plus_two_way_and_mechanical","log spot price","holder_dispersion",-0.053467,0.14545,0.71402,0.12019,-0.044356,0.00046334,4.2462
 "spec3_plus_two_way_and_mechanical","log spot price","owner_net_buy_tao_30d",0.04706,0.071541,0.51233,0.057166,0.10807,0.0040348,2.8947
 "spec3_plus_two_way_and_mechanical","log spot price","owner_cut_sold_ratio_30d",-0.1604,0.29441,0.58721,0.22828,-0.073467,0.0016069,3.359
@@ -260,8 +260,8 @@
 "spec3_plus_two_way_and_mechanical","log spot price","emission_flag_on_share_30d",-0.0037216,0.8211,0.99639,0.63106,-0.00068161,1.0853e-07,4.281
 "spec3_plus_two_way_and_mechanical","log spot price","registrations_30d",-0.027035,0.035172,0.44409,0.03029,-0.06171,0.0018493,2.0591
 "spec3_plus_two_way_and_mechanical","log spot price","reg_cost_tao_now",0.045306,0.37516,0.90414,0.31219,0.010878,7.3628e-05,1.6072
-"spec2plus_category8","log spot price","(Intercept)",-6.0234,0.99586,2.6071e-08,0.85163,,,
-"spec2plus_category8","log spot price","development",0.31333,0.17338,0.073766,0.15487,0.20136,0.029692,1.3656
+"spec2plus_category8","log spot price","(Intercept)",-5.5239,1.02,4.2859e-07,0.87291,,,
+"spec2plus_category8","log spot price","development",0.31333,0.17338,0.073766,0.15487,0.28707,0.029692,2.7756
 "spec2plus_category8","log spot price","presence",0.10843,0.17335,0.53308,0.15054,0.068757,0.0029176,1.6204
 "spec2plus_category8","log spot price","miner_scale",-0.10739,0.24116,0.65706,0.22118,-0.10166,0.0013476,7.6693
 "spec2plus_category8","log spot price","miner_concentration",-0.11284,0.13887,0.41843,0.12726,-0.10476,0.0049995,2.195
@@ -277,7 +277,7 @@
 "spec2plus_category8","log spot price","flag_placeholder_identity",-0.090581,0.51268,0.86012,0.44087,-0.028676,0.00024029,3.4222
 "spec2plus_category8","log spot price","startup_mode",0.2425,0.5899,0.6819,0.52975,0.03271,0.00055547,1.9262
 "spec2plus_category8","log spot price","flag_full_burn_30d",0.056101,0.41358,0.89238,0.37339,0.021638,0.00010233,4.5754
-"spec2plus_category8","log spot price","has_repo",-0.031258,0.45148,0.94494,0.38274,-0.012787,4.6787e-05,3.4945
+"spec2plus_category8","log spot price","has_repo",-0.53075,0.49426,0.28551,0.42419,-0.21711,0.011283,4.1778
 "spec2plus_category8","log spot price","category8Compute & inference",0.71845,0.32918,0.031437,0.29466,0.29389,0.10004,2.0783
 "spec2plus_category8","log spot price","category8DeFi & crypto infrastructure",0.071992,0.39128,0.8544,0.30904,0.016542,0.10004,1.4285
 "spec2plus_category8","log spot price","category8Finance & forecasting",-0.32518,0.31927,0.31092,0.27853,-0.10294,0.10004,1.8099
@@ -285,8 +285,8 @@
 "spec2plus_category8","log spot price","category8Science & robotics",0.60751,0.43362,0.16434,0.38394,0.17713,0.10004,1.5692
 "spec2plus_category8","log spot price","category8Security & verification",0.0908,0.30137,0.76382,0.27287,0.025225,0.10004,1.5698
 "spec2plus_category8","log spot price","category8Training & optimisation",0.5724,0.25853,0.029121,0.23816,0.24215,0.10004,2.251
-"spec2_pc1_composites","log spot price","(Intercept)",-5.6916,0.90475,7.2224e-09,0.81233,,,
-"spec2_pc1_composites","log spot price","development_pc1",0.1686,0.053542,0.0021291,0.050938,0.29752,0.071862,1.2318
+"spec2_pc1_composites","log spot price","(Intercept)",-5.0399,0.91094,2.2951e-07,0.80677,,,
+"spec2_pc1_composites","log spot price","development_pc1",0.1686,0.053542,0.0021291,0.050938,0.39961,0.071862,2.2222
 "spec2_pc1_composites","log spot price","presence_pc1",0.049819,0.069595,0.47566,0.062836,0.07832,0.004035,1.5202
 "spec2_pc1_composites","log spot price","miner_scale_pc1",-0.16211,0.13446,0.23064,0.12913,-0.26617,0.011531,6.144
 "spec2_pc1_composites","log spot price","miner_concentration_pc1",-0.029264,0.088611,0.74186,0.084412,-0.036736,0.0006648,2.03
@@ -302,9 +302,9 @@
 "spec2_pc1_composites","log spot price","flag_placeholder_identity",-0.038557,0.43672,0.92981,0.38134,-0.012206,5.6296e-05,2.6466
 "spec2_pc1_composites","log spot price","startup_mode",0.050061,0.52872,0.92474,0.49017,0.0067527,2.5095e-05,1.8171
 "spec2_pc1_composites","log spot price","flag_full_burn_30d",0.0037655,0.36823,0.99186,0.34865,0.0014523,5.3498e-07,3.9428
-"spec2_pc1_composites","log spot price","has_repo",0.1963,0.39268,0.61818,0.34337,0.080299,0.0022171,2.9083
-"spec3_pc1_composites","log spot price","(Intercept)",-5.035,1.3171,0.0002412,1.0574,,,
-"spec3_pc1_composites","log spot price","development_pc1",0.025167,0.046252,0.58768,0.038703,0.044412,0.00096577,2.0423
+"spec2_pc1_composites","log spot price","has_repo",-0.45544,0.43002,0.29195,0.38488,-0.18631,0.0098667,3.5179
+"spec3_pc1_composites","log spot price","(Intercept)",-5.4077,1.3145,8.5211e-05,1.0559,,,
+"spec3_pc1_composites","log spot price","development_pc1",0.025167,0.046252,0.58768,0.038703,0.059652,0.00096577,3.6845
 "spec3_pc1_composites","log spot price","presence_pc1",-0.01505,0.050072,0.76443,0.042007,-0.023661,0.00029786,1.8795
 "spec3_pc1_composites","log spot price","miner_scale_pc1",0.11659,0.10529,0.27107,0.091071,0.19143,0.0040264,9.1012
 "spec3_pc1_composites","log spot price","miner_concentration_pc1",-0.0091031,0.068351,0.89434,0.057597,-0.011427,5.0266e-05,2.5978
@@ -320,11 +320,11 @@
 "spec3_pc1_composites","log spot price","flag_placeholder_identity",0.34951,0.32113,0.27931,0.2626,0.11065,0.0040088,3.0539
 "spec3_pc1_composites","log spot price","startup_mode",0.61282,0.64162,0.34205,0.52005,0.082663,0.0020148,3.3915
 "spec3_pc1_composites","log spot price","flag_full_burn_30d",0.34518,0.32318,0.28831,0.26247,0.13314,0.0034415,5.1506
-"spec3_pc1_composites","log spot price","has_repo",0.113,0.26861,0.67498,0.21508,0.046224,0.00049136,4.3484
+"spec3_pc1_composites","log spot price","has_repo",0.14998,0.30309,0.62191,0.24323,0.061352,0.00080904,4.6525
 "spec3_pc1_composites","log spot price","attention_pc1",0.30196,0.072789,7.5147e-05,0.062944,0.4934,0.075043,3.244
-"spec3_pc1_composites","log spot price","x_reach_pc1",-0.10511,0.082461,0.20568,0.068549,-0.10816,0.0062871,1.8607
-"spec3_pc1_composites","log spot price","has_x",-0.06431,0.16741,0.70176,0.13778,-0.03072,0.00038112,2.4761
-"spec3_pc1_composites","log spot price","dev_popularity_pc1",-0.066805,0.085586,0.43709,0.069872,-0.084302,0.0026211,2.7114
+"spec3_pc1_composites","log spot price","x_reach_pc1",-0.10511,0.082461,0.20568,0.068549,-0.19387,0.0062871,5.9785
+"spec3_pc1_composites","log spot price","has_x",0.27145,0.27239,0.32163,0.23191,0.12967,0.0029278,5.7427
+"spec3_pc1_composites","log spot price","dev_popularity_pc1",-0.066805,0.085586,0.43709,0.069872,-0.10091,0.0026211,3.8848
 "spec3_pc1_composites","log spot price","holder_dispersion_pc1",-0.049191,0.075782,0.5179,0.062742,-0.071304,0.001316,3.8632
 "spec3_pc1_composites","log spot price","owner_net_buy_tao_30d",0.046384,0.068974,0.50298,0.055333,0.10652,0.0039707,2.8575
 "spec3_pc1_composites","log spot price","owner_cut_sold_ratio_30d",-0.16726,0.28401,0.55737,0.22041,-0.076609,0.0017552,3.3438
@@ -336,8 +336,8 @@
 "spec3_pc1_composites","log spot price","emission_flag_on_share_30d",0.022159,0.81669,0.97841,0.61635,0.0040585,3.9508e-06,4.1692
 "spec3_pc1_composites","log spot price","registrations_30d",-0.027152,0.03447,0.43292,0.029795,-0.061977,0.0018348,2.0935
 "spec3_pc1_composites","log spot price","reg_cost_tao_now",0.059236,0.36945,0.87297,0.30747,0.014223,0.00012637,1.6009
-"spec2_without_5_most_influential","log spot price","(Intercept)",-5.5929,0.88149,6.3688e-09,0.78527,,,
-"spec2_without_5_most_influential","log spot price","development",0.4074,0.15597,0.010371,0.14863,0.27882,0.05931,1.3108
+"spec2_without_5_most_influential","log spot price","(Intercept)",-4.9434,0.92488,5.6269e-07,0.81331,,,
+"spec2_without_5_most_influential","log spot price","development",0.4074,0.15597,0.010371,0.14863,0.38546,0.05931,2.5051
 "spec2_without_5_most_influential","log spot price","presence",0.061701,0.17442,0.72427,0.15779,0.041009,0.0010681,1.5745
 "spec2_without_5_most_influential","log spot price","miner_scale",-0.32116,0.22883,0.16354,0.22232,-0.31843,0.015711,6.454
 "spec2_without_5_most_influential","log spot price","miner_concentration",-0.043831,0.12124,0.71846,0.11772,-0.041475,0.00086554,1.9874
@@ -353,9 +353,9 @@
 "spec2_without_5_most_influential","log spot price","flag_placeholder_identity",0.2551,0.3405,0.45547,0.29758,0.086205,0.0022608,3.287
 "spec2_without_5_most_influential","log spot price","startup_mode",-0.061948,0.534,0.90788,0.49489,-0.0089366,4.2741e-05,1.8685
 "spec2_without_5_most_influential","log spot price","flag_full_burn_30d",-0.15781,0.37085,0.67135,0.35298,-0.063455,0.0010007,4.0239
-"spec2_without_5_most_influential","log spot price","has_repo",0.53414,0.29154,0.069884,0.25087,0.21956,0.013537,3.5613
-"spec3_without_5_most_influential","log spot price","(Intercept)",-5.3646,1.1973,2.28e-05,0.97859,,,
-"spec3_without_5_most_influential","log spot price","development",0.032226,0.10734,0.76473,0.089026,0.021218,0.00020667,2.1784
+"spec2_without_5_most_influential","log spot price","has_repo",-0.11532,0.34865,0.74151,0.31933,-0.047404,0.00053574,4.1945
+"spec3_without_5_most_influential","log spot price","(Intercept)",-5.6969,1.1662,4.7344e-06,0.96205,,,
+"spec3_without_5_most_influential","log spot price","development",0.032226,0.10734,0.76473,0.089026,0.030709,0.00020667,4.5631
 "spec3_without_5_most_influential","log spot price","presence",-0.12172,0.11932,0.31053,0.097912,-0.080523,0.0033957,1.9094
 "spec3_without_5_most_influential","log spot price","miner_scale",0.24219,0.16752,0.15189,0.1451,0.24194,0.0062954,9.2983
 "spec3_without_5_most_influential","log spot price","miner_concentration",-0.058013,0.094512,0.54096,0.082109,-0.056217,0.001142,2.7673
@@ -371,11 +371,11 @@
 "spec3_without_5_most_influential","log spot price","flag_placeholder_identity",0.18331,0.30315,0.54699,0.23961,0.06165,0.001222,3.1102
 "spec3_without_5_most_influential","log spot price","startup_mode",0.61847,0.5075,0.2263,0.42332,0.088797,0.002211,3.5662
 "spec3_without_5_most_influential","log spot price","flag_full_burn_30d",0.072873,0.32341,0.82226,0.26434,0.029813,0.00015375,5.781
-"spec3_without_5_most_influential","log spot price","has_repo",-0.058494,0.26981,0.82888,0.21157,-0.025361,0.0001447,4.4452
+"spec3_without_5_most_influential","log spot price","has_repo",0.056538,0.28811,0.84489,0.22708,0.024514,0.0001189,5.0542
 "spec3_without_5_most_influential","log spot price","attention",0.64459,0.13369,6.0893e-06,0.11605,0.55406,0.091769,3.3452
-"spec3_without_5_most_influential","log spot price","x_reach",-0.096171,0.1027,0.3517,0.087512,-0.073964,0.0028466,1.9218
-"spec3_without_5_most_influential","log spot price","has_x",0.040046,0.14825,0.78772,0.12644,0.020206,0.0001645,2.4819
-"spec3_without_5_most_influential","log spot price","dev_popularity",-0.11709,0.10711,0.27739,0.087015,-0.10739,0.003736,3.087
+"spec3_without_5_most_influential","log spot price","x_reach",-0.096171,0.1027,0.3517,0.087512,-0.13315,0.0028466,6.2284
+"spec3_without_5_most_influential","log spot price","has_x",0.25728,0.24994,0.30621,0.21591,0.12981,0.0028975,5.8159
+"spec3_without_5_most_influential","log spot price","dev_popularity",-0.11709,0.10711,0.27739,0.087015,-0.13064,0.003736,4.5682
 "spec3_without_5_most_influential","log spot price","holder_dispersion",-0.12982,0.11986,0.28182,0.10249,-0.11273,0.0028925,4.3935
 "spec3_without_5_most_influential","log spot price","owner_net_buy_tao_30d",-0.021156,0.04983,0.67222,0.035381,-0.048775,0.00074127,3.2093
 "spec3_without_5_most_influential","log spot price","owner_cut_sold_ratio_30d",-0.33541,0.24983,0.18295,0.17189,-0.16324,0.0068318,3.9004
@@ -387,8 +387,8 @@
 "spec3_without_5_most_influential","log spot price","emission_flag_on_share_30d",-0.47262,0.76717,0.53948,0.59947,-0.08091,0.0014843,4.4105
 "spec3_without_5_most_influential","log spot price","registrations_30d",-0.016056,0.029381,0.58616,0.024892,-0.038329,0.00071964,2.0414
 "spec3_without_5_most_influential","log spot price","reg_cost_tao_now",-0.16324,0.28726,0.57134,0.24439,-0.040789,0.00099399,1.6738
-"spec2_all_128_subnets","log spot price","(Intercept)",-5.3607,0.74236,7.09e-11,0.65477,,,
-"spec2_all_128_subnets","log spot price","development",0.3876,0.15227,0.012299,0.14544,0.24913,0.047191,1.3152
+"spec2_all_128_subnets","log spot price","(Intercept)",-4.7428,0.78025,1.7849e-08,0.68047,,,
+"spec2_all_128_subnets","log spot price","development",0.3876,0.15227,0.012299,0.14544,0.36145,0.047191,2.7684
 "spec2_all_128_subnets","log spot price","presence",0.12035,0.17282,0.48766,0.15579,0.077503,0.0038161,1.5741
 "spec2_all_128_subnets","log spot price","miner_scale",-0.3303,0.23289,0.15893,0.22367,-0.32073,0.015167,6.7823
 "spec2_all_128_subnets","log spot price","miner_concentration",-0.064461,0.1235,0.60275,0.11849,-0.061761,0.0017707,2.1543
@@ -404,9 +404,9 @@
 "spec2_all_128_subnets","log spot price","flag_placeholder_identity",0.016324,0.43962,0.97045,0.3845,0.0055322,1.0764e-05,2.8432
 "spec2_all_128_subnets","log spot price","startup_mode",-0.27619,0.53837,0.60897,0.49761,-0.05218,0.0010525,2.5868
 "spec2_all_128_subnets","log spot price","flag_full_burn_30d",-0.11409,0.38225,0.7659,0.36227,-0.044046,0.00046724,4.1521
-"spec2_all_128_subnets","log spot price","has_repo",0.24245,0.39524,0.54085,0.34406,0.10276,0.0035279,2.9929
-"spec2_raw_price","price in TAO (not logged)","(Intercept)",0.0080966,0.010989,0.46289,0.010245,,,
-"spec2_raw_price","price in TAO (not logged)","development",0.00327,0.0032137,0.31123,0.0030877,0.14526,0.016026,1.3167
+"spec2_all_128_subnets","log spot price","has_repo",-0.37544,0.43972,0.39506,0.39507,-0.15912,0.0066573,3.8031
+"spec2_raw_price","price in TAO (not logged)","(Intercept)",0.013309,0.011542,0.25146,0.010684,,,
+"spec2_raw_price","price in TAO (not logged)","development",0.00327,0.0032137,0.31123,0.0030877,0.2071,0.016026,2.6762
 "spec2_raw_price","price in TAO (not logged)","presence",0.0027423,0.0025167,0.27835,0.0023402,0.1202,0.0093665,1.5425
 "spec2_raw_price","price in TAO (not logged)","miner_scale",-0.0043915,0.0035453,0.2182,0.0034022,-0.28737,0.012818,6.4425
 "spec2_raw_price","price in TAO (not logged)","miner_concentration",-0.0015424,0.0020028,0.44294,0.0019332,-0.098984,0.0047722,2.0531
@@ -422,9 +422,9 @@
 "spec2_raw_price","price in TAO (not logged)","flag_placeholder_identity",0.00028686,0.0039708,0.94254,0.0036154,0.0062775,1.4843e-05,2.6549
 "spec2_raw_price","price in TAO (not logged)","startup_mode",-0.011471,0.0076839,0.13843,0.0073266,-0.10696,0.0061324,1.8657
 "spec2_raw_price","price in TAO (not logged)","flag_full_burn_30d",-0.0015515,0.0066941,0.81716,0.0064198,-0.041365,0.00041193,4.1538
-"spec2_raw_price","price in TAO (not logged)","has_repo",-0.00049187,0.0034144,0.88573,0.003081,-0.013908,6.5855e-05,2.9375
-"specR_rehearsal_wave2_test","log return over September","(Intercept)",-1.1563,0.67622,0.090174,0.59967,,,
-"specR_rehearsal_wave2_test","log return over September","development_lag",0.01426,0.042907,0.74027,0.039708,0.027377,0.00050212,1.4927
+"spec2_raw_price","price in TAO (not logged)","has_repo",-0.0057048,0.0053624,0.28981,0.0050713,-0.16131,0.0070644,3.6834
+"specR_rehearsal_wave2_test","log return over September","(Intercept)",-1.1389,0.65692,0.085863,0.58133,,,
+"specR_rehearsal_wave2_test","log return over September","development_lag",0.01426,0.042907,0.74027,0.039708,0.031678,0.00050212,1.9986
 "specR_rehearsal_wave2_test","log return over September","miner_scale_lag",0.037895,0.091985,0.68119,0.0865,0.082051,0.00060197,11.184
 "specR_rehearsal_wave2_test","log return over September","miner_concentration_lag",0.023662,0.05683,0.67798,0.054969,0.050122,0.00096433,2.6052
 "specR_rehearsal_wave2_test","log return over September","burn_mean_lag30",-0.10233,0.17187,0.55283,0.15804,-0.099849,0.0040487,2.4625
@@ -435,7 +435,7 @@
 "specR_rehearsal_wave2_test","log return over September","log_age",0.30391,0.11868,0.011835,0.10728,0.55373,0.16171,1.8961
 "specR_rehearsal_wave2_test","log return over September","renamed_project",0.14114,0.080541,0.082571,0.076655,0.16544,0.019906,1.3749
 "specR_rehearsal_wave2_test","log return over September","flag_placeholder_identity",-0.14687,0.20723,0.48002,0.18068,-0.10192,0.0045936,2.2612
-"specR_rehearsal_wave2_test","log return over September","has_repo",-0.10011,0.13542,0.46139,0.11874,-0.089759,0.0027229,2.9589
+"specR_rehearsal_wave2_test","log return over September","has_repo",-0.11754,0.14031,0.40406,0.12493,-0.10539,0.0035921,3.0923
 "specR_rehearsal_wave2_test","log return over September","has_x",0.015462,0.10189,0.87967,0.093627,0.01619,9.7377e-05,2.6916
 "specR_rehearsal_wave2_test","log return over September","miner_paid_lag",-0.091925,0.20203,0.65002,0.19037,-0.082423,0.00096051,7.0729
 "specR_rehearsal_wave2_test","log return over September","started_lag",-0.91111,0.32094,0.0054185,0.2697,-0.32857,0.059669,1.8093

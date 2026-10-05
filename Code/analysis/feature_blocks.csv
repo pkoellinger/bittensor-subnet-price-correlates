@@ -1,170 +1,170 @@
-variable,role,type,block,block_order,composite,direction,transform,applies_to,spec,prediction_set,price_link,note
-team_n_subnets,feature,integer,age,1,,,log1p,all,pred,F2,none known,
-flag_placeholder_identity,flag,binary,flags,29,,,none,all,control,F1,,control in every specification and prediction set
-flag_registered_in_window,flag,binary,flags,29,,,none,,none,none,,defines the regression sample (the 124 subnets with a full window are kept)
-window_days_observed_30d,flag,integer,flags,29,,,log1p,,none,none,,defines the regression sample
-startup_mode,flag,binary,flags,29,,,none,all,control,F1,,control in every specification and prediction set
-flag_full_burn_30d,flag,binary,flags,29,,,none,all,control,F2,,control in specifications 2 and 3 (a September state)
-flag_no_miner_paid_30d,flag,binary,flags,29,,,none,,none,none,,its complement is the indicator miner_paid
-burn_now,feature,number,burn,9,,,none,started,pred,F2,enters the emission gate together with the price,end-of-window value of burn_mean_30d
-burn_mean_30d,feature,number,burn,9,burn_mean_30d,,none,started,2,F2,enters the emission gate together with the price,"single variable; a validator choice that enters the emission gate, not a mechanical response to the price"
-burn_time_share_ge50_30d,feature,number,burn,9,,,none,started,pred,F2,enters the emission gate together with the price,threshold version of burn_mean_30d
-burn_mean_lag30,feature_lag,number,burn_lag,23,burn_mean_lag30,,none,started_lag,1,F1,none known,single
-burn_time_share_ge50_lag30,feature_lag,number,burn_lag,23,,,none,started_lag,pred,F1,none known,
-miners_paid_hotkeys_30d,feature,integer,miner_scale,7,,,log1p,all,pred,F2,none known,near duplicate of miners_paid_coldkeys_30d
-miners_paid_coldkeys_30d,feature,integer,miner_scale,7,miner_scale,+1,log1p,all,2,F2,none known,
-miner_paid_days_30d,feature,integer,miner_scale,7,miner_scale,+1,log1p,all,2,F2,none known,
-miner_hhi_coldkey_30d,feature,number,miner_concentration,8,miner_concentration,+1,none,miner_paid,2,F2,none known,
-miner_top1_share_30d,feature,number,miner_concentration,8,,,none,miner_paid,pred,F2,none known,near duplicate of miner_hhi_coldkey_30d (rho 0.98)
-miners_ip_coverage_30d,quality,number,quality,30,,,none,,none,none,,"quality measure of the collection, not a feature"
-miners_distinct_ips_30d,feature,integer,miner_scale,7,,,log1p,,none,none,none known,defined for 31 subnets only
-miners_paid_hotkeys_lag30,feature_lag,integer,miner_scale_lag,21,,,log1p,all,pred,F1,none known,near duplicate of miners_paid_coldkeys_lag30
-miners_paid_coldkeys_lag30,feature_lag,integer,miner_scale_lag,21,miner_scale_lag,+1,log1p,all,1,F1,none known,
-miner_paid_days_lag30,feature_lag,integer,miner_scale_lag,21,miner_scale_lag,+1,log1p,all,1,F1,none known,
-miner_hhi_coldkey_lag30,feature_lag,number,miner_concentration_lag,22,miner_concentration_lag,+1,none,miner_paid_lag,1,F1,none known,single variable composite
-miner_top1_share_lag30,feature_lag,number,miner_concentration_lag,22,,,none,miner_paid_lag,pred,F1,none known,near duplicate of miner_hhi_coldkey_lag30
-miners_lineage_clusters_ub_30d,feature,integer,miner_scale,7,,,log1p,miner_paid,pred,F2,none known,near duplicate of the best estimate (rho 0.96)
-miners_lineage_clusters_best_30d,feature,integer,miner_scale,7,,,log1p,miner_paid,pred,F2,none known,operators by funding lineage; defined where a miner was paid
-miner_hhi_lineage_best_30d,feature,number,miner_concentration,8,miner_concentration,+1,none,miner_paid,2,F2,none known,missing for 6 paid subnets whose wallets could not be traced; left out of those rows' mean
-owner_linked_incentive_share_30d,feature,number,miner_concentration,8,,,none,miner_paid,pred,F2,none known,
-miners_unattrib_share_30d,quality,number,quality,30,,,none,,none,none,,"quality measure of the collection, not a feature"
-lineage_untraced_share_30d,quality,number,quality,30,,,none,,none,none,,"quality measure of the collection, not a feature"
-miners_active_now,feature,integer,miner_scale,7,miner_scale,+1,log1p,all,2,F2,none known,
-uids_registered_now,feature,integer,miner_scale,7,,,log1p,all,pred,F2,none known,nearly constant (the UID limit is usually full)
-uids_immune_share_now,feature,number,miner_scale,7,,,none,all,pred,F2,none known,
-gh_status,flag,category,flags,29,,,none,,none,none,,source of the indicators has_repo and has_x; categorical
-gh_commits_30d_repo,feature,integer,development,2,,,log1p,has_repo,pred,F2,none known,main repository only; the organisation-wide count is the composite member
-gh_commits_30d_org,feature,integer,development,2,development,+1,log1p,has_repo,2,F2,none known,
-gh_authors_30d_org,feature,integer,development,2,development,+1,log1p,has_repo,2,F2,none known,
-gh_prs_merged_30d_org,feature,integer,development,2,development,+1,log1p,has_repo,2,F2,none known,
-gh_active_days_30d_org,feature,integer,development,2,,,log1p,has_repo,pred,F2,none known,near duplicate of gh_commits_30d_org (rho 0.96)
-gh_commits_lag30_repo,feature_lag,integer,development_lag,18,,,log1p,has_repo,pred,F1,none known,main repository only
-gh_commits_lag30_org,feature_lag,integer,development_lag,18,development_lag,+1,log1p,has_repo,1,F1,none known,
-gh_authors_lag30_org,feature_lag,integer,development_lag,18,development_lag,+1,log1p,has_repo,1,F1,none known,
-gh_prs_merged_lag30_org,feature_lag,integer,development_lag,18,development_lag,+1,log1p,has_repo,1,F1,none known,
-gh_active_days_lag30_org,feature_lag,integer,development_lag,18,,,log1p,has_repo,pred,F1,none known,near duplicate of gh_commits_lag30_org (rho 0.98)
-gh_authors_90d_org,feature,integer,development,2,,,log1p,has_repo,pred,F2,none known,near duplicate of gh_authors_30d_org
-gh_contributors_alltime_repo,feature,integer,development,2,development,+1,log1p,has_repo,2,F2,none known,
-gh_stars_repo,feature,integer,dev_popularity,3,,,log1p,has_repo,pred,F3,likely two-way,near duplicate of gh_stars_org
-gh_forks_repo,feature,integer,dev_popularity,3,dev_popularity,+1,log1p,has_repo,3,F3,likely two-way,
-gh_stars_org,feature,integer,dev_popularity,3,dev_popularity,+1,log1p,has_repo,3,F3,likely two-way,
-gh_repo_age_days,feature,number,development,2,,,log1p,has_repo,pred,F2,none known,
-gh_days_since_push,feature,number,development,2,development,-1,log1p,has_repo,2,F2,none known,
-gh_releases_repo,feature,integer,development,2,development,+1,log1p,has_repo,2,F2,none known,
-doc_readme,feature,binary,development,2,,,none,,none,none,none known,103 of 104 repositories have a README: no variance
-doc_license,feature,binary,development,2,,,none,has_repo,pred,F2,none known,checklist item; doc_score carries it in the OLS
-doc_contributing,feature,binary,development,2,,,none,has_repo,pred,F2,none known,checklist item; doc_score carries it in the OLS
-doc_miner_guide,feature,binary,development,2,,,none,has_repo,pred,F2,none known,checklist item; doc_score carries it in the OLS
-doc_validator_guide,feature,binary,development,2,,,none,has_repo,pred,F2,none known,checklist item; doc_score carries it in the OLS
-doc_incentive_desc,feature,binary,development,2,,,none,has_repo,pred,F2,none known,checklist item; doc_score carries it in the OLS
-doc_requirements,feature,binary,development,2,,,none,has_repo,pred,F2,none known,checklist item; doc_score carries it in the OLS
-doc_site,feature,binary,development,2,,,none,has_repo,pred,F2,none known,checklist item; doc_score carries it in the OLS
-doc_score,feature,integer,development,2,development,+1,none,has_repo,2,F2,none known,sum of the eight checklist items
-website_status,flag,category,flags,29,,,none,,none,none,,source of the indicators has_repo and has_x; categorical
-website_live,feature,binary,presence,4,presence,+1,none,all,2,F2,none known,missing for the two unread sites counts as 0
-whitepaper_available,feature,binary,presence,4,presence,+1,none,all,2,F2,none known,missing for the two unread sites counts as 0
-wp_pages,feature,integer,presence,4,,,log1p,,none,none,none known,defined only where a white paper exists (n 23 to 32)
-wp_references,feature,binary,presence,4,,,none,,none,none,none known,defined only where a white paper exists (n 23 to 32)
-wp_named_authors,feature,binary,presence,4,,,none,,none,none,none known,defined only where a white paper exists (n 23 to 32)
-wp_formal_mechanism,feature,binary,presence,4,,,none,,none,none,none known,defined only where a white paper exists (n 23 to 32)
-api_public,feature,binary,presence,4,presence,+1,none,all,2,F2,none known,missing for the two unread sites counts as 0
-mcp_server,feature,binary,presence,4,presence,+1,none,all,2,F2,none known,missing for the two unread sites counts as 0
-team_named,feature,binary,presence,4,presence,+1,none,all,2,F2,none known,missing for the two unread sites counts as 0
-product_live,feature,binary,presence,4,presence,+1,none,all,2,F2,none known,missing for the two unread sites counts as 0
-category,feature,category,flags,29,,,none,,none,none,none known,16 groups: too many for 124 rows; category8 is used
-category8,feature,category,flags,29,,,none,all,2+,F2,none known,factor with 8 groups; add-on specification 2+ with a block F-test; dummies in the prediction sets
-x_status,flag,category,flags,29,,,none,,none,none,,source of the indicators has_repo and has_x; categorical
-x_followers,feature,integer,x_reach,6,x_reach,+1,log1p,has_x,3,F3,likely two-way,
-x_account_age_days,feature,number,x_reach,6,,,log1p,has_x,pred,F3,none known,
-x_posts_30d,feature,integer,x_reach,6,,,log1p,has_x,pred,F3,likely two-way,includes replies; the original-post count is the composite member
-x_posts_original_30d,feature,integer,x_reach,6,x_reach,+1,log1p,has_x,3,F3,likely two-way,
-x_posts_lag30,feature_lag,integer,x_reach_lag,20,,,log1p,has_x,pred,F1,none known,includes replies
-x_posts_original_lag30,feature_lag,integer,x_reach_lag,20,x_posts_original_lag30,,log1p,has_x,1,F1,none known,"single, with has_x"
-kol_posts_90d,feature,integer,attention,5,attention,+1,log1p,all,3,F3,likely two-way,
-kol_accounts_90d,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,near duplicate of kol_posts_90d (rho 0.97)
-kol_pos_posts_90d,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,sub-period or sub-type of kol_posts_90d
-kol_neg_posts_90d,feature,integer,attention,5,,,log1p,,none,none,likely two-way,14 negative mentions in 8 subnets: no variance
-kol_posts_30d,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,sub-period or sub-type of kol_posts_90d
-kol_pos_posts_30d,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,sub-period or sub-type of kol_posts_90d
-kol_neg_posts_30d,feature,integer,attention,5,,,log1p,,none,none,likely two-way,14 negative mentions in 8 subnets: no variance
-kol_posts_lag30,feature_lag,integer,attention_lag,19,attention_lag,+1,log1p,all,1,F1,none known,
-kol_pos_posts_lag30,feature_lag,integer,attention_lag,19,,,log1p,all,pred,F1,none known,sub-type of kol_posts_lag30
-kol_neg_posts_lag30,feature_lag,integer,attention_lag,19,,,log1p,,none,none,none known,5 negative mentions: no variance
-days_since_registration,feature,number,age,1,,,log1p,all,control,F2,none known,log1p(days_since_registration) is the age control in every specification (dilution of the alpha reserve)
-days_since_first_emission,feature,number,age,1,,,log1p,started,pred,F2,none known,
-days_since_owner_change,feature,number,age,1,,,log1p,,none,none,none known,undefined for the 47 subnets that never changed owner; replaced by owner_changed_180d
-days_since_identity_change,feature,number,age,1,,,log1p,,none,none,none known,undefined for 49 subnets; replaced by identity_changed_180d
-project_age_days,feature,number,age,1,,,log1p,all,pred,F2,none known,in the OLS through renamed_project (project start later than registration)
-owner_buy_tao_30d,feature,number,owner_trading,12,,,log1p,all,pred,F3,mechanical (flow): a purchase through the pool raises the price in the same window,118 zeros
-owner_sell_tao_30d,feature,number,owner_trading,12,,,log1p,started,pred,F3,mechanical (flow): a purchase through the pool raises the price in the same window,duplicate of owner_cut_sold_ratio_30d (rho 1.00)
-owner_net_buy_tao_30d,feature,number,owner_trading,12,owner_net_buy_tao_30d,,asinh,all,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single; asinh
-owner_cut_sold_ratio_30d,feature,number,owner_trading,12,owner_cut_sold_ratio_30d,,none,started,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single
-owner_net_buy_tao_lag30,feature_lag,number,owner_trading_lag,26,,,asinh,all,pred,F3,none known,mechanical flow in August; prediction set F3 only
-owner_cut_sold_ratio_lag30,feature_lag,number,owner_trading_lag,26,,,none,started_lag,pred,F3,none known,mechanical flow in August; prediction set F3 only
-owner_net_buy_tao_90d,feature,number,owner_trading,12,,,asinh,all,pred,F3,mechanical (flow): a purchase through the pool raises the price in the same window,
-owner_bought_any_90d,feature,binary,owner_trading,12,owner_bought_any_90d,,none,all,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single
-tao_emission_on_share_30d,feature,number,emissions,14,tao_emission_on_share_30d,,none,all,3,F3,"mechanical (gate): the TAO injected rises steeply with price x (1 - burn); it is zero when the flag is off, the burn is 100% or emissions have not started",single
-emission_flag_on_share_30d,feature,number,emissions,14,emission_flag_on_share_30d,,none,all,3,F3,"mechanical (gate): the TAO injected rises steeply with price x (1 - burn); it is zero when the flag is off, the burn is 100% or emissions have not started",single
-tao_emission_on_share_lag30,feature_lag,number,emissions_lag,27,,,none,all,pred,F3,depends on the price in the lagged window,depends on the August price; prediction set F3 only
-emission_flag_on_share_lag30,feature_lag,number,emissions_lag,27,,,none,all,pred,F3,depends on the price in the lagged window,depends on the August price; prediction set F3 only
-baskets_net_buyers_n_30d,feature,integer,baskets,13,baskets_net_buyers_n_30d,,log1p,all,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single
-basket_net_buy_tao_30d,feature,number,baskets,13,basket_net_buy_tao_30d,,asinh,all,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single; asinh
-basket_alpha_share_issued,feature,number,baskets,13,basket_alpha_share_issued,,none,all,3,F3,likely two-way,single
-podcast_episodes_12m,feature,integer,attention,5,attention,+1,log1p,all,3,F3,likely two-way,
-podcast_shows_12m,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,duplicate of podcast_episodes_12m (rho 0.995)
-podcast_days_since_last,feature,number,attention,5,,,log1p,,none,none,none known,undefined for the 74 subnets without an episode; the counts carry it
-podcast_episodes_12m_lag30,feature_lag,integer,attention_lag,19,attention_lag,+1,log1p,all,1,F1,none known,
-podcast_novelty_search_12m,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,per-show count; the total is the composite member
-podcast_hash_rate_12m,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,per-show count; the total is the composite member
-podcast_ventura_labs_12m,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,per-show count; the total is the composite member
-podcast_revenue_search_12m,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,per-show count; the total is the composite member
-podcast_bittensor_guru_12m,feature,integer,attention,5,,,log1p,,none,none,likely two-way,2 subnets with an episode: no variance
-exploit26_presented,feature,binary,attention,5,attention,+1,none,all,3,F3,likely two-way,
-exploit26_sessions_n,feature,integer,attention,5,,,log1p,all,pred,F3,likely two-way,near duplicate of exploit26_presented
-exploit26_mentions_n,feature,integer,attention,5,attention,+1,log1p,all,3,F3,likely two-way,
-owner_lock_share_owner_alpha,feature,number,owner_commitment,11,owner_commitment,+1,none,started,2,F2,none known,
-ownerhk_lock_share_issued,feature,number,owner_commitment,11,owner_commitment,+1,none,started,2,F2,none known,
-owner_lock_perpetual,feature,binary,owner_commitment,11,owner_commitment,+1,none,started,2,F2,none known,
-owner_cut_autolock,feature,binary,owner_commitment,11,,,none,all,pred,F2,none known,13 subnets
-owner_lock_share_owner_alpha_lag30,feature_lag,number,owner_commitment_lag,25,owner_commitment_lag,+1,none,started_lag,1,F1,none known,
-ownerhk_lock_share_issued_lag30,feature_lag,number,owner_commitment_lag,25,owner_commitment_lag,+1,none,started_lag,1,F1,none known,
-holders_positions_n,feature,integer,holder_dispersion,17,holder_dispersion,+1,log1p,has_holders,3,F3,likely two-way,
-holders_top10_share,feature,number,holder_dispersion,17,holder_dispersion,-1,none,has_holders,3,F3,likely two-way,
-holders_top10_share_upper,quality,number,quality,30,,,none,,none,none,,"quality measure of the collection, not a feature"
-holders_hhi,feature,number,holder_dispersion,17,holder_dispersion,-1,none,has_holders,3,F3,likely two-way,
-holders_hhi_upper,quality,number,quality,30,,,none,,none,none,,"quality measure of the collection, not a feature"
-holders_untraced_share,quality,number,quality,30,,,none,,none,none,,"quality measure of the collection, not a feature"
-stake_share_owner_validator,feature,number,validator_dispersion,10,validator_dispersion,-1,none,started,2,F2,none known,missing where nobody holds a stake (3 subnets)
-owner_alpha_share_issued,feature,number,owner_commitment,11,owner_commitment,+1,none,started,2,F2,none known,
-alpha_burned_share,feature,number,owner_commitment,11,,,none,all,pred,F2,none known,
-stake_share_owner_validator_lag30,feature_lag,number,validator_dispersion_lag,24,validator_dispersion_lag,-1,none,started_lag,1,F1,none known,
-owner_alpha_share_issued_lag30,feature_lag,number,owner_commitment_lag,25,owner_commitment_lag,+1,none,started_lag,1,F1,none known,
-alpha_burned_share_lag30,feature_lag,number,owner_commitment_lag,25,,,none,all,pred,F1,none known,
-reg_cost_tao_now,feature,number,registrations,15,reg_cost_tao_now,,log1p,all,3,F3,none known,single
-reg_cost_tao_mean_30d,feature,number,registrations,15,,,log1p,all,pred,F3,none known,window mean of reg_cost_tao_now
-reg_cost_tao_mean_lag30,feature_lag,number,registrations_lag,28,,,log1p,all,pred,F1,none known,
-reg_recycled_tao_30d,feature,number,registrations,15,,,log1p,all,pred,F3,none known,
-registrations_30d,feature,integer,registrations,15,registrations_30d,,log1p,all,3,F3,none known,single
-registrations_lag30,feature_lag,integer,registrations_lag,28,,,log1p,all,pred,F1,none known,
-validators_n,feature,integer,validator_dispersion,10,validator_dispersion,+1,log1p,started,2,F2,none known,
-owner_validator_div_share,feature,number,validator_dispersion,10,validator_dispersion,-1,none,started,2,F2,none known,
-validator_stake_hhi,feature,number,validator_dispersion,10,validator_dispersion,-1,none,started,2,F2,none known,
-validators_n_lag30,feature_lag,integer,validator_dispersion_lag,24,validator_dispersion_lag,+1,log1p,started_lag,1,F1,none known,
-owner_validator_div_share_lag30,feature_lag,number,validator_dispersion_lag,24,validator_dispersion_lag,-1,none,started_lag,1,F1,none known,
-validator_stake_hhi_lag30,feature_lag,number,validator_dispersion_lag,24,validator_dispersion_lag,-1,none,started_lag,1,F1,none known,
-commit_reveal_on,feature,binary,settings,16,commit_reveal_on,,none,all,2,F2,none known,single
-yuma3_on,feature,binary,settings,16,yuma3_on,,none,all,2,F2,none known,single
-liquid_alpha_on,feature,binary,settings,16,,,none,,none,none,none known,8 subnets: no variance
-mech_count,feature,integer,settings,16,,,none,,none,none,none known,6 subnets with two mechanisms: no variance
-max_neurons,feature,integer,settings,16,,,log1p,,none,none,none known,6 subnets differ from the default: no variance
-has_repo,derived,binary,derived,31,,,none,all,control,F1,,gh_status is found or owner_only (104 subnets); indicator for the development blocks
-has_x,derived,binary,derived,31,,,none,all,control,F1,,x_status is found (92 subnets); indicator for the X blocks
-miner_paid,derived,binary,derived,31,,,none,all,control,F2,,1 - flag_no_miner_paid_30d (105 subnets); indicator for miner_concentration
-miner_paid_lag,derived,binary,derived,31,,,none,all,control,F1,,miners_paid_coldkeys_lag30 > 0; indicator for miner_concentration_lag
-has_holders,derived,binary,derived,31,,,none,all,control,F2,,holders_positions_n > 0 (125 subnets); indicator for holder_dispersion
-started,derived,binary,derived,31,,,none,all,2,F2,,1 - startup_mode (124 subnets); emissions have started
-started_lag,derived,binary,derived,31,,,none,all,control,F1,,days_since_first_emission > 30: emissions had started before the lagged window ended
-owner_changed_180d,derived,binary,derived,31,,,none,all,2,F2,,days_since_owner_change <= 180 (0 when the owner never changed)
-identity_changed_180d,derived,binary,derived,31,,,none,all,2,F2,,days_since_identity_change <= 180 (0 when the identity never changed)
-log_age,derived,number,derived,31,,,none,all,control,F1,,log1p(days_since_registration); the age control
-renamed_project,derived,binary,derived,31,,,none,all,control,F1,,project_age_days < days_since_registration - 1: the current project took over a running netuid
+variable,role,type,block,block_order,composite,direction,transform,applies_to,absent_fill,spec,prediction_set,price_link,note
+team_n_subnets,feature,integer,age,1,,,log1p,all,,pred,F2,none known,
+flag_placeholder_identity,flag,binary,flags,29,,,none,all,,control,F1,,control in every specification and prediction set
+flag_registered_in_window,flag,binary,flags,29,,,none,,,none,none,,defines the regression sample (the 124 subnets with a full window are kept)
+window_days_observed_30d,flag,integer,flags,29,,,log1p,,,none,none,,defines the regression sample
+startup_mode,flag,binary,flags,29,,,none,all,,control,F1,,control in every specification and prediction set
+flag_full_burn_30d,flag,binary,flags,29,,,none,all,,control,F2,,control in specifications 2 and 3 (a September state)
+flag_no_miner_paid_30d,flag,binary,flags,29,,,none,,,none,none,,its complement is the indicator miner_paid
+burn_now,feature,number,burn,9,,,none,started,,pred,F2,enters the emission gate together with the price,end-of-window value of burn_mean_30d
+burn_mean_30d,feature,number,burn,9,burn_mean_30d,,none,started,,2,F2,enters the emission gate together with the price,"single variable; a validator choice that enters the emission gate, not a mechanical response to the price"
+burn_time_share_ge50_30d,feature,number,burn,9,,,none,started,,pred,F2,enters the emission gate together with the price,threshold version of burn_mean_30d
+burn_mean_lag30,feature_lag,number,burn_lag,23,burn_mean_lag30,,none,started_lag,,1,F1,none known,single
+burn_time_share_ge50_lag30,feature_lag,number,burn_lag,23,,,none,started_lag,,pred,F1,none known,
+miners_paid_hotkeys_30d,feature,integer,miner_scale,7,,,log1p,all,,pred,F2,none known,near duplicate of miners_paid_coldkeys_30d
+miners_paid_coldkeys_30d,feature,integer,miner_scale,7,miner_scale,+1,log1p,all,,2,F2,none known,
+miner_paid_days_30d,feature,integer,miner_scale,7,miner_scale,+1,log1p,all,,2,F2,none known,
+miner_hhi_coldkey_30d,feature,number,miner_concentration,8,miner_concentration,+1,none,miner_paid,,2,F2,none known,
+miner_top1_share_30d,feature,number,miner_concentration,8,,,none,miner_paid,,pred,F2,none known,near duplicate of miner_hhi_coldkey_30d (rho 0.98)
+miners_ip_coverage_30d,quality,number,quality,30,,,none,,,none,none,,"quality measure of the collection, not a feature"
+miners_distinct_ips_30d,feature,integer,miner_scale,7,,,log1p,,,none,none,none known,defined for 31 subnets only
+miners_paid_hotkeys_lag30,feature_lag,integer,miner_scale_lag,21,,,log1p,all,,pred,F1,none known,near duplicate of miners_paid_coldkeys_lag30
+miners_paid_coldkeys_lag30,feature_lag,integer,miner_scale_lag,21,miner_scale_lag,+1,log1p,all,,1,F1,none known,
+miner_paid_days_lag30,feature_lag,integer,miner_scale_lag,21,miner_scale_lag,+1,log1p,all,,1,F1,none known,
+miner_hhi_coldkey_lag30,feature_lag,number,miner_concentration_lag,22,miner_concentration_lag,+1,none,miner_paid_lag,,1,F1,none known,single variable composite
+miner_top1_share_lag30,feature_lag,number,miner_concentration_lag,22,,,none,miner_paid_lag,,pred,F1,none known,near duplicate of miner_hhi_coldkey_lag30
+miners_lineage_clusters_ub_30d,feature,integer,miner_scale,7,,,log1p,miner_paid,,pred,F2,none known,near duplicate of the best estimate (rho 0.96)
+miners_lineage_clusters_best_30d,feature,integer,miner_scale,7,,,log1p,miner_paid,,pred,F2,none known,operators by funding lineage; defined where a miner was paid
+miner_hhi_lineage_best_30d,feature,number,miner_concentration,8,miner_concentration,+1,none,miner_paid,,2,F2,none known,missing for 6 paid subnets whose wallets could not be traced; left out of those rows' mean
+owner_linked_incentive_share_30d,feature,number,miner_concentration,8,,,none,miner_paid,,pred,F2,none known,
+miners_unattrib_share_30d,quality,number,quality,30,,,none,,,none,none,,"quality measure of the collection, not a feature"
+lineage_untraced_share_30d,quality,number,quality,30,,,none,,,none,none,,"quality measure of the collection, not a feature"
+miners_active_now,feature,integer,miner_scale,7,miner_scale,+1,log1p,all,,2,F2,none known,
+uids_registered_now,feature,integer,miner_scale,7,,,log1p,all,,pred,F2,none known,nearly constant (the UID limit is usually full)
+uids_immune_share_now,feature,number,miner_scale,7,,,none,all,,pred,F2,none known,
+gh_status,flag,category,flags,29,,,none,,,none,none,,source of the indicators has_repo and has_x; categorical
+gh_commits_30d_repo,feature,integer,development,2,,,log1p,has_repo,min,pred,F2,none known,main repository only; the organisation-wide count is the composite member
+gh_commits_30d_org,feature,integer,development,2,development,+1,log1p,has_repo,min,2,F2,none known,
+gh_authors_30d_org,feature,integer,development,2,development,+1,log1p,has_repo,min,2,F2,none known,
+gh_prs_merged_30d_org,feature,integer,development,2,development,+1,log1p,has_repo,min,2,F2,none known,
+gh_active_days_30d_org,feature,integer,development,2,,,log1p,has_repo,min,pred,F2,none known,near duplicate of gh_commits_30d_org (rho 0.96)
+gh_commits_lag30_repo,feature_lag,integer,development_lag,18,,,log1p,has_repo,min,pred,F1,none known,main repository only
+gh_commits_lag30_org,feature_lag,integer,development_lag,18,development_lag,+1,log1p,has_repo,min,1,F1,none known,
+gh_authors_lag30_org,feature_lag,integer,development_lag,18,development_lag,+1,log1p,has_repo,min,1,F1,none known,
+gh_prs_merged_lag30_org,feature_lag,integer,development_lag,18,development_lag,+1,log1p,has_repo,min,1,F1,none known,
+gh_active_days_lag30_org,feature_lag,integer,development_lag,18,,,log1p,has_repo,min,pred,F1,none known,near duplicate of gh_commits_lag30_org (rho 0.98)
+gh_authors_90d_org,feature,integer,development,2,,,log1p,has_repo,min,pred,F2,none known,near duplicate of gh_authors_30d_org
+gh_contributors_alltime_repo,feature,integer,development,2,development,+1,log1p,has_repo,min,2,F2,none known,
+gh_stars_repo,feature,integer,dev_popularity,3,,,log1p,has_repo,min,pred,F3,likely two-way,near duplicate of gh_stars_org
+gh_forks_repo,feature,integer,dev_popularity,3,dev_popularity,+1,log1p,has_repo,min,3,F3,likely two-way,
+gh_stars_org,feature,integer,dev_popularity,3,dev_popularity,+1,log1p,has_repo,min,3,F3,likely two-way,
+gh_repo_age_days,feature,number,development,2,,,log1p,has_repo,min,pred,F2,none known,
+gh_days_since_push,feature,number,development,2,development,-1,log1p,has_repo,max,2,F2,none known,
+gh_releases_repo,feature,integer,development,2,development,+1,log1p,has_repo,min,2,F2,none known,
+doc_readme,feature,binary,development,2,,,none,,,none,none,none known,103 of 104 repositories have a README: no variance
+doc_license,feature,binary,development,2,,,none,has_repo,min,pred,F2,none known,checklist item; doc_score carries it in the OLS
+doc_contributing,feature,binary,development,2,,,none,has_repo,min,pred,F2,none known,checklist item; doc_score carries it in the OLS
+doc_miner_guide,feature,binary,development,2,,,none,has_repo,min,pred,F2,none known,checklist item; doc_score carries it in the OLS
+doc_validator_guide,feature,binary,development,2,,,none,has_repo,min,pred,F2,none known,checklist item; doc_score carries it in the OLS
+doc_incentive_desc,feature,binary,development,2,,,none,has_repo,min,pred,F2,none known,checklist item; doc_score carries it in the OLS
+doc_requirements,feature,binary,development,2,,,none,has_repo,min,pred,F2,none known,checklist item; doc_score carries it in the OLS
+doc_site,feature,binary,development,2,,,none,has_repo,min,pred,F2,none known,checklist item; doc_score carries it in the OLS
+doc_score,feature,integer,development,2,development,+1,none,has_repo,min,2,F2,none known,sum of the eight checklist items
+website_status,flag,category,flags,29,,,none,,,none,none,,source of the indicators has_repo and has_x; categorical
+website_live,feature,binary,presence,4,presence,+1,none,all,,2,F2,none known,missing for the two unread sites counts as 0
+whitepaper_available,feature,binary,presence,4,presence,+1,none,all,,2,F2,none known,missing for the two unread sites counts as 0
+wp_pages,feature,integer,presence,4,,,log1p,,,none,none,none known,defined only where a white paper exists (n 23 to 32)
+wp_references,feature,binary,presence,4,,,none,,,none,none,none known,defined only where a white paper exists (n 23 to 32)
+wp_named_authors,feature,binary,presence,4,,,none,,,none,none,none known,defined only where a white paper exists (n 23 to 32)
+wp_formal_mechanism,feature,binary,presence,4,,,none,,,none,none,none known,defined only where a white paper exists (n 23 to 32)
+api_public,feature,binary,presence,4,presence,+1,none,all,,2,F2,none known,missing for the two unread sites counts as 0
+mcp_server,feature,binary,presence,4,presence,+1,none,all,,2,F2,none known,missing for the two unread sites counts as 0
+team_named,feature,binary,presence,4,presence,+1,none,all,,2,F2,none known,missing for the two unread sites counts as 0
+product_live,feature,binary,presence,4,presence,+1,none,all,,2,F2,none known,missing for the two unread sites counts as 0
+category,feature,category,flags,29,,,none,,,none,none,none known,16 groups: too many for 124 rows; category8 is used
+category8,feature,category,flags,29,,,none,all,,2+,F2,none known,factor with 8 groups; add-on specification 2+ with a block F-test; dummies in the prediction sets
+x_status,flag,category,flags,29,,,none,,,none,none,,source of the indicators has_repo and has_x; categorical
+x_followers,feature,integer,x_reach,6,x_reach,+1,log1p,has_x,min,3,F3,likely two-way,
+x_account_age_days,feature,number,x_reach,6,,,log1p,has_x,min,pred,F3,none known,
+x_posts_30d,feature,integer,x_reach,6,,,log1p,has_x,min,pred,F3,likely two-way,includes replies; the original-post count is the composite member
+x_posts_original_30d,feature,integer,x_reach,6,x_reach,+1,log1p,has_x,min,3,F3,likely two-way,
+x_posts_lag30,feature_lag,integer,x_reach_lag,20,,,log1p,has_x,min,pred,F1,none known,includes replies
+x_posts_original_lag30,feature_lag,integer,x_reach_lag,20,x_posts_original_lag30,,log1p,has_x,min,1,F1,none known,"single, with has_x"
+kol_posts_90d,feature,integer,attention,5,attention,+1,log1p,all,,3,F3,likely two-way,
+kol_accounts_90d,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,near duplicate of kol_posts_90d (rho 0.97)
+kol_pos_posts_90d,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,sub-period or sub-type of kol_posts_90d
+kol_neg_posts_90d,feature,integer,attention,5,,,log1p,,,none,none,likely two-way,14 negative mentions in 8 subnets: no variance
+kol_posts_30d,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,sub-period or sub-type of kol_posts_90d
+kol_pos_posts_30d,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,sub-period or sub-type of kol_posts_90d
+kol_neg_posts_30d,feature,integer,attention,5,,,log1p,,,none,none,likely two-way,14 negative mentions in 8 subnets: no variance
+kol_posts_lag30,feature_lag,integer,attention_lag,19,attention_lag,+1,log1p,all,,1,F1,none known,
+kol_pos_posts_lag30,feature_lag,integer,attention_lag,19,,,log1p,all,,pred,F1,none known,sub-type of kol_posts_lag30
+kol_neg_posts_lag30,feature_lag,integer,attention_lag,19,,,log1p,,,none,none,none known,5 negative mentions: no variance
+days_since_registration,feature,number,age,1,,,log1p,all,,control,F2,none known,log1p(days_since_registration) is the age control in every specification (dilution of the alpha reserve)
+days_since_first_emission,feature,number,age,1,,,log1p,started,,pred,F2,none known,
+days_since_owner_change,feature,number,age,1,,,log1p,,,none,none,none known,undefined for the 47 subnets that never changed owner; replaced by owner_changed_180d
+days_since_identity_change,feature,number,age,1,,,log1p,,,none,none,none known,undefined for 49 subnets; replaced by identity_changed_180d
+project_age_days,feature,number,age,1,,,log1p,all,,pred,F2,none known,in the OLS through renamed_project (project start later than registration)
+owner_buy_tao_30d,feature,number,owner_trading,12,,,log1p,all,,pred,F3,mechanical (flow): a purchase through the pool raises the price in the same window,118 zeros
+owner_sell_tao_30d,feature,number,owner_trading,12,,,log1p,started,,pred,F3,mechanical (flow): a purchase through the pool raises the price in the same window,duplicate of owner_cut_sold_ratio_30d (rho 1.00)
+owner_net_buy_tao_30d,feature,number,owner_trading,12,owner_net_buy_tao_30d,,asinh,all,,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single; asinh
+owner_cut_sold_ratio_30d,feature,number,owner_trading,12,owner_cut_sold_ratio_30d,,none,started,,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single
+owner_net_buy_tao_lag30,feature_lag,number,owner_trading_lag,26,,,asinh,all,,pred,F3,none known,mechanical flow in August; prediction set F3 only
+owner_cut_sold_ratio_lag30,feature_lag,number,owner_trading_lag,26,,,none,started_lag,,pred,F3,none known,mechanical flow in August; prediction set F3 only
+owner_net_buy_tao_90d,feature,number,owner_trading,12,,,asinh,all,,pred,F3,mechanical (flow): a purchase through the pool raises the price in the same window,
+owner_bought_any_90d,feature,binary,owner_trading,12,owner_bought_any_90d,,none,all,,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single
+tao_emission_on_share_30d,feature,number,emissions,14,tao_emission_on_share_30d,,none,all,,3,F3,"mechanical (gate): the TAO injected rises steeply with price x (1 - burn); it is zero when the flag is off, the burn is 100% or emissions have not started",single
+emission_flag_on_share_30d,feature,number,emissions,14,emission_flag_on_share_30d,,none,all,,3,F3,"mechanical (gate): the TAO injected rises steeply with price x (1 - burn); it is zero when the flag is off, the burn is 100% or emissions have not started",single
+tao_emission_on_share_lag30,feature_lag,number,emissions_lag,27,,,none,all,,pred,F3,depends on the price in the lagged window,depends on the August price; prediction set F3 only
+emission_flag_on_share_lag30,feature_lag,number,emissions_lag,27,,,none,all,,pred,F3,depends on the price in the lagged window,depends on the August price; prediction set F3 only
+baskets_net_buyers_n_30d,feature,integer,baskets,13,baskets_net_buyers_n_30d,,log1p,all,,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single
+basket_net_buy_tao_30d,feature,number,baskets,13,basket_net_buy_tao_30d,,asinh,all,,3,F3,mechanical (flow): a purchase through the pool raises the price in the same window,single; asinh
+basket_alpha_share_issued,feature,number,baskets,13,basket_alpha_share_issued,,none,all,,3,F3,likely two-way,single
+podcast_episodes_12m,feature,integer,attention,5,attention,+1,log1p,all,,3,F3,likely two-way,
+podcast_shows_12m,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,duplicate of podcast_episodes_12m (rho 0.995)
+podcast_days_since_last,feature,number,attention,5,,,log1p,,,none,none,none known,undefined for the 74 subnets without an episode; the counts carry it
+podcast_episodes_12m_lag30,feature_lag,integer,attention_lag,19,attention_lag,+1,log1p,all,,1,F1,none known,
+podcast_novelty_search_12m,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,per-show count; the total is the composite member
+podcast_hash_rate_12m,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,per-show count; the total is the composite member
+podcast_ventura_labs_12m,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,per-show count; the total is the composite member
+podcast_revenue_search_12m,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,per-show count; the total is the composite member
+podcast_bittensor_guru_12m,feature,integer,attention,5,,,log1p,,,none,none,likely two-way,2 subnets with an episode: no variance
+exploit26_presented,feature,binary,attention,5,attention,+1,none,all,,3,F3,likely two-way,
+exploit26_sessions_n,feature,integer,attention,5,,,log1p,all,,pred,F3,likely two-way,near duplicate of exploit26_presented
+exploit26_mentions_n,feature,integer,attention,5,attention,+1,log1p,all,,3,F3,likely two-way,
+owner_lock_share_owner_alpha,feature,number,owner_commitment,11,owner_commitment,+1,none,started,,2,F2,none known,
+ownerhk_lock_share_issued,feature,number,owner_commitment,11,owner_commitment,+1,none,started,,2,F2,none known,
+owner_lock_perpetual,feature,binary,owner_commitment,11,owner_commitment,+1,none,started,,2,F2,none known,
+owner_cut_autolock,feature,binary,owner_commitment,11,,,none,all,,pred,F2,none known,13 subnets
+owner_lock_share_owner_alpha_lag30,feature_lag,number,owner_commitment_lag,25,owner_commitment_lag,+1,none,started_lag,,1,F1,none known,
+ownerhk_lock_share_issued_lag30,feature_lag,number,owner_commitment_lag,25,owner_commitment_lag,+1,none,started_lag,,1,F1,none known,
+holders_positions_n,feature,integer,holder_dispersion,17,holder_dispersion,+1,log1p,has_holders,,3,F3,likely two-way,
+holders_top10_share,feature,number,holder_dispersion,17,holder_dispersion,-1,none,has_holders,,3,F3,likely two-way,
+holders_top10_share_upper,quality,number,quality,30,,,none,,,none,none,,"quality measure of the collection, not a feature"
+holders_hhi,feature,number,holder_dispersion,17,holder_dispersion,-1,none,has_holders,,3,F3,likely two-way,
+holders_hhi_upper,quality,number,quality,30,,,none,,,none,none,,"quality measure of the collection, not a feature"
+holders_untraced_share,quality,number,quality,30,,,none,,,none,none,,"quality measure of the collection, not a feature"
+stake_share_owner_validator,feature,number,validator_dispersion,10,validator_dispersion,-1,none,started,,2,F2,none known,missing where nobody holds a stake (3 subnets)
+owner_alpha_share_issued,feature,number,owner_commitment,11,owner_commitment,+1,none,started,,2,F2,none known,
+alpha_burned_share,feature,number,owner_commitment,11,,,none,all,,pred,F2,none known,
+stake_share_owner_validator_lag30,feature_lag,number,validator_dispersion_lag,24,validator_dispersion_lag,-1,none,started_lag,,1,F1,none known,
+owner_alpha_share_issued_lag30,feature_lag,number,owner_commitment_lag,25,owner_commitment_lag,+1,none,started_lag,,1,F1,none known,
+alpha_burned_share_lag30,feature_lag,number,owner_commitment_lag,25,,,none,all,,pred,F1,none known,
+reg_cost_tao_now,feature,number,registrations,15,reg_cost_tao_now,,log1p,all,,3,F3,none known,single
+reg_cost_tao_mean_30d,feature,number,registrations,15,,,log1p,all,,pred,F3,none known,window mean of reg_cost_tao_now
+reg_cost_tao_mean_lag30,feature_lag,number,registrations_lag,28,,,log1p,all,,pred,F1,none known,
+reg_recycled_tao_30d,feature,number,registrations,15,,,log1p,all,,pred,F3,none known,
+registrations_30d,feature,integer,registrations,15,registrations_30d,,log1p,all,,3,F3,none known,single
+registrations_lag30,feature_lag,integer,registrations_lag,28,,,log1p,all,,pred,F1,none known,
+validators_n,feature,integer,validator_dispersion,10,validator_dispersion,+1,log1p,started,,2,F2,none known,
+owner_validator_div_share,feature,number,validator_dispersion,10,validator_dispersion,-1,none,started,,2,F2,none known,
+validator_stake_hhi,feature,number,validator_dispersion,10,validator_dispersion,-1,none,started,,2,F2,none known,
+validators_n_lag30,feature_lag,integer,validator_dispersion_lag,24,validator_dispersion_lag,+1,log1p,started_lag,,1,F1,none known,
+owner_validator_div_share_lag30,feature_lag,number,validator_dispersion_lag,24,validator_dispersion_lag,-1,none,started_lag,,1,F1,none known,
+validator_stake_hhi_lag30,feature_lag,number,validator_dispersion_lag,24,validator_dispersion_lag,-1,none,started_lag,,1,F1,none known,
+commit_reveal_on,feature,binary,settings,16,commit_reveal_on,,none,all,,2,F2,none known,single
+yuma3_on,feature,binary,settings,16,yuma3_on,,none,all,,2,F2,none known,single
+liquid_alpha_on,feature,binary,settings,16,,,none,,,none,none,none known,8 subnets: no variance
+mech_count,feature,integer,settings,16,,,none,,,none,none,none known,6 subnets with two mechanisms: no variance
+max_neurons,feature,integer,settings,16,,,log1p,,,none,none,none known,6 subnets differ from the default: no variance
+has_repo,derived,binary,derived,31,,,none,all,,control,F1,,gh_status is found or owner_only (104 subnets); indicator for the development blocks
+has_x,derived,binary,derived,31,,,none,all,,control,F1,,x_status is found (92 subnets); indicator for the X blocks
+miner_paid,derived,binary,derived,31,,,none,all,,control,F2,,1 - flag_no_miner_paid_30d (105 subnets); indicator for miner_concentration
+miner_paid_lag,derived,binary,derived,31,,,none,all,,control,F1,,miners_paid_coldkeys_lag30 > 0; indicator for miner_concentration_lag
+has_holders,derived,binary,derived,31,,,none,all,,control,F2,,holders_positions_n > 0 (125 subnets); indicator for holder_dispersion
+started,derived,binary,derived,31,,,none,all,,2,F2,,1 - startup_mode (124 subnets); emissions have started
+started_lag,derived,binary,derived,31,,,none,all,,control,F1,,days_since_first_emission > 30: emissions had started before the lagged window ended
+owner_changed_180d,derived,binary,derived,31,,,none,all,,2,F2,,days_since_owner_change <= 180 (0 when the owner never changed)
+identity_changed_180d,derived,binary,derived,31,,,none,all,,2,F2,,days_since_identity_change <= 180 (0 when the identity never changed)
+log_age,derived,number,derived,31,,,none,all,,control,F1,,log1p(days_since_registration); the age control
+renamed_project,derived,binary,derived,31,,,none,all,,control,F1,,project_age_days < days_since_registration - 1: the current project took over a running netuid

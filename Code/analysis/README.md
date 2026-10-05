@@ -18,6 +18,7 @@ From this folder (`Code/analysis`), in a shell:
 
 ```bash
 Rscript install_packages.R      # once; installs glmnet and randomForest into your user library
+Rscript test_prepare_features.R # checks of the feature preparation; seconds
 Rscript run_all.R               # steps 1 to 7 in order; about 35 minutes, of which the
                                 # cross-validation takes 30
 ```
@@ -37,6 +38,16 @@ Or step by step, in this order:
 In RStudio: set the working directory to `Code/analysis` and `source()` the scripts in the
 same order.
 
+Exploratory scripts, outside the pre-analysis plan (run after steps 1 to 6):
+
+| Script | What it does | Writes to `Output/` | Time |
+|---|---|---|---|
+| `90_exploratory_sn111.R` | SN111 against the models (left out of the fit), its ten most similar subnets, its percentile on every regressor | `wave1_exploratory_sn111_predictions.csv`, `_neighbours.csv`, `_profile.csv` | a minute |
+| `91_exploratory_sn111_charts.R` | two charts of SN111's percentiles | `wave1_exploratory_sn111_percentiles.png`, `_strengths.png` | seconds |
+| `92_exploratory_sn111_contributions.R` | what pulls SN111's model value up and down, with HC3 intervals | `wave1_exploratory_sn111_contributions.csv`, `.png` | seconds |
+| `93_exploratory_residuals.R` | out-of-fold model value of every subnet; did the August gap predict the September return? | `wave1_exploratory_residuals_*.csv`, `.png` | 15 min |
+| `94_figure_sn111_strengths.R` | the public figure "Where Claims stands out": X version (Claims brand) and deck version | `wave1_figure_sn111_strengths.csv`, `_x.html`, `_x.png`, `_deck.svg` | seconds |
+
 ## 3. Check your run against the committed results
 
 Every random step uses the seed `20261002` (`00_functions.R`), so a run on the same R and
@@ -55,9 +66,11 @@ difference in content.
 
 1. `feature_blocks.csv`: one row per variable; `transform` (log1p, asinh, none), `block`,
    `composite` and `direction` (sign in the composite), `applies_to` (the indicator that says
-   whether the block applies to a subnet), `spec` (1, 2, 3, control, pred, none) and
-   `prediction_set` (F1, F2, F3, none). Change nothing here without recording it in `PLAN.md`:
-   this table is the pre-registration.
+   whether the block applies to a subnet), `absent_fill` (`min` or `max`: a subnet without a
+   GitHub repository or X account gets the weakest value observed among those that have one;
+   amendment 1 of the plan), `spec` (1, 2, 3, control, pred, none) and `prediction_set`
+   (F1, F2, F3, none). Change nothing here without recording it in `PLAN.md`: this table is
+   the pre-registration.
 2. `00_functions.R`, `prepare_features()`: applies the table. Winsorising limits, z-scores and
    PC loadings are computed on the rows passed as `fit`; `04` passes all 128 subnets, `06`
    passes the training fold.

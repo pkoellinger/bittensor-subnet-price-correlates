@@ -1,5 +1,5 @@
 "model","outcome","term","label","x_sn111","x_mean","coefficient","se_hc3","contribution","ci_low","ci_high","predicted_deviation","actual_deviation","residual"
-"spec2","log_price_avg30","development","Development activity (composite)",0.16455,0.0018351,0.40669,0.14735,0.066175,0.019182,0.11317,0.077131,-0.15936,-0.23649
+"spec2","log_price_avg30","development","Development activity (composite)",0.16455,-0.281,0.40669,0.14735,0.1812,0.052524,0.30988,0.077131,-0.15936,-0.23649
 "spec2","log_price_avg30","presence","Public presence (0 to 6)",0.45465,0.0081157,0.10846,0.16323,0.048432,-0.094428,0.19129,0.077131,-0.15936,-0.23649
 "spec2","log_price_avg30","miner_scale","Miner scale (composite)",0.78115,0.034219,-0.3291,0.22085,-0.24582,-0.56913,0.077498,0.077131,-0.15936,-0.23649
 "spec2","log_price_avg30","miner_concentration","Miner pay concentration (composite)",-0.92015,-0.00024782,-0.063457,0.11712,0.058375,-0.15279,0.26954,0.077131,-0.15936,-0.23649
@@ -15,8 +15,8 @@
 "spec2","log_price_avg30","flag_placeholder_identity","Placeholder identity",0,0.096774,0.039484,0.43933,-0.0038211,-0.087152,0.07951,0.077131,-0.15936,-0.23649
 "spec2","log_price_avg30","startup_mode","Startup mode",0,0.016129,-0.73087,0.51246,0.011788,-0.0044122,0.027989,0.077131,-0.15936,-0.23649
 "spec2","log_price_avg30","flag_full_burn_30d","Full burn",0,0.15323,0.0029377,0.35925,-0.00045013,-0.10834,0.10744,0.077131,-0.15936,-0.23649
-"spec2","log_price_avg30","has_repo","Has a GitHub repository",1,0.82258,0.26976,0.40049,0.047861,-0.091405,0.18713,0.077131,-0.15936,-0.23649
-"spec3","log_price_avg30","development","Development activity (composite)",0.16455,0.0018351,0.081547,0.12245,0.013269,-0.025784,0.052322,-0.31205,-0.15936,0.1527
+"spec2","log_price_avg30","has_repo","Has a GitHub repository",1,0.82258,-0.37856,0.43475,-0.067164,-0.21834,0.084017,0.077131,-0.15936,-0.23649
+"spec3","log_price_avg30","development","Development activity (composite)",0.16455,-0.281,0.081547,0.12245,0.036333,-0.070601,0.14327,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","presence","Public presence (0 to 6)",0.45465,0.0081157,-0.035679,0.10918,-0.015932,-0.11149,0.079626,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","miner_scale","Miner scale (composite)",0.78115,0.034219,0.1759,0.17184,0.13139,-0.12018,0.38295,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","miner_concentration","Miner pay concentration (composite)",-0.92015,-0.00024782,-0.029053,0.085813,0.026726,-0.128,0.18145,-0.31205,-0.15936,0.1527
@@ -32,11 +32,11 @@
 "spec3","log_price_avg30","flag_placeholder_identity","Placeholder identity",0,0.096774,0.32,0.31246,-0.030968,-0.090234,0.028298,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","startup_mode","Startup mode",0,0.016129,0.64561,0.60291,-0.010413,-0.029473,0.0086466,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","flag_full_burn_30d","Full burn",0,0.15323,0.37617,0.28304,-0.057639,-0.14264,0.027365,-0.31205,-0.15936,0.1527
-"spec3","log_price_avg30","has_repo","Has a GitHub repository",1,0.82258,0.12086,0.262,0.021443,-0.069664,0.11255,-0.31205,-0.15936,0.1527
+"spec3","log_price_avg30","has_repo","Has a GitHub repository",1,0.82258,0.10527,0.29394,0.018677,-0.083538,0.12089,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","attention","Commentator and summit attention (composite)",0.59009,0.022835,0.5678,0.13996,0.32209,0.16648,0.4777,-0.31205,-0.15936,0.1527
-"spec3","log_price_avg30","x_reach","X reach (composite)",0.28577,0.0052427,-0.14632,0.10746,-0.041047,-0.10013,0.01804,-0.31205,-0.15936,0.1527
-"spec3","log_price_avg30","has_x","Has an X account",1,0.72581,-0.10006,0.15987,-0.027435,-0.11335,0.05848,-0.31205,-0.15936,0.1527
-"spec3","log_price_avg30","dev_popularity","GitHub stars and forks (composite)",-0.56714,0.011373,-0.080501,0.10621,0.046571,-0.073855,0.167,-0.31205,-0.15936,0.1527
+"spec3","log_price_avg30","x_reach","X reach (composite)",0.28577,-0.6141,-0.14632,0.10746,-0.13167,-0.32121,0.057868,-0.31205,-0.15936,0.1527
+"spec3","log_price_avg30","has_x","Has an X account",1,0.72581,0.23045,0.2624,0.063188,-0.077833,0.20421,-0.31205,-0.15936,0.1527
+"spec3","log_price_avg30","dev_popularity","GitHub stars and forks (composite)",-0.56714,-0.24078,-0.080501,0.10621,0.026273,-0.041665,0.09421,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","holder_dispersion","Holder dispersion by wallet (composite)",0.9648,0.050379,-0.11328,0.1375,-0.10358,-0.35002,0.14286,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","owner_net_buy_tao_30d","Owner net purchases (asinh TAO)",0,-0.53415,0.057766,0.068062,0.030856,-0.040401,0.10211,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","owner_cut_sold_ratio_30d","Owner cut sold, ratio",0,0.13307,-0.019067,0.25593,0.0025372,-0.064211,0.069286,-0.31205,-0.15936,0.1527
@@ -48,7 +48,7 @@
 "spec3","log_price_avg30","emission_flag_on_share_30d","Emission flag on, share of window",0.98333,0.88411,-0.20427,0.82267,-0.020269,-0.18027,0.13973,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","registrations_30d","Miner registrations (log)",5.4681,3.79,-0.0096491,0.033528,-0.016192,-0.12647,0.094083,-0.31205,-0.15936,0.1527
 "spec3","log_price_avg30","reg_cost_tao_now","Registration cost (log TAO)",0.47793,0.14732,0.050152,0.35798,0.016581,-0.21539,0.24855,-0.31205,-0.15936,0.1527
-"spec2","log_price_spot","development","Development activity (composite)",0.16455,0.0018351,0.39643,0.15424,0.064507,0.015315,0.1137,0.12158,-0.22586,-0.34744
+"spec2","log_price_spot","development","Development activity (composite)",0.16455,-0.281,0.39643,0.15424,0.17663,0.041934,0.31133,0.12158,-0.22586,-0.34744
 "spec2","log_price_spot","presence","Public presence (0 to 6)",0.45465,0.0081157,0.10881,0.17428,0.048589,-0.10394,0.20112,0.12158,-0.22586,-0.34744
 "spec2","log_price_spot","miner_scale","Miner scale (composite)",0.78115,0.034219,-0.32299,0.23463,-0.24125,-0.58475,0.10225,0.12158,-0.22586,-0.34744
 "spec2","log_price_spot","miner_concentration","Miner pay concentration (composite)",-0.92015,-0.00024782,-0.072184,0.12448,0.066403,-0.15803,0.29083,0.12158,-0.22586,-0.34744
@@ -64,4 +64,4 @@
 "spec2","log_price_spot","flag_placeholder_identity","Placeholder identity",0,0.096774,-0.031623,0.44728,0.0030603,-0.081778,0.087898,0.12158,-0.22586,-0.34744
 "spec2","log_price_spot","startup_mode","Startup mode",0,0.016129,-0.070353,0.54457,0.0011347,-0.016081,0.01835,0.12158,-0.22586,-0.34744
 "spec2","log_price_spot","flag_full_burn_30d","Full burn",0,0.15323,-0.093902,0.38668,0.014388,-0.10174,0.13052,0.12158,-0.22586,-0.34744
-"spec2","log_price_spot","has_repo","Has a GitHub repository",1,0.82258,0.21101,0.40582,0.037437,-0.10368,0.17856,0.12158,-0.22586,-0.34744
+"spec2","log_price_spot","has_repo","Has a GitHub repository",1,0.82258,-0.42097,0.44627,-0.074688,-0.22987,0.080498,0.12158,-0.22586,-0.34744

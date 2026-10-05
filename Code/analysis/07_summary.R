@@ -111,6 +111,7 @@ lines <- c(
   "",
   "## Deviations from the plan",
   "",
+  "- Amendment 1 (5 Oct 2026, `ANALYSIS-PLAN.md` section 11): a subnet without a GitHub repository or an X account gets the weakest observed value on every repository or X variable instead of the average of the subnets that have one. The OLS results are unchanged by construction (the indicators `has_repo` and `has_x` absorb any constant fill); the penalised models and the random forest were rerun.",
   "- `miner_paid` and `started` (and `has_holders` in specification 3) are exactly collinear with the flags `flag_full_burn_30d` and `startup_mode` in the 124-row sample and were dropped by the fitting routine; the fit tables note it per model.",
   "- `flag_placeholder_identity` and `startup_mode` were moved from prediction set F2 to F1 after the pre-analysis commit, so that F1 carries the controls of specification 1 as the plan states.",
   "- `startup_mode` was taken out of specification 1 (and of the rehearsal model): `started_lag` nests it, and the one subnet that started emissions in September but not in August (netuid 36) would otherwise be the only observation identifying it, with leverage 1 and undefined HC3 standard errors.",

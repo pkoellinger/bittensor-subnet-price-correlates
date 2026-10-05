@@ -216,7 +216,15 @@ prepare_features <- function(d, fb, fit = seq_len(nrow(d))) {
     z <- rep(0, n)
     z[ok] <- if (is.finite(s) && s > 0) (x[ok] - m) / s else 0
     z[a & is.na(x)] <- NA
-    x[!a] <- 0                                      # does not apply: the indicator carries it
+    fill <- rows$absent_fill[i]
+    if (fill %in% c("min", "max") && length(fit_ok)) {
+      # no repository or X account (amendment 1): the weakest value observed among the fit rows that have one
+      w <- if (fill == "min") min(x[fit_ok]) else max(x[fit_ok])
+      x[!a] <- w
+      z[!a] <- if (is.finite(s) && s > 0) (w - m) / s else 0
+    } else {
+      x[!a] <- 0                                    # does not apply: the indicator carries it
+    }
     x[a & is.na(x)] <- m                            # missing on an applicable row: the fit mean
     X[, i] <- x; Z[, i] <- z; applies[, i] <- a
   }
@@ -227,8 +235,10 @@ prepare_features <- function(d, fb, fit = seq_len(nrow(d))) {
     idx <- which(rows$composite == cname & rows$direction != "")
     signs <- as.numeric(rows$direction[idx])
     a <- applies[, idx[1]]
+    filled <- all(rows$absent_fill[idx] %in% c("min", "max"))   # absent rows carry the weakest member values
     Zs <- sweep(Z[, idx, drop = FALSE], 2, signs, `*`)
-    unit <- rowMeans(Zs, na.rm = TRUE); unit[!a | is.nan(unit)] <- 0
+    unit <- rowMeans(Zs, na.rm = TRUE); unit[is.nan(unit)] <- 0
+    if (!filled) unit[!a] <- 0
     pc1 <- unit
     if (length(idx) > 1) {
       Zf <- Zs; Zf[is.na(Zf)] <- 0
@@ -237,7 +247,7 @@ prepare_features <- function(d, fb, fit = seq_len(nrow(d))) {
         p <- prcomp(Zf[fit_a, , drop = FALSE], center = TRUE, scale. = FALSE)
         score <- as.numeric(scale(Zf, center = p$center, scale = FALSE) %*% p$rotation[, 1])
         if (cor(score[fit_a], unit[fit_a]) < 0) score <- -score
-        pc1 <- score; pc1[!a] <- 0
+        pc1 <- score; if (!filled) pc1[!a] <- 0
       }
     }
     C[, cname] <- unit; C[, paste0(cname, "_pc1")] <- pc1

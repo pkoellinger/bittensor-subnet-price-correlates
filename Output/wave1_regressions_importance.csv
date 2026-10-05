@@ -1,10 +1,10 @@
 "model","outcome","term","beta_standardised","delta_r2_drop_one","p_hc3","rank"
-"spec1_august_state","log 30-day average price","development_lag",0.32591,0.081621,0.0002751,1
+"spec1_august_state","log 30-day average price","development_lag",0.37712,0.081621,0.0002751,1
 "spec1_august_state","log 30-day average price","attention_lag",0.33922,0.077751,0.0033169,2
 "spec1_august_state","log 30-day average price","renamed_project",-0.22322,0.039754,0.019629,3
 "spec1_august_state","log 30-day average price","burn_mean_lag30",-0.26508,0.029894,0.03252,4
-"spec1_august_state","log 30-day average price","validator_dispersion_lag",-0.062864,0.0027579,0.56989,5
-"spec1_august_state","log 30-day average price","has_repo",0.080043,0.0021754,0.56484,6
+"spec1_august_state","log 30-day average price","has_repo",-0.10608,0.0036598,0.4327,5
+"spec1_august_state","log 30-day average price","validator_dispersion_lag",-0.062864,0.0027579,0.56989,6
 "spec1_august_state","log 30-day average price","x_posts_original_lag30",-0.072282,0.0020205,0.52731,7
 "spec1_august_state","log 30-day average price","miner_paid_lag",-0.10924,0.0016925,0.57205,8
 "spec1_august_state","log 30-day average price","log_age",0.043003,0.00098054,0.71442,9
@@ -15,14 +15,14 @@
 "spec1_august_state","log 30-day average price","has_x",-0.0014397,7.7006e-07,0.98993,14
 "spec1_august_state","log 30-day average price","started_lag",0.00057132,1.8483e-07,0.99611,15
 "spec2_september_no_price_link","log 30-day average price","burn_mean_30d",-0.42372,0.075311,0.00044404,1
-"spec2_september_no_price_link","log 30-day average price","development",0.28029,0.059668,0.0068111,2
+"spec2_september_no_price_link","log 30-day average price","development",0.39961,0.059668,0.0068111,2
 "spec2_september_no_price_link","log 30-day average price","renamed_project",-0.29456,0.041226,0.015543,3
 "spec2_september_no_price_link","log 30-day average price","miner_scale",-0.33412,0.017328,0.13914,4
 "spec2_september_no_price_link","log 30-day average price","owner_commitment",0.091451,0.0075585,0.32006,5
-"spec2_september_no_price_link","log 30-day average price","yuma3_on",-0.11518,0.0067042,0.28322,6
-"spec2_september_no_price_link","log 30-day average price","startup_mode",-0.10573,0.0059919,0.15675,7
-"spec2_september_no_price_link","log 30-day average price","commit_reveal_on",-0.080784,0.0053503,0.39791,8
-"spec2_september_no_price_link","log 30-day average price","has_repo",0.11835,0.0047679,0.50204,9
+"spec2_september_no_price_link","log 30-day average price","has_repo",-0.16608,0.0074879,0.38586,6
+"spec2_september_no_price_link","log 30-day average price","yuma3_on",-0.11518,0.0067042,0.28322,7
+"spec2_september_no_price_link","log 30-day average price","startup_mode",-0.10573,0.0059919,0.15675,8
+"spec2_september_no_price_link","log 30-day average price","commit_reveal_on",-0.080784,0.0053503,0.39791,9
 "spec2_september_no_price_link","log 30-day average price","presence",0.073759,0.0035269,0.50783,10
 "spec2_september_no_price_link","log 30-day average price","miner_concentration",-0.063181,0.0019443,0.58907,11
 "spec2_september_no_price_link","log 30-day average price","owner_changed_180d",0.050703,0.0016713,0.64929,12
@@ -35,7 +35,7 @@
 "spec3_plus_two_way_and_mechanical","log 30-day average price","attention",0.49635,0.075351,0.00010488,2
 "spec3_plus_two_way_and_mechanical","log 30-day average price","basket_net_buy_tao_30d",-0.35244,0.067367,2.4798e-05,3
 "spec3_plus_two_way_and_mechanical","log 30-day average price","owner_net_buy_tao_30d",0.14227,0.0069922,0.39826,4
-"spec3_plus_two_way_and_mechanical","log 30-day average price","x_reach",-0.11418,0.0068423,0.17669,5
+"spec3_plus_two_way_and_mechanical","log 30-day average price","x_reach",-0.20467,0.0068423,0.17669,5
 "spec3_plus_two_way_and_mechanical","log 30-day average price","validator_dispersion",0.099922,0.0046204,0.24326,6
 "spec3_plus_two_way_and_mechanical","log 30-day average price","flag_full_burn_30d",0.1556,0.0044425,0.18716,7
 "spec3_plus_two_way_and_mechanical","log 30-day average price","flag_placeholder_identity",0.10865,0.0038603,0.30848,8
@@ -47,13 +47,13 @@
 "spec3_plus_two_way_and_mechanical","log 30-day average price","startup_mode",0.093395,0.002536,0.28708,14
 "spec3_plus_two_way_and_mechanical","log 30-day average price","yuma3_on",-0.074784,0.0025351,0.34774,15
 "spec3_plus_two_way_and_mechanical","log 30-day average price","holder_dispersion",-0.10078,0.002392,0.41221,16
-"spec3_plus_two_way_and_mechanical","log 30-day average price","dev_popularity",-0.077036,0.0020733,0.45043,17
-"spec3_plus_two_way_and_mechanical","log 30-day average price","development",0.056203,0.0014451,0.50713,18
-"spec3_plus_two_way_and_mechanical","log 30-day average price","burn_mean_30d",-0.076162,0.001265,0.507,19
-"spec3_plus_two_way_and_mechanical","log 30-day average price","has_x",-0.051259,0.0010598,0.53296,20
+"spec3_plus_two_way_and_mechanical","log 30-day average price","has_x",0.11806,0.0023885,0.38213,17
+"spec3_plus_two_way_and_mechanical","log 30-day average price","dev_popularity",-0.09221,0.0020733,0.45043,18
+"spec3_plus_two_way_and_mechanical","log 30-day average price","development",0.080127,0.0014451,0.50713,19
+"spec3_plus_two_way_and_mechanical","log 30-day average price","burn_mean_30d",-0.076162,0.001265,0.507,20
 "spec3_plus_two_way_and_mechanical","log 30-day average price","tao_emission_on_share_30d",-0.10895,0.0010421,0.57406,21
 "spec3_plus_two_way_and_mechanical","log 30-day average price","owner_commitment",0.035894,0.00088078,0.53203,22
-"spec3_plus_two_way_and_mechanical","log 30-day average price","has_repo",0.053022,0.00064249,0.64568,23
+"spec3_plus_two_way_and_mechanical","log 30-day average price","has_repo",0.046184,0.00043185,0.72106,23
 "spec3_plus_two_way_and_mechanical","log 30-day average price","commit_reveal_on",0.023117,0.00038388,0.71937,24
 "spec3_plus_two_way_and_mechanical","log 30-day average price","emission_flag_on_share_30d",-0.040122,0.00037603,0.80447,25
 "spec3_plus_two_way_and_mechanical","log 30-day average price","presence",-0.024263,0.00031002,0.74458,26
@@ -63,15 +63,15 @@
 "spec3_plus_two_way_and_mechanical","log 30-day average price","identity_changed_180d",0.012809,5.7195e-05,0.88931,30
 "spec3_plus_two_way_and_mechanical","log 30-day average price","owner_cut_sold_ratio_30d",-0.009366,2.6116e-05,0.94077,31
 "spec3_plus_two_way_and_mechanical","log 30-day average price","log_age",0.0040014,2.4089e-06,0.97835,32
-"spec1_august_state","log spot price","development_lag",0.30929,0.073507,0.00041143,1
+"spec1_august_state","log spot price","development_lag",0.35788,0.073507,0.00041143,1
 "spec1_august_state","log spot price","attention_lag",0.30329,0.062151,0.0067722,2
 "spec1_august_state","log spot price","burn_mean_lag30",-0.27252,0.031594,0.039611,3
 "spec1_august_state","log spot price","renamed_project",-0.1611,0.020706,0.091665,4
 "spec1_august_state","log spot price","log_age",0.1844,0.01803,0.15996,5
-"spec1_august_state","log spot price","miner_paid_lag",-0.13953,0.0027613,0.46437,6
-"spec1_august_state","log spot price","validator_dispersion_lag",-0.04473,0.0013963,0.67654,7
-"spec1_august_state","log spot price","owner_commitment_lag",0.037333,0.001187,0.70052,8
-"spec1_august_state","log spot price","has_repo",0.038651,0.00050723,0.77935,9
+"spec1_august_state","log spot price","has_repo",-0.13798,0.0061917,0.30682,6
+"spec1_august_state","log spot price","miner_paid_lag",-0.13953,0.0027613,0.46437,7
+"spec1_august_state","log spot price","validator_dispersion_lag",-0.04473,0.0013963,0.67654,8
+"spec1_august_state","log spot price","owner_commitment_lag",0.037333,0.001187,0.70052,9
 "spec1_august_state","log spot price","miner_scale_lag",-0.051931,0.00024152,0.8421,10
 "spec1_august_state","log spot price","flag_placeholder_identity",-0.013258,7.7817e-05,0.91647,11
 "spec1_august_state","log spot price","started_lag",-0.0087183,4.304e-05,0.89119,12
@@ -79,16 +79,16 @@
 "spec1_august_state","log spot price","miner_concentration_lag",0.006603,1.6739e-05,0.95991,14
 "spec1_august_state","log spot price","has_x",-0.0003746,5.2135e-08,0.99735,15
 "spec2_september_no_price_link","log spot price","burn_mean_30d",-0.3768,0.059554,0.0015973,1
-"spec2_september_no_price_link","log spot price","development",0.25477,0.049295,0.011553,2
+"spec2_september_no_price_link","log spot price","development",0.36321,0.049295,0.011553,2
 "spec2_september_no_price_link","log spot price","renamed_project",-0.25902,0.031879,0.028009,3
 "spec2_september_no_price_link","log spot price","miner_scale",-0.30576,0.014511,0.17154,4
 "spec2_september_no_price_link","log spot price","owner_commitment",0.12573,0.014287,0.18941,5
 "spec2_september_no_price_link","log spot price","yuma3_on",-0.15666,0.012403,0.15095,6
-"spec2_september_no_price_link","log spot price","log_age",0.13104,0.0068617,0.32076,7
-"spec2_september_no_price_link","log spot price","commit_reveal_on",-0.082768,0.0056163,0.37159,8
-"spec2_september_no_price_link","log spot price","owner_changed_180d",0.073643,0.0035258,0.50186,9
-"spec2_september_no_price_link","log spot price","presence",0.068999,0.0030864,0.53373,10
-"spec2_september_no_price_link","log spot price","has_repo",0.086316,0.0025363,0.60418,11
+"spec2_september_no_price_link","log spot price","has_repo",-0.1722,0.0080506,0.34767,7
+"spec2_september_no_price_link","log spot price","log_age",0.13104,0.0068617,0.32076,8
+"spec2_september_no_price_link","log spot price","commit_reveal_on",-0.082768,0.0056163,0.37159,9
+"spec2_september_no_price_link","log spot price","owner_changed_180d",0.073643,0.0035258,0.50186,10
+"spec2_september_no_price_link","log spot price","presence",0.068999,0.0030864,0.53373,11
 "spec2_september_no_price_link","log spot price","miner_concentration",-0.067014,0.0021874,0.56321,12
 "spec2_september_no_price_link","log spot price","identity_changed_180d",0.031867,0.00045229,0.7758,13
 "spec2_september_no_price_link","log spot price","validator_dispersion",0.024474,0.00038998,0.84026,14
@@ -98,7 +98,7 @@
 "spec3_plus_two_way_and_mechanical","log spot price","baskets_net_buyers_n_30d",0.66862,0.16178,1.2365e-10,1
 "spec3_plus_two_way_and_mechanical","log spot price","attention",0.47003,0.06757,0.00023176,2
 "spec3_plus_two_way_and_mechanical","log spot price","basket_net_buy_tao_30d",-0.31438,0.053603,0.00050489,3
-"spec3_plus_two_way_and_mechanical","log spot price","x_reach",-0.11284,0.0066818,0.19128,4
+"spec3_plus_two_way_and_mechanical","log spot price","x_reach",-0.20225,0.0066818,0.19128,4
 "spec3_plus_two_way_and_mechanical","log spot price","owner_bought_any_90d",0.086102,0.004997,0.25385,5
 "spec3_plus_two_way_and_mechanical","log spot price","owner_net_buy_tao_30d",0.10807,0.0040348,0.51233,6
 "spec3_plus_two_way_and_mechanical","log spot price","owner_commitment",0.074369,0.0037811,0.23727,7
@@ -106,23 +106,23 @@
 "spec3_plus_two_way_and_mechanical","log spot price","owner_changed_180d",-0.085698,0.0037033,0.36603,9
 "spec3_plus_two_way_and_mechanical","log spot price","yuma3_on",-0.090347,0.0037,0.2681,10
 "spec3_plus_two_way_and_mechanical","log spot price","flag_placeholder_identity",0.10452,0.0035725,0.31548,11
-"spec3_plus_two_way_and_mechanical","log spot price","flag_full_burn_30d",0.13631,0.0034094,0.28224,12
-"spec3_plus_two_way_and_mechanical","log spot price","validator_dispersion",0.08531,0.0033679,0.30528,13
-"spec3_plus_two_way_and_mechanical","log spot price","dev_popularity",-0.095982,0.0032185,0.38812,14
-"spec3_plus_two_way_and_mechanical","log spot price","renamed_project",-0.086132,0.0027093,0.30932,15
-"spec3_plus_two_way_and_mechanical","log spot price","registrations_30d",-0.06171,0.0018493,0.44409,16
-"spec3_plus_two_way_and_mechanical","log spot price","startup_mode",0.074476,0.0016126,0.39487,17
-"spec3_plus_two_way_and_mechanical","log spot price","owner_cut_sold_ratio_30d",-0.073467,0.0016069,0.58721,18
-"spec3_plus_two_way_and_mechanical","log spot price","basket_alpha_share_issued",-0.083692,0.0014622,0.5906,19
-"spec3_plus_two_way_and_mechanical","log spot price","development",0.054536,0.0013607,0.52824,20
-"spec3_plus_two_way_and_mechanical","log spot price","tao_emission_on_share_30d",-0.12405,0.001351,0.57355,21
-"spec3_plus_two_way_and_mechanical","log spot price","burn_mean_30d",-0.060145,0.00078891,0.59414,22
-"spec3_plus_two_way_and_mechanical","log spot price","presence",-0.03477,0.00063667,0.65883,23
-"spec3_plus_two_way_and_mechanical","log spot price","log_age",-0.057694,0.00050081,0.71451,24
-"spec3_plus_two_way_and_mechanical","log spot price","holder_dispersion",-0.044356,0.00046334,0.71402,25
-"spec3_plus_two_way_and_mechanical","log spot price","has_repo",0.041629,0.00039605,0.71007,26
-"spec3_plus_two_way_and_mechanical","log spot price","identity_changed_180d",0.028465,0.00028246,0.75802,27
-"spec3_plus_two_way_and_mechanical","log spot price","has_x",-0.024662,0.00024532,0.75869,28
+"spec3_plus_two_way_and_mechanical","log spot price","has_x",0.14266,0.0034876,0.28386,12
+"spec3_plus_two_way_and_mechanical","log spot price","flag_full_burn_30d",0.13631,0.0034094,0.28224,13
+"spec3_plus_two_way_and_mechanical","log spot price","validator_dispersion",0.08531,0.0033679,0.30528,14
+"spec3_plus_two_way_and_mechanical","log spot price","dev_popularity",-0.11489,0.0032185,0.38812,15
+"spec3_plus_two_way_and_mechanical","log spot price","renamed_project",-0.086132,0.0027093,0.30932,16
+"spec3_plus_two_way_and_mechanical","log spot price","registrations_30d",-0.06171,0.0018493,0.44409,17
+"spec3_plus_two_way_and_mechanical","log spot price","startup_mode",0.074476,0.0016126,0.39487,18
+"spec3_plus_two_way_and_mechanical","log spot price","owner_cut_sold_ratio_30d",-0.073467,0.0016069,0.58721,19
+"spec3_plus_two_way_and_mechanical","log spot price","basket_alpha_share_issued",-0.083692,0.0014622,0.5906,20
+"spec3_plus_two_way_and_mechanical","log spot price","development",0.077751,0.0013607,0.52824,21
+"spec3_plus_two_way_and_mechanical","log spot price","tao_emission_on_share_30d",-0.12405,0.001351,0.57355,22
+"spec3_plus_two_way_and_mechanical","log spot price","burn_mean_30d",-0.060145,0.00078891,0.59414,23
+"spec3_plus_two_way_and_mechanical","log spot price","presence",-0.03477,0.00063667,0.65883,24
+"spec3_plus_two_way_and_mechanical","log spot price","log_age",-0.057694,0.00050081,0.71451,25
+"spec3_plus_two_way_and_mechanical","log spot price","has_repo",0.048826,0.00048267,0.70658,26
+"spec3_plus_two_way_and_mechanical","log spot price","holder_dispersion",-0.044356,0.00046334,0.71402,27
+"spec3_plus_two_way_and_mechanical","log spot price","identity_changed_180d",0.028465,0.00028246,0.75802,28
 "spec3_plus_two_way_and_mechanical","log spot price","commit_reveal_on",0.01368,0.00013443,0.84423,29
 "spec3_plus_two_way_and_mechanical","log spot price","reg_cost_tao_now",0.010878,7.3628e-05,0.90414,30
 "spec3_plus_two_way_and_mechanical","log spot price","miner_concentration",-0.0056539,1.1463e-05,0.95066,31

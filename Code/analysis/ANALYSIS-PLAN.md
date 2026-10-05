@@ -213,3 +213,35 @@ Scripts `00` to `07` in `Code/analysis`, run in order by `run_all.R` from that f
 fixed; package versions in `Output/wave1_r_session_info.txt`; every output file starts with
 `wave1_`; a rerun that changes a file moves the previous version to `Output/OLD/`. The
 reproduction guide is `Code/analysis/README.md`.
+
+## 11. Amendments
+
+Amendments are dated, appended here, and never rewrite the sections above.
+
+### Amendment 1 (5 Oct 2026): a missing GitHub repository or X account is the weakest case
+
+- **Change.** A subnet without a GitHub repository (24 of 128) or without an X account (36 of
+  128) gets, on every repository or X variable, the weakest value observed among the subnets
+  that have one: the fewest commits, authors, pull requests, contributors, releases, stars,
+  forks, followers and posts, no documentation items, the youngest repository and account, and
+  the longest time since the last push. The values come from the rows the model is fitted on
+  (all subnets in the descriptive tables, the training fold inside the cross-validation). The
+  composites built from these variables (development, development_lag, dev_popularity,
+  x_reach) are computed from the filled values, so these subnets rank at or below every subnet
+  that has a repository or an account. Section 4 had set them to 0, the average of the
+  subnets that have one. The indicators `has_repo` and `has_x` stay in every specification.
+  Rule: column `absent_fill` in `feature_blocks.csv`; code: `prepare_features()` in
+  `00_functions.R`; tests: `test_prepare_features.R`.
+- **Reason.** Decided by Philipp Koellinger on conceptual grounds: no public repository or X
+  account is a sign that a subnet is not an active open-source project, so it should not count
+  as average. Decided before any result under the new coding was computed or shown.
+- **What it changes.** The OLS fits do not change: with the indicator in the model, any value
+  that is the same for all absent subnets is a reparameterization (same R², same predictions,
+  same composite coefficients; only the intercept and the indicator coefficients and their
+  standard errors move). This holds for the pre-registered wave 2 regression of section 9 as
+  well. The penalised models and the random forest see different values for these subnets, so
+  their cross-validated accuracy can move. Rankings of subnets on the composites (the
+  exploratory percentile charts) now place these subnets at the bottom.
+- **Not changed.** Measures that are undefined for structural reasons (miner concentration
+  where no miner was paid, holder concentration where nobody holds a stake, validator, owner
+  and burn measures before emissions started) keep the coding of section 4.

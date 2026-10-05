@@ -42,7 +42,7 @@ All from `Code/collection`:
 - **Panel (two waves)**: `python build/build_panel.py`
 - **Cross-checks**: `python build/check_sources.py`, `python build/check_doc_checklist.py`
 - A later wave: set `SNPRICE_SNAPSHOT=snapshot_wave2.json` for every command not started through `run_all.py --config`.
-- **Analyses** (from `Code/analysis`): `Rscript install_packages.R` once, then `Rscript run_all.R` (steps 01 to 07; the cross-validation step takes about 30 minutes) or one script at a time. Results go to `Output/wave1_*`; the one-page summary is `Output/wave1_results_summary.md`.
+- **Analyses** (from `Code/analysis`): `Rscript install_packages.R` once, then `Rscript test_prepare_features.R` (tests of the feature preparation) and `Rscript run_all.R` (steps 01 to 07; the cross-validation step takes about 30 minutes) or one script at a time. Results go to `Output/wave1_*`; the one-page summary is `Output/wave1_results_summary.md`. Exploratory scripts `90`–`94` run after step 6; `94` writes the public figure "Where Claims stands out" (X version and the deck SVG that is inlined in `Coding\Claims\Claims_SN111_Deck.src.html`, slide 15).
 
 ## Environment Variables
 - Required keys are listed in `Code/collection/.env.example`
