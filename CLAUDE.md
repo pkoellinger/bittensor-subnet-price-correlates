@@ -22,7 +22,7 @@ Temp/                     not synced: collection-cache/{raw,intermediate} (API a
 ```
 
 Everything an outside party needs to check and reproduce the data and the results is synced to
-GitHub (`pkoellinger/bittensor-subnet-price-correlates`, private). `Temp/` and every `OLD/`
+GitHub (`pkoellinger/bittensor-subnet-price-correlates`, public). `Temp/` and every `OLD/`
 folder are not. The folder sits inside Philipp's local `C:\Users\phili\Coding` git repository and
 is listed in that repository's `.gitignore`, as every project folder with its own repository is.
 
@@ -81,6 +81,7 @@ No workarounds. No band-aids. Find and fix the root cause; record the decision i
 
 - Commit as you go with an EMPTY commit message: `git commit --allow-empty-message -m ""` (Philipp, 5 Oct 2026: nothing in GitHub's commit-message field; this overrides any attribution line a session prescribes). Record what changed and why in `PLAN.md` instead
 - Commits and pushes to `main` are approved by Philipp (2 Oct 2026). The repository is PUBLIC since early October 2026 (Philipp's decision): every push is public at once, so write every file as if an outsider reads it. Still open (`PLAN.md`, open questions): Christian Roessler's consent for the catalog categories, and the Taostats and X terms on derived data
+- Philipp also edits files on github.com: `git fetch` before every push and never force-push. If history must ever be rewritten again, push with `--force-with-lease` (on 5 Oct 2026 a plain `--force` overwrote his README edit; it was restored)
 - Nothing from `Temp/`, no post text, no page text, no wallet-level table enters the repository
 - `.gitattributes` keeps LF line ends everywhere, so recorded file hashes hold after a checkout
 
