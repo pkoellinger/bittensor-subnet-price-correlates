@@ -5,10 +5,6 @@ The data are built for regressions with the subnet's token price as dependent va
 for tests of out-of-sample prediction. This repository holds the dataset, a codebook, and the
 code that collected every variable.
 
-**Status (2 Oct 2026):** wave 1 is complete, validated and frozen under the git tag `wave1`.
-Wave 2 is scheduled for 31 Oct 2026 (`WAVE2.md`); it adds the price change over October and
-joins both waves into a panel. `PLAN.md` has the plan and the log of every design decision.
-
 ## Folder layout
 
 | Path | What it is |
@@ -206,7 +202,7 @@ The full list with reasons is the decisions log in `PLAN.md`. The ones a user mu
 
 ## Limits
 
-- 128 observations. Many features, few rows: plan the analysis before looking at results, and
+- 128 observations. Many features, few rows. We planned the analysis before looking at results, and
   keep subnets of the same team in the same cross-validation fold (`team_id`).
 - A snapshot gives correlates, not causes. Attention and price move each other.
 - Website, GitHub star, follower and holder-count columns are as of collection (2 Oct 2026),
