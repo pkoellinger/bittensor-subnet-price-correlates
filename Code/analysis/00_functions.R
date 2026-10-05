@@ -166,7 +166,8 @@ vif <- function(fit) {
 }
 
 # ---- the analysis table ---------------------------------------------------------------------
-PRE_ANALYSIS_COMMIT <- "1d034af"       # the commit that froze ANALYSIS-PLAN.md and feature_blocks.csv
+PRE_ANALYSIS_COMMIT <- "7c68492"       # the commit that froze ANALYSIS-PLAN.md and feature_blocks.csv (1d034af until
+                                        # the commit messages were emptied on 5 Oct 2026; see PLAN.md)
 
 # indicators of applicability (structural missingness) and the controls, as ANALYSIS-PLAN.md defines them
 derived_columns <- function(d) {

@@ -23,7 +23,7 @@ and the decisions log in `PLAN.md` first.
 | Taostats | at most 15 calls a minute; never two collectors at once (the key allows 20 a minute and 20,000 a month and is shared with daily tasks and teammates); the ledger stops at 10,000 per wave |
 | X | 25 USD for a follow-up wave, enforced by the ledger; posts are read only for accounts with `approved = yes` in `config/kol_accounts.csv`; the list is the project owner's and is not changed |
 | Secrets | keys come from the environment or `.env`; never print, paste or commit them |
-| Repository | stays private; commits and pushes to `main` are fine; nothing in `Temp/` is committed; post text and page text never enter the repository |
+| Repository | public: every push is public at once; commits and pushes to `main` are fine, with an empty commit message (`git commit --allow-empty-message -m ""`); nothing in `Temp/` is committed; post text and page text never enter the repository |
 | Websites | addresses are validated before the browser sees them; warnings of security software and bot checks are not bypassed; documents are read in the sandboxed browser, not downloaded |
 | No invented values | a step that cannot get its data leaves the value missing and says why |
 
